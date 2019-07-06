@@ -1,0 +1,14 @@
+.tooltip-error > .tooltip-inner {
+  background-color: red;
+  color: #fff;
+  border: 1px solid red;
+  margin-bottom: 16px;
+}
+
+.arrow {
+  margin-bottom: 16px;
+}
+
+.bs-tooltip-left .arrow::before {
+  border-left-color: red;
+}

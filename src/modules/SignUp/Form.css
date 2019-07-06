@@ -1,0 +1,17 @@
+.SignUp .btn-pink {
+    color: #fff;
+    background-color: #EFB5BF;
+    border-color: #EFB5BF;
+}
+
+.SignUp .pointerHover {
+  cursor: pointer;
+}
+
+.SignUp .help {
+  color: #fff;
+  background-color: #000;
+  opacity: 0.7;
+  border-radius: 5px;
+  padding-left: 5px;
+}

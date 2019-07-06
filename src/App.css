@@ -1,0 +1,10 @@
+.App {
+  text-align: justify;
+  text-justify: inter-word;
+  background-image: url('./images/LeBliblou.jpg');
+  height: 661px;
+}
+
+.Main {
+  margin-top: 105px;
+}

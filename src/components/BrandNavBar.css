@@ -1,0 +1,21 @@
+.BrandNavBar .transparent {
+  background: none;
+  border: none;
+}
+
+.BrandNavBar .navbar-default .navbar-brand {
+  color: #4CAE51;
+}
+
+.BrandNavBar h1 {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  font-size: 3em;
+  margin: 0;
+  text-shadow:
+    1px  1px 3px pink,
+    1px -1px 3px pink,
+   -1px  1px 3px pink,
+   -1px -1px 3px pink;
+}
