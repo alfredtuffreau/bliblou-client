@@ -4,7 +4,7 @@ import { Overlay, Tooltip } from "react-bootstrap";
 
 import "./ValidationTooltip.css";
 
-function withValidationTooltip(WrappedComponent, message) {
+function withValidationTooltip(WrappedComponent, message, high) {
   class WithValidationTooltip extends Component {
     constructor() {
       super();
@@ -21,7 +21,10 @@ function withValidationTooltip(WrappedComponent, message) {
           <WrappedComponent ref={ this.attachRef } { ...rest } />
           <Overlay target={ target } show={ showTooltip } placement="left">
             { props => (
-              <Tooltip id={ `validation-error` } { ...props } className="tooltip-error">
+              <Tooltip 
+                id={ `validation-error` } 
+                className={ high ? "up tooltip-error" : "tooltip-error" }
+                { ...props }>
                 { message }
               </Tooltip>
             ) }

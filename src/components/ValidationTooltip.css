@@ -2,10 +2,28 @@
   background-color: red;
   color: #fff;
   border: 1px solid red;
+}
+
+.tooltip-error p {
+  margin: 0;
+  text-align: left;
+}
+
+.tooltip-error li {
+  margin: 0;
+  text-align: left;
+}
+
+.tooltip-error ul {
+  margin: 0;
+  text-align: left;
+}
+
+.up > .tooltip-inner {
   margin-bottom: 16px;
 }
 
-.arrow {
+.up > .arrow {
   margin-bottom: 16px;
 }
 

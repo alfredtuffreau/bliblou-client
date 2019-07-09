@@ -46,11 +46,6 @@ class NamesInput extends Component {
     toggleHoverNamesInput();
   }
 
-  isInvalid = () => {
-    const { isFirstnameValid, isLastnameValid } = this.props;
-    return isFirstnameValid === false || isLastnameValid === false;
-  }
-
   render () {
     const { firstname, isFirstnameValid, lastname, isLastnameValid } = this.props;
     const lastnameLabel = "Nom";
@@ -67,8 +62,7 @@ class NamesInput extends Component {
                           onChange={ (e) => this.handleOnChange(FIRSTNAME, e) }
                           onBlur={ (e) => this.handleOnBlur(FIRSTNAME, e) }
                           onMouseEnter={ this.toggleHover } 
-                          onMouseLeave={ this.toggleHover }
-                          required />
+                          onMouseLeave={ this.toggleHover } />
           </Form.Group>
           
           <Form.Group as={ Col } controlId={ LASTNAME }>
@@ -80,8 +74,7 @@ class NamesInput extends Component {
                           onChange={ (e) => this.handleOnChange(LASTNAME, e) }
                           onBlur={ (e) => this.handleOnBlur(LASTNAME, e) }
                           onMouseEnter={ this.toggleHover } 
-                          onMouseLeave={ this.toggleHover }
-                          required />
+                          onMouseLeave={ this.toggleHover } />
           </Form.Group>
         </Form.Row>
     );
@@ -96,6 +89,8 @@ NamesInput.propTypes = {
   isHoverNamesInput: bool,
   setFirstname: func.isRequired,
   setLastname: func.isRequired,
+  setFirstnameValidity: func.isRequired,
+  setLastnameValidity: func.isRequired,
   toggleHoverNamesInput: func.isRequired,
 };
 
@@ -129,4 +124,4 @@ const mapDispatchToProps = dispatch => (
 
 export default connect(
   mapStateToProps, mapDispatchToProps
-)(withValidationTooltip(NamesInput, ALERT_MESSAGE));
+)(withValidationTooltip(NamesInput, ALERT_MESSAGE, true));

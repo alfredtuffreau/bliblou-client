@@ -1,0 +1,18 @@
+.red-border-left {
+  border-left-color: red;
+  border-top-color: red;
+  border-bottom-color: red;
+}
+
+.red-border-middle {
+  border-top-color: red;
+  border-bottom-color: red;
+}
+
+.btn:focus {
+  box-shadow: none;
+}
+
+.btn.focus {
+  box-shadow: none;
+}
