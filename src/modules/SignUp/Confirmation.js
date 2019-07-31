@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 import "./Form.css";
 import { signUpForm } from "./selectors";
-import { setIsLoading, setConfirmationCode, clearForms } from "./actions";
+import { setIsLoading, setConfirmationCode, clearForm } from "./actions";
 
 class Confirmation extends Component {
   handleOnChange = ({ target: { value } }) => {
@@ -16,7 +16,7 @@ class Confirmation extends Component {
 
   handleConfirmationSubmit = async (event) => {
     const {
-      mail, password, confirmationCode, setIsLoading, confirm, clearForms
+      mail, password, confirmationCode, setIsLoading, confirm, clearForm
     } = this.props;
 
     event.preventDefault();
@@ -24,7 +24,7 @@ class Confirmation extends Component {
     setIsLoading(true);
     try {
       await confirm(mail, password, confirmationCode);
-      clearForms();
+      clearForm();
     } catch (err) {
       alert(err.message);
     }
@@ -70,7 +70,7 @@ Confirmation.propTypes = {
   setConfirmationCode: func.isRequired,
   setIsLoading: func.isRequired,
   confirm: func.isRequired,
-  clearForms: func.isRequired,
+  clearForm: func.isRequired,
 };
 
 Confirmation.defaultProps = {
@@ -86,7 +86,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ setIsLoading, setConfirmationCode, clearForms }, dispatch)
+  bindActionCreators({ setIsLoading, setConfirmationCode, clearForm }, dispatch)
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Confirmation);

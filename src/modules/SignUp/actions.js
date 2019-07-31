@@ -19,7 +19,7 @@ export const HOVER_PASSWORD_INPUT = "SIGN_UP/HOVER_PASSWORD_INPUT";
 
 export const SET_IS_LOADING = "SIGN_UP/SET_IS_LOADING";
 export const SET_CONFIRMATION_CODE = "SIGN_UP/SET_CONFIRMATION_CODE";
-export const CLEAR_FORMS = "SIGN_UP/CLEAR_FORMS";
+export const CLEAR_FORM = "SIGN_UP/CLEAR_FORM";
 // const SET_GENDER_COLOR = 'REGISTER/SET_COLOR_GENDER';
 // const SET_BIRTH_DATE = 'REGISTER/SET_BIRTH_DATE';
 
@@ -44,6 +44,6 @@ export const toggleHoverPasswordInput = () => ({ type: HOVER_PASSWORD_INPUT });
 
 export const setIsLoading = (value) => ({ type: SET_IS_LOADING, payload: value });
 export const setConfirmationCode = (value) => ({ type: SET_CONFIRMATION_CODE, payload: value });
-export const clearForms = () => ({ type: CLEAR_FORMS });
+export const clearForm = () => ({ type: CLEAR_FORM });
 // const setGenderColor = createAction(SET_GENDER_COLOR);
 // const setBirthDate = createAction(SET_BIRTH_DATE);

@@ -16,7 +16,7 @@ import {
   HOVER_PASSWORD_INPUT,
   SET_IS_LOADING,
   SET_CONFIRMATION_CODE,
-  CLEAR_FORMS,
+  CLEAR_FORM,
 } from "./actions";
 
 const initialState = {
@@ -109,7 +109,7 @@ export default function reducer(state = initialState, action = {}) {
       const confirmationCode = action.payload;
       return { ...state, confirmationCode };
 
-    case CLEAR_FORMS:
+    case CLEAR_FORM:
       return initialState;
 
     default:
