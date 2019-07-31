@@ -18,6 +18,7 @@ import {
   setMailValidity,
   setPasswordValidity,
   setGenderValidity,
+  clear,
 } from "./actions";
 
 class Form extends Component {
@@ -41,7 +42,8 @@ class Form extends Component {
       isGenderValid, 
       setGenderValidity,
       setIsLoading, 
-      signUp
+      signUp,
+      clear,
     } = this.props;
 
     if (!isFirstnameValid || !isLastnameValid || !isMailValid || !isPasswordValid || !isGenderValid) {
@@ -56,6 +58,7 @@ class Form extends Component {
     setIsLoading(true);
     try {
       await signUp(firstname, lastname, mail, password, gender);
+      clear();
     } catch (err) {
       alert(err.message);
     }
@@ -103,6 +106,7 @@ Form.propTypes = {
   setPasswordValidity: func.isRequired,
   setGenderValidity: func.isRequired,
   signUp: func.isRequired,
+  clear: func.isRequired,
 };
 
 Form.defaultProps = {
@@ -157,6 +161,7 @@ const mapDispatchToProps = dispatch => (
     setMailValidity,
     setPasswordValidity,
     setGenderValidity,
+    clear,
   }, dispatch)
 );
 
