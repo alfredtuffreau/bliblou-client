@@ -38,8 +38,8 @@ class PasswordInput extends Component {
               <InputGroup.Text className="pointerHover"
                                id="pwdAppend">
                 { isClear
-                    ? formattedText("signIn.password.display")
-                    : formattedText("signIn.password.hide") }
+                    ? formattedText("signIn.password.hide")
+                    : formattedText("signIn.password.display") }
               </InputGroup.Text>
             </span>
           </InputGroup.Append>
