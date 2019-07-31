@@ -6,15 +6,20 @@ import { connect } from "react-redux";
 import { Auth } from "aws-amplify";
 
 import Catcher from "../components/Catcher";
-import { Form as SignUpForm, ConfirmationForm } from "../modules/SignUp";
+import { default as SignUpForm } from "../modules/SignUp";
+import { default as ConfirmForm } from "../modules/Confirm";
 import { user, setNewUser } from "../modules/User";
+import { setMail, setPassword } from "../modules/Confirm";
 
 class Home extends Component {
   signUp = async (firstname, lastname, mail, password, gender) => {
-    const { setNewUser } = this.props;
+    const { setNewUser, setMail, setPassword } = this.props;
     const attributes = { name: firstname, family_name: lastname, gender };
 
     const user = await Auth.signUp({ username: mail, password, attributes });
+
+    setMail(mail);
+    setPassword(password);
     setNewUser(user);
   };
 
@@ -39,7 +44,7 @@ class Home extends Component {
           ? <div />
           : newUser
             ? (<Col md={{ span:4, offset:1 }}>
-                <ConfirmationForm confirm={ this.confirm } />
+                <ConfirmForm confirm={ this.confirm } />
               </Col>)
             : (<Col md={{ span:4, offset:1 }}>
                 <SignUpForm signUp={ this.signUp } />
@@ -52,6 +57,8 @@ class Home extends Component {
 Home.propTypes = {
   newUser: object,
   setNewUser: func.isRequired,
+  setMail: func.isRequired,
+  setPassword: func.isRequired,
 }
 
 Home.defaultProps = {
@@ -64,7 +71,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ setNewUser }, dispatch)
+  bindActionCreators({ 
+    setNewUser, setMail, setPassword,
+  }, dispatch)
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

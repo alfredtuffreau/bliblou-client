@@ -1,33 +1,34 @@
 import React, { Component } from "react";
 import { string, bool, func } from "prop-types";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form as BootstrapForm } from "react-bootstrap";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import "./Form.css";
-import { signUpForm } from "./selectors";
+import { confirmForm } from "./selectors";
 import { setIsLoading, setConfirmationCode, clearForm } from "./actions";
 
-class Confirmation extends Component {
+class Form extends Component {
   handleOnChange = ({ target: { value } }) => {
     const { setConfirmationCode } = this.props;
     setConfirmationCode(value);
   }
 
-  handleConfirmationSubmit = async (event) => {
+  handleSubmit = async (event) => {
     const {
       mail, password, confirmationCode, setIsLoading, confirm, clearForm
     } = this.props;
 
     event.preventDefault();
-
     setIsLoading(true);
+
     try {
       await confirm(mail, password, confirmationCode);
       clearForm();
     } catch (err) {
       alert(err.message);
     }
+
     setIsLoading(false);
   };
 
@@ -36,20 +37,20 @@ class Confirmation extends Component {
     const label = "Code de vérification";
 
     return (
-      <Form onSubmit={ this.handleConfirmationSubmit } className="SignUp">
-        <Form.Group controlId="confirmationCode" bsSize="large">
-          <Form.Label hidden>{ label }</Form.Label>
-          <Form.Control
+      <BootstrapForm onSubmit={ this.handleSubmit } className="Confirm">
+        <BootstrapForm.Group controlId="confirmationCode" bsSize="large">
+          <BootstrapForm.Label hidden>{ label }</BootstrapForm.Label>
+          <BootstrapForm.Control
             autoFocus
             type="tel"
             value={ confirmationCode }
             placeholder={ label }
             onChange={ (e) => this.handleOnChange(e) }
             required />
-          <Form.Text className="help">
+          <BootstrapForm.Text className="help">
             Consultez votre boite email pour le code de confirmation
-          </Form.Text>
-        </Form.Group>
+          </BootstrapForm.Text>
+        </BootstrapForm.Group>
         { isLoading
           ? (<Button variant="success" type="submit" size="lg" disabled>
                Verification...
@@ -57,12 +58,12 @@ class Confirmation extends Component {
           : (<Button variant="success" type="submit" size="lg">
                Vérifier
              </Button>)}
-      </Form>
+      </BootstrapForm>
     );
   }
 }
 
-Confirmation.propTypes = {
+Form.propTypes = {
   mail: string,
   password: string,
   confirmationCode: string,
@@ -73,7 +74,7 @@ Confirmation.propTypes = {
   clearForm: func.isRequired,
 };
 
-Confirmation.defaultProps = {
+Form.defaultProps = {
   mail: "",
   password: "",
   confirmationCode: "",
@@ -81,7 +82,7 @@ Confirmation.defaultProps = {
 };
 
 const mapStateToProps = (state) => {
-  const { mail, password, confirmationCode, isLoading } = signUpForm(state);
+  const { mail, password, confirmationCode, isLoading } = confirmForm(state);
   return { mail, password, confirmationCode, isLoading };
 };
 
@@ -89,4 +90,4 @@ const mapDispatchToProps = dispatch => (
   bindActionCreators({ setIsLoading, setConfirmationCode, clearForm }, dispatch)
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Confirmation);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

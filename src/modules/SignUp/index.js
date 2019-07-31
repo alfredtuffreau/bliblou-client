@@ -1,2 +1,3 @@
-export { default as ConfirmationForm } from "./Confirmation";
-export { default as Form } from "./Form";
+import From from "./Form";
+
+export default From;

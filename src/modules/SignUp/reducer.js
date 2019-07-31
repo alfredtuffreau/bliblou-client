@@ -15,7 +15,6 @@ import {
   TOGGLE_PASSWORD_VISIBILITY,
   HOVER_PASSWORD_INPUT,
   SET_IS_LOADING,
-  SET_CONFIRMATION_CODE,
   CLEAR_FORM,
 } from "./actions";
 
@@ -36,7 +35,6 @@ const initialState = {
   isPasswordValid: undefined,
   isHoverPasswordInput: false,
   isLoading: false,
-  confirmationCode: "",
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -104,10 +102,6 @@ export default function reducer(state = initialState, action = {}) {
     case SET_IS_LOADING:
       const isLoading = action.payload;
       return { ...state, isLoading };
-
-    case SET_CONFIRMATION_CODE:
-      const confirmationCode = action.payload;
-      return { ...state, confirmationCode };
 
     case CLEAR_FORM:
       return initialState;
