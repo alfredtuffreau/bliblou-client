@@ -3,13 +3,15 @@ import { string, func, bool } from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Button, Form as BootstrapForm } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 
 import "./Form.css";
 import { formattedText } from "../../translations";
 import MailInput from "./components/MailInput";
 import PasswordInput from "./components/PasswordInput";
 import { signInForm } from "./selectors";
-import { setIsLoading, clearForms } from "./actions";
+import { setIsLoading, clearForm } from "./actions";
+import { HOME } from "../../Routes";
 
 class Form extends Component {
   validateForm = () => {
@@ -20,15 +22,24 @@ class Form extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
 
-    const { mail, password, setIsLoading, signIn, clearForms } = this.props;
+    const { 
+      mail, password, setIsLoading, signIn, clearForm, history 
+    } = this.props;
 
     setIsLoading(true)
+    
     try {
       await signIn(mail, password);
-      clearForms();
+      clearForm();
     } catch (err) {
-      alert(err.message);
+      if (err.code === "UserNotConfirmedException") {
+        history.push(HOME);
+        clearForm();
+      } else { 
+        alert(err.message);
+      }
     }
+    
     setIsLoading(false);
   };
 
@@ -57,7 +68,7 @@ Form.propTypes = {
   isLoading: bool,
   setIsLoading: func.isRequired,
   signIn: func.isRequired,
-  clearForms: func.isRequired,
+  clearForm: func.isRequired,
 };
 
 Form.defaultProps = {
@@ -72,7 +83,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ setIsLoading, clearForms }, dispatch)
+  bindActionCreators({ setIsLoading, clearForm }, dispatch)
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Form));

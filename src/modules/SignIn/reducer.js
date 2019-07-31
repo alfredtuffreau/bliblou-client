@@ -3,7 +3,7 @@ import {
   SET_PASSWORD,
   TOGGLE_PASSWORD_VISIBILITY,
   SET_IS_LOADING,
-  CLEAR_FORMS,
+  CLEAR_FORM,
 } from "./actions";
 
 const initialState = {
@@ -32,7 +32,7 @@ export default function reducer(state = initialState, action = {}) {
       const isLoading = action.payload;
       return { ...state, isLoading };
 
-    case CLEAR_FORMS:
+    case CLEAR_FORM:
       return initialState;
 
     default:
