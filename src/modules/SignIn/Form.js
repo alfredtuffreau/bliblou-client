@@ -10,7 +10,7 @@ import { formattedText } from "../../translations";
 import MailInput from "./components/MailInput";
 import PasswordInput from "./components/PasswordInput";
 import { signInForm } from "./selectors";
-import { setIsLoading, clearForm } from "./actions";
+import { setIsLoading, clear } from "./actions";
 import { HOME } from "../../Routes";
 
 class Form extends Component {
@@ -23,18 +23,18 @@ class Form extends Component {
     event.preventDefault();
 
     const { 
-      mail, password, setIsLoading, signIn, clearForm, history 
+      mail, password, setIsLoading, signIn, clear, history 
     } = this.props;
 
     setIsLoading(true)
     
     try {
       await signIn(mail, password);
-      clearForm();
+      clear();
     } catch (err) {
       if (err.code === "UserNotConfirmedException") {
         history.push(HOME);
-        clearForm();
+        clear();
       } else { 
         alert(err.message);
       }
@@ -68,7 +68,7 @@ Form.propTypes = {
   isLoading: bool,
   setIsLoading: func.isRequired,
   signIn: func.isRequired,
-  clearForm: func.isRequired,
+  clear: func.isRequired,
 };
 
 Form.defaultProps = {
@@ -83,7 +83,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ setIsLoading, clearForm }, dispatch)
+  bindActionCreators({ setIsLoading, clear }, dispatch)
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Form));

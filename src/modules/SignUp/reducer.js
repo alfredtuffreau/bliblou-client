@@ -15,7 +15,7 @@ import {
   TOGGLE_PASSWORD_VISIBILITY,
   HOVER_PASSWORD_INPUT,
   SET_IS_LOADING,
-  CLEAR_FORM,
+  CLEAR,
 } from "./actions";
 
 const initialState = {
@@ -103,7 +103,7 @@ export default function reducer(state = initialState, action = {}) {
       const isLoading = action.payload;
       return { ...state, isLoading };
 
-    case CLEAR_FORM:
+    case CLEAR:
       return initialState;
 
     default:
