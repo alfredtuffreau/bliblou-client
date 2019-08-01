@@ -28,6 +28,7 @@ class Home extends Component {
 
     await Auth.confirmSignUp(mail, confirmationCode);
     await Auth.signIn(mail, password);
+    
     userHasAuthenticated(true);
     setNewUser(undefined);
   };

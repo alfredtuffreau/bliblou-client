@@ -32,12 +32,7 @@ class Form extends Component {
       await signIn(mail, password);
       clear();
     } catch (err) {
-      if (err.code === "UserNotConfirmedException") {
-        history.push(HOME);
-        clear();
-      } else { 
-        alert(err.message);
-      }
+      alert(err.message);
     }
     
     setIsLoading(false);

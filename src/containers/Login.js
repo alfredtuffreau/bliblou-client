@@ -1,19 +1,38 @@
 import React, { Component } from "react";
+import { func } from "prop-types";
 import { Row, Col } from "react-bootstrap";
 import { Auth } from "aws-amplify";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
 import { HOME } from "../Routes";
-
 import Catcher from "../components/Catcher";
 import { default as SignInForm } from "../modules/SignIn";
+import { setMail, setPassword } from "../modules/Confirm";
+import { setNewUser } from "../modules/User";
 
 class Login extends Component {
   signIn = async (email, password) => {
-    const { userHasAuthenticated, history } = this.props;
+    const { 
+      userHasAuthenticated, setNewUser, setMail, setPassword, history
+    } = this.props;
 
-    await Auth.signIn(email, password);
+    try { 
+      await Auth.signIn(email, password);
       userHasAuthenticated(true);
-      history.push(HOME);
+    } catch (err) {
+      if (err.code === "UserNotConfirmedException") {
+        await Auth.resendSignUp(email);
+      } else {
+        throw err;
+      }
+      
+      setMail(email);
+      setPassword(password);
+      setNewUser({ email, password });
+    }
+    
+    history.push(HOME);
   };
 
   render () {
@@ -31,4 +50,16 @@ class Login extends Component {
   }
 }
 
-export default Login;
+Login.propTypes = {
+  setNewUser: func.isRequired,
+  setMail: func.isRequired,
+  setPassword: func.isRequired,
+};
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({ 
+    setNewUser, setMail, setPassword,
+  }, dispatch)
+);
+
+export default connect(null, mapDispatchToProps)(Login);
