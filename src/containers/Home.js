@@ -11,6 +11,8 @@ import { default as ConfirmForm } from "../modules/Confirm";
 import { user, setNewUser } from "../modules/User";
 import { setMail, setPassword } from "../modules/Confirm";
 
+import "./Home.css";
+
 class Home extends Component {
   signUp = async (firstname, lastname, mail, password, gender) => {
     const { setNewUser, setMail, setPassword } = this.props;
@@ -36,7 +38,7 @@ class Home extends Component {
   render () {
     const { isAuthenticated, newUser } = this.props;
     return (
-      <Row className="Main">
+      <Row className="Main Home">
         <Col md={{ span:5, offset:1 }}>
           <Catcher />
         </Col>
@@ -44,11 +46,15 @@ class Home extends Component {
         { isAuthenticated
           ? <div />
           : newUser
-            ? (<Col md={{ span:4, offset:1 }}>
-                <ConfirmForm confirm={ this.confirm } />
+            ? (<Col md={{ span:4, offset:1 }} className="Form">
+                <div className="DarkContainer">
+                  <ConfirmForm confirm={ this.confirm } />
+                </div>
               </Col>)
-            : (<Col md={{ span:4, offset:1 }}>
-                <SignUpForm signUp={ this.signUp } />
+            : (<Col md={{ span:4, offset:1 }} className="Form">
+                <div className="DarkContainer">
+                  <SignUpForm signUp={ this.signUp } />
+                </div>
               </Col>) }
       </Row>
     );

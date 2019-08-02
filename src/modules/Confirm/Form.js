@@ -48,7 +48,7 @@ class Form extends Component {
             onChange={ (e) => this.handleOnChange(e) }
             required />
           <BootstrapForm.Text className="help">
-            Consultez votre boite email pour le code de confirmation
+            Consultez votre boite email pour le code de vérification
           </BootstrapForm.Text>
         </BootstrapForm.Group>
         { isLoading

@@ -11,6 +11,8 @@ import { default as SignInForm } from "../modules/SignIn";
 import { setMail, setPassword } from "../modules/Confirm";
 import { setNewUser } from "../modules/User";
 
+import "./Login.css";
+
 class Login extends Component {
   signIn = async (email, password) => {
     const { 
@@ -37,13 +39,15 @@ class Login extends Component {
 
   render () {
     return (
-      <Row className="Main">
+      <Row className="Main Login">
         <Col md={{ span:5, offset:1 }}>
           <Catcher />
         </Col>
 
-        <Col md={{ span:4, offset:1 }}>
-          <SignInForm signIn={ this.signIn } />
+        <Col md={{ span:4, offset:1 }} className="Form">
+          <div className="DarkContainer">
+            <SignInForm signIn={ this.signIn } />
+          </div>
         </Col>
       </Row>
     );
