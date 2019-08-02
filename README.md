@@ -66,3 +66,37 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## Code Architecture
+
+The Webapp project is organized as follow
+
+### src/
+
+`src/` contains all source code of the Webapp
+
+The folder root contains
+1. The App component and its css
+2. The application configuration file `config.js`
+3. The accessible react router routes in `Routes.js`
+4. The server setup in `serviceWorker.js`
+
+### src/containers/
+
+Contains the pages accessible via react router routes with all external API call functions
+
+### src/modules/
+
+Contains all react modules that requires a redux state
+
+### src/store/
+
+Contains the redux store configuration for the react modules
+
+### src/components/
+
+Contains all components reusable through the application (without state)
+
+### src/translations/
+
+Contains all label internationalization (used yet)
