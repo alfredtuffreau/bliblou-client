@@ -3,7 +3,7 @@ import { string, func, bool } from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Button, Form as BootstrapForm } from "react-bootstrap";
-import { withRouter } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 
 import "./Form.css";
 import { formattedText } from "../../translations";
@@ -11,7 +11,6 @@ import MailInput from "./components/MailInput";
 import PasswordInput from "./components/PasswordInput";
 import { signInForm } from "./selectors";
 import { setIsLoading, clear } from "./actions";
-import { HOME } from "../../Routes";
 
 class Form extends Component {
   validateForm = () => {
@@ -23,7 +22,7 @@ class Form extends Component {
     event.preventDefault();
 
     const { 
-      mail, password, setIsLoading, signIn, clear, history 
+      mail, password, setIsLoading, signIn, clear, 
     } = this.props;
 
     setIsLoading(true)
@@ -81,4 +80,4 @@ const mapDispatchToProps = dispatch => (
   bindActionCreators({ setIsLoading, clear }, dispatch)
 );
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Form));
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

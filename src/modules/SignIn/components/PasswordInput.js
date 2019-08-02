@@ -44,6 +44,11 @@ class PasswordInput extends Component {
             </span>
           </InputGroup.Append>
         </InputGroup>
+        {/* <NavLink to="https://www.w3schools.com"> */}
+        <div>
+          <a href="https://www.w3schools.com">Mot de passe oublié ?</a>
+        </div>
+        {/* </NavLink> */}
       </Form.Group>
     );
   };
