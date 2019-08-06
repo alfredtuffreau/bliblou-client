@@ -8,7 +8,14 @@ const labelsFR = {
       title: "Devenez votre propre Chef",
       description: "Avec le Bliblou vous disposez d'un outil agréable pour trouver les recettes qui vous plaisent et vous accompagner dans leur réalisation. Le bliblou vous propose des recettes de qualité, inspirées de votre terroir et pour tous les niveaux."
     },
-    pageNotFound: "Oups, page introuvable ¯\\_(ツ)_/¯",
+    pageNotFound: {
+      title: "Oups, page introuvable",
+      description: "La page que vous recherchez a peut-être été supprimée.",
+      links: {
+        back: "Page précédente",
+        home: "Page d'accueil",
+      }
+    },
   },
   signIn: {
     password: {
