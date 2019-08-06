@@ -2,9 +2,16 @@
   text-align: justify;
   text-justify: inter-word;
   background-image: url('./images/LeBliblou.jpg');
-  height: 631px;
 }
 
 .Main {
-  margin-top: 75px;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 0 0 98px;
+  padding: 20px 0px;
+}
+
+footer {
+  height: 1px;
+  background-color: #262626;
+  color: #262626
 }

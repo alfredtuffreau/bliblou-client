@@ -1,16 +1,10 @@
 .NotFound {
-  margin: 40px 0;
-  padding: 20px 0px;
-  background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
 }
 
 .NotFound .Icon {
   height: 225px;
   width: 283px;
-  margin: 0px auto 0px;
+  margin: 0px auto 8px;
   display: block;
 }
- .NotFound div {
-   margin: 8px 0 0;
- }

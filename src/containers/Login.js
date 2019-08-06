@@ -39,15 +39,13 @@ class Login extends Component {
 
   render () {
     return (
-      <Row className="Main Login">
+      <Row className="Login">
         <Col md={{ span:5, offset:1 }}>
           <Catcher />
         </Col>
 
         <Col md={{ span:4, offset:1 }} className="Form">
-          <div className="DarkContainer">
             <SignInForm signIn={ this.signIn } />
-          </div>
         </Col>
       </Row>
     );

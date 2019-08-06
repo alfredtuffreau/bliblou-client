@@ -38,7 +38,7 @@ class Home extends Component {
   render () {
     const { isAuthenticated, newUser } = this.props;
     return (
-      <Row className="Main Home">
+      <Row className="Home">
         <Col md={{ span:5, offset:1 }}>
           <Catcher />
         </Col>
@@ -52,9 +52,7 @@ class Home extends Component {
                 </div>
               </Col>)
             : (<Col md={{ span:4, offset:1 }} className="Form">
-                <div className="DarkContainer">
-                  <SignUpForm signUp={ this.signUp } />
-                </div>
+                <SignUpForm signUp={ this.signUp } />
               </Col>) }
       </Row>
     );
