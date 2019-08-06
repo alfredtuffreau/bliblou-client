@@ -20,10 +20,10 @@ const ALERT_MESSAGE = (
     <p>Le mot de passe doit contenir:</p>
     <ul>
       <li>8 caractères</li>
-      <li>des chiffres</li>
-      <li>des majuscules</li>
-      <li>des minuscules</li>
-      <li><p>1 caractère spécial</p><p>{ SPECIAL_CHARACTERS }</p></li>
+      <li>au moins 1 chiffre</li>
+      <li>au moins 1 majuscule</li>
+      <li>au moins 1 minuscule</li>
+      <li><p>au moins 1 caractère spécial</p><p>{ SPECIAL_CHARACTERS }</p></li>
     </ul>
   </div>
 );
