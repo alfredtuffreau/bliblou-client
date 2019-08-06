@@ -1,16 +1,16 @@
 .NotFound {
-    padding-top: 100px;
+  margin: 40px 0;
+  padding: 20px 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 
-.NotFound h1 {
-  text-align: center;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 500;
-  font-size: 3em;
-  margin: 0;
-  text-shadow:
-    1px  1px 3px pink,
-    1px -1px 3px pink,
-   -1px  1px 3px pink,
-   -1px -1px 3px pink;
+.NotFound .Icon {
+  height: 225px;
+  width: 283px;
+  margin: 0px auto 0px;
+  display: block;
 }
+ .NotFound div {
+   margin: 8px 0 0;
+ }
