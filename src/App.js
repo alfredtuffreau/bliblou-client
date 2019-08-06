@@ -44,7 +44,6 @@ class App extends Component {
                        : { label: formattedText("app.signIn"), href: LOGIN } }
                      home={ HOME } />
         <Routes childProps={ childProps } />
-        <footer>Test</footer>
       </div>
     );
   }
