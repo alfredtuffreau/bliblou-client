@@ -3,8 +3,9 @@ import { shape, string, bool, func } from "prop-types";
 import { NavLink } from "react-router-dom";
 import { Navbar, Nav, Button } from "react-bootstrap";
 
-import "./BrandNavBar.css";
 import { formattedText } from "../translations";
+
+import "./BrandNavBar.css";
 
 class BrandNavBar extends Component {
   render () {
@@ -14,7 +15,7 @@ class BrandNavBar extends Component {
       <div className="BrandNavBar">
         <Navbar className="transparent">
           <Navbar.Brand>
-            <NavLink to={ home } activeStyle={{ textDecoration: "none", color: "black" }}>
+            <NavLink to={ home } className="Brand">
               <h1>{ formattedText("app.name").toUpperCase() }</h1>
             </NavLink>
           </Navbar.Brand>

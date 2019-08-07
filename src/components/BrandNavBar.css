@@ -1,3 +1,8 @@
+.BrandNavBar .Brand { 
+  text-decoration: none; 
+  color: black;
+}
+
 .BrandNavBar .transparent {
   background: none;
   border: none;

@@ -51,3 +51,11 @@ input.form-control {
 input[type=file] {
   width: 100%;
 }
+
+.btn-link {
+  color:white;
+}
+
+.btn-link:hover {
+  color:white;
+}

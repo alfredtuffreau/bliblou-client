@@ -3,10 +3,10 @@ import { string, func, bool } from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Button, Form as BootstrapForm } from "react-bootstrap";
-// import { NavLink } from "react-router-dom";
+
+import { formattedText } from "../../translations";
 
 import "./Form.css";
-import { formattedText } from "../../translations";
 import MailInput from "./components/MailInput";
 import PasswordInput from "./components/PasswordInput";
 import { signInForm } from "./selectors";

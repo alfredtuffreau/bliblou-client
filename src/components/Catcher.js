@@ -1,7 +1,8 @@
 import React from "react";
 
-import "./Catcher.css";
 import { formattedText } from "../translations";
+
+import "./Catcher.css";
 
 export default () => (
   <div className="Catcher">

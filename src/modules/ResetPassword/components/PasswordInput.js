@@ -3,12 +3,10 @@ import { bool, func } from "prop-types";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { Form, InputGroup } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 import { formattedText } from "../../../translations";
 import { setPassword, togglePasswordVisibility as toggleVisibility } from "../actions";
 import { signInForm } from "../selectors";
-import { LOST_PASSWORD } from "../../../Routes";
 
 class PasswordInput extends Component {
   handleOnChange = ({ target: { value } }) => {
@@ -46,7 +44,11 @@ class PasswordInput extends Component {
             </span>
           </InputGroup.Append>
         </InputGroup>
-        <Link to={ LOST_PASSWORD }>Mot de passe oublié ?</Link>
+        {/* <NavLink to="https://www.w3schools.com"> */}
+        <div>
+          <a href="https://www.w3schools.com">Mot de passe oublié ?</a>
+        </div>
+        {/* </NavLink> */}
       </Form.Group>
     );
   };

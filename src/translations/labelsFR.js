@@ -26,6 +26,13 @@ const labelsFR = {
     mail: "Adresse email",
     login: "Se connecter >",
     loginIn: "Connexion...",
+  }, 
+  resetPassword: {
+    title: "Mot de passe oublié",
+    description: "Si vous êtes enregistré, nous vous enverrons les instructions de réinitialisation de votre mot de passe par e-mail.",
+    sendEmail: "Réinitialiser",
+    sendingEmail: "Envoi...",
+    cancel: "Annuler",
   }
 }
 
