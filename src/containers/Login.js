@@ -14,6 +14,10 @@ import { setNewUser } from "../modules/User";
 import "./Login.css";
 
 class Login extends Component {
+  resendConfirmationCode = (email) => {
+    
+  }
+
   signIn = async (email, password) => {
     const { 
       userHasAuthenticated, setNewUser, setMail, setPassword, history
@@ -23,12 +27,11 @@ class Login extends Component {
       await Auth.signIn(email, password);
       userHasAuthenticated(true);
     } catch (err) {
-      if (err.code === "UserNotConfirmedException") {
-        await Auth.resendSignUp(email);
-      } else {
+      if (err.code !== "UserNotConfirmedException") {
         throw err;
       }
-      
+        
+      await Auth.resendSignUp(email);
       setMail(email);
       setPassword(password);
       setNewUser({ email, password });

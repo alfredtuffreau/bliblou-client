@@ -6,7 +6,7 @@ import { Form, InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import { formattedText } from "../../../translations";
-import { setPassword, togglePasswordVisibility as toggleVisibility } from "../actions";
+import { setPassword, togglePasswordVisibility as toggleVisibility, clear } from "../actions";
 import { signInForm } from "../selectors";
 import { LOST_PASSWORD } from "../../../Routes";
 
@@ -16,8 +16,14 @@ class PasswordInput extends Component {
     setPassword(value);
   }
 
-  handleOnCLick = () => {
-    this.props.toggleVisibility();
+  handleOnToggleVisibilityCLick = () => {
+    const { toggleVisibility } = this.props;
+    toggleVisibility();
+  }
+
+  handleOnLostPaswordLink = () => {
+    const { clear } = this.props;
+    clear();
   }
 
   render () {
@@ -32,11 +38,11 @@ class PasswordInput extends Component {
             value={ password }
             placeholder={ formattedText("signIn.password.label") }
             aria-describedby="pwdAppend"
-            onChange={ (e) => this.handleOnChange(e) }
+            onChange={ this.handleOnChange }
             required
           />
           <InputGroup.Append>
-            <span onClick={ () => this.handleOnCLick() }>
+            <span onClick={ this.handleOnToggleVisibilityCLick }>
               <InputGroup.Text className="pointerHover"
                                id="pwdAppend">
                 { isClear
@@ -46,7 +52,7 @@ class PasswordInput extends Component {
             </span>
           </InputGroup.Append>
         </InputGroup>
-        <Link to={ LOST_PASSWORD }>Mot de passe oublié ?</Link>
+        <Link to={ LOST_PASSWORD } onClick={ this.handleOnLostPaswordLink }>Mot de passe oublié ?</Link>
       </Form.Group>
     );
   };
@@ -56,6 +62,7 @@ PasswordInput.propTypes = {
   isClear: bool.isRequired,
   setPassword: func.isRequired,
   toggleVisibility: func.isRequired,
+  clear: func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -64,7 +71,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ setPassword, toggleVisibility }, dispatch)
+  bindActionCreators({ setPassword, toggleVisibility, clear }, dispatch)
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(PasswordInput);

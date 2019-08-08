@@ -14,7 +14,7 @@ import { setIsLoading, setIsSent, clear } from "./actions";
 
 class IdentificationForm extends Component {
   validateForm = () => {
-    return this.props.mail.length > 0;
+    return this.props.newPassword.length > 0 && this.props.confirmationCode;
   }
 
   handleSubmit = async (event) => {
@@ -25,8 +25,7 @@ class IdentificationForm extends Component {
     setIsLoading(true)
     
     try {
-      await forgotPassword(mail);
-      setIsSent(true);
+      await alert(`Submit: ${newPaswword} - ${confirmationCode}`);
     } catch (err) {
       alert(err.message);
     }

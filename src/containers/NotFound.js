@@ -9,7 +9,7 @@ import { HOME } from "../Routes";
 import "./NotFound.css";
 
 class NotFound extends Component {
-  handleOnClick = () => {
+  handleOnCancelClick = () => {
     const { history } = this.props;
     history.goBack();
   }
@@ -22,7 +22,7 @@ class NotFound extends Component {
         <img src={ icon } alt="Not found" className="Icon" />
         <div>
           <Button variant="link"
-                  onClick={ this.handleOnClick }>
+                  onClick={ this.handleOnCancelClick }>
             { formattedText("app.pageNotFound.links.back") }
           </Button> 
           | 
