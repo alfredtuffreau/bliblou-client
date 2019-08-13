@@ -1,18 +1,18 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import thunk from 'redux-thunk'
 
-import { default as user } from "../modules/User/reducer";
-import { default as signUpForm } from "../modules/SignUp/reducer";
-import { default as confirmForm } from "../modules/Confirm/reducer";
-import { default as signInForm } from "../modules/SignIn/reducer";
-import { default as resetPasswordForm } from "../modules/ResetPassword/reducer";
+import { navigation } from "../modules/Navigation";
+import { signUp } from "../modules/SignUp";
+import { signIn } from "../modules/SignIn";
+import { resetPassword } from "../modules/ResetPassword";
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(
   combineReducers({
-    user,
-    signUpForm,
-    confirmForm,
-    signInForm,
-    resetPasswordForm,
-  }),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    navigation,
+    signUp,
+    signIn,
+    resetPassword,
+  }), 
+  composeEnhancers(applyMiddleware(thunk))
 );

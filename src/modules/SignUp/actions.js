@@ -1,47 +1,101 @@
-export const SET_GENDER = "SIGN_UP/SET_GENDER";
-export const SET_GENDER_VALIDITY = "SIGN_UP/SET_GENDER_VALIDITY";
-export const HOVER_GENDER_INPUT = "SIGN_UP/HOVER_GENDER_INPUT";
+import { Auth } from "aws-amplify";
+import approve from "approvejs";
 
-export const SET_FIRSTNAME = "SIGN_UP/SET_FIRSTNAME";
-export const SET_FIRSTNAME_VALIDITY = "SIGN_UP/SET_FIRSTNAME_VALIDITY";
-export const SET_LASTNAME = "SIGN_UP/SET_LASTNAME";
-export const SET_LASTNAME_VALIDITY = "SIGN_UP/SET_LASTNAME_VALIDITY";
-export const HOVER_NAMES_INPUT = "SIGN_UP/HOVER_NAMES_INPUT";
+import { userHasAuthenticated, LOGIN } from "../../modules/Navigation";
 
-export const SET_MAIL = "SIGN_UP/SET_MAIL";
-export const SET_MAIL_VALIDITY = "SIGN_UP/SET_MAIL_VALIDITY";
-export const HOVER_MAIL_INPUT = "SIGN_UP/HOVER_MAIL_INPUT";
-
-export const SET_PASSWORD = "SIGN_UP/SET_PASSWORD";
-export const SET_PASSWORD_VALIDITY = "SIGN_UP/SET_PASSWORD_VALIDITY";
+export const SET_VALUE = "SIGN_UP/SET_VALUE";
+export const SET_VALID = "SIGN_UP/SET_VALID"; 
+export const TOGGLE_HOVER = "SIGN_UP/TOGGLE_HOVER";
 export const TOGGLE_PASSWORD_VISIBILITY = "SIGN_UP/TOGGLE_PASSWORD_VISIBILITY";
-export const HOVER_PASSWORD_INPUT = "SIGN_UP/HOVER_PASSWORD_INPUT";
-
 export const SET_IS_LOADING = "SIGN_UP/SET_IS_LOADING";
+export const SET_NEW_USER = "SIGN_UP/SET_NEW_USER";
 export const CLEAR = "SIGN_UP/CLEAR";
-// const SET_GENDER_COLOR = 'REGISTER/SET_COLOR_GENDER';
-// const SET_BIRTH_DATE = 'REGISTER/SET_BIRTH_DATE';
 
-export const setGender = (value) => ({ type: SET_GENDER, payload: value });
-export const setGenderValidity = (value) => ({ type: SET_GENDER_VALIDITY, payload: value });
-export const toggleHoverGenderInput = () => ({ type: HOVER_GENDER_INPUT });
+const setValid = (field, isValid) => ({ type: SET_VALID, payload: { field, isValid } });
+const setIsLoading = (value) => ({ type: SET_IS_LOADING, payload: value });
+const newUser = (newUser) => ({ type: SET_NEW_USER, payload: newUser });
+const clear = () => ({ type: CLEAR });
 
-export const setFirstname = (value) => ({ type: SET_FIRSTNAME, payload: value });
-export const setFirstnameValidity = (value) => ({ type: SET_FIRSTNAME_VALIDITY, payload: value });
-export const setLastname = (value) => ({ type: SET_LASTNAME, payload: value });
-export const setLastnameValidity = (value) => ({ type: SET_LASTNAME_VALIDITY, payload: value });
-export const toggleHoverNamesInput = () => ({ type: HOVER_NAMES_INPUT });
-
-export const setMail = (value) => ({ type: SET_MAIL, payload: value });
-export const setMailValidity = (value) => ({ type: SET_MAIL_VALIDITY, payload: value });
-export const toggleHoverMailInput = () => ({ type: HOVER_MAIL_INPUT });
-
-export const setPassword = (value) => ({ type: SET_PASSWORD, payload: value });
-export const setPasswordValidity = (value) => ({ type: SET_PASSWORD_VALIDITY, payload: value });
+export const setValue = (field, value) => ({ type: SET_VALUE, payload: { field, value } });
+export const toggleHover = (field) => ({ type: TOGGLE_HOVER, payload: { field } });
 export const togglePasswordVisibility = () => ({ type: TOGGLE_PASSWORD_VISIBILITY });
-export const toggleHoverPasswordInput = () => ({ type: HOVER_PASSWORD_INPUT });
 
-export const setIsLoading = (value) => ({ type: SET_IS_LOADING, payload: value });
-export const clear = () => ({ type: CLEAR });
-// const setGenderColor = createAction(SET_GENDER_COLOR);
-// const setBirthDate = createAction(SET_BIRTH_DATE);
+export const setValidValue = (field, value) => {
+    return (dispatch) => {
+        dispatch(setValue(field, value));
+        dispatch(setValid(field, true));
+    };
+};
+
+export const validate = (field, value, rules) => {
+    return (dispatch) => {
+        const { approved } = approve.value(value, rules);
+        dispatch(setValid(field, approved));
+    };
+};
+
+export const signUp = (firstname, lastname, mail, password, gender) => {
+	return async (dispatch) => {
+		dispatch(setIsLoading(true));
+	
+		const fields = [ 
+			{ name: "firstname", field: firstname }, 
+			{ name: "lastname", field: lastname}, 
+			{ name: "mail", field: mail}, 
+			{ name: "password", field: password}, 
+			{ name: "gender", field: gender} 
+		];
+		const invalidFields = fields.filter(({ field }) => !field.isValid);
+
+		if (invalidFields.length > 0) {
+			invalidFields.forEach(({ name }) => dispatch(setValid(name, false)));
+			return;
+		}
+
+		try {
+			const attributes = { name: firstname.value, family_name: lastname.value, gender: gender.value };
+			const user = await Auth.signUp({ username: mail.value, password: password.value, attributes });
+			dispatch(newUser(user));
+		} catch(err) {
+			alert(err.message);
+		}
+		
+    dispatch(setIsLoading(false));
+	};
+};
+
+export const confirm = (mail, password, confirmationCode, history) => {
+	return async (dispatch) => {
+		dispatch(setIsLoading(true));
+
+		try {
+			await Auth.confirmSignUp(mail, confirmationCode);
+			await dispatch(signIn(mail, password, history));
+			dispatch(clear());
+		} catch(err) {
+			alert(err.message);
+		}
+		
+    dispatch(setIsLoading(false));
+	};
+};
+
+export const initConfirm = (mail, password) => {
+	return (dispatch) => {
+		dispatch(setValue("mail", mail));
+		dispatch(setValue("password", password));
+		dispatch(newUser({ mail, password }));
+	};
+};
+
+const signIn = (mail, password, history) => {
+	return async (dispatch) => {
+		try {
+			await Auth.signIn(mail, password);
+			dispatch(userHasAuthenticated(true));
+		} catch(err) {
+			alert(err.message);
+			history.push(LOGIN);
+		}
+	};
+};

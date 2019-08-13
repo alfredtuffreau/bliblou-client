@@ -1,0 +1,25 @@
+.NavBar .Brand { 
+  text-decoration: none; 
+  color: black;
+}
+
+.NavBar .transparent {
+  background: none;
+  border: none;
+}
+
+.NavBar .navbar-default .navbar-brand {
+  color: #4CAE51;
+}
+
+.NavBar h1 {
+  margin: 0;
+  font-size: 3em;
+  font-weight: 500;
+  color: black;
+  text-shadow:
+    1px  1px 3px pink,
+    1px -1px 3px pink,
+   -1px  1px 3px pink,
+   -1px -1px 3px pink;
+}

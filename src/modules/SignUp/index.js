@@ -1,3 +1,5 @@
-import From from "./Form";
+import SignUp from "./container";
 
-export default From;
+export { initConfirm } from "./actions";
+export { default as signUp } from "./reducer";
+export default SignUp;

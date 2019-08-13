@@ -1,3 +1,4 @@
-import Form from "./Form";
+import SignIn from "./container";
 
-export default Form;
+export { default as signIn } from "./reducer";
+export default SignIn;

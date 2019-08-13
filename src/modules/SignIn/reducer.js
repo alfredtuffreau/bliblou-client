@@ -1,36 +1,36 @@
 import {
-  SET_MAIL,
-  SET_PASSWORD,
-  TOGGLE_PASSWORD_VISIBILITY,
-  SET_IS_LOADING,
-  CLEAR,
+	SET_VALUE,
+	TOGGLE_PASSWORD_VISIBILITY,
+	SET_IS_LOADING,
+	CLEAR,
 } from "./actions";
 
 const initialState = {
-  mail: "",
-  password: "",
-  isPasswordVisible:
-  false, isLoading:
-  false
+  mail: { value: "" },
+  password: { value: "", isClear: false },
+  isLoading: false,
 };
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case SET_MAIL:
-      const mail = action.payload;
-      return { ...state, mail };
-
-    case SET_PASSWORD:
-      const password = action.payload;
-      return { ...state, password };
+    case SET_VALUE: {
+      const { field, value } = action.payload;
+      return ({ 
+				...state, 
+				[ field ]: { ...state[field], value } 
+			});
+		};
 
     case TOGGLE_PASSWORD_VISIBILITY:
-      const isPasswordVisible = !state.isPasswordVisible;
-      return { ...state, isPasswordVisible };
+      const isClear = !state.password.isClear;
+      return ({ 
+				...state, 
+				password: { ...state.password, isClear }
+			});
 
-    case SET_IS_LOADING:
-      const isLoading = action.payload;
-      return { ...state, isLoading };
+		case SET_IS_LOADING:
+			const isLoading = action.payload;
+			return ({ ...state, isLoading });
 
     case CLEAR:
       return initialState;
@@ -38,4 +38,5 @@ export default function reducer(state = initialState, action = {}) {
     default:
       return state;
   }
-}
+};
+

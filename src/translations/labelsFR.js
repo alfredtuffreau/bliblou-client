@@ -8,6 +8,10 @@ const labelsFR = {
       title: "Devenez votre propre chef",
       description: "Grâce au Bliblou, profitez d'une application simple et complète pour trouver des idées de recettes, les personnaliser selon vos goûts et vos contraintes, et vous accompagner dans leur réalisation. Le Bliblou vous propose des recettes de qualité et de saison, inspirées par votre terroir et sélectionnées pour vous."
     },
+    building: {
+      title: "En construction",
+      description: "Nous travaillons pour vous offrir du contenu.",
+    },
     pageNotFound: {
       title: "Oups, page introuvable",
       description: "La page que vous recherchez a peut-être été supprimée.",
@@ -29,7 +33,7 @@ const labelsFR = {
   }, 
   resetPassword: {
     title: "Mot de passe oublié",
-    descriptionNotSent: "Si vous êtes enregistré, nous vous enverrons les instructions de réinitialisation de votre mot de passe par e-mail.",
+    descriptionNotSent: "Nous vous enverrons les instructions de réinitialisation de votre mot de passe par e-mail.",
     descriptionSent: "Saisissez votre nouveau mot de passe et le code de vérification qui vous a été envoyé par e-mail.",
     sendEmail: "Réinitialiser",
     sendingEmail: "Envoi...",

@@ -1,4 +1,4 @@
-import IdentificationForm from "./IdentificationForm";
+import ResetPassword from "./container";
 
-export * from "./selectors";
-export default IdentificationForm;
+export { default as resetPassword } from "./reducer";
+export default ResetPassword;

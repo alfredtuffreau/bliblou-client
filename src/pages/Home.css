@@ -1,0 +1,14 @@
+.Home form {
+  margin-top: 16px;
+}
+
+.Home .Building {
+  text-align: center;
+}
+
+.Home .Icon {
+  height: 225px;
+  width: 237px; 
+  margin: 0 auto 8px;
+  display: block;
+}

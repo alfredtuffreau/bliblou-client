@@ -75,15 +75,17 @@ The Webapp project is organized as follow
 
 `src/` contains all source code of the Webapp
 
-The folder root contains
-1. The App component and its css
-2. The application configuration file `config.js`
-3. The accessible react router routes in `Routes.js`
-4. The server setup in `serviceWorker.js`
+The folder root contains the react application and their style: `index.js`and `App.js`
 
-### src/containers/
+### src/config/
+The application configuration files
 
-Contains the pages accessible via react router routes with all external API call functions
+### src/server/
+The server setup in `serviceWorker.js`
+
+### src/pages/
+
+Contains the pages accessible via react router routes
 
 ### src/modules/
 
