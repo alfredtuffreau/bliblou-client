@@ -1,0 +1,355 @@
+# Login page E2E tests 
+
+
+
+
+######################################################################################################
+## User is logged out
+Prerequisite: User is logged out
+######################################################################################################
+
+
+
+### Landing on Login
+
+Type URL: http://localhost:3000/login
+> Navbar displays "Créer un compte" button
+> Displays empty signin form 
+  i. "Adresse email"
+  ii. "Mot de passe" + button "Afficher"
+  iii. Link "Mot de passe oublié ?"
+  iv. "Se connecter >" enabled submit button
+
+
+
+### Clicking "Créer un compte" Navbar button from SignIn form
+
+Type URL: http://localhost:3000/login
+Click: "Créer un compte" Navbar button
+> Redirect to http://localhost:3000/
+> Navbar displays "S'identifier" button
+> Display Catcher and SignUp form
+
+
+
+### Clicking "Mot de passe oublié ?" SignIn form link
+
+Type URL: http://localhost:3000/login
+Click: "Mot de passe oublié ?" signin form link
+> Redirect to http://localhost:3000/lostpassword
+> Navbar displays "Créer un compte" button
+> Page displays reset password form
+
+
+
+### Submitting empty/invalid signin form
+
+Type URL: http://localhost:3000/login
+Click: "Se connecter >" signin form submit button
+> "Se connecter >" button becomes "Connexion..." and is disabled
+> window alerts 
+  i. "localhost:3000 indique" (title)
+  ii. "Incorrect username or password." (body)
+  iii. "Ok" button
+         
+Click: "Ok"
+> "Connexion..." button becomes "Se connecter >" and is enable
+> SignIn form is still filled with previous values
+
+
+
+### Typing invalid value in signin form and fixing it
+
+Type URL: http://localhost:3000/login
+Type invalid "Adresse email" value
+Click in "Mot de passe" then elsewhere
+> "Se connecter >" signin form submit button remains enabled
+
+
+
+### Typing invalid then valid value in "Adresse email"
+
+Type URL: http://localhost:3000/login
+Type invalid "Adresse email" value
+> "Adresse email" contains the typed value
+> No change in "Adresse email" display
+
+Type valid "Adresse email" value
+> "Adresse email" contains the typed value
+> No change in "Adresse email" display
+
+
+
+### Typing invalid then valid value in "Mot de passe"
+
+Type URL: http://localhost:3000/login
+Click in "Mot de passe" then elsewhere
+> No change in "Adresse email" display
+
+Type anything in "Azertyu!0p"
+> "Mot de passe" contains "**********"
+> No change in "Adresse email" display
+
+
+
+### Clicking on "Afficher"/"Masquer" "Mot de passe" button
+
+Type URL: http://localhost:3000/login
+Type Azertyu!0p in "Mot de passe"
+> "**********" is displayed in "Mot de passe"
+
+Click "Afficher"
+> "Azertyu!0p" is displayed in "Mot de passe"
+
+Click "Masquer"
+> "**********" is displayed in "Mot de passe"
+
+
+
+### Quitting signin form before submitting
+
+Type URL: http://localhost:3000/login
+Fill the signup form values
+Click "Afficher" "Mot de passe" button
+Click: "Créer un compte" Navbar button
+> Redirect to http://localhost:3000/
+> Signin form disappears
+
+Click: "S'identifier" Navbar button
+> Redirect to http://localhost:3000/login
+> Signin form appears
+> all previously filled values are displayed
+> "Mot de passe" is visible in clear
+
+
+
+### Error happenning on AWS cognito signin
+
+Type URL: http://localhost:3000/login
+Fill the signin form with nonsigned up "Adresse email" and any "Mot de passe" value
+Click: "Se connecter >" signin form submit button
+> "Se connecter >" button becomes "Connexion..." and is disabled
+> window alerts 
+  i. "localhost:3000 indique" (title)
+  ii. "Incorrect username or password." (body)
+  iii. "Ok" button
+            
+Click: "Ok"
+> "Connexion..." button becomes "Se connecter >" and is enable
+> Signin form is still filled with previous values
+
+
+
+
+
+######################################################################################################
+## Confirmed user is logged out
+Prerequisites: 
+1. User is logged out
+2. User signed up
+3. User confirmed sign up
+######################################################################################################
+
+
+
+### Typing wrong password
+
+Type URL: http://localhost:3000/login
+Fill the signin form with signed up "Adresse email" and invalid "Mot de passe" value
+Click: "Se connecter >" signin form submit button
+> "Se connecter >" button becomes "Connexion..." and is disabled
+> window alerts 
+  i. "localhost:3000 indique" (title)
+  ii. "Incorrect username or password." (body)
+  iii. "Ok" button
+            
+Click: "Ok"
+> "Connexion..." button becomes "Se connecter >" and is enable
+> Signin form is still filled with previous values
+
+
+
+### Successfully signing in
+
+Type URL: http://localhost:3000/login
+Fill the signin form with signed up and confirmed "Adresse email" and valid "Mot de passe" 
+Click: "Se connecter >" signin form submit button
+> "Se connecter >" button becomes "Connexion..." and is disabled
+> Catcher and Signin form disapear
+> User is logged in
+> Navbar displays "Se déconnecter" button
+> Home page body displays "En construction" content
+
+
+
+
+######################################################################################################
+## Unconfirmed user is logged out
+Prerequisite: 
+1. User is logged out
+2. User signed up
+3. User did not confirm sign up
+######################################################################################################
+
+
+
+### Landing on signup confirm
+
+Type URL: http://localhost:3000/login 
+Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Click: "Se connecter >" signin form submit button
+> "Se connecter >" button becomes "Connexion..." and is disabled
+> Redirected to http://localhost:3000/
+> Page displays Catcher and Confirm form
+  i. "Vérification code"
+  ii. help "Consultez votre boîte mail pour le code de vérification"
+  iii. "Vérifier >" enabled submit button
+
+
+
+### Clicking "S'identifier" Navbar button from Confirm form
+
+Type URL: http://localhost:3000/login 
+Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Click: "Se connecter >" signin form submit button
+Wait: Confirm form is displayed
+Click: "S'identifier" Navbar button
+> Redirect to http://localhost:3000/login
+> Navbar displays "Créer un compte" button
+> Page displays Catcher and SignIn form
+
+
+
+### Submitting incomplete Confirm form
+
+Type URL: http://localhost:3000/login 
+Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Click: "Se connecter >" signin form submit button
+Wait: Confirm form is displayed
+Click: "Vérifier >" Confirm form submit button
+> "Code de vérification" contains a red "X"
+> "Vérifier >" is disabled
+> Hover "Code de vérification" dispays "Saisissez votre code de vérification" tooltip
+
+
+
+### Typing invalid value in Confirm form and fixing it
+
+Type URL: http://localhost:3000/login 
+Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Click: "Se connecter >" signin form submit button
+Wait: Confirm form is displayed
+Click in "Code de vérification" then elsewhere
+> "Vérifier >" Confirm form submit button is disabled
+
+Type anything in "Code de vérification" 
+> "Vérifier >" Confirm form submit button is enabled
+
+
+
+### Typing invalid then valid values in "Code de vérification"
+
+Type URL: http://localhost:3000/login 
+Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Click: "Se connecter >" signin form submit button
+Wait: Confirm form is displayed
+Click in "Code de vérification" then elsewhere
+> "Code de vérification" contains a red "X"
+> Hover "Code de vérification" dispays "Saisissez votre code de vérification" tooltip
+
+Type anything in "Code de vérification"
+> typed value is diplayed in "Code de vérification"
+> "Code de vérification" red "X" is removed
+> Hover "Code de vérification" does nothing
+
+
+
+### Quitting Confirm form before submitting
+
+Type URL: http://localhost:3000/login 
+Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Click: "Se connecter >" signin form submit button
+Wait: Confirm form is displayed
+Click: "S'identifier" Navbar button
+> Redirect to http://localhost:3000/login
+> Page display catcher and empty signin form
+
+
+
+### Error happenning on AWS cognito confirm
+
+Type URL: http://localhost:3000/login 
+Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Click: "Se connecter >" signin form submit button
+Wait: Confirm form is displayed
+Type wrong "Code de vérification"
+Click: "Vérifier >" Confirm form submit button
+> "Vérifier >" button becomes "Vérification..." and is disabled
+> window alerts 
+  i. "localhost:3000 indique" (title)
+  ii. "Invalid verification code provided, please try again." (body)
+  iii. "Ok" button
+            
+Click: "Ok"
+> "Vérification..." button becomes "Vérifier >" and is enable
+> Confirm form is empty
+
+
+
+### Error happenning on AWS cognito signin
+
+Type URL: http://localhost:3000/login 
+Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Click: "Se connecter >" signin form submit button
+Wait: Confirm form is displayed
+Type correct "Code de vérification"
+Click: "Vérifier >" Confirm form submit button
+Aws error occur while signing in
+> "Vérifier >" button becomes "Vérification..." and is disabled
+> window alerts 
+  i. "localhost:3000 indique" (title)
+  ii. The error message (body)
+  iii. "Ok" button
+
+Click: "Ok"
+> redirected to http://localhost:3000/login
+> Catcher and empty Login form are displayed 
+> Navbar button is "Créer un compte"
+
+Click: "Créer un compte" Navbar button
+> redirected to http://localhost:3000/
+> Catcher and empty Signup form are displayed 
+> Navbar button is "S'identifier"
+
+
+
+### Successfully signing in and confirming signup
+
+Type URL: http://localhost:3000/login 
+Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Click: "Se connecter >" signin form submit button
+Wait: Confirm form is displayed
+Type correct "Code de vérification"
+Click: "Vérifier >" Confirm form submit button
+> "Vérifier >" button becomes "Vérification..." and is disabled
+> Catcher and confirm form disapear
+> User is logged in
+> Navbar displays "Se déconnecter" button
+> Home page body displays "En construction" content
+
+
+
+
+######################################################################################################
+## User is logged in
+Prerequisite: User is logged in
+######################################################################################################
+
+
+
+### Landing on Login
+
+Type URL: http://localhost:3000/login
+> Redirected to http://localhost:3000
+> Navbar displays "Se déconnecter" button
+> Home page body displays "En construction" content

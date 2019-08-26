@@ -11,27 +11,34 @@ export const SET_IS_LOADING = "SIGN_UP/SET_IS_LOADING";
 export const SET_NEW_USER = "SIGN_UP/SET_NEW_USER";
 export const CLEAR = "SIGN_UP/CLEAR";
 
+const set = (field, value) => ({ type: SET_VALUE, payload: { field, value } });
 const setValid = (field, isValid) => ({ type: SET_VALID, payload: { field, isValid } });
 const setIsLoading = (value) => ({ type: SET_IS_LOADING, payload: value });
 const newUser = (newUser) => ({ type: SET_NEW_USER, payload: newUser });
-const clear = () => ({ type: CLEAR });
 
-export const setValue = (field, value) => ({ type: SET_VALUE, payload: { field, value } });
+export const clear = () => ({ type: CLEAR });
 export const toggleHover = (field) => ({ type: TOGGLE_HOVER, payload: { field } });
 export const togglePasswordVisibility = () => ({ type: TOGGLE_PASSWORD_VISIBILITY });
 
+export const setValue = (field, value) => {
+	return (dispatch) => {
+		dispatch(set(field, value));
+		dispatch(setValid(field, undefined));
+	};
+};
+
 export const setValidValue = (field, value) => {
-    return (dispatch) => {
-        dispatch(setValue(field, value));
-        dispatch(setValid(field, true));
-    };
+	return (dispatch) => {
+			dispatch(setValue(field, value));
+			dispatch(setValid(field, true));
+	};
 };
 
 export const validate = (field, value, rules) => {
-    return (dispatch) => {
-        const { approved } = approve.value(value, rules);
-        dispatch(setValid(field, approved));
-    };
+	return (dispatch) => {
+			const { approved } = approve.value(value, rules);
+			dispatch(setValid(field, approved));
+	};
 };
 
 export const signUp = (firstname, lastname, mail, password, gender) => {
@@ -49,6 +56,7 @@ export const signUp = (firstname, lastname, mail, password, gender) => {
 
 		if (invalidFields.length > 0) {
 			invalidFields.forEach(({ name }) => dispatch(setValid(name, false)));
+			dispatch(setIsLoading(false));
 			return;
 		}
 
@@ -68,12 +76,19 @@ export const confirm = (mail, password, confirmationCode, history) => {
 	return async (dispatch) => {
 		dispatch(setIsLoading(true));
 
+		if (!confirmationCode.isValid) {
+			dispatch(setValid("confirmationCode", false));
+			dispatch(setIsLoading(false));
+			return;
+		}
+
 		try {
-			await Auth.confirmSignUp(mail, confirmationCode);
+			await Auth.confirmSignUp(mail, confirmationCode.value);
 			await dispatch(signIn(mail, password, history));
 			dispatch(clear());
 		} catch(err) {
 			alert(err.message);
+			dispatch(setValue("confirmationCode", ""));
 		}
 		
     dispatch(setIsLoading(false));
@@ -85,6 +100,8 @@ export const initConfirm = (mail, password) => {
 		dispatch(setValue("mail", mail));
 		dispatch(setValue("password", password));
 		dispatch(newUser({ mail, password }));
+		dispatch(setValue("confirmationCode", ""));
+		dispatch(setValid("confirmationCode", undefined));
 	};
 };
 

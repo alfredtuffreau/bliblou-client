@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { shape, string, bool, func } from "prop-types";
-// import { bindActionCreators } from "redux";
-// import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Form, Nav, Button } from "react-bootstrap";
 
@@ -13,14 +11,15 @@ const MAIL_ALERT_MESSAGE = "Saisissez une adresse valide";
 const MailInputWithTooltip = withValidationTooltip(MailInput, MAIL_ALERT_MESSAGE);
 
 class IdentificationForm extends Component {
-  validateForm = () => {
-    return this.props.mail.isValid;
-  }
+  validToSubmit = () => {
+    const { mail } =  this.props;
+    return mail.isValid !== false;
+  };
 
   handleOnSubmit = async (event) => {
     event.preventDefault();
     const { mail, onSubmit } = this.props;
-    onSubmit(mail.value);
+    onSubmit(mail);
   };
 
   handleOnCancel = () => {
@@ -32,9 +31,9 @@ class IdentificationForm extends Component {
     const { mail, onChange, onBlur, onHover, isLoading  } = this.props;
 
     return (
-      <Form  onSubmit={ this.handleOnSubmit }>
+      <Form onSubmit={ this.handleOnSubmit }>
         <MailInputWithTooltip mail={ mail } 
-															showTooltip={ mail.showTooltip }
+                              showTooltip={ mail.showTooltip }
 															onChange={ onChange } 
 															onBlur={ onBlur }
 															onHover={ onHover } />
@@ -49,7 +48,7 @@ class IdentificationForm extends Component {
             <Button variant="success"
                     type="submit"
                     size="lg"
-                    disabled={ !this.validateForm() || isLoading }>
+                    disabled={ !this.validToSubmit() || isLoading }>
               { !isLoading
                   ? formattedText("resetPassword.sendEmail")
                   : formattedText("resetPassword.sendingEmail") }

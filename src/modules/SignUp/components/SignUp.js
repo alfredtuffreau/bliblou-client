@@ -7,25 +7,28 @@ import ConfirmationForm from "./ConfirmationForm";
 
 class SignUp extends Component {
 	render() {
-    const { newUser, isLoading, setValue } = this.props;
+    const { newUser, isLoading, setValue, validate, toggleHover } = this.props;
 
 		if (newUser) {
 			const { 
-				signUpForm: { mail, password }, confirmForm: { confirmationCode }, confirm 
+				confirmForm, signUpForm: { mail, password }, confirm, clear 
 			} = this.props;
 
 		  return (
-				<ConfirmationForm mail={ mail.value }
+				<ConfirmationForm { ...confirmForm } 
+													mail={ mail.value }
 													password={ password.value }
-													confirmationCode={ confirmationCode.value }
 													isLoading={ isLoading }
 													onChange={ setValue } 
-													onSubmit={ confirm } />
+													onBlur={ validate }
+													onHover={ toggleHover }
+													onSubmit={ confirm } 
+													onUnmount={ clear } />
 			);
 		} 
 		
 		const { 
-			signUpForm, setValidValue, validate, toggleHover, togglePasswordVisibility, signUp
+			signUpForm, setValidValue, togglePasswordVisibility, signUp
 		} = this.props;
 
 		return (
@@ -45,6 +48,7 @@ SignUp.propTypes = {
 	newUser: object,
 	isLoading: bool,
 	signUpForm: object,
+	confirmForm: object,
 	setValidValue: func.isRequired,
 	setValue: func.isRequired,
 	validate: func.isRequired,
@@ -52,12 +56,14 @@ SignUp.propTypes = {
 	togglePasswordVisibility: func.isRequired,
 	signUp: func.isRequired,
 	confirm: func.isRequired,
+	clear: func.isRequired,
 }
 
 SignUp.defaultProps = {
 	newUser: undefined,
 	isLoading: false,
 	signUpForm: undefined,
+	confirmForm: undefined,
 }
 
 export default SignUp;

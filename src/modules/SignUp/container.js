@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import SignUp from "./components/SignUp";
 import { 
-  setValidValue, setValue, validate, toggleHover , togglePasswordVisibility, signUp, confirm
+  setValidValue, setValue, validate, toggleHover , togglePasswordVisibility, signUp, confirm, clear
 } from "./actions";
 
 const mapStateToProps = state => {
@@ -20,7 +20,10 @@ const mapStateToProps = state => {
       gender: { ...gender, showTooltip: gender.isHover && gender.isValid === false },
     },
     confirmForm: { 
-      confirmationCode 
+      confirmationCode: { 
+        ...confirmationCode, 
+        showTooltip: confirmationCode.isHover && confirmationCode.isValid === false 
+      },
     },
     newUser,
     isLoading
@@ -29,7 +32,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({ 
-    setValidValue, setValue, validate, toggleHover, togglePasswordVisibility, signUp, confirm
+    setValidValue, setValue, validate, toggleHover, togglePasswordVisibility, signUp, confirm, clear
   }, dispatch)
 );
 

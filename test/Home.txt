@@ -1,0 +1,422 @@
+# Home page E2E tests 
+
+
+
+
+######################################################################################################
+## User is logged out
+Prerequisite: User is logged out
+######################################################################################################
+
+
+
+### Landing on Home
+
+Type URL: http://localhost:3000/
+> Navbar displays "S'identifier" button
+> Displays empty signup form 
+  i. "Prénom" "Nom"
+  ii. "Adresse email"
+  iii. "Mot de passe" + button "Afficher"
+  iv. "Homme" button + "Femme" button + "Autre"
+  v. "Je m'inscris gratuitement >" enabled submit button
+
+
+
+### Clicking "S'identifier" Navbar button from SignUp form
+
+Type URL: http://localhost:3000/ 
+Click: "S'identifier" Navbar button
+> Redirect to http://localhost:3000/login
+> Navbar displays "Créer un compte" button
+> Display Catcher and SignIn form
+
+
+
+### Submitting incomplete SignUp form
+
+Type URL: http://localhost:3000/
+Click: "Je m'inscris gratuitement >" SignIn form submit button
+> All fields contains a red "X"
+> "Je m'inscris gratuitement >" is disabled
+> Hover "Prénom" or "Nom" dispays "Saisissez votre nom complet" tooltip
+> Hover "Adresse email" dispays "Saisissez une adresse valide" tooltip
+> Hover "Mot de passe" displays "Le mot de passe dois contenir: ..." tooltip
+> Hover "Homme" button or "Femme" button or "Autre" displays "Indiquez votre genre" tooltip
+
+
+
+### Typing invalid value in SignUp form and fixing it
+
+Type URL: http://localhost:3000/
+Type invalid "Adresse email" value
+> "Je m'inscris gratuitement >" SignUp form submit button is disabled
+
+Type valid "Adresse email" value
+> "Je m'inscris gratuitement >" SignUp form submit button is enabled
+
+
+
+### Typing invalid then valid values in "Prénom" and "Nom"
+
+Type URL: http://localhost:3000/
+Click in "Prénom" then elsewhere
+> Red "X" appears on "Prénom" 
+> Hover "Prénom" dispays "Saisissez votre nom complet" tooltip
+> Hover "Nom" does nothing
+
+Click in "Nom" then elsewhere
+> Red "X" appears on "Nom" 
+> Red "X" remains on "Prénom" 
+> Hover "Nom" dispays "Saisissez votre nom complet" tooltip
+> Hover "Prénom" dispays "Saisissez votre nom complet" tooltip
+
+Type anything in "Prénom"
+> typed value is diplayed in "Prénom"
+> "Prénom" red "X" is removed
+> Red "X" remains on "Nom"
+> Hover "Prénom" does nothing
+> Hover "Nom" dispays "Saisissez votre nom complet" tooltip
+
+Type anything in "Nom"
+> typed value is diplayed in "Nom"
+> "Nom" red "X" is removed
+> Hover "Prénom" does nothing
+> Hover "Nom" does nothing
+
+
+
+### Typing invalid then valid values in "Adresse email"
+
+Type URL: http://localhost:3000/
+Click in "Adresse email" then elsewhere
+> Red "X" appears on "Adresse email" 
+> Hover "Adresse email" dispays "Saisissez une adresse valide" tooltip
+
+Type valid email adresse in "Adresse email"
+> typed value is diplayed in "Adresse email"
+> "Adresse email" red "X" disappears
+> Hover "Adresse email" does nothing
+
+Type invalid email adresse in "Adresse email"
+> typed value is diplayed in "Adresse email"
+> Red "X" appears on "Adresse email" 
+> Hover "Adresse email" dispays "Saisissez une adresse valide" tooltip
+
+Type valid email adresse in "Adresse email"
+> typed value is diplayed in "Adresse email"
+> "Adresse email" red "X" disappears
+> Hover "Adresse email" does nothing
+
+
+
+### Typing invalid then valid values in "Mot de passe"
+
+Type URL: http://localhost:3000/
+Click in "Mot de passe" then elsewhere
+> Red "X" appears on "Mot de passe" 
+> Hover "Mot de passe" displays "Le mot de passe dois contenir: ..." tooltip
+
+Type Azertyu!0p in "Mot de passe"
+> "**********" is displayed in "Mot de passe"
+> "Mot de passe" red "X" disappears
+> Hover "Mot de passe" does nothing
+
+Type 3 letters in "Mot de passe"
+> "***" is displayed in "Mot de passe"
+> Red "X" appears on "Mot de passe" 
+> Hover "Mot de passe" displays "Le mot de passe dois contenir: ..." tooltip
+
+Type Azertyu!0p in "Mot de passe"
+> "**********" is displayed in "Mot de passe"
+> "Mot de passe" red "X" disappears
+> Hover "Mot de passe" does nothing
+
+
+
+### Clicking on "Afficher"/"Masquer" "Mot de passe" button
+
+Type URL: http://localhost:3000/
+Type Azertyu!0p in "Mot de passe"
+> "**********" is displayed in "Mot de passe"
+
+Click "Afficher"
+> "Azertyu!0p" is displayed in "Mot de passe"
+
+Click "Masquer"
+> "**********" is displayed in "Mot de passe"
+
+
+
+### Typing invalid then valid values in "Autre"
+
+Type URL: http://localhost:3000/
+Click in "Autre" then elsewhere
+> Red "X" appears on "Autre" and "Homme"/"Femme" buttons
+> Hover "Autre" and "Homme"/"Femme" buttons displays "Indiquez votre genre" tooltip
+
+Type anything in "Autre"
+> typed value is diplayed in "Autre"
+> Red "X" is removed from "Autre" and "Homme"/"Femme" buttons
+> Hover "Autre" does nothing
+
+
+
+### Selecting and deselecting "Homme"
+
+Type URL: http://localhost:3000/
+Click on "Homme" button
+> "Homme" button is selected
+> "Homme" button is blue
+
+Click on "Femme" button
+> "Homme" button is deselected
+> "Homme" button is gray
+> "Femme" button is selected
+> "Femme" button is pink
+
+Click on "Homme" button
+> "Homme" button is selected
+> "Homme" button is blue
+> "Femme" button is deselected
+> "Femme" button is gray
+
+Click in "Autre" 
+> "Homme" button is deselected
+> "Homme" button is gray
+
+
+
+### Selecting and deselecting "Femme"
+
+Type URL: http://localhost:3000/
+Click on "Femme" button
+> "Femme" button is selected
+> "Femme" button is pink
+
+Click on "Homme" button
+> "Femme" button is deselected
+> "Femme" button is gray
+> "Homme" button is selected
+> "Homme" button is blue
+
+Click on "Femme" button
+> "Femme" button is selected
+> "Femme" button is pink
+> "Homme" button is deselected
+> "Homme" button is gray
+
+Click in "Autre" 
+> "Femme" button is deselected
+> "Femme" button is gray
+
+
+
+### Quitting SignUp form before submitting
+
+Type URL: http://localhost:3000/ 
+Fill the signup form with values and invalid "Mot de passe"
+Click "Afficher" "Mot de passe" button
+Click: "S'identifier" Navbar button
+> Redirect to http://localhost:3000/login
+> SignUp form disappears
+
+Click: "Créer un compte" Navbar button
+> Redirect to http://localhost:3000/
+> SignUp form appears
+> all previously filled values are displayed
+> "Mot de passe" is visible in clear
+> "Mot de passe" red "X" is visible
+> Hover "Mot de passe" displays "Le mot de passe dois contenir: ..." tooltip
+
+
+
+### Error happenning on AWS cognito signup
+
+Type URL: http://localhost:3000/ 
+Fill the signup form with valid values and an already used email
+Click: "Je m'inscris gratuitement >" SignUp form submit button
+> "Je m'inscris gratuitement >" button becomes "Inscription..." and is disabled
+> window alerts 
+  i. "localhost:3000 indique" (title)
+  ii. "An account with the given email already exists." (body)
+  iii. "Ok" button
+            
+Click: "Ok"
+> "Inscription..." button becomes "Je m'inscris gratuitement >" and is enable
+> SignUp form is still filled with previous values
+
+
+
+### Landing on Confirm form
+
+Type URL: http://localhost:3000/ 
+Fill the SignUp form with valid values (unused email)
+Click: "Je m'inscris gratuitement >" SignUp form submit button
+> "Je m'inscris gratuitement >" button becomes "Inscription..." and is disabled
+> Page displays Catcher and Confirm form
+  i. "Vérification code"
+  ii. help "Consultez votre boîte mail pour le code de vérification"
+  iii. "Vérifier >" enabled submit button
+
+
+
+### Clicking "S'identifier" Navbar button from Confirm form
+
+Type URL: http://localhost:3000/ 
+Fill the SignUp form with valid values (unused email)
+Click: "Je m'inscris gratuitement >" SignUp form submit button
+Wait: Confirm form is displayed
+Click: "S'identifier" Navbar button
+> Redirect to http://localhost:3000/login
+> Navbar displays "Créer un compte" button
+> Display Catcher and SignIn form
+
+
+
+### Submitting incomplete Confirm form
+
+Type URL: http://localhost:3000/
+Fill the SignUp form with valid values (unused email)
+Click: "Je m'inscris gratuitement >" SignUp form submit button
+Wait: Confirm form is displayed
+Click: "Vérifier >" Confirm form submit button
+> "Code de vérification" contains a red "X"
+> "Vérifier >" is disabled
+> Hover "Code de vérification" dispays "Saisissez votre code de vérification" tooltip
+
+
+
+### Typing invalid value in Confirm form and fixing it
+
+Type URL: http://localhost:3000/
+Fill the SignUp form with valid values (unused email)
+Click: "Je m'inscris gratuitement >" SignUp form submit button
+Wait: Confirm form is displayed
+Click in "Code de vérification" then elsewhere
+> "Vérifier >" Confirm form submit button is disabled
+
+Type anything in "Code de vérification" 
+> "Vérifier >" Confirm form submit button is enabled
+
+
+
+### Typing invalid then valid values in "Code de vérification"
+
+Type URL: http://localhost:3000/
+Fill the SignUp form with valid values (unused email)
+Click: "Je m'inscris gratuitement >" SignUp form submit button
+Wait: Confirm form is displayed
+Click in "Code de vérification" then elsewhere
+> "Code de vérification" contains a red "X"
+> Hover "Code de vérification" dispays "Saisissez votre code de vérification" tooltip
+
+Type anything in "Code de vérification"
+> typed value is diplayed in "Code de vérification"
+> "Code de vérification" red "X" is removed
+> Hover "Code de vérification" does nothing
+
+
+
+### Quitting Confirm form before submitting
+
+Fill the SignUp form with valid values (unused email)
+Click: "Je m'inscris gratuitement >" SignUp form submit button
+Wait: Confirm form is displayed
+Click: "S'identifier" Navbar button
+> Redirect to http://localhost:3000/login
+> Confirm form disappears
+
+Click: "Créer un compte" Navbar button
+> Redirect to http://localhost:3000/
+> Catcher and SignUp form appear 
+> All SignUp form fields are blank
+
+
+
+### Error happenning on AWS cognito confirm
+
+Type URL: http://localhost:3000/ 
+Fill the SignUp form with valid values (unused email)
+Click: "Je m'inscris gratuitement >" SignUp form submit button
+Wait: Confirm form is displayed
+Type wrong "Code de vérification"
+Click: "Vérifier >" Confirm form submit button
+> "Vérifier >" button becomes "Vérification..." and is disabled
+> window alerts 
+  i. "localhost:3000 indique" (title)
+  ii. "Invalid verification code provided, please try again." (body)
+  iii. "Ok" button
+            
+Click: "Ok"
+> "Vérification..." button becomes "Vérifier >" and is enable
+> Confirm form is empty
+
+
+
+### Error happenning on AWS cognito signin
+
+Type URL: http://localhost:3000/ 
+Fill the SignUp form with valid values (unused email)
+Click: "Je m'inscris gratuitement >" SignUp form submit button
+Wait: Confirm form is displayed
+Type correct "Code de vérification"
+Click: "Vérifier >" Confirm form submit button
+Aws error occur while signing in
+> "Vérifier >" button becomes "Vérification..." and is disabled
+> window alerts 
+  i. "localhost:3000 indique" (title)
+  ii. The error message (body)
+  iii. "Ok" button
+
+Click: "Ok"
+> redirected to http://localhost:3000/login
+> Catcher and empty Login form are displayed 
+> Navbar button is "Créer un compte"
+
+Click: "Créer un compte" Navbar button
+> redirected to http://localhost:3000/
+> Catcher and empty Signup form are displayed 
+> Navbar button is "S'identifier"
+
+
+
+### Completing SignUp successfully
+
+Type URL: http://localhost:3000/ 
+Fill the SignUp form with valid values (unused email)
+Click: "Je m'inscris gratuitement >" SignUp form submit button
+Wait: Confirm form is displayed
+Type correct "Code de vérification"
+Click: "Vérifier >" Confirm form submit button
+> "Vérifier >" button becomes "Vérification..." and is disabled
+> Catcher and Confirm form disapear
+> User is logged in
+> Navbar displays "Se déconnecter" button
+> Home page body displays "En construction" content
+
+
+
+
+######################################################################################################
+## User is logged in
+Prerequisite: User is logged in
+######################################################################################################
+
+
+
+### Landing on Home
+
+Type URL: http://localhost:3000/
+> Navbar displays "Se déconnecter" button
+> Home page body displays "En construction" content
+
+
+
+### "Se déconnecter" Navbar button click
+
+Type URL: http://localhost:3000/
+Click: "Se déconnecter" Navbar button
+> Redirect to http://localhost:3000/login
+> Navbar displays "Créer un compte" button
+> Page displays Catcher and SignIn form

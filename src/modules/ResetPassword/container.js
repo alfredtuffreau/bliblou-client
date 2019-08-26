@@ -1,21 +1,52 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { setValue, validate, toggleHover, startReset, cancel } from "./actions";
+import { 
+  clear,
+  setValue, 
+  validate, 
+  toggleHover, 
+  togglePasswordVisibility, 
+  startReset,
+  validateSignUp, 
+  validateReset, 
+  cancel 
+} from "./actions";
 import ResetPassword from "./components/ResetPassword";
 
 const mapStateToProps = state => {
-  const { isSent, isLoading, mail } = state.resetPassword;
+  const { 
+    needConfirmSignUp, isSent, isLoading, mail, signUpCode, confirmationCode, password 
+  } = state.resetPassword;
+  
   return ({ 
+    needConfirmSignUp,
     isSent, 
     isLoading,
-    mail: { ...mail, showTooltip: mail.isHover && mail.isValid === false } 
+    mail: { ...mail, showTooltip: mail.isHover && mail.isValid === false },
+    signUpCode: { 
+      ...signUpCode, 
+      showTooltip: signUpCode.isHover && signUpCode.isValid === false 
+    },
+    confirmationCode: { 
+      ...confirmationCode, 
+      showTooltip: confirmationCode.isHover && confirmationCode.isValid === false 
+    },
+    password: { ...password, showTooltip: password.isHover && password.isValid === false } 
   });
 };
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({ 
-    setValue, validate, toggleHover, startReset, cancel
+    init: clear,
+    setValue, 
+    validate, 
+    toggleHover,
+    togglePasswordVisibility, 
+    startReset, 
+    validateSignUp, 
+    validateReset, 
+    cancel
   }, dispatch)
 );
 

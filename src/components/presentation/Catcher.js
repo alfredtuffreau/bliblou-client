@@ -18,7 +18,7 @@ class Catcher extends Component {
 
 Catcher.propTypes = {
   title: string.isRequired,
-  decription: string.isRequired,
+  description: string.isRequired,
 }
 
 export default Catcher;

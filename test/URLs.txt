@@ -1,0 +1,21 @@
+# URLs E2E tests
+
+### Default URL is https://bliblou.com
+Type https://bliblou.com
+> No redirect
+> App is displayed
+
+### https://www.bliblou.com redirects to default
+Type https://www.bliblou.com
+> Redirect https://bliblou.com
+> App is displayed
+
+### http://bliblou.com redirects to default
+Type http://bliblou.com
+> Redirect https://bliblou.com
+> App is displayed
+
+### http://www.bliblou.com redirects to default
+Type http://www.bliblou.com
+> Redirect https://bliblou.com
+> App is displayed

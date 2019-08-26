@@ -1,0 +1,7 @@
+# App E2E tests
+
+### App landing page is Home
+type URL: https://bliblou.com
+> No redirect
+> Navbar is displayed
+> Page is Home 

@@ -25,8 +25,8 @@ class PasswordInput extends Component {
   }
 
   render () {
-    const label = "Mot de passe";
     const { 
+      label,
       password: { value, isValid, isClear }, 
       withLinkTo 
     } = this.props;
@@ -63,6 +63,7 @@ class PasswordInput extends Component {
 };
 
 PasswordInput.propTypes = {
+  label: string,
   password: shape({
     value: string,
     isValid: bool,
@@ -77,6 +78,7 @@ PasswordInput.propTypes = {
 };
 
 PasswordInput.defaultProps = { 
+  label: "Mot de passe",
   password: {
     value: "",
     isValid: undefined,

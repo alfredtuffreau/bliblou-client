@@ -13,7 +13,7 @@ const MAIL_ALERT_MESSAGE = "Saisissez une adresse valide";
 const SPECIAL_CHARACTERS = "^ $ * . [ ] { } ( ) ? - \" ! @ # % & / \\ , > < ' : ; | _ ~ `";
 const PASSWORD_ALERT_MESSAGE = (
   <div>
-    <p>Le mot de passe doit contenir:</p>
+    <div className="message">Le mot de passe doit contenir:</div>
     <ul>
       <li>8 caractères</li>
       <li>au moins 1 chiffre</li>
@@ -30,6 +30,17 @@ const PasswordInputWithTooltip = withValidationTooltip(PasswordInput, PASSWORD_A
 const GenderInputWithTooltip = withValidationTooltip( GenderInput , GENDER_ALERT_MESSAGE);
 
 class RegistrationForm extends Component {
+  validToSubmit = () => {
+    const invalidFields = [
+      this.props.firstname, 
+			this.props.lastname, 
+			this.props.mail,
+			this.props.password,
+      this.props.gender 
+    ].filter(({ isValid }) => isValid === false);
+    return invalidFields.length === 0;
+  };
+
   handleOnSubmit = async (event) => {
     event.preventDefault();
     const { firstname, lastname, mail, password, gender, onSubmit } = this.props;
@@ -76,14 +87,14 @@ class RegistrationForm extends Component {
 																onChange={ onChange } 
 																onBlur={ onBlur } 
 																onHover={ onHover } />
-
-        { isLoading
-          ? (<Button variant="success" type="submit" size="lg" disabled>
-               Inscription...
-             </Button>)
-          : (<Button variant="success" type="submit" size="lg">
-               Je m'inscris gratuitement >
-             </Button>)}
+        <Button variant="success"
+                type="submit"
+                size="lg"
+                disabled={ !this.validToSubmit() || isLoading }>
+          { !isLoading
+              ? "Je m'inscris gratuitement >"
+              : "Inscription..." }
+        </Button>
       </Form>
     );
   }

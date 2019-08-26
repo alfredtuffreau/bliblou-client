@@ -1,12 +1,25 @@
 import React, { Component } from "react";
-import { string, bool, func } from "prop-types";
+import { shape, string, bool, func } from "prop-types";
 import { Button, Form } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 
+import ConfirmationCodeInput from "../../../components/form/ConfirmationCodeInput";
+import withValidationTooltip from "../../../components/form/ValidationTooltip";
+
+const CONFIRMATION_CODE_ALERT_MESSAGE = "Saisissez votre code de vérification";
+const ConfirmationCodeInputWithTooltip = withValidationTooltip(
+  ConfirmationCodeInput, CONFIRMATION_CODE_ALERT_MESSAGE, true
+);
+
 class ConfirmationForm extends Component {
-  handleOnChange = ({ target: { id: field, value } }) => {
-		this.props.onChange(field, value);
-  }
+  componentWillUnmount() {
+    this.props.onUnmount();
+  };
+
+  validToSubmit = () => {
+    const { confirmationCode } =  this.props;
+    return confirmationCode.isValid !== false;
+  };
 
   handleOnSubmit = async (event) => {
     event.preventDefault();
@@ -19,47 +32,44 @@ class ConfirmationForm extends Component {
   };
 
   render () {
-    const { confirmationCode, isLoading } = this.props;
+    const { confirmationCode, onChange, onBlur, onHover, isLoading } = this.props;
     const label = "Code de vérification";
 
     return (
       <Form onSubmit={ this.handleOnSubmit } className="Confirm">
-        <Form.Group controlId="confirmationCode" bsSize="large">
-          <Form.Label hidden>{ label }</Form.Label>
-          <Form.Control autoFocus
-																 type="tel"
-																 value={ confirmationCode }
-																 placeholder={ label }
-																 onChange={ this.handleOnChange }
-																 required />
-          <Form.Text className="help">
-            Consultez votre boîte mail pour le code de vérification
-          </Form.Text>
-        </Form.Group>
-				
-				{ isLoading
-          ? (<Button variant="success" type="submit" size="lg" disabled>
-               Verification...
-             </Button>)
-          : (<Button variant="success" type="submit" size="lg">
-               Vérifier
-             </Button>)}
+        <ConfirmationCodeInputWithTooltip label={ label } 
+                                          confirmationCode={ confirmationCode }
+                                          showTooltip={ confirmationCode.showTooltip }
+                                          onChange={ onChange }
+                                          onBlur={ onBlur }
+                                          onHover={ onHover } />
+				<Button variant="success"
+                type="submit"
+                size="lg"
+                disabled={ !this.validToSubmit() || isLoading }>
+          { !isLoading
+              ? "Vérifier >"
+              : "Verification..." }
+        </Button>
       </Form>
     );
   }
 }
 
 ConfirmationForm.propTypes = {
-	confirmationCode: string,
+  confirmationCode: shape({ value: string, isValid: bool, showTooltip: bool }),
 	mail: string,
 	password: string,
 	isLoading: bool,
 	onChange: func.isRequired,
-	onSubmit: func.isRequired,
+	onBlur: func.isRequired,
+	onHover: func.isRequired,
+  onSubmit: func.isRequired,
+  onUnmount: func.isRequired,
 };
 
 ConfirmationForm.defaultProps = {
-	confirmationCode: "",
+	confirmationCode: { value: "", isValid: undefined, showTooltip: false },
 	mail: "",
 	password: "",
   isLoading : false,

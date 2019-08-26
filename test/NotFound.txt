@@ -1,0 +1,91 @@
+# NotFound page E2E tests
+
+
+
+
+######################################################################################################
+## User is logged out
+Prerequisite: User is logged out
+######################################################################################################
+
+
+### Landing on NotFound
+Type URL: http://localhost:3000/<anyBadUrl>
+> Displays `pages/NotFound.js`
+> Navbar displays "Créer un compte" button
+> 3 links: "Page précédente", "Page d'accueil" and "S'identifier"
+
+
+
+### "Page précédente" link click 
+Type URL: http://localhost:3000/<anyBadUrl>
+Click: "Page précédente" link
+> Redirect to previous page in browser history
+
+
+
+### "Page d'accueil" link click
+Type URL: http://localhost:3000/<anyBadUrl>
+Click: "Page d'accueil" link
+> Redirect to http://localhost:3000/
+> Navbar displays "S'identifier" button
+> Home page body displays Catcher and SignUp form
+
+
+
+### "S'identifier" link click
+Type URL: http://localhost:3000/<anyBadUrl>
+Click: "S'identifier" link
+> Redirect to http://localhost:3000/login
+> Navbar displays "Créer un compte" button
+> Home page body displays Catcher and SignIn form
+
+
+
+### "Créer un compte" Navbar button click 
+Type URL: http://localhost:3000/<anyBadUrl>
+Click: "Créer un compte" in Navbar
+> Redirect to http://localhost:3000/
+> Navbar displays "S'identifier" button
+> Page displays Catcher and SignUp form
+
+
+
+
+######################################################################################################
+## User is logged in
+Prerequisite: User is logged in
+######################################################################################################
+
+
+
+### Landing on NotFound
+Type URL: http://localhost:3000/<anyBadUrl>
+> Displays `pages/NotFound.js`
+> Navbar displays "Se déconnecter" button
+> 2 links: "Page précédente", "Page d'accueil"
+
+
+
+### "Page précédente" link click
+Type URL: http://localhost:3000/<anyBadUrl>
+Click: "Page précédente" link
+> Redirect to previous page in browser history
+
+
+
+### "Page d'accueil" link click
+Type URL: http://localhost:3000/<anyBadUrl>
+Click: "Page d'accueil" link 
+> Redirect to http://localhost:3000/
+> Navbar displays "Se déconnecter" button
+> Home page body displays "En construction" content
+
+
+
+### "Se déconnecter" Navbar button click
+Type URL: http://localhost:3000/<anyBadUrl>
+Click: "Se déconnecter" Navbar button
+> Redirect to http://localhost:3000/login
+> Navbar displays "Créer un compte" button
+> Page displays Catcher and SignIn form

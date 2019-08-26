@@ -1,18 +1,17 @@
 import React from "react";
 import { bool } from "prop-types";
+import { withRouter } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 
 import { formattedText } from "../translations";
 import Catcher from "../components/presentation/Catcher";
 import SignIn from "../modules/SignIn";
+import { HOME } from "../modules/Navigation";
 
 import "./Login.css";
 
-const Login = ({ isAuthenticated }) => {
-  if (isAuthenticated) return (
-    <Row className="Login">
-    </Row>
-  );
+const Login = ({ isAuthenticated, history }) => {
+  if (isAuthenticated) history.push(HOME);
 
   return (
     <Row className="Login">
@@ -35,4 +34,4 @@ Login.defaultProps = {
   isAuthenticated: false,
 };
 
-export default Login;
+export default withRouter(Login);

@@ -11,11 +11,6 @@ import "./SignIn.css";
 import { LOST_PASSWORD } from "../../../modules/Navigation";
 
 class SignIn extends Component {
-  validateForm = () => {
-    const { mail, password } = this.props;
-    return mail.value.length > 0 && password.value.length > 0;
-  }
-
   handleOnSubmit = (event) => {
     event.preventDefault();
     const { mail, password, onSubmit, history } = this.props;
@@ -38,7 +33,7 @@ class SignIn extends Component {
         <Button variant="success"
                 type="submit"
                 size="lg"
-                disabled={ !this.validateForm() || isLoading }>
+                disabled={ isLoading }>
           { !isLoading
               ? formattedText("signIn.login")
               : formattedText("signIn.loginIn") }

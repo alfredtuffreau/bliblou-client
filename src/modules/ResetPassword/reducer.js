@@ -1,25 +1,21 @@
-// import {
-//   SET_MAIL,
-//   SET_NEW_PASSWORD,
-//   TOGGLE_PASSWORD_VISIBILITY,
-//   SET_CONFIRMATION_CODE,
-//   CLEAR,
-// } from "./actions";
 import {
 	SET_VALUE,
 	SET_VALID,
 	TOGGLE_HOVER,
+	TOGGLE_PASSWORD_VISIBILITY,
 	SET_IS_LOADING,
 	SET_IS_SENT,
+	SET_NEED_CONFIRM_SIGN_UP,
 	CLEAR,
 } from "./actions";
 
 const initialState = {
   mail: { value: "", isValid: undefined, isHover: false },
-//   newPassword: "",
-//   confirmationCode: "",
-//   isPasswordVisible: false, 
-  isLoading: false,
+  signUpCode: { value: "", isValid: undefined, isHover: false },
+  confirmationCode: { value: "", isValid: undefined, isHover: false },
+  password: { value: "", isValid: undefined, isHover: false },
+	isLoading: false,
+	needConfirmSignUp: false,
   isSent: false,
 };
 
@@ -50,17 +46,24 @@ export default function reducer(state = initialState, action = {}) {
 			});
 		};
 
-//     case TOGGLE_PASSWORD_VISIBILITY:
-//       const isPasswordVisible = !state.isPasswordVisible;
-//       return { ...state, isPasswordVisible };
+    case TOGGLE_PASSWORD_VISIBILITY:
+      const isClear = !state.password.isClear;
+      return ({ 
+				...state, 
+				password: { ...state.password, isClear }
+			});
 
     case SET_IS_LOADING:
       const isLoading = action.payload;
       return { ...state, isLoading };
 
-    case SET_IS_SENT:
-      const isSent = action.payload;
-      return { ...state, isSent };
+		case SET_IS_SENT:
+			const isSent = action.payload;
+			return { ...state, isSent };
+
+		case SET_NEED_CONFIRM_SIGN_UP:
+			const needConfirmSignUp = action.payload;
+			return { ...state, needConfirmSignUp };
 
     case CLEAR:
       return initialState;

@@ -21,7 +21,7 @@ class BrandNavBar extends Component {
 
   render () {
     const { isAuthenticated, location: { pathname } } = this.props;
-    const { label, href } = pathname === LOGIN
+    const { label, href } = pathname !== HOME
       ? { label: formattedText("app.signUp"), href: HOME }
       : { label: formattedText("app.signIn"), href: LOGIN };
 

@@ -14,7 +14,7 @@ const initialState = {
   mail: { value: "", isValid: undefined, isHover: false },
   password: { value: "", isValid: undefined, isHover: false, isClear: false },
 	gender: { value: "", isValid: undefined, isHover: false },
-	confirmationCode: { value: "" },
+	confirmationCode: { value: "", isValid: undefined, isHover: false  },
   isLoading: false,
 	newUser: undefined,
 };
