@@ -11,6 +11,8 @@ import AppliedRoutes from "./AppliedRoutes";
 export const HOME = "/";
 export const LOGIN = "/login";
 export const LOST_PASSWORD = "/lostpassword";
+export const ABOUT = "/about";
+export const CONTACT_US = "/contactus";
 
 class Routes extends Component {
   render() {
@@ -31,9 +33,6 @@ class Routes extends Component {
                                 props={{ rest, isAuthenticated }} />)
           }) 
         }
-        {/* <AppliedRoutes path={ HOME } exact component={ Home } props={childProps} /> */}
-        {/* <AppliedRoutes path={ LOGIN } exact component={ Login } props={childProps} /> */}
-        {/* <AppliedRoutes path={ LOST_PASSWORD } exact component={ ResetPassword } props={childProps} />*/}
       </Switch>
     );
   }

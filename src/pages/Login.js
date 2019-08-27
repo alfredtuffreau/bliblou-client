@@ -14,7 +14,7 @@ const Login = ({ isAuthenticated, history }) => {
   if (isAuthenticated) history.push(HOME);
 
   return (
-    <Row className="Login">
+    <Row className="Login" noGutters>
       <Col md={{ span:5, offset:1 }}>
         <Catcher title= { formattedText("app.catcher.title") }
                  description={ formattedText("app.catcher.description") } />

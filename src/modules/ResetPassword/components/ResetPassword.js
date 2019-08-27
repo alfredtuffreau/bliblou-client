@@ -71,7 +71,7 @@ class ResetPassword extends Component {
     }
 
     return (
-      <Row className="ResetPassword">
+      <Row className="ResetPassword" noGutters>
         <h2>{ formattedText("resetPassword.title") }</h2>
         { description }
         { img }

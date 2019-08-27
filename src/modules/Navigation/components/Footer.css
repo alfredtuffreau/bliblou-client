@@ -1,0 +1,24 @@
+.Footer {
+  color: gainsboro;
+  background-color: #1a1a1a;
+  padding: 16px 0 30px;
+}
+
+.Footer a {
+  color: gainsboro;
+}
+
+.Footer .Links a {
+  font-size: 0.90em;
+  padding-right: 20px;
+}
+
+.Footer p {
+  font-size: 1em;
+}
+
+.Footer .Icon {
+  height: 25px;
+  width: 25px;
+  margin: 8px;
+}

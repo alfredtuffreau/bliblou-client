@@ -1,7 +1,122 @@
 # App E2E tests
 
 ### App landing page is Home
+
 type URL: https://bliblou.com
 > No redirect
 > Navbar is displayed
 > Page is Home 
+
+
+
+### Displaying footer on all routes
+
+type URL: https://bliblou.com
+> Footer is visible
+  i. "Des questions ? Contactez-nous : aide-utilisateur@bliblou.com" 
+  ii. "Accueil", "À propos", "Nous contacter" links
+  iii. Facebook and Instagram icons
+
+type URL: https://bliblou.com/login
+> Footer is visible
+  i. "Des questions ? Contactez-nous : aide-utilisateur@bliblou.com" 
+  ii. "Accueil", "À propos", "Nous contacter" links
+  iii. Facebook and Instagram icons
+
+type URL: https://bliblou.com/lostpassword
+> Footer is visible
+  i. "Des questions ? Contactez-nous : aide-utilisateur@bliblou.com" 
+  ii. "Accueil", "À propos", "Nous contacter" links
+  iii. Facebook and Instagram icons
+
+type URL: https://bliblou.com/badurl
+> Footer is visible
+  i. "Des questions ? Contactez-nous : aide-utilisateur@bliblou.com" 
+  ii. "Accueil", "À propos", "Nous contacter" links
+  iii. Facebook and Instagram icons
+
+type URL: https://bliblou.com/about
+> Footer is visible
+  i. "Des questions ? Contactez-nous : aide-utilisateur@bliblou.com" 
+  ii. "Accueil", "À propos", "Nous contacter" links
+  iii. Facebook and Instagram icons
+
+type URL: https://bliblou.com/contactus
+> Footer is visible
+  i. "Des questions ? Contactez-nous : aide-utilisateur@bliblou.com" 
+  ii. "Accueil", "À propos", "Nous contacter" links
+  iii. Facebook and Instagram icons
+
+
+
+### Clicking "aide-utilisateur@bliblou.com"
+
+type URL: https://bliblou.com
+Click: "aide-utilisateur@bliblou.com" footer link
+> Opens users new email to "aide-utilisateur@bliblou.com"
+
+
+
+### Clicking "A propos" link
+
+type URL: https://bliblou.com
+Click: "A propos" footer link
+> Redirected to https://bliblou.com/about
+
+
+
+### Clicking "Nous contacter" link
+
+type URL: https://bliblou.com
+Click: "Nous contacter" footer link
+> Redirected to https://bliblou.com/contactus
+
+
+
+### Clicking Facebook icon
+
+type URL: https://bliblou.com
+Click: Facebook footer icon
+> Redirected to https://www.facebook.com/bliblouFR/
+
+
+
+### Clicking Instagram icon
+
+type URL: https://bliblou.com
+Click: Instagram footer icon
+> Redirected to https://www.instagram.com/bliblou_fr/
+
+
+
+
+######################################################################################################
+## User is logged out
+Prerequisite: User is logged out
+######################################################################################################
+
+type URL: https://bliblou.com/lostpassword
+Click: "Accueil" footer link
+> Redirected to https://bliblou.com
+> User is logged out
+> Page displays Catcher and SignUp empty form
+> Navbar button is "S'identifier"
+
+
+
+
+######################################################################################################
+## User is logged in
+Prerequisite: User is logged in
+######################################################################################################
+
+type URL: https://bliblou.com/login
+Type signed up and confirmed user "Adresse email" and "Mot de passe"
+Click: "Se connecter >"
+Wait user is logged in
+type URL: https://bliblou.com/lostpassword
+Click: "Accueil" footer link
+> Redirected to https://bliblou.com
+> User is logged in
+> Navbar displays "Se déconnecter" button
+> Home page body displays "En construction" content

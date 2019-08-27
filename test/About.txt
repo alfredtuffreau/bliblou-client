@@ -1,0 +1,33 @@
+# About page E2E tests
+
+
+
+
+######################################################################################################
+## User is logged out
+Prerequisite: User is logged out
+######################################################################################################
+
+
+
+### Landing on About
+
+Type URL: http://localhost:3000/about
+> Navbar displays "Créer un compte" button
+> Home page body displays "En construction" content
+
+
+
+
+######################################################################################################
+## User is logged in
+Prerequisite: User is logged in
+######################################################################################################
+
+
+
+### Landing on About
+
+Type URL: http://localhost:3000/about
+> Navbar displays "Se déconnecter" button
+> Home page body displays "En construction" content

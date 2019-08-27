@@ -10,8 +10,6 @@
   padding: 20px 0px;
 }
 
-footer {
-  height: 1px;
-  background-color: #262626;
-  color: #262626
+.Building {
+  text-align: center;
 }
