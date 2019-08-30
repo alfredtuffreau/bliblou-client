@@ -3,14 +3,12 @@ import { Row, Col } from "react-bootstrap";
 
 import ResetPassword from "../modules/ResetPassword";
 
-import "./LostPassword.css";
-
 class LostPassword extends Component {
   render () {
 
     return (
-      <div className="LostPassword">
-        <Row noGutters>
+      <div className="dark-panel">
+        <Row className="content centered-content" noGutters>
           <Col md={{ span:6, offset:3 }}>
             <ResetPassword />
           </Col>

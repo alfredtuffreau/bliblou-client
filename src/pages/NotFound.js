@@ -42,11 +42,13 @@ class NotFound extends Component {
     if (!isAuthenticated) links.push("|", login);
 
     return (
-      <div className="NotFound">
-        <h2>{ formattedText("app.pageNotFound.title") }</h2>
-        <h3>{ formattedText("app.pageNotFound.description") }</h3>
-        <img src={ icon } alt="Not found" className="Icon" />
-        <div>{ links }</div>
+      <div className="dark-panel">
+        <div className="content centered-content">
+          <h2>{ formattedText("app.pageNotFound.title") }</h2>
+          <h3>{ formattedText("app.pageNotFound.description") }</h3>
+          <img src={ icon } alt="Not found" className="not-found-image centered-image" />
+          <div>{ links }</div>
+        </div>
       </div>
     );
   }

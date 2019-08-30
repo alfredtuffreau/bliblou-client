@@ -6,7 +6,7 @@ const labelsFR = {
     logout: "Se déconnecter",
     catcher: {
       title: "Devenez votre propre chef",
-      description: "Grâce au Bliblou, profitez d'une application simple et complète pour trouver des idées de recettes, les personnaliser selon vos goûts et vos contraintes, et vous accompagner dans leur réalisation. Le Bliblou vous propose des recettes de qualité et de saison, inspirées par votre terroir et sélectionnées pour vous."
+      description: "Grâce au Bliblou, profitez d'une application simple et complète pour trouver des idées de recettes, composer des menus selon vos goûts et vos contraintes, et vous accompagner dans leur réalisation. Le Bliblou vous propose des recettes de qualité et de saison, inspirées par votre terroir et sélectionnées pour vous."
     },
     building: {
       title: "En construction",

@@ -1,14 +1,8 @@
-.NotFound {
-  text-align: center;
-}
-
-.NotFound .Icon {
+.not-found-image {
   height: 225px;
   width: 283px;
-  margin: 0 auto 8px;
-  display: block;
 }
 
-.NotFound .btn-link {
+.btn-link {
   padding: 0 12px 0;
 }
