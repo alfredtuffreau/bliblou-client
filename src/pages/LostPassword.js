@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
 
+import withScrollTop from "../components/view/withScrollTop";
 import ResetPassword from "../modules/ResetPassword";
+import { withNavbarAndBackground, withFooter } from "../modules/Navigation";
 
 class LostPassword extends Component {
   render () {
@@ -18,4 +20,8 @@ class LostPassword extends Component {
   }
 }
 
-export default LostPassword;
+export default [ 
+  withScrollTop, 
+  withNavbarAndBackground,
+  withFooter,
+].reduce((acc, op) => op(acc), LostPassword);

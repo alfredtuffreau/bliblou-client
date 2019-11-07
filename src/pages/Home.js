@@ -5,21 +5,22 @@ import { Row, Col } from "react-bootstrap";
 import { formattedText } from "../translations";
 import Catcher from "../components/presentation/Catcher";
 import BuildingContent from "../components/presentation/BuildingContent";
+import withScrollTop from "../components/view/withScrollTop";
+import { withNavbarAndBackground, withFooter } from "../modules/Navigation";
 import SignUp from "../modules/SignUp";
 
-const Home = ({ isAuthenticated }) => {
-  if (isAuthenticated) return (
-    <div className="dark-panel">
-      <div className="content centered-content">
-        <BuildingContent />
-      </div>
-    </div>
-  );
-
-  return (
-    <div>
+const Home = ({ isAuthenticated }) => (
+  isAuthenticated
+    ? (
       <div className="dark-panel">
-        <Row className="content with-tiny-form-margin-top" noGutters>
+        <div className="content centered-content">
+          <BuildingContent />
+        </div>
+      </div>
+    )
+    : (
+      <div className="dark-panel">
+        <Row className="content medium-margin-top-on-form" noGutters>
           <Col md={{ span:5, offset:1 }}>
             <Catcher title= { formattedText("app.catcher.title") }
                     description={ formattedText("app.catcher.description") } />
@@ -29,10 +30,8 @@ const Home = ({ isAuthenticated }) => {
           </Col>
         </Row>
       </div>
-      <div style={{ height: "200px", backgroundColor: "black" }}></div>
-    </div>
-  );
-};
+    )
+);
 
 Home.propTypes = {
   isAuthenticated: bool,
@@ -42,4 +41,8 @@ Home.defaultProps = {
   isAuthenticated: false,
 }
 
-export default Home;
+export default [
+  withScrollTop,
+  withNavbarAndBackground,
+  withFooter,
+].reduce((acc, op) => op(acc), Home);

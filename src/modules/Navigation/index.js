@@ -1,7 +1,8 @@
 export { default as navigation } from "./reducer";
 export { userHasAuthenticated } from "./actions";
 
-export { HOME, LOGIN, LOST_PASSWORD, ABOUT, CONTACT_US } from "./components/Routes";
+export { HOME, LOGIN, LOST_PASSWORD, ABOUT_US, CONTACT_US, RECIPE } from "./components/Routes";
 export { default as Routes } from "./containers/Routes";
-export { default as NavBar } from "./containers/NavBar";
-export { default as Footer } from "./components/Footer";
+export { default as withNavbar } from './components/withNavbar';
+export { default as withNavbarAndBackground } from './components/withNavbarAndBackground';
+export { default as withFooter } from './components/withFooter';

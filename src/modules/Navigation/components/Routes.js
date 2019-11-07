@@ -11,8 +11,9 @@ import AppliedRoutes from "./AppliedRoutes";
 export const HOME = "/";
 export const LOGIN = "/login";
 export const LOST_PASSWORD = "/lostpassword";
-export const ABOUT = "/about";
+export const ABOUT_US = "/aboutus";
 export const CONTACT_US = "/contactus";
+export const RECIPE = "/recipes/:id"
 
 class Routes extends Component {
   render() {

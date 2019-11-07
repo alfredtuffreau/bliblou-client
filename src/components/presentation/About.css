@@ -1,0 +1,15 @@
+.about-image {
+  width: 100px; 
+  float: left;
+  border: 1px solid black;
+  margin: 16px;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.rounded-circle {
+  border-color: gray;
+  border-width: 2px;
+}

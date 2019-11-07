@@ -5,7 +5,8 @@ import { Button } from "react-bootstrap";
 
 import icon from "../images/fire.png";
 import { formattedText } from "../translations";
-import { HOME, LOGIN } from "../modules/Navigation";
+import withScrollTop from "../components/view/withScrollTop";
+import { HOME, LOGIN, withNavbarAndBackground, withFooter } from "../modules/Navigation";
 
 import "./NotFound.css";
 
@@ -62,4 +63,8 @@ NotFound.defaultProps = {
   isAuthenticated: false
 }
 
-export default NotFound;
+export default [ 
+  withScrollTop, 
+  withNavbarAndBackground,
+  withFooter, 
+].reduce((acc, op) => op(acc), NotFound);

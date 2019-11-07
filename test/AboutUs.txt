@@ -1,4 +1,4 @@
-# About page E2E tests
+# AboutUs page E2E tests
 
 
 
@@ -10,9 +10,9 @@ Prerequisite: User is logged out
 
 
 
-### Landing on About
+### Landing on AboutUs
 
-Type URL: http://localhost:3000/about
+Type URL: http://localhost:3000/aboutus
 > Navbar displays "Créer un compte" button
 > Home page body displays "En construction" content
 
@@ -26,8 +26,8 @@ Prerequisite: User is logged in
 
 
 
-### Landing on About
+### Landing on AboutUs
 
-Type URL: http://localhost:3000/about
+Type URL: http://localhost:3000/aboutus
 > Navbar displays "Se déconnecter" button
 > Home page body displays "En construction" content

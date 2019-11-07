@@ -18,6 +18,11 @@
   padding: 20px 0px;
 }
 
+.bottom-black-panel {
+  background-color: black;
+  padding: 24px 0 64px 0;
+}
+
 .content {
   max-width: 1920px;
   margin: 0 auto;
@@ -27,11 +32,53 @@
   text-align: center;
 }
 
+.justified-content {
+  text-align: justify;
+}
+
 .centered-image {
   margin: 0 auto 8px;
   display: block;
 }
 
-.with-tiny-form-margin-top form {
+.line-separator {
+  height:1px;
+  background:#717171;  
+  border-bottom:1px solid #313030;
+}
+
+.small-margin-bottom {
+  margin-bottom: 8px;
+}
+
+.medium-margin-bottom {
+  margin-bottom: 24px;
+}
+
+.large-margin-top {
+  margin-top: 64px;
+}
+
+.large-margin-bottom {
+  margin-bottom: 64px;
+}
+
+.medium-margin-top-on-form form {
   margin-top: 16px;
+}
+
+.pink {
+  color: #D29FA8;
+}
+
+.nav.nav-tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav.nav-tabs a { 
+  width: 25%;
+  height: 60px;
 }

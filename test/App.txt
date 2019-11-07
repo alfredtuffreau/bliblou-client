@@ -35,7 +35,7 @@ type URL: https://bliblou.com/badurl
   ii. "Accueil", "À propos", "Nous contacter" links
   iii. Facebook and Instagram icons
 
-type URL: https://bliblou.com/about
+type URL: https://bliblou.com/aboutus
 > Footer is visible
   i. "Des questions ? Contactez-nous : aide-utilisateur@bliblou.com" 
   ii. "Accueil", "À propos", "Nous contacter" links
@@ -61,7 +61,7 @@ Click: "aide-utilisateur@bliblou.com" footer link
 
 type URL: https://bliblou.com
 Click: "A propos" footer link
-> Redirected to https://bliblou.com/about
+> Redirected to https://bliblou.com/aboutus
 
 
 
