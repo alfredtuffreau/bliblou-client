@@ -41,6 +41,14 @@
   display: block;
 }
 
+.display-block {
+  display: block;
+}
+
+.position-relative {
+  position: relative;
+}
+
 .line-separator {
   height:1px;
   background:#717171;  
@@ -63,8 +71,12 @@
   margin-bottom: 64px;
 }
 
-.medium-margin-top-on-form form {
+.form-medium-margin-top form {
   margin-top: 16px;
+}
+
+.form-medium-margin-bottom form {
+  margin-bottom: 16px;
 }
 
 .pink {

@@ -1,0 +1,25 @@
+.dropzone {
+  min-height: 200px;
+  border: 2px dashed white;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.dropzone.highlight {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 2px dashed rgba(81, 203, 238, 1);
+}
+
+.dropzone .icon {
+  filter: invert(97%) sepia(93%) saturate(0%) hue-rotate(273deg) brightness(107%) contrast(107%);
+  height: 64px;
+  width: 64px;
+  margin: 0;
+}
+
+.dropzone .file-input {
+  display: none;
+}
