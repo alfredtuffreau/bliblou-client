@@ -2,8 +2,6 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 
 import withScrollTop from "../components/view/withScrollTop";
-import { withNavbarAndBackground, withFooter } from "../modules/Navigation";
-// import SignUp from "../modules/SignUp";
 
 const ContactUs = () => (
   <>
@@ -38,8 +36,4 @@ const ContactUs = () => (
   </>
 );
 
-export default [ 
-  withScrollTop, 
-  withNavbarAndBackground,
-  withFooter,
-].reduce((acc, op) => op(acc), ContactUs);
+export default withScrollTop(ContactUs);

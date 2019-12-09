@@ -1,49 +1,82 @@
 import React, { Component } from "react";
-import { arrayOf, shape, string, func } from "prop-types";
+import { arrayOf, shape, string, bool, func } from "prop-types";
 import { Switch } from "react-router-dom";
 
+import NavBar from "./NavBar";
+import Footer from "./Footer";
 import AppliedRoutes from "./AppliedRoutes";
-// import Home from "./Home";
-// import Login from "./Login";
-// // import ResetPassword from "../../../containers/ResetPassword";
-// import NotFound from "./NotFound";
+import UnauthenticatedRoute from "./UnauthenticatedRoute";
+import AuthenticatedRoute from "./AuthenticatedRoute";
 
 export const HOME = "/";
+export const HOME2 = "/home";
 export const LOGIN = "/login";
-export const LOST_PASSWORD = "/lostpassword";
+export const RECIPES = "/recipes"
+export const RECIPE = "/recipes/:id"
 export const ABOUT_US = "/aboutus";
 export const CONTACT_US = "/contactus";
-export const RECIPE = "/recipes/:id"
+export const LOST_PASSWORD = "/lostpassword";
+
+export const UNAUTH = "Unauthenticated";
+export const AUTH = "Authenticated";
 
 class Routes extends Component {
+  componentWillMount () {
+    this.props.loadUser();
+  }
+
   render() {
-    const { routes, isAuthenticated } = this.props;
+    const { withBackground, isAuthenticated, logout, routes, setWithBackground } = this.props;
 
     return (
-      <Switch>
-        { 
-          routes.map(({ path, component, ...rest }, index) => { 
-            return !path 
-              ? (<AppliedRoutes key={ `route-${index}` } 
-                                component={ component } 
-                                props={{ rest, isAuthenticated }} />)
-              : (<AppliedRoutes key={ `route-${index}` } 
-                                path={ path } 
-                                exact 
-                                component={ component } 
-                                props={{ rest, isAuthenticated }} />)
-          }) 
-        }
-      </Switch>
+      <div className={ withBackground ? "with-background-image" : "" }>
+        <NavBar isAuthenticated={ isAuthenticated } logout={ logout } />
+        <div style={{ minHeight: window.innerHeight  - 127 }}>
+          <Switch>
+            { 
+              routes.map(({ path, component, require, withBackground, ...rest }, index) => {
+                const props = { 
+                  key: `route-${index}`, 
+                  component,
+                  isAuthenticated,
+                  withBackground,
+                  setWithBackground,
+                  componentProps: { isAuthenticated, ...rest } 
+                };
+
+                if (path) {
+                  props.path = path;
+                  props.exact = true;
+                }
+
+                if (require === AUTH) return <AuthenticatedRoute { ...props }/>;
+                if (require === UNAUTH) return <UnauthenticatedRoute { ...props } />;
+                return <AppliedRoutes { ...props } />;
+              }) 
+            }
+          </Switch>
+        </div>
+        <Footer />
+      </div>
     );
   }
 }
 
 Routes.propTypes = {
+  withBackground: bool,
+  isAuthenticated: bool,
+  loadUser: func.isRequired,
+  logout: func.isRequired,
+  setWithBackground: func.isRequired,
   routes: arrayOf(shape({
     path: string,
     component: func.isRequired,
   })).isRequired,
-}
+};
+
+Routes.defaultProps = {
+  withBackground: false,
+  isAuthenticated: undefined,
+};
 
 export default Routes;

@@ -1,7 +1,6 @@
 import React from "react";
 
 import withScrollTop from "../components/view/withScrollTop";
-import { withNavbar, withFooter } from "../modules/Navigation";
 import Recipe from "../modules/Recipe";
 import { Row, Col } from "react-bootstrap";
 
@@ -18,8 +17,4 @@ const view = ({ match: { params: { id } }, location: { search } }) => {
   );
 };
 
-export default [
-  withScrollTop,
-  withNavbar,
-  withFooter,
-].reduce((acc, op) => op(acc), view);
+export default withScrollTop(view);

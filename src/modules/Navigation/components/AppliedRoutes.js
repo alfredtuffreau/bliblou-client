@@ -1,6 +1,10 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-export default (
-  { component: C, props: cProps, ...rest }
-) => <Route { ...rest } render={ props => <C {...props} {...cProps} /> } />;
+import withBackgroundHandler from "./withBackgroundHandler";
+
+const AppliedRoute = (
+  { component: C, componentProps, ...rest }
+) => <Route { ...rest } render={ props => <C {...props} {...componentProps} /> } />;
+
+export default withBackgroundHandler(AppliedRoute);

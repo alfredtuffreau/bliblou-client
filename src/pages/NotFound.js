@@ -6,7 +6,7 @@ import { Button } from "react-bootstrap";
 import icon from "../images/fire.png";
 import { formattedText } from "../translations";
 import withScrollTop from "../components/view/withScrollTop";
-import { HOME, LOGIN, withNavbarAndBackground, withFooter } from "../modules/Navigation";
+import { HOME, LOGIN } from "../modules/Navigation";
 
 import "./NotFound.css";
 
@@ -16,23 +16,24 @@ class NotFound extends Component {
   }
 
   render() {
+    console.log(this.props)
     const { isAuthenticated } = this.props;
     
     const back = (
-      <Button variant="link"
+      <Button key="back" variant="link"
         onClick={ this.handleOnClick }>
         { formattedText("app.pageNotFound.links.back") }
       </Button>
     );
     const home = (
-      <Link to={ HOME }>
+      <Link key="home" to={ HOME }>
         <Button variant="link">
           { formattedText("app.pageNotFound.links.home") }
         </Button>
       </Link>
     );
     const login = (
-      <Link to={ LOGIN }>
+      <Link key="login" to={ LOGIN }>
         <Button variant="link">
           { formattedText("app.pageNotFound.links.login") }
         </Button>
@@ -63,8 +64,4 @@ NotFound.defaultProps = {
   isAuthenticated: false
 }
 
-export default [ 
-  withScrollTop, 
-  withNavbarAndBackground,
-  withFooter, 
-].reduce((acc, op) => op(acc), NotFound);
+export default withScrollTop(NotFound);

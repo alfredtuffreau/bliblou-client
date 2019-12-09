@@ -1,7 +1,9 @@
 import { Auth } from "aws-amplify";
 
+export const SET_WITH_BACKGROUND = "APP/SET_WITH_BACKGROUND";
 export const USER_HAS_AUTHENTICATED = "APP/HAS_AUTHENTICATED";
 
+export const setWithBackground = (value) => ({ type: SET_WITH_BACKGROUND, payload: value });
 export const userHasAuthenticated = (value) => ({ type: USER_HAS_AUTHENTICATED, payload: value });
 
 export const loadUser = () => {

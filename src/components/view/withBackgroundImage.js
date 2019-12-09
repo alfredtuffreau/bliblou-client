@@ -19,7 +19,6 @@ function withBackgroundImage(WrappedComponent) {
     }
 
     toggleHover = (hover) => {
-      console.log(hover);
       this.setState({ overDropzone: hover });
     }
 

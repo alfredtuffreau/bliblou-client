@@ -22,9 +22,7 @@ export const signIn = (mail, password, history) => {
       await Auth.signIn(mail, password);
       dispatch(userHasAuthenticated(true));
       dispatch(clear());
-      history.push(HOME);
     } catch (err) {
-      console.log(err);
       if (err.code === "UserNotConfirmedException") {
         await dispatch(restartConfirm(mail, password, history));
       } else if (err.code === "UserNotFoundException" || err === "Username cannot be empty") {

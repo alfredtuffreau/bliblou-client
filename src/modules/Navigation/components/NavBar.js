@@ -9,10 +9,6 @@ import "./NavBar.css";
 import { HOME, LOGIN } from "./Routes";
 
 class BrandNavBar extends Component {
-  componentDidMount () {
-    this.props.loadUser();
-  }
-
   handleLogout = () => {
     const { logout, history } = this.props;
     const goToLogin = () => history.push(LOGIN);
@@ -52,9 +48,12 @@ class BrandNavBar extends Component {
 };
 
 BrandNavBar.propTypes = {
-  isAuthenticated: bool.isRequired,
-  loadUser: func.isRequired,
+  isAuthenticated: bool,
   logout: func.isRequired,
+}
+
+BrandNavBar.defaultProps = {
+  isAuthenticated: undefined,
 }
 
 export default withRouter(BrandNavBar);

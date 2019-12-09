@@ -6,7 +6,6 @@ import alfredPic from "../images/alfred-tuffreau.jpg";
 import helenePic from "../images/helene-lesage.jpeg";
 import About from "../components/presentation/About";
 import withScrollTop from "../components/view/withScrollTop";
-import { withNavbarAndBackground, withFooter } from "../modules/Navigation";
 
 const bliblou = {
   name: "Le Bliblou",
@@ -87,8 +86,4 @@ const AboutUs = () => (
   </>
 );
 
-export default [ 
-  withScrollTop, 
-  withNavbarAndBackground,
-  withFooter, 
-].reduce((acc, op) => op(acc), AboutUs);
+export default withScrollTop(AboutUs);

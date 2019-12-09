@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withRouter } from 'react-router';
 
 function withScrollTop(WrappedComponent) {
   class WithScrollTop extends Component {
@@ -7,7 +6,7 @@ function withScrollTop(WrappedComponent) {
     render = () => <WrappedComponent {...this.props} />
   }
 
-  return withRouter(WithScrollTop);
+  return WithScrollTop;
 }
 
 export default withScrollTop;
