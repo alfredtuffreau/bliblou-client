@@ -8,7 +8,7 @@ import SignUp from "../modules/SignUp";
 
 const Home = () => (
   <div className="dark-panel">
-    <Row className="content form-medium-margin-top form-medium-margin-bottom" noGutters>
+    <Row className="content form-margin-top-16 form-margin-bottom-16" noGutters>
       <Col md={{ span:5, offset:1 }}>
         <Catcher title= { formattedText("app.catcher.title") }
                 description={ formattedText("app.catcher.description") } />

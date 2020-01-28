@@ -76,7 +76,7 @@ const AboutUs = () => (
         team.map(member => (
           <Row className="content justified-content">
             <Col md={{ span:8, offset: 2 }}>
-              <div className="line-separator small-margin-bottom" />
+              <div className="line-separator margin-bottom-8" />
               <About { ...member } />
             </Col>
           </Row>

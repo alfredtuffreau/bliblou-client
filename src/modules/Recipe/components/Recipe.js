@@ -39,8 +39,8 @@ class Recipe extends Component {
       <Col md={{ span:5 }}>
         { this.state.file
           ? <DropzoneWithBackgroundImage label="Changer de fichier" 
-                                          onFilesAdded={ this.onFilesAdded }
-                                          file={ this.state.file } />
+                                         onFilesAdded={ this.onFilesAdded }
+                                         file={ this.state.file } />
           : <Dropzone label="Déposer un fichier" 
                       onFilesAdded={ this.onFilesAdded } /> }
       </Col>
