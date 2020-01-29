@@ -1,22 +1,31 @@
 import Amplify from "aws-amplify";
 
-const configuration = {
+const config = {
     cognito: {
         REGION: "eu-west-1",
-        USER_POOL_ID: "eu-west-1_Ptpa4PIdp",
-        APP_CLIENT_ID: "40nojsn0q9li7uoqfdta00ng37",
-        IDENTITY_POOL_ID: "eu-west-1:faea1182-9597-4fce-ae0b-0f8f537ee56f"
-    }
+        USER_POOL_ID: "eu-west-1_xLNIrRp8S",
+        APP_CLIENT_ID: "2ckp095u0glt2ntosiuad8nu7g",
+        IDENTITY_POOL_ID: "eu-west-1:b2daa923-d888-4b5a-9942-02557d3a2afb"
+    },
+    s3: {
+      REGION: "eu-west-1",
+      BUCKET: "bliblou-recipes-api-prod-picturesbucket-d2aqey6i2ktz"
+    },
 };
 
 export const configAWS = () => {
     Amplify.configure({
         Auth: {
             mandatorySignIn: true,
-            region: configuration.cognito.REGION,
-            userPoolId: configuration.cognito.USER_POOL_ID,
-            identityPoolId: configuration.cognito.IDENTITY_POOL_ID,
-            userPoolWebClientId: configuration.cognito.APP_CLIENT_ID
+            region: config.cognito.REGION,
+            userPoolId: config.cognito.USER_POOL_ID,
+            identityPoolId: config.cognito.IDENTITY_POOL_ID,
+            userPoolWebClientId: config.cognito.APP_CLIENT_ID
+        },
+        Storage: {
+          region: config.s3.REGION,
+          bucket: config.s3.BUCKET,
+          identityPoolId: config.cognito.IDENTITY_POOL_ID
         }
     });
 }

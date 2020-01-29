@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { object } from "prop-types";
+import { string } from "prop-types";
 
 import "./withBackgroundImage.css"
 
@@ -25,14 +25,14 @@ function withBackgroundImage(WrappedComponent) {
       this.setState({ overDropzone: hover });
     }
 
-    render = () => { console.log("Hey" + this.props.picture); return (
+    render = () => (
       <div className="margin-bottom-16" style={{ height: `${this.state.height}px` }}>
         <div id="img" 
              className={ `display-block ${this.state.overDropzone ? "dark-image" : ""}` } 
              ref={ this.divImgRef }>
           <img style={{ maxWidth: "100%" }} 
                onLoad={ this.onLoad } 
-               src={ URL.createObjectURL(this.props.file) } 
+               src={ this.props.src } 
                alt="RecipePicture" />	
         </div>
         <WrappedComponent id="dropzone" { ...this.props }
@@ -45,11 +45,11 @@ function withBackgroundImage(WrappedComponent) {
                           onMouseEnter={ () => this.toggleHover(true) } 
                           onMouseLeave={ () => this.toggleHover(false) } />
       </div>
-    ); }
+    );
   }
 
   WithBackgroundImage.propTypes = {
-    file: object.isRequired,
+    src: string.isRequired,
   };
 
   return WithBackgroundImage;
