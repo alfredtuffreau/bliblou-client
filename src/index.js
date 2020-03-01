@@ -6,11 +6,12 @@ import { BrowserRouter as Router} from "react-router-dom";
 import App from "./App";
 
 import "./index.css";
-import { configAWS } from "./configs";
+import { configAWS, configApproveJS } from "./configs";
 import { store } from "./store";
 import * as server from "./server";
 
 configAWS();
+configApproveJS();
 
 ReactDOM.render(
   <Router>

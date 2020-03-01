@@ -1,14 +1,44 @@
-import { SET_PICTURE } from "./actions";
+import { SET_PICTURE, SET_VALUE, SET_VALID, TOGGLE_HOVER, SET_IS_LOADING } from "./actions";
 
 const initialState = {
-  content: undefined, 
-  picture: undefined
+  content: { value: undefined, isValid: undefined, isHover: false }, 
+  picture: undefined,
+  isLoading: false
 };
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case SET_PICTURE: 
       return ({ ...state, picture: { ...action.payload } });
+
+    case SET_VALUE: {
+      const { field, value } = action.payload;
+      return ({ 
+        ...state,  
+        [ field ]: { ...state[field], value }
+      });
+    }
+    
+    case SET_VALID: {
+      const { field, isValid } = action.payload;
+      return ({ 
+        ...state, 
+        [ field ]: { ...state[field], isValid } 
+      });
+    }
+			
+		case TOGGLE_HOVER: {
+			const { field } = action.payload;
+			const isHover = !state[field].isHover;
+			return ({ 
+				...state, 
+				[ field ]: { ...state[field], isHover } 
+			});
+		};
+
+		case SET_IS_LOADING:
+			const isLoading = action.payload;
+			return ({ ...state, isLoading });
 		
     default:
       return state;

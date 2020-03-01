@@ -16,7 +16,6 @@ class NotFound extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { isAuthenticated } = this.props;
     
     const back = (

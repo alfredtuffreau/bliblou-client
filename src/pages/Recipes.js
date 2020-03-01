@@ -1,14 +1,13 @@
 import React from "react";
+import { Row } from "react-bootstrap";
 
-import BuildingContent from "../components/presentation/BuildingContent";
+import Recipes from "../modules/Recipes";
 import withScrollTop from "../components/view/withScrollTop";
 
-const Recipes = () => (
-  <div className="dark-panel">
-    <div className="content centered-content">
-      <BuildingContent />
-    </div>
-  </div>
+const view = () => (
+  <Row className="content">
+    <Recipes />
+  </Row>
 );
 
-export default withScrollTop(Recipes);
+export default withScrollTop(view);
