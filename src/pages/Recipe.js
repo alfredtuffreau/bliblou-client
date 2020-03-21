@@ -1,20 +1,24 @@
 import React from "react";
-
-import withScrollTop from "../components/view/withScrollTop";
-import Recipe from "../modules/Recipe";
 import { Row, Col } from "react-bootstrap";
 
-const view = ({ match: { params: { id } }, location: { search } }) => { 
-  const query = new URLSearchParams(search);
-  const mode = query.get('mode');
+import RecipeView from "../modules/RecipeView";
+import RecipeEditor from "../modules/RecipeEditor";
+import withScrollTop from "../components/view/withScrollTop";
 
-  return (
-    <Row className="content form-margin-bottom-16">
-      <Col md={{ span:10, offset:1 }}>
-        <Recipe id={ id } readonly={ mode !== "edit" } />
-      </Col>
-    </Row>
-  );
+
+const view = ({ match: { params: { recipeId } }, location: { search } }) => { 
+  // const query = new URLSearchParams(search);
+  // const mode = query.get('mode');
+
+  return recipeId === "new"
+    ? (
+      <Row className="content form-margin-bottom-16" noGutters>
+        <Col md={{ span: 10, offset: 1 }}>
+          <RecipeEditor />
+        </Col>
+      </Row>
+    )
+    : <RecipeView id={ recipeId } />;
 };
 
 export default withScrollTop(view);

@@ -1,13 +1,26 @@
-import React from "react";
-import { Row } from "react-bootstrap";
+import React, { useEffect } from "react";
 
-import Recipes from "../modules/Recipes";
+import RecipesList from "../modules/RecipeBrowser";
 import withScrollTop from "../components/view/withScrollTop";
+import { loadCatalog } from "../modules/RecipeBrowser";
+import { store } from "../store";
 
-const view = () => (
-  <Row className="content">
-    <Recipes />
-  </Row>
-);
+const lists = [ 
+  { title: "Toutes les recettes" },
+  { title: "Pour 4", predicate: ({ content }) => JSON.parse(content).nbOfPeople === 4 }
+]; 
+
+const view = () => {
+  useEffect(() => { store.dispatch(loadCatalog()) }, []);
+  return (
+    <div className="content">
+      { lists.map(({ title, predicate }) => (
+        <RecipesList key = { title.split(' ').map(s => s.toLowerCase()).join("-") } 
+                     title={ title } 
+                     predicate={ predicate } />
+      )) }
+    </div>
+  );
+};
 
 export default withScrollTop(view);

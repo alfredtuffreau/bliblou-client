@@ -1,4 +1,4 @@
-import { SET_PICTURE, SET_VALUE, SET_VALID, TOGGLE_HOVER, SET_IS_LOADING } from "./actions";
+import { SET_PICTURE, SET_VALUE, SET_VALID, TOGGLE_HOVER, SET_IS_LOADING, CLEAR } from "./actions";
 
 const initialState = {
   content: { value: undefined, isValid: undefined, isHover: false }, 
@@ -39,6 +39,9 @@ export default function reducer(state = initialState, action = {}) {
 		case SET_IS_LOADING:
 			const isLoading = action.payload;
 			return ({ ...state, isLoading });
+
+    case CLEAR:
+      return initialState;
 		
     default:
       return state;

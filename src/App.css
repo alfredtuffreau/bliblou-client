@@ -55,8 +55,20 @@
   border-bottom:1px solid #313030;
 }
 
+.padding-sides-16 {
+  padding: 0 16px;
+}
+
+.margin-top-8 {
+  margin-top: 8px;
+}
+
 .margin-bottom-8 {
   margin-bottom: 8px;
+}
+
+.margin-top-16 {
+  margin-top: 16px;
 }
 
 .margin-bottom-16 {
@@ -79,6 +91,10 @@
   margin-top: 16px;
 }
 
+.no-gutter-right {
+  padding-right: 0;
+}
+
 .form-margin-bottom-16 form {
   margin-bottom: 16px;
 }
@@ -97,4 +113,8 @@
 .nav.nav-tabs a { 
   width: 25%;
   height: 60px;
+}
+
+.pull-right {
+  float: right;
 }

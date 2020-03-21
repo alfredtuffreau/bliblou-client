@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { object, shape, bool, string, func } from "prop-types"
+import { withRouter } from "react-router-dom";
 import { Button, Form, Row, Col } from "react-bootstrap";
 
 import Dropzone from "../../../components/utils/Dropzone";
@@ -26,7 +27,7 @@ const RECIPE_TEMPLATE = `{
   "suggestions": []
 }`;
 
-class Recipe extends Component {
+class RecipeEditor extends Component {
   constructor(props) {
     super(props);
     this.handleOnFilesAdded = this.handleOnFilesAdded.bind(this);
@@ -55,7 +56,7 @@ class Recipe extends Component {
 
   handleOnSubmit = async (event) => {
     event.preventDefault();
-    const { content, picture, onSubmit } = this.props;
+    const { content, picture, onSubmit, history } = this.props;
     const { url, name, type, lastModified } = picture || {};
     onSubmit(
       content.value 
@@ -64,7 +65,8 @@ class Recipe extends Component {
       picture 
         ? await fetch(url).then(response => response.blob())
                           .then(blobFile => new File([ blobFile ], name, { type, lastModified }))
-        : null
+        : null, 
+      history
     );
   };
 
@@ -72,7 +74,7 @@ class Recipe extends Component {
     const { picture, content, isLoading, onChange, onBlur, onHover } = this.props;
 
     return (
-      <Row className="recipe">
+      <Row className="recipe-editor">
         <Col md={{ span:5 }}>
           { picture
             ? <DropzoneWithBackgroundImage label="Changer de fichier" 
@@ -106,7 +108,7 @@ class Recipe extends Component {
   }
 };
 
-Recipe.propTypes = {
+RecipeEditor.propTypes = {
   picture: object,
   content: shape({ value: string, isValid: bool }),
   onFilesAdded: func.isRequired,
@@ -117,10 +119,10 @@ Recipe.propTypes = {
   onSubmit: func.isRequired,
 };
 
-Recipe.defaultProps = {
+RecipeEditor.defaultProps = {
   picture: undefined,
   content: { value: undefined, isValid: undefined, showTooltip: false },
   isLoading : false,
 };
 
-export default Recipe;
+export default withRouter(RecipeEditor);

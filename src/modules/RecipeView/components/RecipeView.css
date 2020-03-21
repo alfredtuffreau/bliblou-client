@@ -1,0 +1,25 @@
+.recipe-view {
+  padding-left: 16px;
+  /* padding-bottom: 16px; */
+}
+
+.recipe-view .recipe-content {
+  /* padding-bottom: 16px; */
+  overflow: auto;
+}
+
+.recipe-view .info-table {
+  width: 25%;
+  margin-bottom: 1em;
+}
+
+.recipe-view .recipe-pic-container {
+  width: 50%;
+}
+
+.recipe-view .recipe-pic {
+  padding-bottom: 56.25%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center right;
+}

@@ -12,7 +12,7 @@ export const HOME = "/";
 export const HOME2 = "/home";
 export const LOGIN = "/login";
 export const RECIPES = "/recipes"
-export const RECIPE = "/recipes/:id"
+export const RECIPE = "/recipes/:recipeId"
 export const ABOUT_US = "/aboutus";
 export const CONTACT_US = "/contactus";
 export const LOST_PASSWORD = "/lostpassword";
@@ -31,7 +31,7 @@ class Routes extends Component {
     return (
       <div className={ withBackground ? "with-background-image" : "" }>
         <NavBar isAuthenticated={ isAuthenticated } logout={ logout } />
-        <div style={{ minHeight: window.innerHeight  - 127 }}>
+        <div style={{ minHeight: window.innerHeight  - 127, overflow: "auto" }}>
           <Switch>
             { 
               routes.map(({ path, component, require, withBackground, ...rest }, index) => {

@@ -1,0 +1,8 @@
+.card-list .row {
+  margin: 0 0 8px 0;
+}
+
+.card-list .card-group {
+  flex-flow: row;
+  overflow:scroll;
+}
