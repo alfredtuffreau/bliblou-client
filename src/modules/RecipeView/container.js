@@ -2,7 +2,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import RecipeView from "./components/RecipeView";
-import { loadRecipe, removeRecipe, clear } from "../RecipeView/actions";
+import { loadRecipe, removeRecipe, goToEdit, clear } from "../RecipeView/actions";
 
 const mapStateToProps = state => {
   const { content, picture, src, isLoading } = state.recipeView;
@@ -10,7 +10,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ onLoad: loadRecipe, onDelete: removeRecipe, clear }, dispatch)
+  bindActionCreators({ onLoad: loadRecipe, onDelete: removeRecipe, onEdit: goToEdit, clear }, dispatch)
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeView);

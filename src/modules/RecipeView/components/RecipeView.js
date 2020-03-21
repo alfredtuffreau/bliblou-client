@@ -9,7 +9,7 @@ import "./RecipeView.css";
 import ActionButtons from "./ActionButtons";
 import SuggestionsList from "./SuggestionsList";
 
-const RecipeView = ({ id, content, picture, src, isLoading, onLoad, onDelete, clear, history }) => {
+const RecipeView = ({ id, content, picture, src, isLoading, onLoad, onDelete, onEdit, clear, history }) => {
   useEffect(() => { 
     onLoad(id);
     return () => clear(); 
@@ -31,6 +31,10 @@ const RecipeView = ({ id, content, picture, src, isLoading, onLoad, onDelete, cl
   const handleOnDelete = () => {
     if (window.confirm("La recette va être supprimée définitivement. Voulez-vous continuer ?")) 
       onDelete(id, picture, history);
+  };
+
+  const handleOnEdit = () => {
+    onEdit(id, history);
   };
 
   return isLoading
@@ -75,7 +79,9 @@ const RecipeView = ({ id, content, picture, src, isLoading, onLoad, onDelete, cl
                 </> 
           }
         </div>
-        <ActionButtons className={ suggestions.length !== 0 ? "margin-top-16" : "" } onDelete={ handleOnDelete } />
+        <ActionButtons className={ suggestions.length !== 0 ? "margin-top-16" : "" } 
+                       onDelete={ handleOnDelete }
+                       onEdit={ handleOnEdit } />
         <SuggestionsList suggestions={ suggestions } />
       </div>
     );
@@ -88,6 +94,7 @@ RecipeView.propTypes = {
   src: string,
   onLoad: func.isRequired,
   onDelete: func.isRequired,
+  onEdit: func.isRequired,
   clear: func.isRequired
 };
 

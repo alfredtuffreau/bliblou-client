@@ -13,6 +13,7 @@ export const HOME2 = "/home";
 export const LOGIN = "/login";
 export const RECIPES = "/recipes"
 export const RECIPE = "/recipes/:recipeId"
+export const EDIT_RECIPE = "/recipes/:recipeId?mode=edit"
 export const ABOUT_US = "/aboutus";
 export const CONTACT_US = "/contactus";
 export const LOST_PASSWORD = "/lostpassword";
