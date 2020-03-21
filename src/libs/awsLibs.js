@@ -18,6 +18,10 @@ export async function createRecipe(content) {
   return await API.post("recipes", "/recipes", { body: content });
 }
 
+export async function updateRecipe(id, content) {
+  return await API.put("recipes", `/recipes/${id}`, { body: content });
+}
+
 export async function fetchRecipes() {
   return await API.get("recipes", "/recipes");
 }

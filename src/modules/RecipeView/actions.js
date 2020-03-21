@@ -15,7 +15,7 @@ const setSrc = (value) => ({ type: SET_SRC, payload: value });
 
 export const clear = () => ({ type: CLEAR });
 
-export const loadRecipe = (id) => {
+export const loadRecipe = (id, history) => {
 	return async (dispatch) => {
     dispatch(setIsLoading(true));
     try {
@@ -27,7 +27,7 @@ export const loadRecipe = (id) => {
       dispatch(setPicture(picture));
       dispatch(setSrc(src));
     } catch (e) {
-      alert(e);
+			history.push(HOME);
     }
     dispatch(setIsLoading(false));
 	};

@@ -11,7 +11,7 @@ import SuggestionsList from "./SuggestionsList";
 
 const RecipeView = ({ id, content, picture, src, isLoading, onLoad, onDelete, onEdit, clear, history }) => {
   useEffect(() => { 
-    onLoad(id);
+    onLoad(id, history);
     return () => clear(); 
   }, [id]);
 
@@ -24,6 +24,7 @@ const RecipeView = ({ id, content, picture, src, isLoading, onLoad, onDelete, on
       resting: { before = 0, after = 0 } = {}
     } = {},
     nbOfPeople = 0,
+    ingredients = [],
     steps = [],
     suggestions = []
   } = content;
@@ -71,11 +72,27 @@ const RecipeView = ({ id, content, picture, src, isLoading, onLoad, onDelete, on
             </tbody>
           </table>
           { 
+            ingredients.length === 0 
+              ? <></>
+              : <>
+                  <h2>Ingrédients</h2>
+                  { ingredients.map((ingredient, index) => (
+                    <p key={ `ingredient-${index}` }>
+                      { ingredient }
+                    </p>
+                  )) }
+                </> 
+          }
+          { 
             steps.length === 0 
               ? <></>
               : <>
                   <h2>Préparation</h2>
-                  { steps.map((step, index) => <p key={ `step-${index}` }><span className="pink">{ index }</span> - { step }</p>) }
+                  { steps.map((step, index) => (
+                    <p key={ `step-${index}` }>
+                      <span className="pink">{ index }</span> - { step }
+                    </p>
+                  )) }
                 </> 
           }
         </div>

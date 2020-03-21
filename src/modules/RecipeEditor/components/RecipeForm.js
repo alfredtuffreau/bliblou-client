@@ -1,0 +1,116 @@
+import React from "react";
+import { object, shape, bool, string, func } from "prop-types"
+import { withRouter } from "react-router-dom";
+import { Nav, Button, Form } from "react-bootstrap";
+
+import { formattedText } from "../../../translations";
+import TextareaInput from "../../../components/form/TextareaInput";
+import withValidationTooltip from "../../../components/form/ValidationTooltip";
+
+import "./RecipeForm.css";
+
+const CONTENT_ALERT_MESSAGE = "Le format JSON est invalide.";
+const TextareaInputWithTooltip = withValidationTooltip(TextareaInput, CONTENT_ALERT_MESSAGE);
+const CONFIRM_SUBMIT = "Si vous validez la version précédente de la reccete sera supprimée. Voulez-vous continuer ?";
+const RECIPE_TEMPLATE = `{
+  "title": "",
+  "description": "",
+  "durations": {
+    "preparation": 0,
+    "cookingAfterPreparation": 0,
+    "resting": {
+      "before": 0,
+      "after": 0
+    }
+  },
+  "nbOfPeople": 0,
+  "steps": [],
+  "suggestions": []
+}`;
+
+const RecipeForm = ({ 
+  id, content, picture, currentPicture, isLoading, onChange, onBlur, onHover, onSubmit, onCancel, history 
+}) => {
+  const handleOnSubmit = async (event) => {
+    event.preventDefault();
+    const { url, name, type, lastModified } = picture || {};
+    
+    if (!id || window.confirm(CONFIRM_SUBMIT))
+      onSubmit(
+        id,
+        content.value 
+          ? content 
+          : { value: RECIPE_TEMPLATE, isValid: true }, 
+        picture 
+          ? await fetch(url).then(response => response.blob())
+                            .then(blobFile => new File([ blobFile ], name, { type, lastModified }))
+          : null, 
+        currentPicture,
+        history
+      );
+  };
+
+  const validToSubmit = () => {
+    const invalidFields = [ content ].filter(({ isValid }) => isValid === false);
+    return invalidFields.length === 0;
+  };
+
+  const handleOnCancel = () => {
+    if (window.confirm("Si vous annulez les modifications vont être perdues. Voulez-vous continuer ?"))
+      onCancel(history);
+  };
+
+  return ( 
+    <Form className="recipe-form" onSubmit={ handleOnSubmit }>
+      <TextareaInputWithTooltip controlId="content" 
+                                label="Recipe content"
+                                content={ content }
+                                defaultValue={ RECIPE_TEMPLATE }
+                                showTooltip={ content.showTooltip }
+                                onChange={ onChange }
+                                onBlur={ onBlur }
+                                onHover={ onHover } />
+      <Nav className="justify-content-end">
+        <Nav.Item>
+          <Button variant="link"
+                  onClick={ handleOnCancel }>
+            { formattedText("resetPassword.cancel") }
+          </Button>
+        </Nav.Item>
+        <Nav.Item>
+          <Button variant="success"
+                  type="submit"
+                  size="lg"
+                  disabled={ !validToSubmit() || isLoading }>
+                  { !isLoading
+                      ? "Enregistrer >"
+                      : "Enregistrement..." }
+          </Button>
+        </Nav.Item>
+      </Nav>
+    </Form>
+  );
+};
+
+RecipeForm.propTypes = {
+  id: string,
+  picture: object,
+  currentPicture: string,
+  content: shape({ value: string, isValid: bool }),
+	isLoading: bool,
+  onChange: func.isRequired,
+  onBlur: func.isRequired,
+	onHover: func.isRequired,
+  onSubmit: func.isRequired,
+  onCancel: func.isRequired,
+};
+
+RecipeForm.defaultProps = {
+  id: undefined,
+  picture: undefined,
+  currentPicture: undefined,
+  content: { value: undefined, isValid: undefined, showTooltip: false },
+  isLoading : false,
+};
+
+export default withRouter(RecipeForm);

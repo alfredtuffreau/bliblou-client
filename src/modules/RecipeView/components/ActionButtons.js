@@ -26,10 +26,10 @@ ActionButtons.propTypes = {
   className: string,
   onDelete: func.isRequired,
   onEdit: func.isRequired
-}
+};
 
-ActionButtons.propTypes = {
+ActionButtons.defaultProps = {
   className: ""
-}
+};
 
 export default ActionButtons;

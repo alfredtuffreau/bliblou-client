@@ -7,14 +7,14 @@ import withScrollTop from "../components/view/withScrollTop";
 
 
 const view = ({ match: { params: { recipeId } }, location: { search } }) => { 
-  // const query = new URLSearchParams(search);
-  // const mode = query.get('mode');
+  const query = new URLSearchParams(search);
+  const mode = query.get('mode');
 
-  return recipeId === "new"
+  return recipeId === "new" || mode === "edit"
     ? (
       <Row className="content form-margin-bottom-16" noGutters>
         <Col md={{ span: 10, offset: 1 }}>
-          <RecipeEditor />
+          <RecipeEditor id={ recipeId !== "new" ? recipeId : undefined } />
         </Col>
       </Row>
     )
