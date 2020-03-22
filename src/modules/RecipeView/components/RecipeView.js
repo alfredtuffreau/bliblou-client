@@ -10,7 +10,7 @@ import InfoTable from "./InfoTable";
 import Ingredients from "./Ingredients";
 import Steps from "./Steps";
 import ActionButtons from "./ActionButtons";
-import SuggestionsList from "./SuggestionsList";
+import Suggestions from "./Suggestions";
 
 const RecipeView = ({ 
   id, content, picture, src, isLoading, onLoad, onDelete, onEdit, clear, history 
@@ -75,7 +75,7 @@ const RecipeView = ({
         <div className="recipe-footer">
           <Row>
             <Col md={{ span: 11, offset: 1 }}>
-              <SuggestionsList suggestions={ suggestions } />
+              <Suggestions suggestions={ suggestions } />
             </Col>
           </Row>
         </div>
