@@ -1,18 +1,12 @@
 .recipe-view .recipe-header {
   overflow: auto;
   margin-bottom: 1em;
-  position: relative;
 }
 
 .recipe-view .recipe-presentation {
   padding-left: 16px;
   padding-right: 16px;
   margin-bottom: 1em;
-}
-
-.recipe-view .pull-bottom {
-  position: absolute;
-  bottom: 0;
 }
 
 .recipe-view .recipe-body {

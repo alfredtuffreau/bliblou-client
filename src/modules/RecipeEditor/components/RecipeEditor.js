@@ -3,6 +3,7 @@ import { object, shape, bool, string, func } from "prop-types"
 import { withRouter } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 
+import { RECIPE } from "../../../modules/Navigation";
 import Dropzone from "../../../components/utils/Dropzone";
 import withBackgroundImage from "../../../components/view/withBackgroundImage";
 
@@ -38,37 +39,42 @@ class RecipeEditor extends Component {
 
   render = () => {
     const { 
-      id, picture, currentPicture, content, isLoading, onChange, onBlur, onHover, onSubmit, onCancel 
+      id, picture, currentPicture, content, isLoading, isEditor, onChange, onBlur, onHover, onSubmit, onCancel, history 
     } = this.props;
 
-    return (
-      <Row className="recipe-editor">
-        <Col md={{ span:5 }}>
-          { picture
-            ? <DropzoneWithBackgroundImage label="Changer de fichier" 
-                                           onFilesAdded={ this.handleOnFilesAdded }
-                                           src={ picture.url } />
-            : <Dropzone label="Déposer un fichier" 
-                        onFilesAdded={ this.handleOnFilesAdded } /> }
-        </Col>
-        <Col md={{ span:7 }}> 
-          <RecipeForm id={ id }
-                      picture={ picture } 
-                      currentPicture={ currentPicture } 
-                      content={ content } 
-                      isLoading={ isLoading } 
-                      onChange={ onChange } 
-                      onBlur={ onBlur } 
-                      onHover={ onHover } 
-                      onSubmit={ onSubmit }
-                      onCancel={ onCancel } />
-        </Col>
-      </Row>
-    );
+    if (isEditor === false) history.push(RECIPE.replace(":recipeId", id));
+
+    return !isEditor
+      ? <></>
+      : (
+        <Row className="recipe-editor">
+          <Col md={{ span:5 }}>
+            { picture
+              ? <DropzoneWithBackgroundImage label="Changer de fichier" 
+                                             onFilesAdded={ this.handleOnFilesAdded }
+                                             src={ picture.url } />
+              : <Dropzone label="Déposer un fichier" 
+                          onFilesAdded={ this.handleOnFilesAdded } /> }
+          </Col>
+          <Col md={{ span:7 }}> 
+            <RecipeForm id={ id }
+                        picture={ picture } 
+                        currentPicture={ currentPicture } 
+                        content={ content } 
+                        isLoading={ isLoading } 
+                        onChange={ onChange } 
+                        onBlur={ onBlur } 
+                        onHover={ onHover } 
+                        onSubmit={ onSubmit }
+                        onCancel={ onCancel } />
+          </Col>
+        </Row>
+      );
   }
 };
 
 RecipeEditor.propTypes = {
+  isEditor: bool,
   id: string,
   picture: object,
   currentPicture: string,
@@ -83,6 +89,7 @@ RecipeEditor.propTypes = {
 };
 
 RecipeEditor.defaultProps = {
+  isEditor: undefined,
   id: undefined,
   picture: undefined,
   currentPicture: undefined,

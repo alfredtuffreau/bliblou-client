@@ -13,7 +13,7 @@ import ActionButtons from "./ActionButtons";
 import Suggestions from "./Suggestions";
 
 const RecipeView = ({ 
-  id, content, picture, src, isLoading, onLoad, onDelete, onEdit, clear, history 
+  id, content, picture, src, isLoading, isEditor, onLoad, onDelete, onEdit, clear, history 
 }) => {
   useEffect(() => { 
     onLoad(id, history);
@@ -57,11 +57,11 @@ const RecipeView = ({
                       before={ before }
                       after={ after }
                       nbOfPeople={ nbOfPeople } />
-            <ActionButtons className="pull-bottom" 
-                           onDelete={ handleOnDelete }
-                           onEdit={ handleOnEdit } />
           </div>
         </div>
+        <ActionButtons isEditor={ isEditor }
+                       onDelete={ handleOnDelete }
+                       onEdit={ handleOnEdit } /> 
         <div className="recipe-body">
           <Row>
             <Col md={{ span: 3, offset: 1 }}>

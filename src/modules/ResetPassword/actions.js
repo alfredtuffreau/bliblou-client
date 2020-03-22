@@ -1,7 +1,7 @@
 import { Auth } from "aws-amplify";
 import approve from "approvejs";
 
-import { userHasAuthenticated, HOME, LOGIN } from "../../modules/Navigation";
+import { userHasAuthenticated, userIsEditor, HOME, LOGIN } from "../../modules/Navigation";
 
 export const SET_VALUE = "RESET/SET_VALUE";
 export const SET_VALID = "RESET/SET_VALID"; 
@@ -136,8 +136,11 @@ export const validateReset = (mail, password, confirmationCode, history) => {
 const signIn = (mail, password, history) => {
 	return async (dispatch) => {
 		try {
-			await Auth.signIn(mail, password);
+			const user = await Auth.signIn(mail, password);
+			const groups = user.signInUserSession.idToken.payload["cognito:groups"];
+			const isEditor = groups ? groups.includes("editors") : false; 
 			dispatch(userHasAuthenticated(true));
+			dispatch(userIsEditor(isEditor));
 			history.push(HOME);
 		} catch({ message }) {
 			alert(message);

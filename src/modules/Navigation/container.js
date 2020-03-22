@@ -5,8 +5,8 @@ import { loadUser, logout, setWithBackground } from "./actions";
 import Routes from "./components/Routes";
 
 const mapStateToProps = state => {
-  const { isAuthenticated, withBackground } = state.navigation;
-  return ({ isAuthenticated, withBackground });
+  const { isAuthenticated, isEditor, withBackground } = state.navigation;
+  return ({ isAuthenticated, isEditor, withBackground });
 };
 
 const mapDispatchToProps = dispatch => (

@@ -10,14 +10,15 @@ const lists = [
   { title: "Pour 4", predicate: ({ content }) => JSON.parse(content).nbOfPeople === 4 }
 ]; 
 
-const view = () => {
+const view = ({ isEditor }) => {
   useEffect(() => { store.dispatch(loadCatalog()) }, []);
   return (
     <div className="content">
       { lists.map(({ title, predicate }) => (
         <RecipesList key = { title.split(' ').map(s => s.toLowerCase()).join("-") } 
                      title={ title } 
-                     predicate={ predicate } />
+                     predicate={ predicate }
+                     isEditor={ isEditor } />
       )) }
     </div>
   );

@@ -27,7 +27,7 @@ class Routes extends Component {
   }
 
   render() {
-    const { withBackground, isAuthenticated, logout, routes, setWithBackground } = this.props;
+    const { withBackground, isAuthenticated, isEditor, logout, routes, setWithBackground } = this.props;
 
     return (
       <div className={ withBackground ? "with-background-image" : "" }>
@@ -42,7 +42,7 @@ class Routes extends Component {
                   isAuthenticated,
                   withBackground,
                   setWithBackground,
-                  componentProps: { isAuthenticated, ...rest } 
+                  componentProps: { isAuthenticated, isEditor, ...rest } 
                 };
 
                 if (path) {
