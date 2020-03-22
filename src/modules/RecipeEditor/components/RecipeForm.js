@@ -36,19 +36,15 @@ const RecipeForm = ({
     event.preventDefault();
     const { url, name, type, lastModified } = picture || {};
     
-    if (!id || window.confirm(CONFIRM_SUBMIT))
-      onSubmit(
-        id,
-        content.value 
-          ? content 
-          : { value: RECIPE_TEMPLATE, isValid: true }, 
-        picture 
-          ? await fetch(url).then(response => response.blob())
-                            .then(blobFile => new File([ blobFile ], name, { type, lastModified }))
-          : null, 
-        currentPicture,
-        history
-      );
+    if (!id || window.confirm(CONFIRM_SUBMIT)) {
+      const value = content.value || RECIPE_TEMPLATE;
+      const file = picture && picture.name && picture.type
+        ? await fetch(url).then(response => response.blob())
+                          .then(blobFile => new File([ blobFile ], name, { type, lastModified }))
+        : null;
+      
+      onSubmit(id, value, file, currentPicture, history);
+    }
   };
 
   const validToSubmit = () => {

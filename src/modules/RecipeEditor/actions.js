@@ -63,7 +63,7 @@ const update = async (id, content, file, currentPicture) => {
     return await s3Upload(file);
   };
 
-  const picture = file && file.name && file.type
+  const picture = file
     ? await changePicture(currentPicture, file)
     : undefined;
 
@@ -72,7 +72,7 @@ const update = async (id, content, file, currentPicture) => {
   return RECIPE.replace(":recipeId", id);
 };
 
-export const save = (id, { value }, file, currentPicture, history) => {
+export const save = (id, value, file, currentPicture, history) => {
   return async (dispatch) => {
     if (file && file.size > MAX_ATTACHMENT_SIZE) {
       alert(`Choisissez un fichier plus petit que ${MAX_ATTACHMENT_SIZE / 1000000} MB.`);
