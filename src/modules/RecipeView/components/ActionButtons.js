@@ -5,8 +5,7 @@ import { IconContext } from "react-icons";
 import { FaTrash, FaPen } from 'react-icons/fa';
 
 const ActionButtons = ({ className, onDelete, onEdit }) => (
-  <ButtonGroup className={ `${className} margin-bottom-8 pull-right padding-sides-16` } 
-               aria-label="Administration actions">
+  <ButtonGroup className={ className || "" } aria-label="Administration actions">
     <Button variant="danger" onClick={ onDelete }>
       <IconContext.Provider value={{ color: "white", size: `1.25em` }}>
         <FaTrash style={{ marginBottom: "0.2em", marginRight: "12px" }} />

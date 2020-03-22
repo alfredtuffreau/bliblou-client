@@ -13,20 +13,18 @@ const suggestionCardStyle = {
   minHeight: `${CARDS_HEIGHT}rem`
 };
 
-const SuggestionsList = ({ suggestions }) => suggestions.length === 0 
-  ? <></>
-  : (
-    <CardList title="Suggestions" description="Nos propositions pour accompagner ce plat :">
-      { suggestions.map((suggestion, index) => (
-        <Card key={ `suggestion-${index}` }
-              style={ suggestionCardStyle }
-              className="bg-dark text-white" 
-              body>
-          { suggestion }
-        </Card>
-      )) }
-    </CardList>
-  ); 
+const SuggestionsList = ({ suggestions }) => (
+  <CardList title="Suggestions" description="Nos propositions pour accompagner ce plat :">
+    { suggestions.map((suggestion, index) => (
+      <Card key={ `suggestion-${index}` }
+            style={ suggestionCardStyle }
+            className="bg-dark text-white text-align-left" 
+            body>
+        { suggestion }
+      </Card>
+    )) }
+  </CardList>
+);  
 
 SuggestionsList.propTypes = {
   suggestions: array

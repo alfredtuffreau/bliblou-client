@@ -1,0 +1,10 @@
+.picture-container {
+  width: 50%;
+}
+
+.picture-container .picture {
+  padding-bottom: 56.25%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center right;
+}
