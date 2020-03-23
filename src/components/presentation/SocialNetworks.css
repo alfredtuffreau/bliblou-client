@@ -1,9 +1,14 @@
-.icon {
-  height: 25px;
-  margin: 8px;
+.social-networks {
+  margin: 0 0 .5rem 0;
 }
 
-.linkedin-icon {
+.social-networks .icon {
+  height: 25px;
+  margin-right: 12px;
+}
+
+.social-networks .linkedin-icon {
   height: 19px;
-  margin: 11px;
+  margin-right: 15px;
+  margin-left: 3px;
 }

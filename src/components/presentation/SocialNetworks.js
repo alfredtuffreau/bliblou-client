@@ -17,8 +17,8 @@ const logos = {
   mail: mailLogo,
 };
 
-const SocialNetworks = ({ style, networks }) => (
-  <div style={ style } >
+const SocialNetworks = ({ networks }) => (
+  <div className="social-networks">
     { 
       networks.map(({ label, href, network }, index) => (
         <span key={ "network-" + index }>
@@ -26,7 +26,7 @@ const SocialNetworks = ({ style, networks }) => (
             <img style= {{ border: "none" }} 
                  src={ logos[ network.toLowerCase() ] } 
                  alt={ network } 
-                className={ network === "LinkedIn" ? "linkedin-icon" : "icon" } />
+                 className={ network === "LinkedIn" ? "linkedin-icon" : "icon" } />
           </a>
         </span>
       )) 
@@ -35,16 +35,11 @@ const SocialNetworks = ({ style, networks }) => (
 );
 
 SocialNetworks.propTypes = {
-  style: object,
   networks: arrayOf(shape({
     label: string.isRequired,
     href: string.isRequired,
     network: oneOf(["Facebook", "Instagram", "Twitter"]).isRequired,
   })).isRequired,
 };
-
-SocialNetworks.defaultProps = {
-  style: undefined,
-}
 
 export default SocialNetworks;
