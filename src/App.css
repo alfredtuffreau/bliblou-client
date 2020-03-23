@@ -1,22 +1,4 @@
-.app-container {
-  text-align: justify;
-  text-justify: inter-word;
-  background-color: black;
-}
 
-.with-background-image {
-  background: url('./images/LeBliblou.jpg');
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-position: center top;
-  overflow: auto;
-}
-
-.dark-panel {
-  background-color: rgba(0, 0, 0, 0.5);
-  margin: 0 0 98px;
-  padding: 20px 0px;
-}
 
 .bottom-black-panel {
   background-color: black;

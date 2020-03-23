@@ -9,17 +9,15 @@ import {
 import { Home, Login, Recipes, Recipe, AboutUs, ContactUs, LostPassword, NotFound } from "./pages";
 
 export default () => (
-  <div className="app-container">
-    <Routes routes={[
-      { path: HOME, component: Home, require: UNAUTH, withBackground: true },
-      { path: HOME2, component: Home, require: UNAUTH, withBackground: true },
-      { path: LOGIN, component: Login, require: UNAUTH, withBackground: true },
-      { path: RECIPES, component: Recipes, require: AUTH },
-      { path: RECIPE, component: Recipe, require: AUTH },
-      { path: ABOUT_US, component: AboutUs, withBackground: true },
-      { path: CONTACT_US, component: ContactUs, withBackground: true },
-      { path: LOST_PASSWORD, component: LostPassword, withBackground: true },
-      { component: NotFound, withBackground: true },
-    ]} />
-  </div>
+  <Routes routes={[
+    { path: HOME, component: Home, require: UNAUTH, withBackground: true },
+    { path: HOME2, component: Home, require: UNAUTH, withBackground: true },
+    { path: LOGIN, component: Login, require: UNAUTH, withBackground: true },
+    { path: RECIPES, component: Recipes, require: AUTH },
+    { path: RECIPE, component: Recipe, require: AUTH },
+    { path: ABOUT_US, component: AboutUs, withBackground: true },
+    { path: CONTACT_US, component: ContactUs, withBackground: true },
+    { path: LOST_PASSWORD, component: LostPassword, withBackground: true },
+    { component: NotFound, withBackground: true },
+  ]} />
 );

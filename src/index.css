@@ -1,45 +1,60 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
+  font-family: "Open Sans", sans-serif; /* Choose best */
+  font-size: 16px; /*in em*/
   color: #FFF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  text-align: justify; /*isRequired ?*/
+  text-justify: inter-word; /*isRequired ?*/
+  background-color: black; /* In body ? */
+  overflow: auto;
+  position: relative;
+  padding-bottom: 120.22px;
+  min-height: 100vh;
+}
+
+main {
+  padding-top: 98px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/*isRequired ?*/
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
+/*isRequired ?*/
 h1 {
   font-size: 2.4em;
 }
 
+/*isRequired ?*/
 h2 {
   font-size: 1.5em;
 }
 
+/*isRequired ?*/
 h3 {
   font-size: 1em;
 }
 
+/*isRequired ?*/
 h5 {
   font-size: 15px;
 }
 
-a {
-  color: white;
-}
-
-a:hover {
-  color: white;
-  text-decoration: underline;
-}
-
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 select.form-control,
@@ -51,10 +66,33 @@ input[type=file] {
   width: 100%;
 }
 
+a {
+  color: white;
+}
+
+a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
 .btn-link {
   color:white;
 }
 
 .btn-link:hover {
   color:white;
+}
+
+.with-background-image {
+  background: url('./images/LeBliblou.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+  overflow: auto;
+}
+
+.with-background-image>div:first-child {
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 70px 0;
+  padding: 20px 0px;
 }

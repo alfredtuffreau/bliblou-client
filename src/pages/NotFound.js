@@ -43,7 +43,7 @@ class NotFound extends Component {
     if (!isAuthenticated) links.push("|", login);
 
     return (
-      <div className="dark-panel">
+      <div className="with-background-image">
         <div className="content centered-content">
           <h2>{ formattedText("app.pageNotFound.title") }</h2>
           <h3>{ formattedText("app.pageNotFound.description") }</h3>

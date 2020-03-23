@@ -7,7 +7,7 @@ import withScrollTop from "../components/view/withScrollTop";
 import SignIn from "../modules/SignIn";
 
 const Login = () => (
-  <div className="dark-panel">
+  <div className="with-background-image">
     <Row className="content form-margin-top-16 form-margin-bottom-16" noGutters>
       <Col md={{ span:5, offset:1 }}>
         <Catcher title= { formattedText("app.catcher.title") }

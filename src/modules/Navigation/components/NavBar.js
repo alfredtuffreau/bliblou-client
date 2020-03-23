@@ -22,8 +22,8 @@ class BrandNavBar extends Component {
       : { label: formattedText("app.signIn"), href: LOGIN };
 
     return (
-      <div className="NavBar">
-        <Navbar className="transparent">
+      <header className="NavBar">
+        <Navbar bg="black" fixed="top" >
           <Navbar.Brand>
             <NavLink to={ HOME } className="Brand">
               <h1>{ formattedText("app.name").toUpperCase() }</h1>
@@ -42,7 +42,7 @@ class BrandNavBar extends Component {
                 </Nav>) }
           </Navbar.Collapse>
         </Navbar>
-      </div>
+      </header>
     );
   }
 };

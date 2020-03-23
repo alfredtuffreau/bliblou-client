@@ -30,9 +30,9 @@ class Routes extends Component {
     const { withBackground, isAuthenticated, isEditor, logout, routes, setWithBackground } = this.props;
 
     return (
-      <div className={ withBackground ? "with-background-image" : "" }>
+      <>
         <NavBar isAuthenticated={ isAuthenticated } logout={ logout } />
-        <div style={{ minHeight: window.innerHeight  - 127, overflow: "auto" }}>
+        <main>
           <Switch>
             { 
               routes.map(({ path, component, require, withBackground, ...rest }, index) => {
@@ -56,9 +56,9 @@ class Routes extends Component {
               }) 
             }
           </Switch>
-        </div>
+        </main>
         <Footer />
-      </div>
+      </>
     );
   }
 }

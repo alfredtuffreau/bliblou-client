@@ -1,15 +1,10 @@
-.NavBar {
-  position: relative;
-}
-
 .NavBar .Brand { 
   text-decoration: none; 
   color: black;
 }
 
-.NavBar .transparent {
-  background: none;
-  border: none;
+.NavBar .bg-black {
+  background-color: black;
 }
 
 .NavBar .navbar-default .navbar-brand {
