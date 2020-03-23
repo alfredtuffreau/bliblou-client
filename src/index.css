@@ -131,3 +131,45 @@ a:hover {
   margin: 75px 0;
   padding: 20px 0px;
 }
+
+.form-text {
+  text-align: left;
+}
+
+.input-group .left-button.is-invalid {
+  border-left-color: #dc3545;
+  border-top-color: #dc3545;
+  border-bottom-color: #dc3545;
+}
+
+.input-group .middle-button.is-invalid {
+  border-top-color: #dc3545;
+  border-bottom-color: #dc3545;
+}
+
+.btn:focus {
+  box-shadow: none;
+}
+
+.pointer-element {
+  cursor: pointer;
+}
+
+.tooltip-error > .tooltip-inner {
+  background-color: #dc3545;
+  color: #fff;
+  border: 1px solid #dc3545;
+}
+
+.tooltip-error .message, .tooltip-error li, .tooltip-error ul {
+  margin: 0;
+  text-align: left;
+}
+
+.tooltip-error.up>.tooltip-inner, .tooltip-error.up>.arrow{
+  margin-bottom: 16px;
+}
+
+.bs-tooltip-left .arrow::before {
+  border-left-color: #dc3545;
+}

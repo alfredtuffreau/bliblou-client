@@ -46,7 +46,7 @@ class PasswordInput extends Component {
                         onMouseLeave={ this.handleOnHover } />
           <InputGroup.Append>
             <span onClick={ this.handleOnCLick }>
-              <InputGroup.Text className="pointerHover"
+              <InputGroup.Text className="pointer-element"
                                id="pwdAppend">
                 { isClear ? "Masquer" : "Afficher" }
               </InputGroup.Text>

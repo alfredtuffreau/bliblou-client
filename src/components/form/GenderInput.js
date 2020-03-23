@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { shape, string, bool, func } from "prop-types";
 import { Form, InputGroup, Button } from "react-bootstrap";
 
-import "./GenderInput.css";
-
 const FEMALE = "Female";
 const MALE = "Male";
 const GENDER = "gender";
@@ -13,8 +11,8 @@ class GenderInput extends Component {
     const { value, isValid } = this.props.gender;
     const classes = [];
     
-    if (isValid === false && field === FEMALE) classes.push("red-border-middle"); 
-    if (isValid === false && field === MALE) classes.push("red-border-left"); 
+    if (isValid === false && field === FEMALE) classes.push("middle-button is-invalid"); 
+    if (isValid === false && field === MALE) classes.push("left-button is-invalid"); 
     if (field !== value) classes.push("input-group-text"); 
     
     return classes.length === 0 

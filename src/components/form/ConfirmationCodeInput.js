@@ -29,7 +29,7 @@ class ConfirmationCodeInput extends Component {
                         onBlur={ this.handleOnBlur }
                         onMouseEnter={ this.handleOnHover } 
                         onMouseLeave={ this.handleOnHover } />
-          <Form.Text className="help">
+          <Form.Text>
             Consultez votre boîte mail pour le code de vérification
           </Form.Text>
         </Form.Group>

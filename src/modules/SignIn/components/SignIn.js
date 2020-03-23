@@ -7,7 +7,6 @@ import MailInput from "../../../components/form/MailInput";
 import PasswordInput from "../../../components/form/PasswordInput";
 import { formattedText } from "../../../translations";
 
-import "./SignIn.css";
 import { LOST_PASSWORD } from "../../../modules/Navigation";
 
 class SignIn extends Component {
