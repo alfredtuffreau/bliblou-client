@@ -1,31 +1,66 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Open Sans", sans-serif; /* Choose best */
-  font-size: 16px; /*in em*/
+  font-family: "Open Sans", sans-serif;
+  text-align: justify;
   color: #FFF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
-  text-align: justify; /*isRequired ?*/
-  text-justify: inter-word; /*isRequired ?*/
-  background-color: black; /* In body ? */
+  background-color: black;
   overflow: auto;
   position: relative;
   padding-bottom: 120.22px;
   min-height: 100vh;
 }
 
+header .brand { 
+  text-decoration: none; 
+  color: black;
+}
+
+header .bg-black {
+  background-color: black;
+}
+
+header a.brand:hover {
+  text-decoration: none;
+}
+
+header .brand>h1:first-child {
+  margin: 0;
+  font-size: 1.85em;
+  font-weight: 500;
+  color: black;
+  text-shadow:
+    1px  1px 1px pink,
+    1px -1px 1px pink,
+   -1px  1px 1px pink,
+   -1px -1px 1px pink;
+}
+
 main {
-  padding-top: 98px;
+  padding-top: 70px;
 }
 
 footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+  color: gainsboro;
+  background-color: #1a1a1a;
+  padding: 16px 0 30px;
+}
+
+footer a {
+  color: gainsboro;
+}
+
+footer .links a {
+  font-size: 0.90em;
+  padding-right: 20px;
 }
 
 /*isRequired ?*/
@@ -93,6 +128,6 @@ a:hover {
 
 .with-background-image>div:first-child {
   background-color: rgba(0, 0, 0, 0.5);
-  margin: 70px 0;
+  margin: 75px 0;
   padding: 20px 0px;
 }

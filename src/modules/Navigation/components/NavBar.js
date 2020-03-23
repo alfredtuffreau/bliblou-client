@@ -5,7 +5,6 @@ import { Navbar, Nav, Button } from "react-bootstrap";
 
 import { formattedText } from "../../../translations";
 
-import "./NavBar.css";
 import { HOME, LOGIN } from "./Routes";
 
 class BrandNavBar extends Component {
@@ -22,10 +21,10 @@ class BrandNavBar extends Component {
       : { label: formattedText("app.signIn"), href: LOGIN };
 
     return (
-      <header className="NavBar">
-        <Navbar bg="black" fixed="top" >
+      <header>
+        <Navbar bg="black" fixed="top">
           <Navbar.Brand>
-            <NavLink to={ HOME } className="Brand">
+            <NavLink to={ HOME } className="brand">
               <h1>{ formattedText("app.name").toUpperCase() }</h1>
             </NavLink>
           </Navbar.Brand>
