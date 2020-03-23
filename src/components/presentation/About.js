@@ -8,14 +8,14 @@ import SocialNetworks from "./SocialNetworks";
 const About = ({ name, title, picture, descriptions, networks }) => (
   <div className="margin-bottom-16">
     <h2>{ name }</h2>
-    { 
-      networks 
-        ? <SocialNetworks networks={ networks } /> 
-        : null 
-    }
     <h3>{ title }</h3>
     <div>
       <Image src={ picture } className="about-image" roundedCircle />
+      { 
+        networks 
+          ? <SocialNetworks networks={ networks } /> 
+          : null 
+      }
       { 
         descriptions && descriptions.map((str, index, arr) => (
           <p className={ index < arr.length - 1 ? "" : "no-margin" } key={ "descr-" + index }>
