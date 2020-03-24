@@ -6,7 +6,7 @@ import ResetPassword from "../modules/ResetPassword";
 
 const LostPassword = () => (
   <div className="with-background-image">
-    <Row className="content centered-content" noGutters>
+    <Row className="lost-password" noGutters>
       <Col md={{ span:6, offset:3 }}>
         <ResetPassword />
       </Col>

@@ -9,34 +9,33 @@ export default () => (
   <footer>
     <Row noGutters>
       <Col md={{ offset:1, span:10 }}>
-        <p>Des questions ? Contactez-nous : <a href="mailto:aide-utilisateur@bliblou.com">
-        aide-utilisateur@bliblou.com</a></p>
-        <div style={{ overflow: "auto" }}>
-          <div style={{ float: "left" }} className="links">
-            { [ <Link key="footer-link-1" to={ HOME }>Accueil</Link>,
-                <Link key="footer-link-2" to={ ABOUT_US }>À propos</Link>,
-                <Link key="footer-link-3" to={ CONTACT_US }>Nous contacter</Link> ] }
-          </div>
-          <div className="pull-right">
-            <SocialNetworks networks={[ 
-                              {
-                                label: "Le Bliblou sur Instagram",
-                                href: "https://www.instagram.com/bliblou_fr/",
-                                network: "Instagram",
-                              },
-                              {
-                                label: "Le Bliblou sur Twitter",
-                                href: "https://twitter.com/BliblouFR",
-                                network: "Twitter",
-                              },
-                              {
-                                label: "Le Bliblou sur Facebook",
-                                href: "https://www.facebook.com/bliblouFR/",
-                                network: "Facebook",
-                              }
-                          ]} />
-          </div>
+        <p>{ "Des questions ? Contactez-nous : " }
+          <a href="mailto:aide-utilisateur@bliblou.com">
+            aide-utilisateur@bliblou.com
+          </a>
+        </p>
+        <div className="links">
+          { [ <Link key="footer-link-1" to={ HOME }>Accueil</Link>,
+              <Link key="footer-link-2" to={ ABOUT_US }>À propos</Link>,
+              <Link key="footer-link-3" to={ CONTACT_US }>Nous contacter</Link> ] }
         </div>
+        <SocialNetworks networks={[ 
+                          {
+                            label: "Le Bliblou sur Instagram",
+                            href: "https://www.instagram.com/bliblou_fr/",
+                            network: "Instagram",
+                          },
+                          {
+                            label: "Le Bliblou sur Twitter",
+                            href: "https://twitter.com/BliblouFR",
+                            network: "Twitter",
+                          },
+                          {
+                            label: "Le Bliblou sur Facebook",
+                            href: "https://www.facebook.com/bliblouFR/",
+                            network: "Facebook",
+                          }
+                      ]} />
       </Col>
     </Row>
   </footer>

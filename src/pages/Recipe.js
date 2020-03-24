@@ -12,7 +12,7 @@ const view = ({ isEditor, match: { params: { recipeId } }, location: { search } 
 
   return recipeId === "new" || mode === "edit"
     ? (
-      <Row className="content form-margin-bottom-16" noGutters>
+      <Row noGutters>
         <Col md={{ span: 10, offset: 1 }}>
           <RecipeEditor id={ recipeId !== "new" ? recipeId : undefined } 
                         isEditor={ isEditor } />

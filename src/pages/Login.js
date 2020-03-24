@@ -8,7 +8,7 @@ import SignIn from "../modules/SignIn";
 
 const Login = () => (
   <div className="with-background-image">
-    <Row className="content form-margin-top-16 form-margin-bottom-16" noGutters>
+    <Row noGutters>
       <Col md={{ span:5, offset:1 }}>
         <Catcher title= { formattedText("app.catcher.title") }
                 description={ formattedText("app.catcher.description") } />

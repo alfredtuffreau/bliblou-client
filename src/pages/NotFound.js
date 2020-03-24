@@ -8,8 +8,6 @@ import { formattedText } from "../translations";
 import withScrollTop from "../components/view/withScrollTop";
 import { HOME, LOGIN } from "../modules/Navigation";
 
-import "./NotFound.css";
-
 class NotFound extends Component {
   handleOnClick = () => {
     this.props.history.goBack();
@@ -43,12 +41,12 @@ class NotFound extends Component {
     if (!isAuthenticated) links.push("|", login);
 
     return (
-      <div className="with-background-image">
-        <div className="content centered-content">
+      <div className="not-found with-background-image">
+        <div>
           <h2>{ formattedText("app.pageNotFound.title") }</h2>
           <h3>{ formattedText("app.pageNotFound.description") }</h3>
-          <img src={ icon } alt="Not found" className="not-found-image centered-image" />
-          <div>{ links }</div>
+          <img src={ icon } alt="Not found" />
+          { links }
         </div>
       </div>
     );

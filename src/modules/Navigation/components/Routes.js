@@ -34,27 +34,25 @@ class Routes extends Component {
         <NavBar isAuthenticated={ isAuthenticated } logout={ logout } />
         <main>
           <Switch>
-            { 
-              routes.map(({ path, component, require, withBackground, ...rest }, index) => {
-                const props = { 
-                  key: `route-${index}`, 
-                  component,
-                  isAuthenticated,
-                  withBackground,
-                  setWithBackground,
-                  componentProps: { isAuthenticated, isEditor, ...rest } 
-                };
+            { routes.map(({ path, component, require, withBackground, ...rest }, index) => {
+              const props = { 
+                key: `route-${index}`, 
+                component,
+                isAuthenticated,
+                withBackground,
+                setWithBackground,
+                componentProps: { isAuthenticated, isEditor, ...rest } 
+              };
 
-                if (path) {
-                  props.path = path;
-                  props.exact = true;
-                }
+              if (path) {
+                props.path = path;
+                props.exact = true;
+              }
 
-                if (require === AUTH) return <AuthenticatedRoute { ...props }/>;
-                if (require === UNAUTH) return <UnauthenticatedRoute { ...props } />;
-                return <AppliedRoutes { ...props } />;
-              }) 
-            }
+              if (require === AUTH) return <AuthenticatedRoute { ...props }/>;
+              if (require === UNAUTH) return <UnauthenticatedRoute { ...props } />;
+              return <AppliedRoutes { ...props } />;
+            }) }
           </Switch>
         </main>
         <Footer />

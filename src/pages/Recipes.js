@@ -12,16 +12,12 @@ const lists = [
 
 const view = ({ isEditor }) => {
   useEffect(() => { store.dispatch(loadCatalog()) }, []);
-  return (
-    <div className="content">
-      { lists.map(({ title, predicate }) => (
-        <RecipesList key = { title.split(' ').map(s => s.toLowerCase()).join("-") } 
-                     title={ title } 
-                     predicate={ predicate }
-                     isEditor={ isEditor } />
-      )) }
-    </div>
-  );
+  return lists.map(({ title, predicate }) => (
+    <RecipesList key = { title.split(' ').map(s => s.toLowerCase()).join("-") } 
+                 title={ title } 
+                 predicate={ predicate }
+                 isEditor={ isEditor } />
+  ));
 };
 
 export default withScrollTop(view);

@@ -25,10 +25,10 @@ class ResetPassword extends Component {
     if (needConfirmSignUp) {
       const { signUpCode, validateSignUp } = this.props;
       description = (<>
-        <h3>{ formattedText("resetPassword.descriptionCompleteSignUp") }</h3>
-        <h3>
+        <p>{ formattedText("resetPassword.descriptionCompleteSignUp") }</p>
+        <p>
           <small>{ formattedText("resetPassword.hintCompleteSignUp") }</small>
-        </h3>
+        </p>
       </>);
       img = <></>;
       form = <CompleteSignUpForm mail={ mail }
@@ -44,7 +44,7 @@ class ResetPassword extends Component {
         confirmationCode, password, togglePasswordVisibility, validateReset 
       } = this.props;
  
-      description = <h3>{ formattedText("resetPassword.descriptionSent") }</h3>;
+      description = <p>{ formattedText("resetPassword.descriptionSent") }</p>;
       img = <></>;
       form = <NewPasswordForm mail={ mail }
                               confirmationCode={ confirmationCode }
@@ -59,8 +59,8 @@ class ResetPassword extends Component {
     } else {
       const { startReset } = this.props;
 
-      description = <h3>{ formattedText("resetPassword.descriptionNotSent") }</h3>;
-      img = <img src={ icon } alt="Mail" className="Icon" />;
+      description = <p>{ formattedText("resetPassword.descriptionNotSent") }</p>;
+      img = <img src={ icon } alt="Mail" />;
       form = <IdentificationForm mail={ mail }
                                  isLoading={ isLoading } 
                                  onChange={ setValue } 
@@ -71,14 +71,14 @@ class ResetPassword extends Component {
     }
 
     return (
-      <Row className="ResetPassword" noGutters>
+      <div className="ResetPassword">
         <h2>{ formattedText("resetPassword.title") }</h2>
         { description }
         { img }
         <Col md={{ span:8, offset:2 }}>
           { form }
         </Col>
-      </Row>
+      </div>
       
     );
   }

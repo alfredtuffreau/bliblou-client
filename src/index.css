@@ -54,6 +54,14 @@ footer {
   padding: 16px 0 30px;
 }
 
+footer .links {
+  float: left;
+}
+
+footer .social-networks {
+  float: right;
+}
+
 footer a {
   color: gainsboro;
 }
@@ -63,29 +71,29 @@ footer .links a {
   padding-right: 20px;
 }
 
-/*isRequired ?*/
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
-/*isRequired ?*/
 h1 {
-  font-size: 2.4em;
+  font-size: 2em; 
 }
 
-/*isRequired ?*/
 h2 {
   font-size: 1.5em;
 }
 
-/*isRequired ?*/
 h3 {
+  font-size: 1.2em;
+  color: #D29FA8;
+}
+
+h4 {
   font-size: 1em;
 }
 
-/*isRequired ?*/
 h5 {
-  font-size: 15px;
+  font-size: 1em;
 }
 
 code {
@@ -128,8 +136,12 @@ a:hover {
 
 .with-background-image>div:first-child {
   background-color: rgba(0, 0, 0, 0.5);
-  margin: 75px 0;
+  margin: 75px auto;
   padding: 20px 0px;
+}
+
+.with-background-image form {
+  margin: 16px 0;
 }
 
 .form-text {
@@ -161,6 +173,10 @@ a:hover {
   border: 1px solid #dc3545;
 }
 
+.bs-tooltip-left .arrow::before {
+  border-left-color: #dc3545;
+}
+
 .tooltip-error .message, .tooltip-error li, .tooltip-error ul {
   margin: 0;
   text-align: left;
@@ -170,6 +186,42 @@ a:hover {
   margin-bottom: 16px;
 }
 
-.bs-tooltip-left .arrow::before {
-  border-left-color: #dc3545;
+.about-picture {
+  float: left;
+  width: 100px; 
+  margin: 16px;
+  border: 2px solid gray;
+}
+
+.line-separator {
+  height:1px;
+  background:#717171;  
+  border-bottom:1px solid #313030;
+  margin-bottom: 8px;
+}
+
+.panel {
+  padding: 24px 0;
+}
+
+.contact-us, .lost-password, .not-found {
+  text-align: center;
+}
+
+.lost-password img, .not-found img {
+  height: 225px;
+  margin: 0 auto 8px;
+  display: block;
+}
+
+.not-found .btn-link {
+  padding: 0 12px 0;
+}
+
+.recipe-editor form {
+  margin-bottom: 16px;
+}
+
+.step-index {
+  color: #D29FA8;
 }

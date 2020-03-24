@@ -61,28 +61,26 @@ const team = [{
 const AboutUs = () => (
   <>
     <div className="with-background-image">
-      <Row className="content justified-content">
+      <Row>
         <Col md={{ span:8, offset: 2 }}>
           <About { ...bliblou } />
         </Col>
       </Row>
     </div>
-    <div className="bottom-black-panel">
-      <Row className="content justified-content">
+    <div className="panel">
+      <Row>
         <Col md={{ span:8, offset: 2 }}>
           <h1>L'équipe</h1>
         </Col>
       </Row>
-      {
-        team.map(member => (
-          <Row className="content justified-content">
-            <Col md={{ span:8, offset: 2 }}>
-              <div className="line-separator margin-bottom-8" />
-              <About { ...member }/>
-            </Col>
-          </Row>
-        ))
-      }
+      { team.map(member => (
+        <Row>
+          <Col md={{ span:8, offset: 2 }}>
+            <div className="line-separator" />
+            <About { ...member }/>
+          </Col>
+        </Row>
+      )) }
     </div>
   </>
 );

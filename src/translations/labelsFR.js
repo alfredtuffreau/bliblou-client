@@ -34,10 +34,10 @@ const labelsFR = {
   }, 
   resetPassword: {
     title: "Mot de passe oublié",
-    descriptionNotSent: "Nous vous enverrons les instructions de réinitialisation de votre mot de passe par e-mail.",
+    descriptionNotSent: "Nous vous enverrons les instructions de réinitialisation de votre mot de passe par email.",
     descriptionCompleteSignUp: "Saisissez le code de vérification qui vous a été envoyé pour confirmer votre inscription.",
     hintCompleteSignUp: "Un second code vous sera envoyé pour définir votre nouveau mot de passe",
-    descriptionSent: "Saisissez votre nouveau mot de passe et le code de vérification qui vous a été envoyé par e-mail.",
+    descriptionSent: "Saisissez votre nouveau mot de passe et le code de vérification qui vous a été envoyé par email.",
     sendEmail: "Réinitialiser",
     sendingEmail: "Envoi...",
     cancel: "Annuler",
