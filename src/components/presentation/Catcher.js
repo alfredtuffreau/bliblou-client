@@ -1,24 +1,11 @@
-import React, { Component } from "react";
-import { string } from "prop-types"
+import React from "react";
 
-import "./Catcher.css";
-
-class Catcher extends Component {
-  render() {
-    const { title, description } = this.props;
-
-    return (
-      <div className="catcher">
-        <h1>{ title }</h1>
-        <p>{ description }</p>
-      </div>
-    );
-  }
-}
-
-Catcher.propTypes = {
-  title: string.isRequired,
-  description: string.isRequired,
-}
+const Catcher = () => (
+  <>
+    <h1>Devenez votre propre chef</h1>
+    <p>Grâce au Bliblou, profitez d'une application simple et complète pour trouver des idées de recettes, composer des menus selon vos goûts et vos contraintes, et vous accompagner dans leur réalisation.</p>
+    <p>Le Bliblou vous propose des recettes de qualité et de saison, inspirées par votre terroir et sélectionnées pour vous.</p>
+  </>
+);
 
 export default Catcher;

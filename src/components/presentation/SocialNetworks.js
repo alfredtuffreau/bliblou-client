@@ -1,13 +1,11 @@
 import React from "react";
-import { object, arrayOf, shape, string, oneOf } from "prop-types";
+import { arrayOf, shape, string, oneOf } from "prop-types";
 
 import facebookLogo from "../../images/f_logo_RGB-Blue_58.png";
 import instagramLogo from "../../images/IG_Glyph_Fill.png";
 import twitterLogo from "../../images/Twitter_Logo_Blue.png";
 import linkedInLogo from "../../images/LI-In-Bug.png";
 import mailLogo from "../../images/mail-logo.png";
-
-import "./SocialNetworks.css";
 
 const logos = {
   facebook: facebookLogo,
@@ -22,10 +20,9 @@ const SocialNetworks = ({ networks }) => (
     { networks.map(({ label, href, network }, index) => (
       <span key={ "network-" + index }>
         <a label={ label } href={ href }>
-          <img style= {{ border: "none" }} 
-               src={ logos[ network.toLowerCase() ] } 
+          <img src={ logos[ network.toLowerCase() ] } 
                alt={ network } 
-               className={ network === "LinkedIn" ? "linkedin-icon" : "icon" } />
+               className={ network === "LinkedIn" ? "linkedin-icon" : undefined } />
         </a>
       </span>
     )) }

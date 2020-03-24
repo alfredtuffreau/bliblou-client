@@ -141,7 +141,7 @@ a:hover {
 }
 
 .with-background-image form {
-  margin: 16px 0;
+  margin: .4em 0;
 }
 
 .form-text {
@@ -224,4 +224,24 @@ a:hover {
 
 .step-index {
   color: #D29FA8;
+}
+
+.card-list>.card-group {
+  flex-flow: row;
+  overflow:scroll;
+}
+
+.social-networks {
+  margin-bottom: .5rem ;
+}
+
+.social-networks img {
+  height: 25px;
+  margin-right: 12px;
+}
+
+.social-networks img.linkedin-icon {
+  height: 19px;
+  margin-right: 15px;
+  margin-left: 3px;
 }
