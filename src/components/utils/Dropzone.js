@@ -1,20 +1,19 @@
 import React, { Component } from "react";
-import { object, bool, string, func } from "prop-types";
-import "./Dropzone.css";
+import { bool, string, func } from "prop-types";
 
 class Dropzone extends Component {
   constructor(props) {
     super(props);
-    
-    this.state = { hightlight: false };
-    
+
+    this.state = { hightlight: false, height: 0 };
     this.fileInputRef = React.createRef();
-    
-    this.openFileDialog = this.openFileDialog.bind(this);
+    this.divImgRef = React.createRef();
     this.onFilesAdded = this.onFilesAdded.bind(this);
-    this.onDragOver = this.onDragOver.bind(this);
-    this.onDragLeave = this.onDragLeave.bind(this);
-    this.onDrop = this.onDrop.bind(this);
+  }
+    
+  onLoad = () => {
+    const height = this.divImgRef.current.offsetHeight;
+    if (this.state.height !== height) this.setState({ height });
   }
   
   onDragOver(event) {
@@ -27,14 +26,6 @@ class Dropzone extends Component {
 
   onDragLeave() {
     this.setState({ hightlight: false });
-  }
-
-  onMouseEnter = () => {
-    this.props.onMouseEnter();
-  }
-
-  onMouseLeave = () => {
-    this.props.onMouseLeave();
   }
 
   onDrop(event) {
@@ -75,48 +66,49 @@ class Dropzone extends Component {
   }
 
   render() {
-    const { label, className, style, disabled } = this.props;
-    const { hightlight } = this.state;
-
+    const { src, label, disabled } = this.props;
+    const { hightlight, height } = this.state;
+    const dropzoneInputClass = "dropzone-input".concat(`${src ? " with-image" : ""}`)
+                                               .concat(`${disabled ? " disabled" : ""}`)
+                                               .concat(`${hightlight ? " highlight" : ""}`);
+      
     return (
-      <div className={ `dropzone ${className ? className : ""} ${hightlight ? "highlight" : ""}` }
-           onDragOver={ this.onDragOver }
-           onDragLeave={ this.onDragLeave }
-           onMouseEnter={ this.onMouseEnter }
-           onMouseLeave={ this.onMouseLeave }
-           onDrop={ this.onDrop }
-           onClick={ this.openFileDialog }
-           style={ Object.assign({}, style, { cursor: disabled ? "default" : "pointer" }) }>
-        <img alt="upload"
-             className="icon"
-             src="../../cloud_upload-24px.svg" />
-        <input ref={ this.fileInputRef }
-               className="file-input"
-               type="file"
-               multiple
-               onChange={ this.onFilesAdded } />
-        <span>{ label }</span>
+      <div className="dropzone" style={{ height: height ? `${height}px` : undefined }}>
+        { !src ? <></> : <img src={ src } 
+                              alt="RecipePicture"
+                              onLoad={ () => this.onLoad() } 
+                              ref={ this.divImgRef } /> }	
+        <div className={ dropzoneInputClass }
+             style={{ top: `-${height}px`, height: `${height}px` }}
+             onDrop={ (event) => this.onDrop(event) }
+             onDragOver={ (event) => this.onDragOver(event) }
+             onDragLeave={ () => this.onDragLeave() }
+             onClick={ () => this.openFileDialog() }>
+          <img alt="upload"
+              className="icon"
+              src="../../cloud_upload-24px.svg" />
+          <input ref={ this.fileInputRef }
+                className="file-input"
+                type="file"
+                multiple
+                onChange={ this.onFilesAdded } />
+          { label }
+        </div>
       </div>
     );
   }
 }
 
 Dropzone.propTypes = {
+  src: string,
   label: string.isRequired,
-  className: string,
-  style: object,
   disabled: bool,
-  onFilesAdded: func.isRequired,
-  onMouseEnter: func,
-  onMouseLeave: func,
+  onFilesAdded: func.isRequired
 };
 
-Dropzone.defaultProps = { 
-  className: undefined,
-  style: undefined,
-  disabled: false,
-  onMouseEnter: () => {},
-  onMouseLeave: () => {},
+Dropzone.defaultProps = {
+  src: undefined, 
+  disabled: false
 };
 
 export default Dropzone;

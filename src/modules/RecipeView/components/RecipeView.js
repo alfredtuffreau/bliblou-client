@@ -62,8 +62,7 @@ const RecipeView = ({
         <ActionButtons isEditor={ isEditor }
                        onDelete={ handleOnDelete }
                        onEdit={ handleOnEdit } /> 
-        <div className="recipe-body">
-          <Row>
+          <Row className="recipe-body" noGutters>
             <Col md={{ span: 3, offset: 1 }}>
               <Ingredients ingredients={ ingredients } />
             </Col>
@@ -71,14 +70,11 @@ const RecipeView = ({
               <Steps steps={ steps } />
             </Col>
           </Row>
-        </div>
-        <div className="recipe-footer">
-          <Row>
+          <Row className="recipe-footer" noGutters>
             <Col md={{ span: 11, offset: 1 }}>
               <Suggestions suggestions={ suggestions } />
             </Col>
           </Row>
-        </div>
       </div>
     );
 };

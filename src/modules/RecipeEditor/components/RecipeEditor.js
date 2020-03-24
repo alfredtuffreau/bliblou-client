@@ -5,11 +5,8 @@ import { Row, Col } from "react-bootstrap";
 
 import { RECIPE } from "../../../modules/Navigation";
 import Dropzone from "../../../components/utils/Dropzone";
-import withBackgroundImage from "../../../components/view/withBackgroundImage";
 
 import RecipeForm from "./RecipeForm";
-
-const DropzoneWithBackgroundImage = withBackgroundImage(Dropzone);
 
 class RecipeEditor extends Component {
   constructor(props) {
@@ -49,12 +46,9 @@ class RecipeEditor extends Component {
       : (
         <Row className="recipe-editor">
           <Col md={{ span:5 }}>
-            { picture
-              ? <DropzoneWithBackgroundImage label="Changer de fichier" 
-                                             onFilesAdded={ this.handleOnFilesAdded }
-                                             src={ picture.url } />
-              : <Dropzone label="Déposer un fichier" 
-                          onFilesAdded={ this.handleOnFilesAdded } /> }
+            <Dropzone label={ `${picture ? "Changer de" : "Déposer un"} fichier` }
+                      onFilesAdded={ this.handleOnFilesAdded }
+                      src={ picture ? picture.url : undefined } />
           </Col>
           <Col md={{ span:7 }}> 
             <RecipeForm id={ id }

@@ -245,3 +245,52 @@ a:hover {
   margin-right: 15px;
   margin-left: 3px;
 }
+
+.dropzone {
+  margin-bottom: 16px;
+}
+
+.dropzone-input {
+  min-height: 200px;
+  border: 2px dashed white;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.dropzone-input:not(.disabled) {
+  cursor: pointer;
+}
+
+.dropzone-input>img {
+  filter: invert(97%) sepia(93%) saturate(0%) hue-rotate(273deg) brightness(107%) contrast(107%);
+  height: 64px;
+}
+
+.dropzone-input>.file-input {
+  display: none;
+}
+
+.dropzone-input.highlight {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 2px dashed rgba(81, 203, 238, 1);
+}
+
+.dropzone>img {
+  width: 100%;
+}
+
+.dropzone:hover>img {
+  opacity: 0.5;
+}
+
+.dropzone:not(:hover)>.dropzone-input.with-image {
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+}
+
+.dropzone:not(:hover)>.dropzone-input.with-image {
+  opacity: 0.5;
+}
