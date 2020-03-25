@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import { bool, func } from "prop-types";
 import { NavLink, withRouter } from "react-router-dom";
 import { Navbar, Nav, Button } from "react-bootstrap";
@@ -12,6 +12,10 @@ class BrandNavBar extends Component {
     const { logout, history } = this.props;
     const goToLogin = () => history.push(LOGIN);
     logout(goToLogin);
+  }
+
+  handleClick = (e) => { 
+    e.preventDefault(); 
   }
 
   render () {
@@ -36,7 +40,10 @@ class BrandNavBar extends Component {
                 </Button>)
               : (<Nav>
                   <NavLink to={ href }>
-                    <Button variant="success">{ label }</Button>
+                    <Button variant="success" 
+                            onMouseDown={ this.handleClick }>
+                      { label }
+                    </Button>
                   </NavLink>
                 </Nav>) }
           </Navbar.Collapse>

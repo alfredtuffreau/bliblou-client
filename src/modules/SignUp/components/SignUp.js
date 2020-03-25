@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { object, bool, func } from "prop-types";
 
-import "./SignUp.css";
 import RegistrationForm  from "./RegistrationForm";
 import ConfirmationForm from "./ConfirmationForm";
 

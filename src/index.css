@@ -159,10 +159,6 @@ a:hover {
   border-bottom-color: #dc3545;
 }
 
-.btn:focus {
-  box-shadow: none;
-}
-
 .pointer-element {
   cursor: pointer;
 }
@@ -293,4 +289,19 @@ a:hover {
 
 .dropzone:not(:hover)>.dropzone-input.with-image {
   opacity: 0.5;
+}
+
+.btn.btn-gender.btn-primary:not(.input-group-text) {
+  color: #fff;
+  background-color: #EFB5BF;
+  border-color: #EFB5BF;
+}
+
+.btn.btn-gender.btn-primary:hover {
+  background-color: rgb(226, 147, 160);
+  border-color: rgb(226, 147, 160);
+}
+
+.btn.btn-gender {
+  box-shadow: none;
 }

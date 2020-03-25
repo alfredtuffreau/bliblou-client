@@ -9,7 +9,7 @@ const GENDER = "gender";
 class GenderInput extends Component {
   getClassName = (field) => {
     const { value, isValid } = this.props.gender;
-    const classes = [];
+    const classes = [ "btn-gender" ];
     
     if (isValid === false && field === FEMALE) classes.push("middle-button is-invalid"); 
     if (isValid === false && field === MALE) classes.push("left-button is-invalid"); 
@@ -45,8 +45,7 @@ class GenderInput extends Component {
         <Form.Label hidden>{ label }</Form.Label>
         <InputGroup>
           <InputGroup.Prepend>
-            <Button variant={ value === MALE ? "primary" : "light" }
-                    className={ this.getClassName(MALE) }
+            <Button className={ this.getClassName(MALE) }
                     onClick={ () => this.handleOnCLick(MALE) }
                     onMouseEnter={ this.handleOnHover } 
                     onMouseLeave={ this.handleOnHover }>
@@ -54,8 +53,7 @@ class GenderInput extends Component {
             </Button>
           </InputGroup.Prepend>
           <InputGroup.Prepend>
-            <Button variant={ value === FEMALE ? "pink" : "light" }
-                    className={ this.getClassName(FEMALE) }
+            <Button className={ this.getClassName(FEMALE) }
                     onClick={ () => this.handleOnCLick(FEMALE) }
                     onMouseEnter={ this.handleOnHover } 
                     onMouseLeave={ this.handleOnHover }>

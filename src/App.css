@@ -1,29 +1,3 @@
-
-
-.display-block {
-  display: block;
-}
-
-.position-relative {
-  position: relative;
-}
-
-.margin-bottom-16 {
-  margin-bottom: 16px;
-}
-
-.nav.nav-tabs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.nav.nav-tabs a { 
-  width: 25%;
-  height: 60px;
-}
-
 .pull-right {
   float: right;
 }

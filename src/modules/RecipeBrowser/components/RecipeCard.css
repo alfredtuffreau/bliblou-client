@@ -24,7 +24,7 @@
 }
 
 .recipe-card.bg-dark .card-img {
-  border: 1px solid rgba(0,0,0,.125);
+  border: 1px solid rgba(0, 0, 0, 0.75);
   border-radius: 0%;
 }
 
