@@ -22,7 +22,7 @@ class SignIn extends Component {
     } = this.props;
 
     return (
-      <Form  onSubmit={ this.handleOnSubmit } className="SignIn">
+      <Form  onSubmit={ this.handleOnSubmit }>
         <MailInput mail={ mail } 
                     onChange={ setValue } />
         <PasswordInput password={ password }
