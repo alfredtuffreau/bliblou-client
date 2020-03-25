@@ -36,7 +36,7 @@ class ConfirmationForm extends Component {
     const label = "Code de vérification";
 
     return (
-      <Form onSubmit={ this.handleOnSubmit } className="Confirm">
+      <Form onSubmit={ this.handleOnSubmit }>
         <ConfirmationCodeInputWithTooltip label={ label } 
                                           confirmationCode={ confirmationCode }
                                           showTooltip={ confirmationCode.showTooltip }

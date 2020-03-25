@@ -49,21 +49,11 @@ class RegistrationForm extends Component {
 
   render () {
     const { 
-			isLoading, 
-			firstname, 
-			lastname, 
-			mail,
-			password,
-			gender,
-			onChange, 
-			onBlur, 
-      onHover,
-      onGenderClick,
-			onPasswordClick,
-		} = this.props;
+      isLoading, firstname, lastname, mail, password, gender, onChange, onBlur, onHover, onGenderClick, onPasswordClick 
+    } = this.props;
 
     return (
-      <Form onSubmit={ this.handleOnSubmit } className="SignUp">
+      <Form onSubmit={ this.handleOnSubmit }>
 				<NameInputWithTooltip firstname={ firstname } 
 															lastname={ lastname } 
 															showTooltip={ firstname.showTooltip || lastname.showTooltip }
