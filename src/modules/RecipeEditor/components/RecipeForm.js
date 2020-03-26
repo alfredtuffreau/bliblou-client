@@ -36,7 +36,7 @@ const RecipeForm = ({
     event.preventDefault();
     const { url, name, type, lastModified } = picture || {};
     
-    if (!id || window.confirm(CONFIRM_SUBMIT)) {
+    // if (!id || window.confirm(CONFIRM_SUBMIT)) {
       const value = content.value || RECIPE_TEMPLATE;
       const file = picture && picture.name && picture.type
         ? await fetch(url).then(response => response.blob())
@@ -44,7 +44,7 @@ const RecipeForm = ({
         : null;
       
       onSubmit(id, value, file, currentPicture, history);
-    }
+    // }
   };
 
   const validToSubmit = () => {
@@ -53,7 +53,7 @@ const RecipeForm = ({
   };
 
   const handleOnCancel = () => {
-    if (window.confirm("Si vous annulez les modifications vont être perdues. Voulez-vous continuer ?"))
+    // if (window.confirm("Si vous annulez les modifications vont être perdues. Voulez-vous continuer ?"))
       onCancel(history);
   };
 
