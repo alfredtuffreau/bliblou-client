@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
 import { RECIPES } from "./Routes";
-import withBackgroundHandler from "./withBackgroundHandler";
 
 function querystring(name, url = window.location.href) {
   name = name.replace(/[[]]/g, "\\$&");
@@ -25,4 +24,4 @@ const UnauthenticatedRoute = ({ component: C, componentProps, isAuthenticated, .
   );
 };
 
-export default withBackgroundHandler(UnauthenticatedRoute);
+export default UnauthenticatedRoute;

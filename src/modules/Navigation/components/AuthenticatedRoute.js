@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
 import { LOGIN } from "./Routes";
-import withBackgroundHandler from "./withBackgroundHandler";
 
 const AuthenticatedRoute = ({ component: C, componentProps, isAuthenticated, ...rest }) => (
   <Route { ...rest } render={
@@ -12,4 +11,4 @@ const AuthenticatedRoute = ({ component: C, componentProps, isAuthenticated, ...
   } />
 );
 
-export default withBackgroundHandler(AuthenticatedRoute);
+export default AuthenticatedRoute;

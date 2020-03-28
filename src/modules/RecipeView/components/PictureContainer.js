@@ -5,7 +5,7 @@ const PictureContainer = ({ src }) => !src
   ? <></>
   : (
     <div className="picture-container">
-      <div style={{ backgroundImage: `-webkit-linear-gradient(left, white, transparent 40%), url(${src})` }} />
+      <div style={{ backgroundImage: `-webkit-linear-gradient(left, white, transparent 20%), url(${src})` }} />
     </div>
   );
 

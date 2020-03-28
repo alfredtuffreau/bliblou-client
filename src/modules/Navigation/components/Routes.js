@@ -27,20 +27,18 @@ class Routes extends Component {
   }
 
   render() {
-    const { /* withBackground,  */isAuthenticated, isEditor, logout, routes, setWithBackground } = this.props;
+    const { isAuthenticated, isEditor, logout, routes } = this.props;
 
     return (
       <>
         <NavBar isAuthenticated={ isAuthenticated } logout={ logout } />
         <main>
           <Switch>
-            { routes.map(({ path, component, require, withBackground, ...rest }, index) => {
+            { routes.map(({ path, component, require, ...rest }, index) => {
               const props = { 
                 key: `route-${index}`, 
                 component,
                 isAuthenticated,
-                withBackground,
-                setWithBackground,
                 componentProps: { isAuthenticated, isEditor, ...rest } 
               };
 
@@ -62,11 +60,9 @@ class Routes extends Component {
 }
 
 Routes.propTypes = {
-  withBackground: bool,
   isAuthenticated: bool,
   loadUser: func.isRequired,
   logout: func.isRequired,
-  setWithBackground: func.isRequired,
   routes: arrayOf(shape({
     path: string,
     component: func.isRequired,
@@ -74,7 +70,6 @@ Routes.propTypes = {
 };
 
 Routes.defaultProps = {
-  withBackground: false,
   isAuthenticated: undefined,
 };
 
