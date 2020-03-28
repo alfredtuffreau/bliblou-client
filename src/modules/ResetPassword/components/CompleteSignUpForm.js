@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { shape, string, bool, func } from "prop-types";
 import { withRouter } from "react-router-dom";
-import { Form, Nav, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 import ConfirmationCodeInput from "../../../components/form/ConfirmationCodeInput";
 import withValidationTooltip from "../../../components/form/ValidationTooltip";
@@ -67,7 +67,7 @@ CompleteSignUpForm.propTypes = {
 	onBlur: func.isRequired,
 	onHover: func.isRequired,
   onSubmit: func.isRequired,
-  cancel: func.isRequired,
+  onCancel: func.isRequired,
 };
 
 CompleteSignUpForm.defaultProps = {

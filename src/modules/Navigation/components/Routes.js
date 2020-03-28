@@ -27,7 +27,7 @@ class Routes extends Component {
   }
 
   render() {
-    const { withBackground, isAuthenticated, isEditor, logout, routes, setWithBackground } = this.props;
+    const { /* withBackground,  */isAuthenticated, isEditor, logout, routes, setWithBackground } = this.props;
 
     return (
       <>

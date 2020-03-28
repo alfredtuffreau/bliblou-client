@@ -19,7 +19,7 @@ class ConfirmationCodeInput extends Component {
     const { id, label, confirmationCode: { value, isValid } } = this.props;
 
     return (
-      <Form.Group controlId={ id } bsSize="large">
+      <Form.Group controlId={ id }>
           <Form.Label hidden>{ label }</Form.Label>
           <Form.Control type="tel"
                         value={ value }

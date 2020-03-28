@@ -33,7 +33,7 @@ SocialNetworks.propTypes = {
   networks: arrayOf(shape({
     label: string.isRequired,
     href: string.isRequired,
-    network: oneOf(["Facebook", "Instagram", "Twitter"]).isRequired,
+    network: oneOf(["Facebook", "Instagram", "Twitter", "Mail"]).isRequired,
   })).isRequired,
 };
 

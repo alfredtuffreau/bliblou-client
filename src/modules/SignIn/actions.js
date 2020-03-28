@@ -1,6 +1,5 @@
 import { Auth } from "aws-amplify";
 
-import { isCurrentUserEditor } from "../../libs/awsLibs";
 import { HOME, userHasAuthenticated, userIsEditor } from "../../modules/Navigation";
 import { initConfirm } from "../../modules/SignUp";
 

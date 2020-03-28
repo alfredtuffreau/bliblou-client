@@ -8,7 +8,8 @@ import withValidationTooltip from "../../../components/form/ValidationTooltip";
 
 const CONTENT_ALERT_MESSAGE = "Le format JSON est invalide.";
 const TextareaInputWithTooltip = withValidationTooltip(TextareaInput, CONTENT_ALERT_MESSAGE);
-const CONFIRM_SUBMIT = "Si vous validez la version précédente de la reccete sera supprimée. Voulez-vous continuer ?";
+// const CONFIRM_SUBMIT = "Si vous validez la version précédente de la reccete sera supprimée. Voulez-vous continuer ?";
+// const CONFIRM_CANCEL = "Si vous annulez les modifications vont être perdues. Voulez-vous continuer ?";
 const RECIPE_TEMPLATE = `{
   "title": "",
   "description": "",
@@ -50,7 +51,7 @@ const RecipeForm = ({
   };
 
   const handleOnCancel = () => {
-    // if (window.confirm("Si vous annulez les modifications vont être perdues. Voulez-vous continuer ?"))
+    // if (window.confirm(CONFIRM_CANCEL))
       onCancel(history);
   };
 

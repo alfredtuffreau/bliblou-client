@@ -1,4 +1,4 @@
-import React, { Component, createRef } from "react";
+import React, { Component } from "react";
 import { bool, func } from "prop-types";
 import { NavLink, withRouter } from "react-router-dom";
 import { Navbar, Nav, Button } from "react-bootstrap";
