@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { shape, string, bool, func } from "prop-types";
-import { Form, InputGroup } from "react-bootstrap";
+import { Form, InputGroup, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 class PasswordInput extends Component {
@@ -30,7 +30,6 @@ class PasswordInput extends Component {
       password: { value, isValid, isClear }, 
       withLinkTo 
     } = this.props;
-
     return (
       <Form.Group controlId="password">
         <Form.Label hidden>{ label }</Form.Label>
@@ -45,18 +44,16 @@ class PasswordInput extends Component {
                         onMouseEnter={ this.handleOnHover } 
                         onMouseLeave={ this.handleOnHover } />
           <InputGroup.Append>
-            <span onClick={ this.handleOnCLick }>
-              <InputGroup.Text className="pointer-element"
-                               id="pwdAppend">
-                { isClear ? "Masquer" : "Afficher" }
-              </InputGroup.Text>
-            </span>
+            <Button variant="light" 
+                    onClick={ this.handleOnCLick }
+                    onMouseDown={ (e) => e.preventDefault() }>
+              { isClear ? "Masquer" : "Afficher" }
+            </Button>
           </InputGroup.Append>
         </InputGroup>
         { withLinkTo 
           ? <Link to={ withLinkTo }>Mot de passe oublié ?</Link> 
-          : <></>
-        }
+          : <></> }
       </Form.Group>
     );
   };

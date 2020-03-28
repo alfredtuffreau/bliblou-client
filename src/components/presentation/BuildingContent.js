@@ -2,7 +2,6 @@ import React from "react";
 import { string } from "prop-types";
 
 import icon from "../../images/building.png";
-import { formattedText } from "../../translations";
 
 const BuildingContent = ({ title, descr }) => (
   <>
@@ -18,8 +17,8 @@ BuildingContent.propTypes = {
 };
 
 BuildingContent.defaultProps = {
-  title: formattedText("app.building.title"),
-  descr: formattedText("app.building.description"),
+  title: "En construction",
+  descr: "Nous travaillons pour vous offrir du contenu.",
 };
 
 export default BuildingContent;

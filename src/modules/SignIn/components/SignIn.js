@@ -5,7 +5,6 @@ import { withRouter } from "react-router-dom";
 
 import MailInput from "../../../components/form/MailInput";
 import PasswordInput from "../../../components/form/PasswordInput";
-import { formattedText } from "../../../translations";
 
 import { LOST_PASSWORD } from "../../../modules/Navigation";
 
@@ -24,18 +23,16 @@ class SignIn extends Component {
     return (
       <Form  onSubmit={ this.handleOnSubmit }>
         <MailInput mail={ mail } 
-                    onChange={ setValue } />
+                   onChange={ setValue } />
         <PasswordInput password={ password }
-                        withLinkTo={ LOST_PASSWORD }
-                        onChange={ setValue } 
-                        onClick={ togglePasswordVisibility }/>
+                       withLinkTo={ LOST_PASSWORD }
+                       onChange={ setValue } 
+                       onClick={ togglePasswordVisibility }/>
         <Button variant="success"
                 type="submit"
                 size="lg"
                 disabled={ isLoading }>
-          { !isLoading
-              ? formattedText("signIn.login")
-              : formattedText("signIn.loginIn") }
+          { !isLoading ? "Se connecter >" : "Connexion..." }
         </Button>
       </Form>
     );

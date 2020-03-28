@@ -37,31 +37,34 @@ class GenderInput extends Component {
   }
 
   render () {
-    const label = "Autre";
+    const label = "Gender";
     const { gender: { value, isValid } } = this.props;
-
     return (
       <Form.Group controlId={ GENDER }>
         <Form.Label hidden>{ label }</Form.Label>
-        <InputGroup>
+        <InputGroup id="gender-input">
           <InputGroup.Prepend>
-            <Button className={ this.getClassName(MALE) }
+            <Button variant={ value !== MALE ? "light" : undefined }
                     onClick={ () => this.handleOnCLick(MALE) }
+                    onMouseDown={ (e) => e.preventDefault() }
                     onMouseEnter={ this.handleOnHover } 
-                    onMouseLeave={ this.handleOnHover }>
+                    onMouseLeave={ this.handleOnHover }
+                    className={ isValid === false ? "is-invalid" : undefined }>
               Homme
             </Button>
           </InputGroup.Prepend>
           <InputGroup.Prepend>
-            <Button className={ this.getClassName(FEMALE) }
+            <Button variant={ value !== FEMALE ? "light" : undefined }
                     onClick={ () => this.handleOnCLick(FEMALE) }
+                    onMouseDown={ (e) => e.preventDefault() }
                     onMouseEnter={ this.handleOnHover } 
-                    onMouseLeave={ this.handleOnHover }>
+                    onMouseLeave={ this.handleOnHover }
+                    className={ isValid === false ? "is-invalid" : undefined }>
               Femme
             </Button>
           </InputGroup.Prepend>
           <Form.Control type="text"
-                        placeholder={ label }
+                        placeholder="Autre"
                         value={ value === "Male" || value === "Female" ? "" : value }
                         isInvalid = { isValid === false }
                         onFocus={ () => this.handleOnCLick('') }

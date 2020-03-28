@@ -3,7 +3,6 @@ import { shape, string, bool, func } from "prop-types";
 import { withRouter } from "react-router-dom";
 import { Form, Nav, Button } from "react-bootstrap";
 
-import { formattedText } from "../../../translations";
 import ConfirmationCodeInput from "../../../components/form/ConfirmationCodeInput";
 import PasswordInput from "../../../components/form/PasswordInput";
 import withValidationTooltip from "../../../components/form/ValidationTooltip";
@@ -11,8 +10,8 @@ import withValidationTooltip from "../../../components/form/ValidationTooltip";
 const CONFIRMATION_CODE_ALERT_MESSAGE = "Saisissez votre code de vérification";
 const SPECIAL_CHARACTERS = "^ $ * . [ ] { } ( ) ? - \" ! @ # % & / \\ , > < ' : ; | _ ~ `";
 const PASSWORD_ALERT_MESSAGE = (
-  <div>
-    <div className="message">Le mot de passe doit contenir:</div>
+  <>
+    <p>Le mot de passe doit contenir:</p>
     <ul>
       <li>8 caractères</li>
       <li>au moins 1 chiffre</li>
@@ -20,7 +19,7 @@ const PASSWORD_ALERT_MESSAGE = (
       <li>au moins 1 minuscule</li>
       <li>au moins 1 caractère spécial :<br /><strong>{ SPECIAL_CHARACTERS }</strong></li>
     </ul>
-  </div>
+  </>
 );
 const ConfirmationCodeInputWithTooltip = withValidationTooltip(
   ConfirmationCodeInput, CONFIRMATION_CODE_ALERT_MESSAGE, true
@@ -67,24 +66,18 @@ class NewPasswordForm extends Component {
                                           onChange={ onChange }
                                           onBlur={ onBlur }
                                           onHover={ onHover } />
-        <Nav className="justify-content-end">
-          <Nav.Item>
-            <Button variant="link"
-                    onClick={ this.handleOnCancel }>
-              { formattedText("resetPassword.cancel") }
-            </Button>
-          </Nav.Item>
-          <Nav.Item>
-            <Button variant="success"
-                    type="submit"
-                    size="lg"
-                    disabled={ !this.validToSubmit() || isLoading }>
-              { !isLoading
-                  ? formattedText("resetPassword.confirm")
-                  : formattedText("resetPassword.confirming") }
-            </Button>
-          </Nav.Item>
-        </Nav>
+        <div className="form-buttons">
+          <Button variant="link"
+                  onClick={ this.handleOnCancel }>
+            Annuler
+          </Button>
+          <Button variant="success"
+                  type="submit"
+                  size="lg"
+                  disabled={ !this.validToSubmit() || isLoading }>
+            { !isLoading ? "Valider >" : "Validation..." }
+          </Button>
+        </div>
       </Form>
     );
   }

@@ -5,7 +5,7 @@ import withScrollTop from "../components/view/withScrollTop";
 
 const ContactUs = () => (
   <>
-    <div className="with-background-image">
+    <div className="background-image-panel">
       <div className="contact-us">
         <h1 >Contactez-nous</h1>
         <p>Nous faisons notre possible pour simplifier la cuisine maison, aidez-nous.</p>

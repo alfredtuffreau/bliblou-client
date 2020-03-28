@@ -3,8 +3,6 @@ import { string, object, func } from "prop-types";
 import { Row, Col } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 
-import "./RecipeView.css";
-
 import PictureContainer from "./PictureContainer";
 import InfoTable from "./InfoTable";
 import Ingredients from "./Ingredients";
@@ -45,24 +43,21 @@ const RecipeView = ({
 
   return isLoading
     ? <></>
-    : (
-      <div className="recipe-view">
-        <div className="recipe-header">
-          <PictureContainer src={ src } />
-          <div className="recipe-presentation">
-            <h1>{ title }</h1>
-            <p>{ description }</p>
-            <InfoTable preparation={ preparation }
-                      cookingAfterPreparation={ cookingAfterPreparation }
-                      before={ before }
-                      after={ after }
-                      nbOfPeople={ nbOfPeople } />
-          </div>
-        </div>
-        <ActionButtons isEditor={ isEditor }
-                       onDelete={ handleOnDelete }
-                       onEdit={ handleOnEdit } /> 
-          <Row className="recipe-body" noGutters>
+    : ( <>
+          <div className="recipe-header">
+            <PictureContainer src={ src } />
+              <h1>{ title }</h1>
+              <p>{ description }</p>
+              <InfoTable preparation={ preparation }
+                        cookingAfterPreparation={ cookingAfterPreparation }
+                        before={ before }
+                        after={ after }
+                        nbOfPeople={ nbOfPeople } />
+              <ActionButtons isEditor={ isEditor }
+                              onDelete={ handleOnDelete }
+                              onEdit={ handleOnEdit } />
+          </div> 
+          <Row className="recipe-body">
             <Col md={{ span: 3, offset: 1 }}>
               <Ingredients ingredients={ ingredients } />
             </Col>
@@ -70,13 +65,12 @@ const RecipeView = ({
               <Steps steps={ steps } />
             </Col>
           </Row>
-          <Row className="recipe-footer" noGutters>
+          <Row className="recipe-footer">
             <Col md={{ span: 11, offset: 1 }}>
               <Suggestions suggestions={ suggestions } />
             </Col>
           </Row>
-      </div>
-    );
+        </> );
 };
 
 RecipeView.propTypes = {

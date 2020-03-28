@@ -6,7 +6,7 @@ import withScrollTop from "../components/view/withScrollTop";
 import SignIn from "../modules/SignIn";
 
 const Login = () => (
-  <div className="with-background-image">
+  <div className="background-image-panel">
     <Row noGutters>
       <Col md={{ span:5, offset:1 }}>
         <Catcher />

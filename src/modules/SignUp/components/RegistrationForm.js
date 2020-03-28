@@ -12,8 +12,8 @@ const NAME_ALERT_MESSAGE = "Saisissez votre nom complet";
 const MAIL_ALERT_MESSAGE = "Saisissez une adresse valide";
 const SPECIAL_CHARACTERS = "^ $ * . [ ] { } ( ) ? - \" ! @ # % & / \\ , > < ' : ; | _ ~ `";
 const PASSWORD_ALERT_MESSAGE = (
-  <div>
-    <div className="message">Le mot de passe doit contenir:</div>
+  <>
+    <p>Le mot de passe doit contenir:</p>
     <ul>
       <li>8 caractères</li>
       <li>au moins 1 chiffre</li>
@@ -21,7 +21,7 @@ const PASSWORD_ALERT_MESSAGE = (
       <li>au moins 1 minuscule</li>
       <li>au moins 1 caractère spécial :<br /><strong>{ SPECIAL_CHARACTERS }</strong></li>
     </ul>
-  </div>
+  </>
 );
 const GENDER_ALERT_MESSAGE = "Indiquez votre genre";
 const NameInputWithTooltip = withValidationTooltip(NamesInput, NAME_ALERT_MESSAGE, true);
@@ -81,9 +81,7 @@ class RegistrationForm extends Component {
                 type="submit"
                 size="lg"
                 disabled={ !this.validToSubmit() || isLoading }>
-          { !isLoading
-              ? "Je m'inscris gratuitement >"
-              : "Inscription..." }
+          { !isLoading ? "Je m'inscris gratuitement >" : "Inscription..." }
         </Button>
       </Form>
     );

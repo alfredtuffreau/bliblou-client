@@ -33,11 +33,9 @@ class ConfirmationForm extends Component {
 
   render () {
     const { confirmationCode, onChange, onBlur, onHover, isLoading } = this.props;
-    const label = "Code de vérification";
-
     return (
       <Form onSubmit={ this.handleOnSubmit }>
-        <ConfirmationCodeInputWithTooltip label={ label } 
+        <ConfirmationCodeInputWithTooltip label="Code de vérification" 
                                           confirmationCode={ confirmationCode }
                                           showTooltip={ confirmationCode.showTooltip }
                                           onChange={ onChange }
@@ -47,9 +45,7 @@ class ConfirmationForm extends Component {
                 type="submit"
                 size="lg"
                 disabled={ !this.validToSubmit() || isLoading }>
-          { !isLoading
-              ? "Vérifier >"
-              : "Verification..." }
+          { !isLoading ? "Vérifier >" : "Verification..." }
         </Button>
       </Form>
     );

@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import { bool, shape, string, func } from "prop-types";
 import { Row, Col } from "react-bootstrap";
 
-import { formattedText } from "../../../translations";
 import icon from "../../../images/mail.png";
 
-import "./ResetPassword.css";
 import IdentificationForm from "./IdentificationForm";
 import NewPasswordForm from "./NewPasswordForm";
 import CompleteSignUpForm from "./CompleteSignUpForm";
@@ -25,9 +23,9 @@ class ResetPassword extends Component {
     if (needConfirmSignUp) {
       const { signUpCode, validateSignUp } = this.props;
       description = (<>
-        <p>{ formattedText("resetPassword.descriptionCompleteSignUp") }</p>
+        <p>Saisissez le code de vérification qui vous a été envoyé pour confirmer votre inscription.</p>
         <p>
-          <small>{ formattedText("resetPassword.hintCompleteSignUp") }</small>
+          <small>Un second code vous sera envoyé pour définir votre nouveau mot de passe</small>
         </p>
       </>);
       img = <></>;
@@ -44,7 +42,7 @@ class ResetPassword extends Component {
         confirmationCode, password, togglePasswordVisibility, validateReset 
       } = this.props;
  
-      description = <p>{ formattedText("resetPassword.descriptionSent") }</p>;
+      description = <p>Saisissez votre nouveau mot de passe et le code de vérification qui vous a été envoyé par email.</p>;
       img = <></>;
       form = <NewPasswordForm mail={ mail }
                               confirmationCode={ confirmationCode }
@@ -59,7 +57,7 @@ class ResetPassword extends Component {
     } else {
       const { startReset } = this.props;
 
-      description = <p>{ formattedText("resetPassword.descriptionNotSent") }</p>;
+      description = <p>Nous vous enverrons les instructions de réinitialisation de votre mot de passe par email.</p>;
       img = <img src={ icon } alt="Mail" />;
       form = <IdentificationForm mail={ mail }
                                  isLoading={ isLoading } 
@@ -71,14 +69,16 @@ class ResetPassword extends Component {
     }
 
     return (
-      <div className="ResetPassword">
-        <h2>{ formattedText("resetPassword.title") }</h2>
+      <>
+        <h2>Mot de passe oublié</h2>
         { description }
         { img }
-        <Col md={{ span:8, offset:2 }}>
-          { form }
-        </Col>
-      </div>
+        <Row>
+          <Col md={{ span:8, offset:2 }}>
+            { form }
+          </Col>
+        </Row>
+      </>
       
     );
   }

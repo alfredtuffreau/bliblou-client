@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import { bool, number, string, func } from "prop-types"
+import { bool, func } from "prop-types"
 import { Card } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { FaPlus } from 'react-icons/fa';
-
-import "./AddRecipeCard.css";
-
-const ICON_SIZE = 2;
 
 class AddRecipeCard extends Component {
   handleOnClick = () => {
@@ -16,22 +12,18 @@ class AddRecipeCard extends Component {
   }
 
   render() {
-    const { isEditor, className, height, width } = this.props;
+    const { isEditor } = this.props;
     return !isEditor
       ? <></>
       : (
-        <Card style={{ width: `${width}rem`, minWidth: `${width}rem` }} 
-              className={ `add-recipe-card ${className || ""}` }
-              key="new-recipe"
+        <Card key="new-recipe"
+              className="add"
+              bg="light"
+              text="dark"
               onClick={ this.handleOnClick }>
-          <div style={{ position: "relative", height: `${height}rem` }}
-              className="card-img">
-            <IconContext.Provider value={{ color: "black", size: `${ICON_SIZE}em` }}>
-              <FaPlus style={{ 
-                margin: "0", 
-                position: "absolute", 
-                top: `${(height - ICON_SIZE) / 2}rem`, 
-                left: `${(width - ICON_SIZE) / 2}rem` }} />
+          <div className="card-img">
+            <IconContext.Provider value={{ className: "icon" }}>
+              <FaPlus />
             </IconContext.Provider>
           </div>
           <Card.Body>
@@ -44,15 +36,11 @@ class AddRecipeCard extends Component {
 
 AddRecipeCard.propTypes = {
   isEditor: bool,
-  className: string,
-  height: number.isRequired,
-  width: number.isRequired,
-  onClick: func.isRequired,
+  onClick: func.isRequired
 }
 
 AddRecipeCard.defaultProps = {
-  isEditor: undefined,
-  className: "",
+  isEditor: undefined
 }
 
 export default withRouter(AddRecipeCard);

@@ -3,8 +3,6 @@ import { bool, func } from "prop-types";
 import { NavLink, withRouter } from "react-router-dom";
 import { Navbar, Nav, Button } from "react-bootstrap";
 
-import { formattedText } from "../../../translations";
-
 import { HOME, LOGIN } from "./Routes";
 
 class BrandNavBar extends Component {
@@ -21,22 +19,18 @@ class BrandNavBar extends Component {
   render () {
     const { isAuthenticated, location: { pathname } } = this.props;
     const { label, href } = pathname !== HOME
-      ? { label: formattedText("app.signUp"), href: HOME }
-      : { label: formattedText("app.signIn"), href: LOGIN };
+      ? { label: "Créer un compte", href: HOME }
+      : { label: "S'identifier", href: LOGIN };
 
     return (
       <header>
-        <Navbar bg="black" fixed="top">
-          <Navbar.Brand>
-            <NavLink to={ HOME } className="brand">
-              <h1>{ formattedText("app.name").toUpperCase() }</h1>
-            </NavLink>
-          </Navbar.Brand>
+        <Navbar bg="light" fixed="top">
+          <Navbar.Brand as={ NavLink } to={ HOME }>{ "Le bliblou".toUpperCase() }</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             { isAuthenticated
               ? (<Button variant="success" onClick={ this.handleLogout }>
-                  { formattedText("app.logout") }
+                  Se déconnecter
                 </Button>)
               : (<Nav>
                   <NavLink to={ href }>

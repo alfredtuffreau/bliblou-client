@@ -98,7 +98,3 @@ Contains the redux store configuration for the react modules
 ### src/components/
 
 Contains all components reusable through the application (without state)
-
-### src/translations/
-
-Contains all label internationalization (used yet)

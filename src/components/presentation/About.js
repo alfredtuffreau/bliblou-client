@@ -5,18 +5,16 @@ import { Image } from "react-bootstrap";
 import SocialNetworks from "./SocialNetworks";
 
 const About = ({ name, title, picture, descriptions, networks }) => (
-  <div>
+  <div className="about">
     <h2>{ name }</h2>
     <h3>{ title }</h3>
-    <div>
-      <Image src={ picture } className="about-picture" roundedCircle />
-      { networks 
-          ? <SocialNetworks networks={ networks } /> 
-          : null }
-      { descriptions && descriptions.map((str, index) => (
-        <p key={ "descr-" + index }>{ str }</p>
-      )) }
-    </div>
+    <Image src={ picture } roundedCircle />
+    { networks 
+        ? <SocialNetworks networks={ networks } /> 
+        : null }
+    { descriptions && descriptions.map((str, index) => (
+      <p key={ "descr-" + index }>{ str }</p>
+    )) }
   </div>
 );
 

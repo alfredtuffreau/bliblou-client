@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { bool } from "prop-types";
-import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+
 
 import icon from "../images/fire.png";
-import { formattedText } from "../translations";
 import withScrollTop from "../components/view/withScrollTop";
 import { HOME, LOGIN } from "../modules/Navigation";
 
@@ -17,34 +16,29 @@ class NotFound extends Component {
     const { isAuthenticated } = this.props;
     
     const back = (
-      <Button key="back" variant="link"
-        onClick={ this.handleOnClick }>
-        { formattedText("app.pageNotFound.links.back") }
-      </Button>
+      <NavLink key="back" to="#" onClick={ this.handleOnClick }>
+        Page précédente
+      </NavLink>
     );
     const home = (
-      <Link key="home" to={ HOME }>
-        <Button variant="link">
-          { formattedText("app.pageNotFound.links.home") }
-        </Button>
-      </Link>
+      <NavLink key="home" to={ HOME }>
+        Page d'accueil
+      </NavLink>
     );
     const login = (
-      <Link key="login" to={ LOGIN }>
-        <Button variant="link">
-          { formattedText("app.pageNotFound.links.login") }
-        </Button>
-      </Link>
+      <NavLink key="login" to={ LOGIN }>
+        S'identifier
+      </NavLink>
     );
 
     const links = [ back, "|", home ];
     if (!isAuthenticated) links.push("|", login);
 
     return (
-      <div className="not-found with-background-image">
+      <div className="not-found background-image-panel">
         <div>
-          <h2>{ formattedText("app.pageNotFound.title") }</h2>
-          <h3>{ formattedText("app.pageNotFound.description") }</h3>
+          <h2>Oups, page introuvable</h2>
+          <h3>La page que vous recherchez a peut-être été supprimée.</h3>
           <img src={ icon } alt="Not found" />
           { links }
         </div>

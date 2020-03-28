@@ -3,7 +3,6 @@ import { shape, string, bool, func } from "prop-types";
 import { withRouter } from "react-router-dom";
 import { Form, Nav, Button } from "react-bootstrap";
 
-import { formattedText } from "../../../translations";
 import ConfirmationCodeInput from "../../../components/form/ConfirmationCodeInput";
 import withValidationTooltip from "../../../components/form/ValidationTooltip";
 
@@ -43,24 +42,18 @@ class CompleteSignUpForm extends Component {
                                           onChange={ onChange }
                                           onBlur={ onBlur }
                                           onHover={ onHover } />
-        <Nav className="justify-content-end">
-          <Nav.Item>
-            <Button variant="link"
-                    onClick={ this.handleOnCancel }>
-              { formattedText("resetPassword.cancel") }
-            </Button>
-          </Nav.Item>
-          <Nav.Item>
-            <Button variant="success"
-                    type="submit"
-                    size="lg"
-                    disabled={ !this.validToSubmit() || isLoading }>
-              { !isLoading
-                  ? formattedText("resetPassword.confirm")
-                  : formattedText("resetPassword.confirming") }
-            </Button>
-          </Nav.Item>
-        </Nav>
+        <div className="form-buttons">
+          <Button variant="link"
+                  onClick={ this.handleOnCancel }>
+            Annuler
+          </Button>
+          <Button variant="success"
+                  type="submit"
+                  size="lg"
+                  disabled={ !this.validToSubmit() || isLoading }>
+            { !isLoading ? "Valider >" : "Validation..." }
+          </Button>
+        </div>
       </Form>
     );
   }

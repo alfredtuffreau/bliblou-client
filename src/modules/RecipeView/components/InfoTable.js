@@ -3,21 +3,19 @@ import { number } from "prop-types";
 import { IconContext } from "react-icons";
 import { FaRegClock, FaUsers } from 'react-icons/fa';
 
-import "./InfoTable.css";
-
 const InfoTable = ({ before, preparation, cookingAfterPreparation, after, nbOfPeople }) => (
-  <table className="info-table">
+  <table>
     <tbody>
       <tr>
         <td>
-          <IconContext.Provider value={{ color: "#4CAE51", size: `1.25em` }}>
-            <FaRegClock style={{ marginBottom: "0.2em" }} />
+          <IconContext.Provider value={{ className: "icon" }}>
+            <FaRegClock />
             { ` ${before + preparation + cookingAfterPreparation + after } minutes` }
           </IconContext.Provider>
         </td>
         <td>
-          <IconContext.Provider value={{ color: "#4CAE51", size: `1.25em` }}>
-            <FaUsers style={{ marginBottom: "0.2em" }} />
+          <IconContext.Provider value={{ className: "icon" }}>
+            <FaUsers />
             { ` ${nbOfPeople } pers.` }
           </IconContext.Provider>
         </td>

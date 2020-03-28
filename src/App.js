@@ -1,6 +1,5 @@
 import React from "react";
 
-import "./App.css";
 import { 
   Routes, 
   HOME, HOME2, LOGIN, RECIPES, RECIPE, ABOUT_US, CONTACT_US, LOST_PASSWORD,

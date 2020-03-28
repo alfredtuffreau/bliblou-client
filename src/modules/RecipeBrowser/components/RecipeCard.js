@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import { string, number, func } from "prop-types";
+import { string, func } from "prop-types";
 import { withRouter } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import { IconContext } from "react-icons";
 import { FaRegClock, FaUsers } from 'react-icons/fa';
 
 import defaultImage from "../../../images/building.png"
-
-import "./RecipeCard.css";
 
 class RecipeCard extends Component {
   constructor(props) {
@@ -32,7 +30,8 @@ class RecipeCard extends Component {
   }
 
   render() {
-    const { content, src, width, height, className } = this.props;
+    const { overlay } = this.state;
+    const { content, src } = this.props;
     const { 
       title = "", 
       description = "", 
@@ -45,25 +44,23 @@ class RecipeCard extends Component {
     } = JSON.parse(content);
                           
     return (
-      <Card style={{ width: `${width}rem`, minWidth: `${width}rem` }}
-            className={ `recipe-card ${className || ""}` }
+      <Card bg="light"
+            text="dark"
             onClick={ this.handleOnClick }
             onMouseEnter={ this.onMouseEnter }
-            onMouseLeave={ this.onMouseLeave } >
+            onMouseLeave={ this.onMouseLeave }>
         <Card.Img src={ src || defaultImage } 
                   alt="Recipe image" 
-                  className={ src ? "" : "default-image"}
-                  style={{ height: `${height}rem` }} />
+                  className={ src ? undefined : "default-image"} />
         <Card.Body>
           <Card.Title>{ title }</Card.Title>
         </Card.Body>
-        { 
-          !this.state.overlay
+        { !overlay
             ? <></> 
             : (<Card.ImgOverlay>
                 { 
                   description 
-                    ? <Card.Text style={{ minHeight: "1.5em" }}>{ description }</Card.Text>
+                    ? <Card.Text>{ description }</Card.Text>
                     : <></> 
                 }
                 <Card.Text as="div">
@@ -71,14 +68,14 @@ class RecipeCard extends Component {
                     <tbody>
                       <tr>
                         <td>
-                          <IconContext.Provider value={{ color: "#4CAE51", size: `1.25em` }}>
-                            <FaRegClock style={{ marginBottom: "0.2em" }} />
+                          <IconContext.Provider value={{ className: "icon" }}>
+                            <FaRegClock />
                             { ` ${before + preparation + cookingAfterPreparation + after } minutes` }
                           </IconContext.Provider>
                         </td>
                         <td>
-                          <IconContext.Provider value={{ color: "#4CAE51", size: `1.25em` }}>
-                            <FaUsers style={{ marginBottom: "0.2em" }} />
+                          <IconContext.Provider value={{ className: "icon" }}>
+                            <FaUsers />
                             { ` ${nbOfPeople } pers.` }
                           </IconContext.Provider>
                         </td>
@@ -86,8 +83,7 @@ class RecipeCard extends Component {
                     </tbody>
                   </table>
                 </Card.Text>
-              </Card.ImgOverlay>)
-        }
+              </Card.ImgOverlay>) }
       </Card>
     );
   }
@@ -96,15 +92,11 @@ class RecipeCard extends Component {
 RecipeCard.propTypes = {
   recipeId: string.isRequired,
   src: string,
-  width: number.isRequired,
-  height: number.isRequired,
-  className: string,
   onClick: func.isRequired,
 };
 
 RecipeCard.defaultProps = {
-  src: undefined,
-  className: "",
+  src: undefined
 };
 
 export default withRouter(RecipeCard);

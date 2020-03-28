@@ -7,7 +7,11 @@ import { store } from "../store";
 
 const lists = [ 
   { title: "Toutes les recettes" },
-  { title: "Pour 4", predicate: ({ content }) => JSON.parse(content).nbOfPeople === 4 }
+  { title: "Pour 6", predicate: ({ content }) => JSON.parse(content).nbOfPeople === 6 },
+  { title: "Moins de 60 minutes", predicate: ({ content }) => {
+    const { preparation, cookingAfterPreparation, resting: { before, after } } = JSON.parse(content).durations;
+    return preparation + cookingAfterPreparation + before + after < 60;
+  }}
 ]; 
 
 const view = ({ isEditor }) => {

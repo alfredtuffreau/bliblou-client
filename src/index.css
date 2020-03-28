@@ -3,54 +3,46 @@ body {
   padding: 0;
   font-family: "Open Sans", sans-serif;
   text-align: justify;
-  color: #FFF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
-  background-color: black;
   overflow: auto;
   position: relative;
   padding-bottom: 120.22px;
   min-height: 100vh;
 }
 
-header .brand { 
-  text-decoration: none; 
-  color: black;
+/* Header */
+header>nav.navbar {
+  height: 70px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
-header .bg-black {
-  background-color: black;
-}
-
-header a.brand:hover {
-  text-decoration: none;
-}
-
-header .brand>h1:first-child {
+header>nav.navbar>a.navbar-brand { 
   margin: 0;
-  font-size: 1.85em;
-  font-weight: 500;
+  padding: 0;
+  display: inline-block;
+  text-decoration: none;
   color: black;
-  text-shadow:
-    1px  1px 1px pink,
-    1px -1px 1px pink,
-   -1px  1px 1px pink,
-   -1px -1px 1px pink;
+  font-size: 1.78em;
+  font-weight: 500;
 }
 
+/* Main */
 main {
   padding-top: 70px;
 }
 
+/* Footer */
 footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   color: gainsboro;
-  background-color: #1a1a1a;
+  background-color: #252525;
   padding: 16px 0 30px;
 }
 
@@ -62,15 +54,16 @@ footer .social-networks {
   float: right;
 }
 
-footer a {
+footer a, footer a:hover {
   color: gainsboro;
 }
 
-footer .links a {
-  font-size: 0.90em;
-  padding-right: 20px;
+footer .links>a {
+  font-size: 0.9em;
+  margin-right: 20px;
 }
 
+/* Titles and code */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
@@ -100,6 +93,82 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+small {
+  font-size: 90%;
+}
+
+/* Buttons and links */
+.btn.btn-primary {
+  color: #fff;
+  background-color: #e49aa7;
+  border-color: #e49aa7;
+}
+
+.btn.btn-primary:hover {
+  background-color: #df8695;
+  border-color: #da7283;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+.btn-link {
+  color: black;
+}
+
+.btn-link:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+.background-image-panel a {
+  color: white;
+}
+
+.background-image-panel a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.background-image-panel .btn-link {
+  color:white;
+}
+
+.background-image-panel .btn-link:hover {
+  color:white;
+}
+
+/* Panels */
+.background-image-panel {
+  background: url('./images/LeBliblou.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+  overflow: auto;
+}
+
+.background-image-panel>div:first-child {
+  color: gainsboro;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 75px auto;
+  padding: 20px 0px;
+}
+
+.background-image-panel form {
+  margin-top: .4em;
+}
+
+.panel {
+  padding: 24px 0;
+}
+
+/* Forms */
 select.form-control,
 textarea.form-control,
 input.form-control {
@@ -109,60 +178,29 @@ input[type=file] {
   width: 100%;
 }
 
-a {
-  color: white;
-}
-
-a:hover {
-  color: white;
-  text-decoration: underline;
-}
-
-.btn-link {
-  color:white;
-}
-
-.btn-link:hover {
-  color:white;
-}
-
-.with-background-image {
-  background: url('./images/LeBliblou.jpg');
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-position: center;
-  overflow: auto;
-}
-
-.with-background-image>div:first-child {
-  background-color: rgba(0, 0, 0, 0.5);
-  margin: 75px auto;
-  padding: 20px 0px;
-}
-
-.with-background-image form {
-  margin: .4em 0;
-}
-
 .form-text {
   text-align: left;
 }
 
-.input-group .left-button.is-invalid {
+#password.is-invalid,
+.was-validated #password:invalid {
+  margin-right: 1px;
+}
+
+#gender-input>:first-child>button.is-invalid,
+.was-validated #gender-input>:first-child>button:invalid {
+  border-top-color: #dc3545;
   border-left-color: #dc3545;
+  border-bottom-color: #dc3545;
+}
+
+#gender-input>:not(:first-child):not(:last-child)>button.is-invalid,
+.was-validated #gender-input>:not(:first-child):not(:last-child)>button:invalid {
   border-top-color: #dc3545;
   border-bottom-color: #dc3545;
 }
 
-.input-group .middle-button.is-invalid {
-  border-top-color: #dc3545;
-  border-bottom-color: #dc3545;
-}
-
-.pointer-element {
-  cursor: pointer;
-}
-
+/* Tooltip */
 .tooltip-error > .tooltip-inner {
   background-color: #dc3545;
   color: #fff;
@@ -173,7 +211,7 @@ a:hover {
   border-left-color: #dc3545;
 }
 
-.tooltip-error .message, .tooltip-error li, .tooltip-error ul {
+.tooltip-error p, .tooltip-error li, .tooltip-error ul {
   margin: 0;
   text-align: left;
 }
@@ -182,13 +220,7 @@ a:hover {
   margin-bottom: 16px;
 }
 
-.about-picture {
-  float: left;
-  width: 100px; 
-  margin: 16px;
-  border: 2px solid gray;
-}
-
+/* Separator */
 .line-separator {
   height:1px;
   background:#717171;  
@@ -196,10 +228,7 @@ a:hover {
   margin-bottom: 8px;
 }
 
-.panel {
-  padding: 24px 0;
-}
-
+/* Pages */
 .contact-us, .lost-password, .not-found {
   text-align: center;
 }
@@ -210,21 +239,197 @@ a:hover {
   display: block;
 }
 
-.not-found .btn-link {
-  padding: 0 12px 0;
+/* Should be .not-found>a  */
+.not-found a {
+  margin: 12px;
 }
 
-.recipe-editor form {
+/* Modules */
+/* Refacto paddings and margins */
+.recipe-editor {
+  margin: 16px 0;
+}
+
+.recipes-list:first-child {
+  margin-top: 16px;
+}
+
+.recipes-list {
+  margin-left: 16px;
+}
+
+.recipes-list>h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.recipes-list .card {
+  cursor: pointer;
+}
+
+.recipe-header {
+  overflow: auto;
+  margin-left: 16px;
   margin-bottom: 16px;
 }
 
-.step-index {
-  color: #D29FA8;
+.recipe-header>.picture-container {
+  margin-left: 16px;
+  width: 50%;
+  float: right;
 }
 
-.card-list>.card-group {
+.recipe-header>.picture-container>div {
+  padding-bottom: 56.25%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+
+.recipe-header>h1 {
+  margin-top: 16px;
+}
+
+.recipe-header table {
+  width: 25%;
+  margin-bottom: 1em;
+}
+
+.recipe-header>.btn-group .icon {
+  color: white;
+  size: 1.25rem;
+  margin-bottom: 0.2rem;
+  margin-right: 12px;
+}
+
+.recipe-body {
+  text-align: left;
+}
+
+.recipe-body {
+  margin-bottom: 1em;
+}
+
+.recipe-body p {
+  margin-bottom: 0.5em;
+}
+
+.recipe-footer {
+  margin-bottom: 1em;
+}
+
+/* Change to ul */
+.step-index {
+  color: #D29FA8;
+  font-weight: 700;
+}
+
+/* Components */
+.form-buttons {
+  float: right;
+}
+
+.about>img {
+  float: left;
+  width: 100px; 
+  margin: 16px;
+  border: 2px solid gainsboro;
+}
+
+.row>.card-group {
   flex-flow: row;
   overflow:scroll;
+  margin-bottom: 1rem ;
+}
+
+.card {
+  width: 18rem;
+  min-width: 18rem;
+}
+
+.card, .card .h5, .card p {
+  font-size: .95rem;
+  text-align: left;
+}
+
+.card p {
+  margin-bottom: .5rem;
+}
+
+.card-body {
+  padding: 5px;
+}
+
+.card-title {
+  margin: 0;
+}
+
+.card-img {
+  object-fit: cover;
+  height: 8.5rem;
+  background-color: white;
+}
+
+.card-img.default-image {
+  object-fit: contain;
+}
+
+.card-img {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.card:first-child:not(:last-child)>.card-img {
+  border-top-right-radius: 0;
+}
+
+.card:not(:first-child):not(:last-child)>.card-img {
+  border-radius: 0;
+}
+
+.card:not(:first-child):last-child>.card-img {
+  border-top-left-radius: 0;
+}
+
+.card-img-overlay {
+  padding: 5px 16px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.card-img-overlay table {
+  width: 100%;
+}
+
+.card-img-overlay .icon, .recipe-header .icon {
+  color: #4CAE51;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-bottom: 0.2rem;
+}
+
+.add.card {
+  width: 8.5rem;
+  min-width: 8.5rem;
+}
+
+.add.card>.card-img {
+  background-color: white;
+  position: relative;
+}
+
+.add.card:hover>.card-img {
+  background-color: #e2e6ea;
+}
+
+.add.card .icon {
+  color: black;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 3.25rem;
+  left: 3.25rem;
 }
 
 .social-networks {
@@ -248,7 +453,7 @@ a:hover {
 
 .dropzone-input {
   min-height: 200px;
-  border: 2px dashed white;
+  border: 2px dashed black;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
@@ -262,7 +467,6 @@ a:hover {
 }
 
 .dropzone-input>img {
-  filter: invert(97%) sepia(93%) saturate(0%) hue-rotate(273deg) brightness(107%) contrast(107%);
   height: 64px;
 }
 
@@ -289,19 +493,4 @@ a:hover {
 
 .dropzone:not(:hover)>.dropzone-input.with-image {
   opacity: 0.5;
-}
-
-.btn.btn-gender.btn-primary:not(.input-group-text) {
-  color: #fff;
-  background-color: #EFB5BF;
-  border-color: #EFB5BF;
-}
-
-.btn.btn-gender.btn-primary:hover {
-  background-color: rgb(226, 147, 160);
-  border-color: rgb(226, 147, 160);
-}
-
-.btn.btn-gender {
-  box-shadow: none;
 }

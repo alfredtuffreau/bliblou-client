@@ -1,13 +1,10 @@
 import React from "react";
 import { object, shape, bool, string, func } from "prop-types"
 import { withRouter } from "react-router-dom";
-import { Nav, Button, Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
-import { formattedText } from "../../../translations";
 import TextareaInput from "../../../components/form/TextareaInput";
 import withValidationTooltip from "../../../components/form/ValidationTooltip";
-
-import "./RecipeForm.css";
 
 const CONTENT_ALERT_MESSAGE = "Le format JSON est invalide.";
 const TextareaInputWithTooltip = withValidationTooltip(TextareaInput, CONTENT_ALERT_MESSAGE);
@@ -60,31 +57,24 @@ const RecipeForm = ({
   return ( 
     <Form className="recipe-form" onSubmit={ handleOnSubmit }>
       <TextareaInputWithTooltip controlId="content" 
-                                label="Recipe content"
                                 content={ content }
                                 defaultValue={ RECIPE_TEMPLATE }
                                 showTooltip={ content.showTooltip }
                                 onChange={ onChange }
                                 onBlur={ onBlur }
                                 onHover={ onHover } />
-      <Nav className="justify-content-end">
-        <Nav.Item>
-          <Button variant="link"
-                  onClick={ handleOnCancel }>
-            { formattedText("resetPassword.cancel") }
-          </Button>
-        </Nav.Item>
-        <Nav.Item>
-          <Button variant="success"
-                  type="submit"
-                  size="lg"
-                  disabled={ !validToSubmit() || isLoading }>
-                  { !isLoading
-                      ? "Enregistrer >"
-                      : "Enregistrement..." }
-          </Button>
-        </Nav.Item>
-      </Nav>
+      <div className="form-buttons">
+        <Button variant="link"
+                onClick={ handleOnCancel }>
+          Annuler
+        </Button>
+        <Button variant="success"
+                type="submit"
+                size="lg"
+                disabled={ !validToSubmit() || isLoading }>
+          { !isLoading ? "Enregistrer >" : "Enregistrement..." }
+        </Button>
+      </div>
     </Form>
   );
 };

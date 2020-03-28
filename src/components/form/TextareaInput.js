@@ -17,13 +17,12 @@ class TextareaInput extends Component {
   }
 
   render() {
-    const { controlId, label, defaultValue, content: { value, isValid } } = this.props;
+    const { controlId, defaultValue, content: { value, isValid } } = this.props;
     const currentValue = value || defaultValue;
     const rows = currentValue.split(/\r\n|\r|\n/).length;
-
     return (
       <Form.Group controlId={ controlId }>
-        <Form.Label hidden>{ label }</Form.Label>
+        <Form.Label hidden>Recette</Form.Label>
         <Form.Control as="textarea" 
                       value={ currentValue } 
                       rows={ rows } 
@@ -39,7 +38,6 @@ class TextareaInput extends Component {
 
 TextareaInput.propTypes = {
   controlId: string.isRequired,
-  label: string.isRequired,
   content: shape({
     value: string,
     isValid: bool,
