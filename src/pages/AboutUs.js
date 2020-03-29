@@ -60,7 +60,7 @@ const team = [{
 
 const AboutUs = () => (
   <>
-    <div className="background-image-panel">
+    <div className="image-panel">
       <Row>
         <Col md={{ span:8, offset: 2 }}>
           <About { ...bliblou } />

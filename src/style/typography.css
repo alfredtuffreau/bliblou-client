@@ -1,0 +1,39 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  text-align: justify; /* should be left */
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2em; 
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+h4, h5 {
+  font-size: 1em;
+}
+
+small {
+  font-size: 90%;
+}
+
+.navbar-brand { 
+  font-size: 1.78em;
+  font-weight: 500;
+}

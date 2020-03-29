@@ -1,0 +1,30 @@
+a, a:hover, .btn-link, .btn-link:hover {
+  color: black;
+}
+
+footer {
+  background-color: #252525;
+}
+
+footer, footer a, footer a:hover {
+  color: gainsboro;
+}
+
+h3 {
+  color: #D29FA8;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #e49aa7;
+  border-color: #e49aa7;
+}
+
+  .btn-primary:hover {
+    background-color: #df8695;
+    border-color: #da7283;
+  }
+
+.image-panel a, .image-panel a:hover, .image-panel .btn-link, .image-panel .btn-link:hover {
+  color: white;
+}

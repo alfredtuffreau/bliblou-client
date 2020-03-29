@@ -5,7 +5,7 @@ import withScrollTop from "../components/view/withScrollTop";
 import ResetPassword from "../modules/ResetPassword";
 
 const LostPassword = () => (
-  <div className="background-image-panel">
+  <div className="image-panel">
     <Row className="lost-password" noGutters>
       <Col md={{ span:6, offset:3 }}>
         <ResetPassword />

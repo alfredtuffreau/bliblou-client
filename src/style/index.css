@@ -1,151 +1,23 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Open Sans", sans-serif;
-  text-align: justify;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-#root {
-  overflow: auto;
-  position: relative;
-  padding-bottom: 120.22px;
-  min-height: 100vh;
-}
 
-/* Header */
-header>nav.navbar {
-  height: 70px;
-  padding-top: 0;
-  padding-bottom: 0;
-}
 
-header>nav.navbar>a.navbar-brand { 
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  text-decoration: none;
-  color: black;
-  font-size: 1.78em;
-  font-weight: 500;
-}
 
-/* Main */
-main {
-  padding-top: 70px;
-}
 
-/* Footer */
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  color: gainsboro;
-  background-color: #252525;
-  padding: 16px 0 30px;
-}
 
-footer .links {
-  float: left;
-}
 
-footer .social-networks {
-  float: right;
-}
 
-footer a, footer a:hover {
-  color: gainsboro;
-}
 
-footer .links>a {
-  font-size: 0.9em;
-  margin-right: 20px;
-}
 
-/* Titles and code */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-}
 
-h1 {
-  font-size: 2em; 
-}
 
-h2 {
-  font-size: 1.5em;
-}
 
-h3 {
-  font-size: 1.2em;
-  color: #D29FA8;
-}
 
-h4 {
-  font-size: 1em;
-}
 
-h5 {
-  font-size: 1em;
-}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
 
-small {
-  font-size: 90%;
-}
 
-/* Buttons and links */
-.btn.btn-primary {
-  color: #fff;
-  background-color: #e49aa7;
-  border-color: #e49aa7;
-}
 
-.btn.btn-primary:hover {
-  background-color: #df8695;
-  border-color: #da7283;
-}
-
-a {
-  color: black;
-}
-
-a:hover {
-  color: black;
-  text-decoration: underline;
-}
-
-.btn-link {
-  color: black;
-}
-
-.btn-link:hover {
-  color: black;
-  text-decoration: underline;
-}
-
-.background-image-panel a {
-  color: white;
-}
-
-.background-image-panel a:hover {
-  color: white;
-  text-decoration: underline;
-}
-
-.background-image-panel .btn-link {
-  color:white;
-}
-
-.background-image-panel .btn-link:hover {
-  color:white;
-}
-
-/* Panels */
-.background-image-panel {
+.image-panel {
   background: url('./images/LeBliblou.jpg');
   background-repeat: no-repeat;
   background-size: 100% auto;
@@ -153,14 +25,14 @@ a:hover {
   overflow: auto;
 }
 
-.background-image-panel>div:first-child {
+.image-panel>div:first-child {
   color: gainsboro;
   background-color: rgba(0, 0, 0, 0.5);
   margin: 75px auto;
   padding: 20px 0px;
 }
 
-.background-image-panel form {
+.image-panel form {
   margin-top: .4em;
 }
 
@@ -168,7 +40,6 @@ a:hover {
   padding: 24px 0;
 }
 
-/* Forms */
 select.form-control,
 textarea.form-control,
 input.form-control {
@@ -200,7 +71,6 @@ input[type=file] {
   border-bottom-color: #dc3545;
 }
 
-/* Tooltip */
 .tooltip-error > .tooltip-inner {
   background-color: #dc3545;
   color: #fff;
@@ -220,7 +90,6 @@ input[type=file] {
   margin-bottom: 16px;
 }
 
-/* Separator */
 .line-separator {
   height:1px;
   background:#717171;  
@@ -228,7 +97,6 @@ input[type=file] {
   margin-bottom: 8px;
 }
 
-/* Pages */
 .contact-us, .lost-password, .not-found {
   text-align: center;
 }
@@ -239,13 +107,6 @@ input[type=file] {
   display: block;
 }
 
-/* Should be .not-found>a  */
-.not-found a {
-  margin: 12px;
-}
-
-/* Modules */
-/* Refacto paddings and margins */
 .recipe-editor {
   margin: 16px 0;
 }
@@ -319,13 +180,11 @@ input[type=file] {
   margin-bottom: 1em;
 }
 
-/* Change to ul */
 .step-index {
   color: #D29FA8;
   font-weight: 700;
 }
 
-/* Components */
 .form-buttons {
   float: right;
 }
@@ -430,21 +289,6 @@ input[type=file] {
   position: absolute;
   top: 3.25rem;
   left: 3.25rem;
-}
-
-.social-networks {
-  margin-bottom: .5rem ;
-}
-
-.social-networks img {
-  height: 25px;
-  margin-right: 12px;
-}
-
-.social-networks img.linkedin-icon {
-  height: 19px;
-  margin-right: 15px;
-  margin-left: 3px;
 }
 
 .dropzone {

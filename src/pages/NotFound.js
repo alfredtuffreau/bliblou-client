@@ -35,7 +35,7 @@ class NotFound extends Component {
     if (!isAuthenticated) links.push("|", login);
 
     return (
-      <div className="not-found background-image-panel">
+      <div className="not-found image-panel">
         <div>
           <h2>Oups, page introuvable</h2>
           <h3>La page que vous recherchez a peut-être été supprimée.</h3>

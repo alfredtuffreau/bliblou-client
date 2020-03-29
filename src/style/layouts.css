@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: auto;
+  padding: 0;
+  padding-bottom: 120.22px;
+  position: relative;
+}
+
+div>a:first-child {
+  margin-right: .5em;
+}
+
+div>a:not(:first-child):not(:last-child) {
+  margin: 0 .5em;
+}
+
+div>a:last-child {
+  margin-left: .5em;
+}
+
+main {
+  padding-top: 70px;
+}
+
+footer {
+  bottom: 0;
+  padding: 16px 0 38px;
+  position: absolute;
+  width: 100%;
+}
+
+  footer .page-links {
+    float: left;
+  }
+
+  footer .social-network-links {
+    float: right;
+  }
+
+.icon.small {
+  height: 25px;
+}
+
+.icon.small.linkedin {
+  height: 19px;
+}
+
+.navbar {
+  height: 70px;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.navbar-brand { 
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}

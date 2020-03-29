@@ -16,15 +16,13 @@ const logos = {
 };
 
 const SocialNetworks = ({ networks }) => (
-  <div className="social-networks">
+  <div className="social-network-links">
     { networks.map(({ label, href, network }, index) => (
-      <span key={ "network-" + index }>
-        <a label={ label } href={ href }>
-          <img src={ logos[ network.toLowerCase() ] } 
-               alt={ network } 
-               className={ network === "LinkedIn" ? "linkedin-icon" : undefined } />
-        </a>
-      </span>
+      <a label={ label } href={ href } key={ "network-" + index }>
+        <img src={ logos[ network.toLowerCase() ] } 
+             alt={ network } 
+             className={ `icon small${network === "LinkedIn" ? " linkedin" : ""}` } />
+      </a>
     )) }
   </div>
 );
