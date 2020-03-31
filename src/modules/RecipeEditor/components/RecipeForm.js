@@ -56,7 +56,7 @@ const RecipeForm = ({
   };
 
   return ( 
-    <Form className="recipe-form" onSubmit={ handleOnSubmit }>
+    <Form onSubmit={ handleOnSubmit }>
       <TextareaInputWithTooltip controlId="content" 
                                 content={ content }
                                 defaultValue={ RECIPE_TEMPLATE }
