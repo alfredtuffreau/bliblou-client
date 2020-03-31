@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { bool, shape, string, func } from "prop-types";
-import { Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 import icon from "../../../images/mail.png";
 
@@ -73,9 +73,11 @@ class ResetPassword extends Component {
         <h2>Mot de passe oublié</h2>
         { description }
         { img }
-        <Row>
-          <Col md={{ span:8, offset:2 }}>{ form }</Col>
-        </Row>
+        <Container>
+          <Row>
+            <Col md={{ span:8, offset:2 }}>{ form }</Col>
+          </Row>
+        </Container>
       </>
       
     );

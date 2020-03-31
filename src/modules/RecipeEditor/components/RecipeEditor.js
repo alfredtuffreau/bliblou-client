@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { object, shape, bool, string, func } from "prop-types"
 import { withRouter } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 import { RECIPE } from "../../../modules/Navigation";
 import Dropzone from "../../../components/utils/Dropzone";
@@ -44,25 +44,27 @@ class RecipeEditor extends Component {
     return !isEditor
       ? <></>
       : (
-        <Row>
-          <Col md={{ span:5 }}>
-            <Dropzone label={ `${picture ? "Changer de" : "Déposer un"} fichier` }
-                      onFilesAdded={ this.handleOnFilesAdded }
-                      src={ picture ? picture.url : undefined } />
-          </Col>
-          <Col md={{ span:7 }}> 
-            <RecipeForm id={ id }
-                        picture={ picture } 
-                        currentPicture={ currentPicture } 
-                        content={ content } 
-                        isLoading={ isLoading } 
-                        onChange={ onChange } 
-                        onBlur={ onBlur } 
-                        onHover={ onHover } 
-                        onSubmit={ onSubmit }
-                        onCancel={ onCancel } />
-          </Col>
-        </Row>
+        <Container className="panel">
+          <Row>
+            <Col md={{ span:5 }}>
+              <Dropzone label={ `${picture ? "Changer de" : "Déposer un"} fichier` }
+                        onFilesAdded={ this.handleOnFilesAdded }
+                        src={ picture ? picture.url : undefined } />
+            </Col>
+            <Col md={{ span:7 }}> 
+              <RecipeForm id={ id }
+                          picture={ picture } 
+                          currentPicture={ currentPicture } 
+                          content={ content } 
+                          isLoading={ isLoading } 
+                          onChange={ onChange } 
+                          onBlur={ onBlur } 
+                          onHover={ onHover } 
+                          onSubmit={ onSubmit }
+                          onCancel={ onCancel } />
+            </Col>
+          </Row>
+        </Container>
       );
   }
 };

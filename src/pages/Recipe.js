@@ -13,15 +13,7 @@ const view = ({ isEditor, match: { params: { recipeId } }, location: { search } 
   return (
     <div id="recipe">
       { recipeId === "new" || mode === "edit"
-          ? (
-            <Container className="panel">
-              <Row>
-                <Col>
-                  <RecipeEditor id={ recipeId !== "new" ? recipeId : undefined } isEditor={ isEditor } />
-                </Col>
-              </Row>
-            </Container>
-          )
+          ? <RecipeEditor id={ recipeId !== "new" ? recipeId : undefined } isEditor={ isEditor } />
           : <RecipeView id={ recipeId } isEditor={ isEditor } /> }
     </div>
   );
