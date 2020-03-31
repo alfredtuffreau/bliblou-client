@@ -7,11 +7,11 @@ const Steps = ({ steps }) => {
   : (
     <>
         <h2>Préparation</h2>
-        { steps.map((step, index) => (
-          <p key={ `step-${index}` }>
-            <span className="step-index">{ index + 1 }</span> - { step }
-          </p>
-        )) } 
+        <ol>
+          { steps.map((step, index) => (
+            <li key={index}><span>{ step }</span></li>
+          )) } 
+        </ol>
     </> 
   );
 };

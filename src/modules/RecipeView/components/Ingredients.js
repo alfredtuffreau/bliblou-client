@@ -7,11 +7,11 @@ const Ingredients = ({ ingredients }) => {
     : (
       <>
         <h2>Ingrédients</h2>
-        { ingredients.map((ingredient, index) => (
-          <p key={ `ingredient-${index}` }>
-            { ingredient }
-          </p>
-        )) }
+        <ul>
+          { ingredients.map((ingredient, index) => (
+            <li key={ index }>{ ingredient }</li>
+          )) }
+        </ul>
       </>
     );
 };

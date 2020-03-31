@@ -74,17 +74,17 @@ const RecipeView = ({
           <div className="panel">
             <Container>
               <Row>
-                <Col lg={{ span: 3, offset: 1 }}>
+                <Col lg={{ span: 4 }}>
                   <Ingredients ingredients={ ingredients } />
                 </Col>
-                <Col lg={{ span: 7 }}>
+                <Col lg={{ span: 8 }}>
                   <Steps steps={ steps } />
                 </Col>
               </Row>
             </Container>
             <Container className="lists">
               <Row>
-                <Col md={{ span: 11, offset: 1 }}>
+                <Col>
                   <Suggestions suggestions={ suggestions } />
                 </Col>
               </Row>

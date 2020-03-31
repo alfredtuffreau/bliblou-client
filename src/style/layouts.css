@@ -28,6 +28,19 @@ main {
   padding-top: 70px;
 }
 
+ul {
+  padding-inline-start: 0;
+}
+
+  ul>li {
+    list-style-type: none;
+    margin-bottom: 0.5em;
+  }
+
+ol>li {
+  margin-bottom: 0.5em;
+}
+
 #not-found .nav-links {
   margin: 0;
 }
@@ -35,10 +48,6 @@ main {
   #not-found .nav-links .list-group-item {
     padding: 0 .5em;
   }
-
-#recipe .panel p {
-  margin-bottom: 0.5em;
-}
 
 #recipe .panel-with-image>.panel-content {
   margin: 0;

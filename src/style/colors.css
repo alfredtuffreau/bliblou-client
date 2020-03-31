@@ -15,6 +15,14 @@ h3 {
   color: #D29FA8;
 }
 
+ol>li {
+  color: #D29FA8;
+}
+
+  ol>li>span {
+    color: black;
+  }
+
 .btn-group .icon {
   color: white;
 }
@@ -123,8 +131,4 @@ h3 {
 
 .tooltip-error.bs-tooltip-left .arrow::before {
   border-left-color: #dc3545;
-}
-
-.step-index {
-  color: #D29FA8;
 }

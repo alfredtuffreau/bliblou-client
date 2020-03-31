@@ -29,6 +29,14 @@ h4, h5 {
   font-size: 1em;
 }
 
+ol>li {
+  font-weight: 700;
+}
+
+  ol>li>span {
+    font-weight: 400;
+  }
+
 small {
   font-size: 90%;
 }
@@ -57,8 +65,4 @@ small {
 .navbar-brand { 
   font-size: 1.78em;
   font-weight: 500;
-}
-
-.step-index {
-  font-weight: 700;
 }
