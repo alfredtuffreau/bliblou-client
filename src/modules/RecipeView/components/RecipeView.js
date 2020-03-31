@@ -45,7 +45,7 @@ const RecipeView = ({
   return isLoading
     ? <></>
     : ( <>
-          <ImagePanel src={ src }>
+          <ImagePanel src={ src } className="no-margin deep">
             <Container>
               <Row>
                 <Col lg={{ span: 6 }}>

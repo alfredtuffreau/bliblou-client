@@ -39,6 +39,7 @@ class PasswordInput extends Component {
                         placeholder={ label }
                         value={ value }
                         isInvalid = { isValid === false }
+                        className="password"
                         onChange={ this.handleOnChange }
                         onBlur={ this.handleOnBlur }
                         onMouseEnter={ this.handleOnHover } 

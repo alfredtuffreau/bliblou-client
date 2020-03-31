@@ -42,7 +42,7 @@ class GenderInput extends Component {
     return (
       <Form.Group controlId={ GENDER }>
         <Form.Label hidden>{ label }</Form.Label>
-        <InputGroup id="gender-input">
+        <InputGroup className="gender">
           <InputGroup.Prepend>
             <Button variant={ value !== MALE ? "light" : undefined }
                     onClick={ () => this.handleOnCLick(MALE) }

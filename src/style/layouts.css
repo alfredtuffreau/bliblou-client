@@ -28,16 +28,6 @@ main {
   padding-top: 70px;
 }
 
-#about-us .picture {
-  float: left;
-  margin: 16px;
-  border: 2px solid;
-}
-
-#lost-password .icon, #not-found .icon {
-  margin: 0 auto 8px;
-}
-
 #not-found .nav-links {
   margin: 0;
 }
@@ -45,10 +35,6 @@ main {
   #not-found .nav-links .list-group-item {
     padding: 0 .5em;
   }
-
-#password.is-invalid, .was-validated #password:invalid {
-  margin-right: 1px;
-}
 
 #recipe .panel p {
   margin-bottom: 0.5em;
@@ -179,6 +165,16 @@ main {
   float: right;
 }
 
+.icon.about {
+  float: left;
+  margin: 16px;
+  border: 2px solid;
+}
+
+.icon.center {
+  margin: 0 auto 8px;
+}
+
 .icon.small {
   height: 25px;
 }
@@ -193,6 +189,10 @@ main {
 
 .icon.large {
   height: 225px;
+}
+
+.input-group>.password.is-invalid, .was-validated .input-group>.password:invalid {
+  margin-right: 1px;
 }
 
 .line-separator {
@@ -245,10 +245,13 @@ main {
   }
 
   .panel-with-image>.panel-content {
-    margin: 75px 0;
     padding: 16px 0;
     width: 100%;
   }
+
+    .panel-with-image>.panel-content:not(.no-margin) {
+      margin: 75px 0;
+    }
 
 .row>.card-group {
   flex-flow: row;

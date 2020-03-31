@@ -35,7 +35,7 @@ class NotFound extends Component {
               <Col>
                 <h2>Oups, page introuvable</h2>
                 <h3>La page que vous recherchez a peut-être été supprimée.</h3>
-                <img src={ icon } className="icon large" alt="Not found" />
+                <img src={ icon } className="icon large center" alt="Not found" />
                 { links
                     ? <ListGroup className="nav-links  list-group-horizontal-md justify-content-center">
                         { links.map(({ key, to, onClick, label }) => (
