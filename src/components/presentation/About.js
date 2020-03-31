@@ -11,7 +11,10 @@ const About = ({ name, title, picture, descriptions, networks }) => (
     <Image src={ picture } className="about icon medium" roundedCircle />
     { networks
         ? <ListGroup className="social-network-links list-group-horizontal">
-            { networks.map(network => <ListGroup.Item><SocialNetwork { ...network } /></ListGroup.Item>) }
+            { networks.map((network, index) => (
+              <ListGroup.Item key={ index }>
+                <SocialNetwork { ...network } />
+              </ListGroup.Item>)) }
           </ListGroup>
         : null }
     { descriptions && descriptions.map((str, index) => (
@@ -28,7 +31,7 @@ About.propTypes = {
   networks: arrayOf(shape({
     label: string.isRequired,
     href: string.isRequired,
-    network: oneOf(["Facebook", "Instagram", "Twitter"]).isRequired,
+    network: oneOf([ "Facebook", "Instagram", "Twitter", "Mail", "LinkedIn" ]).isRequired,
   }))
 };
 

@@ -25,13 +25,13 @@ export default React.forwardRef((props, ref) => (
                 <SocialNetwork label="Le Bliblou sur Facebook"
                                href="https://www.facebook.com/bliblouFR/"
                                network="Facebook" />
-              ].map(network => <ListGroup.Item>{ network }</ListGroup.Item>) }
+              ].map((network, index) => <ListGroup.Item key={ index }>{ network }</ListGroup.Item>) }
           </ListGroup>
           <ListGroup className="nav-links list-group-horizontal-md">
             { [ <Link to={ HOME }><small>Accueil</small></Link>,
                 <Link to={ ABOUT_US }><small>À propos</small></Link>,
                 <Link to={ CONTACT_US }><small>Nous contacter</small></Link> 
-              ].map(link => <ListGroup.Item>{ link }</ListGroup.Item>) }
+              ].map((link, index) => <ListGroup.Item key={ index }>{ link }</ListGroup.Item>) }
           </ListGroup>
         </Col>
       </Row>

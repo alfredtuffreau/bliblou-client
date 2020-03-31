@@ -3,7 +3,7 @@ import { SET_IS_LOADING, SET_CONTENT, SET_PICTURE, SET_SRC, CLEAR } from "./acti
 const initialState = {
   content: undefined, 
   picture: undefined,
-  isLoading: false
+  isLoading: true
 };
 
 export default function reducer(state = initialState, action = {}) {

@@ -3,6 +3,8 @@ import { string, object, func } from "prop-types";
 import { Container, Row, Col } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 
+
+import defaultImage from "../../../images/building.png"
 import ImagePanel from "../../../components/view/ImagePanel";
 import RecipeInformations from "../../../components/presentation/RecipeInformations";
 
@@ -45,7 +47,9 @@ const RecipeView = ({
   return isLoading
     ? <></>
     : ( <>
-          <ImagePanel src={ src } className="no-margin deep">
+          <ImagePanel src={ src || defaultImage } 
+                      panelClassName={ src ? undefined : "default-image" }
+                      contentClassName="no-margin deep">
             <Container>
               <Row>
                 <Col lg={{ span: 6 }}>
@@ -61,7 +65,8 @@ const RecipeView = ({
                                     onEdit={ handleOnEdit } />
                 </Col>
                 <Col lg={{ span: 6 }}>
-                  <div className="recipe-picture" style={{ backgroundImage: `url(${src})` }} />
+                  <div className={ `recipe-picture${ src ? "" : " default-image" }` } 
+                       style={{ backgroundImage: `url(${src || defaultImage})` }} />
                 </Col>
               </Row>
             </Container>

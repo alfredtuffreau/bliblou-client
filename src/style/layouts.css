@@ -51,9 +51,17 @@ main {
 
 #recipe .recipe-picture {
   padding-bottom: 56.25%;
-  background-size: cover;
   background-repeat: no-repeat;
+}
+
+#recipe .recipe-picture.default-image {
+  background-position: center;
+  background-size: contain;
+}
+
+#recipe .recipe-picture:not(.default-image) {
   background-position: center right;
+  background-size: cover;
 }
 
 #recipes {
@@ -123,6 +131,10 @@ main {
   object-fit: cover;
 }
 
+.card-img.default-image {
+  object-fit: contain;
+}
+
   .card:first-child:not(:last-child)>.card-img {
     border-top-right-radius: 0;
   }
@@ -134,10 +146,6 @@ main {
   .card:not(:first-child):last-child>.card-img {
     border-top-left-radius: 0;
   }
-
-.card-img.default-image {
-  object-fit: contain;
-}
 
 .card-img-overlay {
   padding: 5px 16px;
@@ -260,6 +268,10 @@ main {
   display: flex;
   justify-content: center;
   overflow: auto;
+}
+
+.panel-with-image.default-image {
+  background-size: contain;
 }
 
   .panel-with-image form {

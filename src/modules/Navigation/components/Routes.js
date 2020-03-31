@@ -43,7 +43,6 @@ class Routes extends Component {
 
   render () {
     const { routes, footerHeight, isAuthenticated, isEditor, logout } = this.props;
-    this.footer.current ? console.log(this.footer.current.clientHeight) : console.log(null);
     return (
       <>
         <NavBar isAuthenticated={ isAuthenticated } logout={ logout } />

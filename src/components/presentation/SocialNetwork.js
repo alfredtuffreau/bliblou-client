@@ -26,7 +26,7 @@ const SocialNetwork = ({ label, href, network }) => (
 SocialNetwork.propTypes = {
   label: string.isRequired,
   href: string.isRequired,
-  network: oneOf(["Facebook", "Instagram", "Twitter", "Mail"]).isRequired,
+  network: oneOf([ "Facebook", "Instagram", "Twitter", "Mail", "LinkedIn" ]).isRequired,
 };
 
 export default SocialNetwork;

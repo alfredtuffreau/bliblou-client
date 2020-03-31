@@ -20,12 +20,12 @@ class NotFound extends Component {
   render() {
     const { navbarHeight, footerHeight, isAuthenticated } = this.props;
     
-    const back = { key: "back", to: "#", onClick: this.handleOnClick, label: "Page précédente" };
-    const home = { key: "home", to: HOME, label: "Page d'accueil" };
-    const login = { key: "login", to: LOGIN, label: "S'identifier" };
+    const back = { to: "#", onClick: this.handleOnClick, label: "Page précédente" };
+    const home = { to: HOME, label: "Page d'accueil" };
+    const login = { to: LOGIN, label: "S'identifier" };
     
-    const links = [ back, "|", home ];
-    if (!isAuthenticated) links.push("|", login);
+    const links = [ back, home ];
+    if (!isAuthenticated) links.push(login);
     
     return (
       <div id="not-found">
@@ -38,9 +38,9 @@ class NotFound extends Component {
                 <img src={ icon } className="icon large center" alt="Not found" />
                 { links
                     ? <ListGroup className="nav-links  list-group-horizontal-md justify-content-center">
-                        { links.map(({ key, to, onClick, label }) => (
-                          <ListGroup.Item>
-                            <NavLink key={ key } to={ to } onClick={ onClick }>{ label }</NavLink>
+                        { links.map(({ to, onClick, label }, index) => (
+                          <ListGroup.Item key={ index }>
+                            <NavLink to={ to } onClick={ onClick }>{ label }</NavLink>
                           </ListGroup.Item>
                         )) }
                       </ListGroup>

@@ -76,11 +76,11 @@ const AboutUs = () => (
       <Row>
         <Col>
           <h1>L'équipe</h1>
-          { team.map(member => (
-            <>
+          { team.map((member, index) => (
+            <div key={ index }>
               <div className="line-separator" />
               <About { ...member }/>
-            </>
+            </div>
           )) }
         </Col>
       </Row>
