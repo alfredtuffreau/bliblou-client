@@ -102,9 +102,19 @@ main {
   padding: 5px;
 }
 
-.card-group>.card {
-  margin-bottom: .5rem;
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
 }
+
+  .card-list>.card-group {
+    flex-flow: row;
+    overflow:scroll;
+  }
+
+    .card-list>.card-group>.card {
+      margin-bottom: .5rem;
+    }
 
 .card-img {
   border-bottom-left-radius: 0;
@@ -136,6 +146,18 @@ main {
 .card-title {
   margin: 0;
 }
+
+.container.lists {
+  padding-right: 0;
+}
+
+  .container.lists .row {
+    margin-right: 0;
+  }
+
+    .container.lists .row>div {
+      padding-right: 0;
+    }
 
 .dropzone {
   cursor: pointer;
@@ -252,11 +274,6 @@ main {
     .panel-with-image>.panel-content:not(.no-margin) {
       margin: 75px 0;
     }
-
-.row>.card-group {
-  flex-flow: row;
-  overflow:scroll;
-}
 
 .tooltip-error>.tooltip-inner {
   border: 1px solid;

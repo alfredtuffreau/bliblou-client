@@ -66,21 +66,25 @@ const RecipeView = ({
               </Row>
             </Container>
           </ImagePanel>
-          <Container className="panel">
-            <Row>
-              <Col lg={{ span: 3, offset: 1 }}>
-                <Ingredients ingredients={ ingredients } />
-              </Col>
-              <Col lg={{ span: 7 }}>
-                <Steps steps={ steps } />
-              </Col>
-            </Row>
-            <Row>
-              <Col md={{ span: 11, offset: 1 }}>
-                <Suggestions suggestions={ suggestions } />
-              </Col>
-            </Row>
-          </Container> 
+          <div className="panel">
+            <Container>
+              <Row>
+                <Col lg={{ span: 3, offset: 1 }}>
+                  <Ingredients ingredients={ ingredients } />
+                </Col>
+                <Col lg={{ span: 7 }}>
+                  <Steps steps={ steps } />
+                </Col>
+              </Row>
+            </Container>
+            <Container className="lists">
+              <Row>
+                <Col md={{ span: 11, offset: 1 }}>
+                  <Suggestions suggestions={ suggestions } />
+                </Col>
+              </Row>
+            </Container> 
+          </div>
         </> );
 };
 

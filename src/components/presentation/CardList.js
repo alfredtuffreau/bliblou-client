@@ -10,11 +10,11 @@ class CardList extends Component {
       <div className={ className }>
         <h2>{ title }</h2>
         { description ? <p>{ description }</p> : <></> }
-        <Row noGutters>
+        <div className="card-list">
           <CardGroup> 
             { children }
           </CardGroup>
-        </Row>
+        </div>
       </div>
     );
   }
