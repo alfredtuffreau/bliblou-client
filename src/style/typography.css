@@ -5,30 +5,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.card, .card p, .card .h5 {
-  font-size: .95rem;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
-#contact-us .panel-with-image, 
-#lost-password .panel-with-image, 
-#not-found .panel-with-image {
-  text-align: center;
-}
-
-#home .panel-with-image, 
-#login .panel-with-image, 
-#recipe .panel-with-image p, 
-#about-us,
-#contact-us .panel {
-  text-align: justify;
-}
-
-.form-text {
-  text-align: left;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -51,9 +29,16 @@ h4, h5 {
   font-size: 1em;
 }
 
-.navbar-brand { 
-  font-size: 1.78em;
-  font-weight: 500;
+small {
+  font-size: 90%;
+}
+
+#contact-us .panel-with-image, #lost-password .panel-with-image, #not-found .panel-with-image {
+  text-align: center;
+}
+
+#home .panel-with-image, #login .panel-with-image, #recipe .panel-with-image p, #about-us, #contact-us .panel {
+  text-align: justify;
 }
 
 #recipes h2 {
@@ -61,12 +46,17 @@ h4, h5 {
   font-weight: 700;
 }
 
-small {
-  font-size: 90%;
+.card, .card p, .card .h5 {
+  font-size: .95rem;
 }
 
-.tooltip-error p, .tooltip-error li, .tooltip-error ul {
+.form-text, .tooltip-error p, .tooltip-error li, .tooltip-error ul {
   text-align: left;
+}
+
+.navbar-brand { 
+  font-size: 1.78em;
+  font-weight: 500;
 }
 
 .step-index {

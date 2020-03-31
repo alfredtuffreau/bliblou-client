@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { string, func } from "prop-types";
 import { withRouter } from "react-router-dom";
 import { Card } from "react-bootstrap";
-import { IconContext } from "react-icons";
-import { FaRegClock, FaUsers } from 'react-icons/fa';
 
 import defaultImage from "../../../images/building.png"
+import RecipeInformations from "../../../components/presentation/RecipeInformations";
 
 class RecipeCard extends Component {
   constructor(props) {
@@ -64,24 +63,11 @@ class RecipeCard extends Component {
                     : <></> 
                 }
                 <Card.Text as="div">
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <IconContext.Provider value={{ className: "icon" }}>
-                            <FaRegClock />
-                            { ` ${before + preparation + cookingAfterPreparation + after } minutes` }
-                          </IconContext.Provider>
-                        </td>
-                        <td>
-                          <IconContext.Provider value={{ className: "icon" }}>
-                            <FaUsers />
-                            { ` ${nbOfPeople } pers.` }
-                          </IconContext.Provider>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <RecipeInformations preparation={ preparation }
+                                      cookingAfterPreparation={ cookingAfterPreparation }
+                                      before={ before }
+                                      after={ after }
+                                      nbOfPeople={ nbOfPeople } />
                 </Card.Text>
               </Card.ImgOverlay>) }
       </Card>

@@ -4,8 +4,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 
 import ImagePanel from "../../../components/view/ImagePanel";
+import RecipeInformations from "../../../components/presentation/RecipeInformations";
 
-import InfoTable from "./InfoTable";
 import Ingredients from "./Ingredients";
 import Steps from "./Steps";
 import ActionButtons from "./ActionButtons";
@@ -51,11 +51,11 @@ const RecipeView = ({
                 <Col lg={{ span: 6 }}>
                     <h1>{ title }</h1>
                     <p>{ description }</p>
-                    <InfoTable preparation={ preparation }
-                              cookingAfterPreparation={ cookingAfterPreparation }
-                              before={ before }
-                              after={ after }
-                              nbOfPeople={ nbOfPeople } />
+                    <RecipeInformations preparation={ preparation }
+                                        cookingAfterPreparation={ cookingAfterPreparation }
+                                        before={ before }
+                                        after={ after }
+                                        nbOfPeople={ nbOfPeople } />
                     <ActionButtons isEditor={ isEditor }
                                     onDelete={ handleOnDelete }
                                     onEdit={ handleOnEdit } />

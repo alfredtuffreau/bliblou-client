@@ -1,9 +1,47 @@
-a, a:hover, .btn-link, .btn-link:hover {
+a, a:hover {
   color: black;
 }
 
-.about .picture {
+footer {
+  background-color: #252525;
+  color: gainsboro;
+}
+
+  footer a, footer a:hover {
+    color: gainsboro;
+  }
+
+h3 {
+  color: #D29FA8;
+}
+
+#about-us .picture {
   border-color: gainsboro;
+}
+
+#gender-input>:first-child>button.is-invalid,
+.was-validated #gender-input>:first-child>button:invalid {
+  border-top-color: #dc3545;
+  border-left-color: #dc3545;
+  border-bottom-color: #dc3545;
+}
+
+#gender-input>:not(:first-child):not(:last-child)>button.is-invalid,
+.was-validated #gender-input>:not(:first-child):not(:last-child)>button:invalid {
+  border-top-color: #dc3545;
+  border-bottom-color: #dc3545;
+}
+
+#recipe .panel-with-image>.panel-content {
+  background-color: rgba(0, 0, 0, .75);
+}
+
+.btn-group .icon {
+  color: white;
+}
+
+.btn-link, .btn-link:hover {
+  color: black;
 }
 
 .btn-primary {
@@ -21,9 +59,9 @@ a, a:hover, .btn-link, .btn-link:hover {
   background-color: white;
 }
 
-.card.add:hover>.card-img {
-  background-color: #e2e6ea;
-}
+  .card.add:hover>.card-img {
+    background-color: #e2e6ea;
+  }
 
 .card.add .icon {
   color: black;
@@ -37,10 +75,6 @@ a, a:hover, .btn-link, .btn-link:hover {
   background-color: rgba(0, 0, 0, 0.75);
   color: white;
 }
-
-  .card-img-overlay .icon {
-    color: #4CAE51;
-  }
 
 .dropzone>.input-container {
   border-color: black;
@@ -58,63 +92,37 @@ a, a:hover, .btn-link, .btn-link:hover {
   opacity: .5;
 }
 
-footer {
-  background-color: #252525;
-  color: gainsboro;
-}
-
-  footer a, footer a:hover {
-    color: gainsboro;
-  }
-
-.list-group-item {
-  background-color: transparent;
-  border: none;
-}
-
-#gender-input>:first-child>button.is-invalid,
-.was-validated #gender-input>:first-child>button:invalid {
-  border-top-color: #dc3545;
-  border-left-color: #dc3545;
-  border-bottom-color: #dc3545;
-}
-
-#gender-input>:not(:first-child):not(:last-child)>button.is-invalid,
-.was-validated #gender-input>:not(:first-child):not(:last-child)>button:invalid {
-  border-top-color: #dc3545;
-  border-bottom-color: #dc3545;
-}
-
-h3 {
-  color: #D29FA8;
-}
-
 .line-separator {
   background:#717171;  
   border-bottom:1px solid #313030;
 }
 
-.panel-with-image>.panel-content {
-  background-color: rgba(0, 0, 0, .5);
-  color: white;
+.list-group .icon {
+  color: #4CAE51;
+}
+
+.list-group-item {
+  background-color: transparent;
+  border: none;
 }
   
 .panel-with-image a, .panel-with-image a:hover, .panel-with-image .btn-link, .panel-with-image .btn-link:hover {
   color: white;
 }
 
-.tooltip-error > .tooltip-inner {
+.panel-with-image>.panel-content {
+  background-color: rgba(0, 0, 0, .5);
+  color: white;
+}
+
+.tooltip-error>.tooltip-inner {
   background-color: #dc3545;
   border-color: #dc3545;
   color: #fff;
 }
 
-.bs-tooltip-left .arrow::before {
+.tooltip-error.bs-tooltip-left .arrow::before {
   border-left-color: #dc3545;
-}
-
-#recipe .panel-with-image>.panel-content {
-  background-color: rgba(0, 0, 0, .75);
 }
 
 .step-index {

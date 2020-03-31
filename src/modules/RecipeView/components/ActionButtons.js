@@ -6,7 +6,7 @@ import { FaTrash, FaPen } from 'react-icons/fa';
 
 const ActionButtons = ({ isEditor, onDelete, onEdit }) => !isEditor
   ? <></>
-  : ( <ButtonGroup /* className="action-buttons" */ aria-label="Administration actions">
+  : ( <ButtonGroup aria-label="Administration actions">
         <Button variant="danger" onClick={ onDelete }>
           <IconContext.Provider value={{ className: "icon" }}>
             <FaTrash />

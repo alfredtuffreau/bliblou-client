@@ -5,7 +5,7 @@ import { ListGroup, Image } from "react-bootstrap";
 import SocialNetwork from "./SocialNetwork";
 
 const About = ({ name, title, picture, descriptions, networks }) => (
-  <div className="about">
+  <>
     <h2>{ name }</h2>
     <h3>{ title }</h3>
     <Image src={ picture } className="icon medium picture" roundedCircle />
@@ -17,7 +17,7 @@ const About = ({ name, title, picture, descriptions, networks }) => (
     { descriptions && descriptions.map((str, index) => (
       <p key={ "descr-" + index }>{ str }</p>
     )) }
-  </div>
+  </>
 );
 
 About.propTypes = {
