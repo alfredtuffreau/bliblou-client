@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { string } from "prop-types";
-import { Row, CardGroup } from "react-bootstrap";
+import { CardGroup } from "react-bootstrap";
 
 class CardList extends Component {
   render() {
