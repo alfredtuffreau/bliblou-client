@@ -11,15 +11,19 @@ const view = ({ isEditor, match: { params: { recipeId } }, location: { search } 
   const mode = query.get('mode');
 
   return (
-    <Container className="panel">
-      <Row>
-        <Col>
-          { recipeId === "new" || mode === "edit"
-              ? <RecipeEditor id={ recipeId !== "new" ? recipeId : undefined } isEditor={ isEditor } />
-              : <RecipeView id={ recipeId } isEditor={ isEditor } /> }
-        </Col>
-      </Row>
-    </Container>
+    <div id="recipe">
+      { recipeId === "new" || mode === "edit"
+          ? (
+            <Container className="panel">
+              <Row>
+                <Col>
+                  <RecipeEditor id={ recipeId !== "new" ? recipeId : undefined } isEditor={ isEditor } />
+                </Col>
+              </Row>
+            </Container>
+          )
+          : <RecipeView id={ recipeId } isEditor={ isEditor } /> }
+    </div>
   );
 }  
 

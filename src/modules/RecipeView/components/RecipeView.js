@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { string, object, func } from "prop-types";
-import { Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 
-import PictureContainer from "./PictureContainer";
+import ImagePanel from "../../../components/view/ImagePanel";
+
 import InfoTable from "./InfoTable";
 import Ingredients from "./Ingredients";
 import Steps from "./Steps";
@@ -44,32 +45,42 @@ const RecipeView = ({
   return isLoading
     ? <></>
     : ( <>
-          <div className="recipe-header">
-            <PictureContainer src={ src } />
-              <h1>{ title }</h1>
-              <p>{ description }</p>
-              <InfoTable preparation={ preparation }
-                        cookingAfterPreparation={ cookingAfterPreparation }
-                        before={ before }
-                        after={ after }
-                        nbOfPeople={ nbOfPeople } />
-              <ActionButtons isEditor={ isEditor }
-                              onDelete={ handleOnDelete }
-                              onEdit={ handleOnEdit } />
-          </div> 
-          <Row className="recipe-body">
-            <Col md={{ span: 3, offset: 1 }}>
-              <Ingredients ingredients={ ingredients } />
-            </Col>
-            <Col md={{ span: 7 }}>
-              <Steps steps={ steps } />
-            </Col>
-          </Row>
-          <Row className="recipe-footer">
-            <Col md={{ span: 11, offset: 1 }}>
-              <Suggestions suggestions={ suggestions } />
-            </Col>
-          </Row>
+          <ImagePanel src={ src }>
+            <Container>
+              <Row>
+                <Col lg={{ span: 6 }}>
+                    <h1>{ title }</h1>
+                    <p>{ description }</p>
+                    <InfoTable preparation={ preparation }
+                              cookingAfterPreparation={ cookingAfterPreparation }
+                              before={ before }
+                              after={ after }
+                              nbOfPeople={ nbOfPeople } />
+                    <ActionButtons isEditor={ isEditor }
+                                    onDelete={ handleOnDelete }
+                                    onEdit={ handleOnEdit } />
+                </Col>
+                <Col lg={{ span: 6 }}>
+                  <div className="recipe-picture" style={{ backgroundImage: `url(${src})` }} />
+                </Col>
+              </Row>
+            </Container>
+          </ImagePanel>
+          <Container className="panel">
+            <Row>
+              <Col lg={{ span: 3, offset: 1 }}>
+                <Ingredients ingredients={ ingredients } />
+              </Col>
+              <Col lg={{ span: 7 }}>
+                <Steps steps={ steps } />
+              </Col>
+            </Row>
+            <Row>
+              <Col md={{ span: 11, offset: 1 }}>
+                <Suggestions suggestions={ suggestions } />
+              </Col>
+            </Row>
+          </Container> 
         </> );
 };
 

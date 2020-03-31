@@ -13,8 +13,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.contact-us, .lost-password, .not-found {
+#contact-us .panel-with-image, 
+#lost-password .panel-with-image, 
+#not-found .panel-with-image {
   text-align: center;
+}
+
+#home .panel-with-image, 
+#login .panel-with-image, 
+#recipe .panel-with-image p, 
+#about-us,
+#contact-us .panel {
+  text-align: justify;
 }
 
 .form-text {
@@ -46,11 +56,7 @@ h4, h5 {
   font-weight: 500;
 }
 
-.panel-with-image>.panel-content {
-  text-align: justify;
-}
-
-.recipes-list>h2 {
+#recipes h2 {
   font-size: 1rem;
   font-weight: 700;
 }
@@ -61,4 +67,8 @@ small {
 
 .tooltip-error p, .tooltip-error li, .tooltip-error ul {
   text-align: left;
+}
+
+.step-index {
+  font-weight: 700;
 }

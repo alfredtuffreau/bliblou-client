@@ -54,7 +54,7 @@ class Routes extends Component {
                 key: `route-${index}`, 
                 component,
                 isAuthenticated,
-                componentProps: { footerHeight, isAuthenticated, isEditor, ...rest } 
+                componentProps: { navbarHeight: 70, footerHeight, isAuthenticated, isEditor, ...rest } 
               };
 
               if (path) {

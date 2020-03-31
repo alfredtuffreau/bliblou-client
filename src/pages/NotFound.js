@@ -18,7 +18,7 @@ class NotFound extends Component {
   }
 
   render() {
-    const { footerHeight, isAuthenticated } = this.props;
+    const { navbarHeight, footerHeight, isAuthenticated } = this.props;
     
     const back = { key: "back", to: "#", onClick: this.handleOnClick, label: "Page précédente" };
     const home = { key: "home", to: HOME, label: "Page d'accueil" };
@@ -28,26 +28,28 @@ class NotFound extends Component {
     if (!isAuthenticated) links.push("|", login);
     
     return (
-      <ImagePanel src={ img } navbarHeight={ 70 } footerHeight={ footerHeight } fullScreen>
-        <Container className="not-found">
-          <Row>
-            <Col>
-              <h2>Oups, page introuvable</h2>
-              <h3>La page que vous recherchez a peut-être été supprimée.</h3>
-              <img src={ icon } className="icon large" alt="Not found" />
-              { links
-                  ? <ListGroup className="nav-links  list-group-horizontal-md justify-content-center">
-                      { links.map(({ key, to, onClick, label }) => (
-                        <ListGroup.Item>
-                          <NavLink key={ key } to={ to } onClick={ onClick }>{ label }</NavLink>
-                        </ListGroup.Item>
-                      )) }
-                    </ListGroup>
-                  : null }
-            </Col>
-          </Row>
-        </Container>
-      </ImagePanel>
+      <div id="not-found">
+        <ImagePanel src={ img } minHeight={ `calc(100vh - ${navbarHeight}px - ${footerHeight}px)` }>
+          <Container>
+            <Row>
+              <Col>
+                <h2>Oups, page introuvable</h2>
+                <h3>La page que vous recherchez a peut-être été supprimée.</h3>
+                <img src={ icon } className="icon large" alt="Not found" />
+                { links
+                    ? <ListGroup className="nav-links  list-group-horizontal-md justify-content-center">
+                        { links.map(({ key, to, onClick, label }) => (
+                          <ListGroup.Item>
+                            <NavLink key={ key } to={ to } onClick={ onClick }>{ label }</NavLink>
+                          </ListGroup.Item>
+                        )) }
+                      </ListGroup>
+                    : null }
+              </Col>
+            </Row>
+          </Container>
+        </ImagePanel>
+      </div>
     );
   }
 }

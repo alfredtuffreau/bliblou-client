@@ -17,7 +17,7 @@ const lists = [
 const view = ({ isEditor }) => {
   useEffect(() => { store.dispatch(loadCatalog()) }, []);
   return (
-    <div className="recipes panel">
+    <div id="recipes" className="panel">
       { lists.map(({ title, predicate }) => (
         <RecipesList key = { title.split(' ').map(s => s.toLowerCase()).join("-") } 
                      title={ title } 

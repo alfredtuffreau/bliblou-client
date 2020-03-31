@@ -61,9 +61,9 @@ const team = [{
   descriptions: [],
 }];
 
-const AboutUs = ({ footerHeight }) => (
-  <>
-    <ImagePanel src={ img } navbarHeight={ 70 } footerHeight={ footerHeight }>
+const AboutUs = () => (
+  <div id="about-us">
+    <ImagePanel src={ img }>
       <Container>
         <Row>
           <Col>
@@ -72,22 +72,20 @@ const AboutUs = ({ footerHeight }) => (
         </Row>
       </Container>
     </ImagePanel>
-    <div className="panel">
-      <Container>
-        <Row>
-          <Col>
-            <h1>L'équipe</h1>
-            { team.map(member => (
-              <>
-                <div className="line-separator" />
-                <About { ...member }/>
-              </>
-            )) }
-          </Col>
-        </Row>
-      </Container>
-    </div>
-  </>
+    <Container className="panel">
+      <Row>
+        <Col>
+          <h1>L'équipe</h1>
+          { team.map(member => (
+            <>
+              <div className="line-separator" />
+              <About { ...member }/>
+            </>
+          )) }
+        </Col>
+      </Row>
+    </Container>
+  </div>
 );
 
 export default withScrollTop(AboutUs);

@@ -7,11 +7,11 @@ import AddRecipeCard from "./AddRecipeCard";
 import RecipeCard from "./RecipeCard";
 
 const RecipesList = ({ isEditor, title, predicate, catalog, onClick }) => (
-  <CardList title={ title } className="recipes-list">
+  <CardList title={ title }>
     <AddRecipeCard isEditor={ isEditor }
                    onClick={ onClick } />
     { catalog.filter(predicate)
-              .map(({ recipeId, content, src }, index) => ( 
+             .map(({ recipeId, content, src }, index) => ( 
       <RecipeCard key={ `${recipeId}${index}` }
                   recipeId={ recipeId } 
                   content={ content } 

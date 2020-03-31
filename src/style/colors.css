@@ -95,12 +95,12 @@ h3 {
 }
 
 .panel-with-image>.panel-content {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: gainsboro;
+  background-color: rgba(0, 0, 0, .5);
+  color: white;
 }
   
 .panel-with-image a, .panel-with-image a:hover, .panel-with-image .btn-link, .panel-with-image .btn-link:hover {
-  color: gainsboro;
+  color: white;
 }
 
 .tooltip-error > .tooltip-inner {
@@ -111,4 +111,12 @@ h3 {
 
 .bs-tooltip-left .arrow::before {
   border-left-color: #dc3545;
+}
+
+#recipe .panel-with-image>.panel-content {
+  background-color: rgba(0, 0, 0, .75);
+}
+
+.step-index {
+  color: #D29FA8;
 }

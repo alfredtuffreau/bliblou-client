@@ -44,7 +44,7 @@ class RecipeEditor extends Component {
     return !isEditor
       ? <></>
       : (
-        <Row className="recipe-editor">
+        <Row>
           <Col md={{ span:5 }}>
             <Dropzone label={ `${picture ? "Changer de" : "Déposer un"} fichier` }
                       onFilesAdded={ this.handleOnFilesAdded }
