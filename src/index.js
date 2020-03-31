@@ -21,7 +21,7 @@ configApproveJS();
 
 ReactDOM.render(
   <Router>
-    <Provider store={store}>
+    <Provider store={ store }>
       <Routes routes={[
         { path: HOME, component: Home, require: UNAUTH },
         { path: HOME2, component: Home, require: UNAUTH },

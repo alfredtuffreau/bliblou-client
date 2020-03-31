@@ -1,17 +1,22 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
+import img from "../images/LeBliblou.jpg";
+
+import ImagePanel from "../components/view/ImagePanel";
 import withScrollTop from "../components/view/withScrollTop";
 import ResetPassword from "../modules/ResetPassword";
 
-const LostPassword = () => (
-  <div className="image-panel">
-    <Row className="lost-password" noGutters>
-      <Col md={{ span:6, offset:3 }}>
-        <ResetPassword />
-      </Col>
-    </Row>
-  </div>
+const LostPassword = ({ footerHeight }) => (
+  <ImagePanel src={ img } navbarHeight={ 70 } footerHeight={ footerHeight } fullScreen>
+    <Container className="lost-password">
+      <Row>
+        <Col md={{ span:8, offset:2 }}>
+          <ResetPassword />
+        </Col>
+      </Row>
+    </Container>
+  </ImagePanel>
 );
 
 export default withScrollTop(LostPassword);

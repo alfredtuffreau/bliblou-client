@@ -1,16 +1,16 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { loadUser, logout, setWithBackground } from "./actions";
+import { loadUser, logout, setFooterHeight } from "./actions";
 import Routes from "./components/Routes";
 
 const mapStateToProps = state => {
-  const { isAuthenticated, isEditor, withBackground } = state.navigation;
-  return ({ isAuthenticated, isEditor, withBackground });
+  const { isAuthenticated, isEditor, footerHeight } = state.navigation;
+  return ({ isAuthenticated, isEditor, footerHeight });
 };
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ loadUser, logout, setWithBackground }, dispatch)
+  bindActionCreators({ loadUser, logout, setFooterHeight }, dispatch)
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Routes);

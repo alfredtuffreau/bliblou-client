@@ -1,10 +1,13 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+
+import img from "../images/LeBliblou.jpg";
 
 import family from "../images/family.png";
 import alfredPic from "../images/alfred-tuffreau.jpg";
 import helenePic from "../images/helene-lesage.jpeg";
 import About from "../components/presentation/About";
+import ImagePanel from "../components/view/ImagePanel";
 import withScrollTop from "../components/view/withScrollTop";
 
 const bliblou = {
@@ -58,29 +61,31 @@ const team = [{
   descriptions: [],
 }];
 
-const AboutUs = () => (
+const AboutUs = ({ footerHeight }) => (
   <>
-    <div className="image-panel">
-      <Row>
-        <Col md={{ span:8, offset: 2 }}>
-          <About { ...bliblou } />
-        </Col>
-      </Row>
-    </div>
-    <div className="panel">
-      <Row>
-        <Col md={{ span:8, offset: 2 }}>
-          <h1>L'équipe</h1>
-        </Col>
-      </Row>
-      { team.map(member => (
+    <ImagePanel src={ img } navbarHeight={ 70 } footerHeight={ footerHeight }>
+      <Container>
         <Row>
-          <Col md={{ span:8, offset: 2 }}>
-            <div className="line-separator" />
-            <About { ...member }/>
+          <Col>
+            <About { ...bliblou } />
           </Col>
         </Row>
-      )) }
+      </Container>
+    </ImagePanel>
+    <div className="panel">
+      <Container>
+        <Row>
+          <Col>
+            <h1>L'équipe</h1>
+            { team.map(member => (
+              <>
+                <div className="line-separator" />
+                <About { ...member }/>
+              </>
+            )) }
+          </Col>
+        </Row>
+      </Container>
     </div>
   </>
 );

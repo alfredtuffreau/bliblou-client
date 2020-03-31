@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import { bool } from "prop-types";
+import { Container, Row, Col, ListGroup } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
 
+
+
+import img from "../images/LeBliblou.jpg";
 import icon from "../images/fire.png";
+import ImagePanel from "../components/view/ImagePanel";
 import withScrollTop from "../components/view/withScrollTop";
 import { HOME, LOGIN } from "../modules/Navigation";
 
@@ -13,36 +18,36 @@ class NotFound extends Component {
   }
 
   render() {
-    const { isAuthenticated } = this.props;
+    const { footerHeight, isAuthenticated } = this.props;
     
-    const back = (
-      <NavLink key="back" to="#" onClick={ this.handleOnClick }>
-        Page précédente
-      </NavLink>
-    );
-    const home = (
-      <NavLink key="home" to={ HOME }>
-        Page d'accueil
-      </NavLink>
-    );
-    const login = (
-      <NavLink key="login" to={ LOGIN }>
-        S'identifier
-      </NavLink>
-    );
-
+    const back = { key: "back", to: "#", onClick: this.handleOnClick, label: "Page précédente" };
+    const home = { key: "home", to: HOME, label: "Page d'accueil" };
+    const login = { key: "login", to: LOGIN, label: "S'identifier" };
+    
     const links = [ back, "|", home ];
     if (!isAuthenticated) links.push("|", login);
-
+    
     return (
-      <div className="not-found image-panel">
-        <div>
-          <h2>Oups, page introuvable</h2>
-          <h3>La page que vous recherchez a peut-être été supprimée.</h3>
-          <img src={ icon } alt="Not found" />
-          { links }
-        </div>
-      </div>
+      <ImagePanel src={ img } navbarHeight={ 70 } footerHeight={ footerHeight } fullScreen>
+        <Container className="not-found">
+          <Row>
+            <Col>
+              <h2>Oups, page introuvable</h2>
+              <h3>La page que vous recherchez a peut-être été supprimée.</h3>
+              <img src={ icon } className="icon large" alt="Not found" />
+              { links
+                  ? <ListGroup className="nav-links  list-group-horizontal-md justify-content-center">
+                      { links.map(({ key, to, onClick, label }) => (
+                        <ListGroup.Item>
+                          <NavLink key={ key } to={ to } onClick={ onClick }>{ label }</NavLink>
+                        </ListGroup.Item>
+                      )) }
+                    </ListGroup>
+                  : null }
+            </Col>
+          </Row>
+        </Container>
+      </ImagePanel>
     );
   }
 }

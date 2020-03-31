@@ -1,42 +1,132 @@
+.about .picture {
+  float: left;
+  margin: 16px;
+  border: 2px solid;
+}
+
 body {
   margin: 0;
-  min-height: 100vh;
-  overflow: auto;
   padding: 0;
-  padding-bottom: 120.22px;
   position: relative;
 }
 
-div>a:first-child {
-  margin-right: .5em;
+.card {
+  width: 18rem;
+  min-width: 18rem;
 }
 
-div>a:not(:first-child):not(:last-child) {
-  margin: 0 .5em;
+  .card p {
+    margin-bottom: .5rem;
+  }
+
+.card.add {
+  width: 8.5rem;
+  min-width: 8.5rem;
 }
 
-div>a:last-child {
-  margin-left: .5em;
+  .card.add>.card-img {
+    position: relative;
+  }
+
+  .card.add .icon {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 3.25rem;
+    left: 3.25rem;
+  }
+
+.card-body {
+  padding: 5px;
 }
 
-main {
-  padding-top: 70px;
+.card-img {
+  object-fit: cover;
+  height: 8.5rem;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
+
+  .card:first-child:not(:last-child)>.card-img {
+    border-top-right-radius: 0;
+  }
+
+  .card:not(:first-child):not(:last-child)>.card-img {
+    border-radius: 0;
+  }
+
+  .card:not(:first-child):last-child>.card-img {
+    border-top-left-radius: 0;
+  }
+
+.card-img.default-image {
+  object-fit: contain;
+}
+
+.card-img-overlay {
+  padding: 5px 16px;
+}
+
+  .card-img-overlay table {
+    width: 100%;
+  }
+
+  .card-img-overlay .icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-bottom: 0.2rem;
+  }
+
+.card-title {
+  margin: 0;
+}
+
+.dropzone {
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+  .dropzone>img {
+    width: 100%;
+  }
+
+  .dropzone>.input-container {
+    align-items: center;
+    border: 2px dashed;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 200px;
+    position: relative;
+  }
+
+    .dropzone>.input-container>input {
+      display: none;
+    }
 
 footer {
   bottom: 0;
-  padding: 16px 0 38px;
+  padding: 16px 0 22px;
   position: absolute;
   width: 100%;
 }
-
-  footer .page-links {
+  
+  footer .nav-links {
     float: left;
   }
 
   footer .social-network-links {
     float: right;
   }
+
+    footer .social-network-links .list-group-item {
+      padding: 0 0 0 1em;
+    }
+
+.form-buttons {
+  float: right;
+}
 
 .icon.small {
   height: 25px;
@@ -46,15 +136,109 @@ footer {
   height: 19px;
 }
 
+.icon.medium {
+  width: 100px; 
+}
+
+.icon.large {
+  height: 225px;
+}
+
+.line-separator {
+  height:1px;
+  margin-bottom: 8px;
+}
+
+.list-group {
+  margin-bottom: 1em;
+}
+
+.list-group-item {
+  padding: 0 1em 0 0;
+}
+
+.lost-password .icon, .not-found .icon {
+  margin: 0 auto 8px;
+}
+
+main {
+  min-height: 100vh;
+  padding-top: 70px;
+}
+
 .navbar {
   height: 70px;
-  padding-bottom: 0;
-  padding-top: 0;
+  padding: 0 4vw;
 }
 
 .navbar-brand { 
   display: inline-block;
   margin: 0;
   padding: 0;
-  text-decoration: none;
+}
+
+.not-found .nav-links .list-group-item {
+  padding: 0 .5em;
+}
+
+.panel {
+  padding: 16px 0;
+}
+
+.panel-with-image {
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+}
+
+  .panel-with-image>.panel-content {
+    margin: 75px 0;
+    padding: 20px 0;
+    width: 100%;
+  }
+
+  .panel-with-image form {
+    margin-top: .4em;
+  }
+
+#password.is-invalid,
+.was-validated #password:invalid {
+  margin-right: 1px;
+}
+
+.recipes {
+  padding-left: 4vw;
+}
+
+.recipes-list {
+  margin-bottom: 1rem;
+}
+
+  .recipes-list>h2 {
+    margin-bottom: .25em;
+  }
+
+  .recipes-list .card {
+    cursor: pointer;
+  }
+
+.row>.card-group {
+  flex-flow: row;
+  overflow:scroll;
+}
+
+.tooltip-error>.tooltip-inner {
+  border: 1px solid;
+}
+
+.tooltip-error.up>.tooltip-inner, .tooltip-error.up>.arrow{
+  margin-bottom: 16px;
+}
+
+.tooltip-error p, .tooltip-error li, .tooltip-error ul {
+  margin: 0;
 }

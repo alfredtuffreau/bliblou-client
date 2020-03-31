@@ -58,7 +58,7 @@ class ResetPassword extends Component {
       const { startReset } = this.props;
 
       description = <p>Nous vous enverrons les instructions de réinitialisation de votre mot de passe par email.</p>;
-      img = <img src={ icon } alt="Mail" />;
+      img = <img src={ icon } className="icon large" alt="Mail" />;
       form = <IdentificationForm mail={ mail }
                                  isLoading={ isLoading } 
                                  onChange={ setValue } 
@@ -74,9 +74,7 @@ class ResetPassword extends Component {
         { description }
         { img }
         <Row>
-          <Col md={{ span:8, offset:2 }}>
-            { form }
-          </Col>
+          <Col md={{ span:8, offset:2 }}>{ form }</Col>
         </Row>
       </>
       

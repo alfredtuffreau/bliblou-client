@@ -1,10 +1,10 @@
 import {
-  SET_WITH_BACKGROUND,
+  SET_FOOTER_HEIGHT,
   USER_HAS_AUTHENTICATED,
   USER_IS_EDITOR
 } from "./actions";
 
-const initialState = { withBackground: false, isAuthenticated: undefined,  isEditor: undefined };
+const initialState = { footerHeight: 0, isAuthenticated: undefined,  isEditor: undefined };
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
@@ -16,9 +16,9 @@ export default function reducer(state = initialState, action = {}) {
       const isEditor = action.payload;
       return { ...state, isEditor };
 
-      case SET_WITH_BACKGROUND:
-        const withBackground = action.payload;
-        return { ...state, withBackground };
+      case SET_FOOTER_HEIGHT:
+        const footerHeight = action.payload;
+        return { ...state, footerHeight };
 
     default:
       return state;

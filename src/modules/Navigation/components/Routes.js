@@ -8,6 +8,7 @@ import AppliedRoutes from "./AppliedRoutes";
 import UnauthenticatedRoute from "./UnauthenticatedRoute";
 import AuthenticatedRoute from "./AuthenticatedRoute";
 
+
 export const HOME = "/";
 export const HOME2 = "/home";
 export const LOGIN = "/login";
@@ -22,24 +23,38 @@ export const UNAUTH = "Unauthenticated";
 export const AUTH = "Authenticated";
 
 class Routes extends Component {
+  constructor (props) {
+    super(props)
+    this.footer = React.createRef();
+  }
+
+  setFooterHeight () {
+    this.props.setFooterHeight(this.footer.current.clientHeight);
+  }
+
   componentWillMount () {
     this.props.loadUser();
   }
 
-  render() {
-    const { isAuthenticated, isEditor, logout, routes } = this.props;
+  componentDidMount () {
+    this.setFooterHeight()
+    window.addEventListener("resize", this.setFooterHeight.bind(this));
+  }
 
+  render () {
+    const { routes, footerHeight, isAuthenticated, isEditor, logout } = this.props;
+    this.footer.current ? console.log(this.footer.current.clientHeight) : console.log(null);
     return (
       <>
         <NavBar isAuthenticated={ isAuthenticated } logout={ logout } />
-        <main>
+        <main style={{ paddingBottom: `${footerHeight}px` }}>
           <Switch>
             { routes.map(({ path, component, require, ...rest }, index) => {
               const props = { 
                 key: `route-${index}`, 
                 component,
                 isAuthenticated,
-                componentProps: { isAuthenticated, isEditor, ...rest } 
+                componentProps: { footerHeight, isAuthenticated, isEditor, ...rest } 
               };
 
               if (path) {
@@ -53,7 +68,7 @@ class Routes extends Component {
             }) }
           </Switch>
         </main>
-        <Footer />
+        <Footer ref={ this.footer } />
       </>
     );
   }

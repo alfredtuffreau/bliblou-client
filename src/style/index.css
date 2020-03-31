@@ -17,24 +17,6 @@
 
 
 
-.image-panel {
-  background: url('./images/LeBliblou.jpg');
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-position: center;
-  overflow: auto;
-}
-
-.image-panel>div:first-child {
-  color: gainsboro;
-  background-color: rgba(0, 0, 0, 0.5);
-  margin: 75px auto;
-  padding: 20px 0px;
-}
-
-.image-panel form {
-  margin-top: .4em;
-}
 
 .panel {
   padding: 24px 0;
@@ -187,13 +169,6 @@ input[type=file] {
 
 .form-buttons {
   float: right;
-}
-
-.about>img {
-  float: left;
-  width: 100px; 
-  margin: 16px;
-  border: 2px solid gainsboro;
 }
 
 .row>.card-group {

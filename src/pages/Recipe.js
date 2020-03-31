@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 import RecipeView from "../modules/RecipeView";
 import RecipeEditor from "../modules/RecipeEditor";
@@ -10,17 +10,17 @@ const view = ({ isEditor, match: { params: { recipeId } }, location: { search } 
   const query = new URLSearchParams(search);
   const mode = query.get('mode');
 
-  return recipeId === "new" || mode === "edit"
-    ? (
-      <Row noGutters>
-        <Col md={{ span: 10, offset: 1 }}>
-          <RecipeEditor id={ recipeId !== "new" ? recipeId : undefined } 
-                        isEditor={ isEditor } />
+  return (
+    <Container className="panel">
+      <Row>
+        <Col>
+          { recipeId === "new" || mode === "edit"
+              ? <RecipeEditor id={ recipeId !== "new" ? recipeId : undefined } isEditor={ isEditor } />
+              : <RecipeView id={ recipeId } isEditor={ isEditor } /> }
         </Col>
       </Row>
-    )
-    : <RecipeView id={ recipeId } 
-                  isEditor={ isEditor } />;
-};
+    </Container>
+  );
+}  
 
 export default withScrollTop(view);

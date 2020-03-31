@@ -1,42 +1,40 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
+import { Container, Row, Col, ListGroup } from "react-bootstrap";
 
 import { HOME, ABOUT_US, CONTACT_US } from "./Routes";
-import SocialNetworks from "../../../components/presentation/SocialNetworks";
+import SocialNetwork from "../../../components/presentation/SocialNetwork";
 
-export default () => (
-  <footer>
-    <Row noGutters>
-      <Col md={{ offset:1, span:10 }}>
-        <p>{ "Des questions ? Contactez-nous : " }
-          <a href="mailto:aide-utilisateur@bliblou.com">
-            aide-utilisateur@bliblou.com
-          </a>
-        </p>
-        <div className="page-links">
-          { [ <Link key="footer-link-1" to={ HOME }><small>Accueil</small></Link>,
-              <Link key="footer-link-2" to={ ABOUT_US }><small>À propos</small></Link>,
-              <Link key="footer-link-3" to={ CONTACT_US }><small>Nous contacter</small></Link> ] }
-        </div>
-        <SocialNetworks networks={[ 
-                          {
-                            label: "Le Bliblou sur Instagram",
-                            href: "https://www.instagram.com/bliblou_fr/",
-                            network: "Instagram",
-                          },
-                          {
-                            label: "Le Bliblou sur Twitter",
-                            href: "https://twitter.com/BliblouFR",
-                            network: "Twitter",
-                          },
-                          {
-                            label: "Le Bliblou sur Facebook",
-                            href: "https://www.facebook.com/bliblouFR/",
-                            network: "Facebook",
-                          }
-                      ]} />
-      </Col>
-    </Row>
+export default React.forwardRef((props, ref) => (
+  <footer ref={ ref }>
+    <Container>
+      <Row>
+        <Col>
+          <p>{ "Des questions ? Contactez-nous : " }
+            <a href="mailto:aide-utilisateur@bliblou.com">
+              aide-utilisateur@bliblou.com
+            </a>
+          </p>
+          <ListGroup className="social-network-links list-group-horizontal">
+            { [ <SocialNetwork label="Le Bliblou sur Instagram"
+                               href="https://www.instagram.com/bliblou_fr/"
+                               network="Instagram" />,
+                <SocialNetwork label="Le Bliblou sur Twitter"
+                               href="https://twitter.com/BliblouFR"
+                               network="Twitter" />,
+                <SocialNetwork label="Le Bliblou sur Facebook"
+                               href="https://www.facebook.com/bliblouFR/"
+                               network="Facebook" />
+              ].map(network => <ListGroup.Item>{ network }</ListGroup.Item>) }
+          </ListGroup>
+          <ListGroup className="nav-links list-group-horizontal-md">
+            { [ <Link to={ HOME }><small>Accueil</small></Link>,
+                <Link to={ ABOUT_US }><small>À propos</small></Link>,
+                <Link to={ CONTACT_US }><small>Nous contacter</small></Link> 
+              ].map(link => <ListGroup.Item>{ link }</ListGroup.Item>) }
+          </ListGroup>
+        </Col>
+      </Row>
+    </Container>
   </footer>
-);
+));

@@ -1,16 +1,18 @@
 import React from "react";
 import { string, arrayOf, shape, oneOf } from "prop-types";
-import { Image } from "react-bootstrap";
+import { ListGroup, Image } from "react-bootstrap";
 
-import SocialNetworks from "./SocialNetworks";
+import SocialNetwork from "./SocialNetwork";
 
 const About = ({ name, title, picture, descriptions, networks }) => (
   <div className="about">
     <h2>{ name }</h2>
     <h3>{ title }</h3>
-    <Image src={ picture } roundedCircle />
-    { networks 
-        ? <SocialNetworks networks={ networks } /> 
+    <Image src={ picture } className="icon medium picture" roundedCircle />
+    { networks
+        ? <ListGroup className="social-network-links list-group-horizontal">
+            { networks.map(network => <ListGroup.Item><SocialNetwork { ...network } /></ListGroup.Item>) }
+          </ListGroup>
         : null }
     { descriptions && descriptions.map((str, index) => (
       <p key={ "descr-" + index }>{ str }</p>

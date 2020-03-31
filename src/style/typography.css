@@ -1,12 +1,24 @@
 body {
   font-family: "Open Sans", sans-serif;
-  text-align: justify; /* should be left */
+  text-align: left;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
 
+.card, .card p, .card .h5 {
+  font-size: .95rem;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.contact-us, .lost-password, .not-found {
+  text-align: center;
+}
+
+.form-text {
+  text-align: left;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -29,11 +41,24 @@ h4, h5 {
   font-size: 1em;
 }
 
+.navbar-brand { 
+  font-size: 1.78em;
+  font-weight: 500;
+}
+
+.panel-with-image>.panel-content {
+  text-align: justify;
+}
+
+.recipes-list>h2 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
 small {
   font-size: 90%;
 }
 
-.navbar-brand { 
-  font-size: 1.78em;
-  font-weight: 500;
+.tooltip-error p, .tooltip-error li, .tooltip-error ul {
+  text-align: left;
 }

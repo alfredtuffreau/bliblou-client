@@ -68,27 +68,26 @@ class Dropzone extends Component {
   render() {
     const { src, label, disabled } = this.props;
     const { hightlight, height } = this.state;
-    const dropzoneInputClass = "dropzone-input".concat(`${src ? " with-image" : ""}`)
-                                               .concat(`${disabled ? " disabled" : ""}`)
-                                               .concat(`${hightlight ? " highlight" : ""}`);
+    const dropzoneClass = "dropzone".concat(`${src ? " with-image" : ""}`)
+                                    .concat(`${disabled ? " disabled" : ""}`)
+                                    .concat(`${hightlight ? " highlight" : ""}`);
       
     return (
-      <div className="dropzone" style={{ height: height ? `${height}px` : undefined }}>
+      <div className={ dropzoneClass } style={{ height: height ? `${height}px` : undefined }}>
         { !src ? <></> : <img src={ src } 
                               alt="RecipePicture"
                               onLoad={ () => this.onLoad() } 
                               ref={ this.divImgRef } /> }	
-        <div className={ dropzoneInputClass }
+        <div className="input-container"
              style={{ top: `-${height}px`, height: `${height}px` }}
              onDrop={ (event) => this.onDrop(event) }
              onDragOver={ (event) => this.onDragOver(event) }
              onDragLeave={ () => this.onDragLeave() }
              onClick={ () => this.openFileDialog() }>
           <img alt="upload"
-              className="icon"
+              className="icon small"
               src="../../cloud_upload-24px.svg" />
           <input ref={ this.fileInputRef }
-                className="file-input"
                 type="file"
                 multiple
                 onChange={ this.onFilesAdded } />
