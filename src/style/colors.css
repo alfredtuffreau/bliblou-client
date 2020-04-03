@@ -129,6 +129,18 @@ ol>li {
   color: #fff;
 }
 
+.tooltip-error.bs-tooltip-top .arrow::before {
+  border-top-color: #dc3545;
+}
+
+.tooltip-error.bs-tooltip-right .arrow::before {
+  border-right-color: #dc3545;
+}
+
+.tooltip-error.bs-tooltip-bottom .arrow::before {
+  border-bottom-color: #dc3545;
+}
+
 .tooltip-error.bs-tooltip-left .arrow::before {
   border-left-color: #dc3545;
 }
