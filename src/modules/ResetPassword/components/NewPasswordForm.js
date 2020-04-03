@@ -53,15 +53,16 @@ class NewPasswordForm extends Component {
 
     return (
       <Form onSubmit={ this.handleOnSubmit }>
-        <PasswordInputWithTooltip label="Nouveau mot de passe"
-                                  password={ password }
+        <PasswordInputWithTooltip id="password"
+                                  label="Nouveau mot de passe"
+                                  { ...password }
                                   showTooltip={ password.showTooltip } 
 																	onChange={ onChange } 
 																	onBlur={ onBlur }
 																	onHover={ onHover } 
 																	onClick={ onPasswordClick } />
-        <ConfirmationCodeInputWithTooltip label="Code de vérification" 
-                                          confirmationCode={ confirmationCode }
+        <ConfirmationCodeInputWithTooltip id="confirmationCode" 
+                                          { ...confirmationCode }
                                           showTooltip={ confirmationCode.showTooltip }
                                           onChange={ onChange }
                                           onBlur={ onBlur }

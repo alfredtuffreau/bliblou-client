@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { shape, string, bool, func } from "prop-types";
+import { string, bool, func } from "prop-types";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -25,13 +25,9 @@ class PasswordInput extends Component {
   }
 
   render () {
-    const { 
-      label,
-      password: { value, isValid, isClear }, 
-      withLinkTo 
-    } = this.props;
+    const { id, label, value, isValid, isClear, withLinkTo } = this.props;
     return (
-      <Form.Group controlId="password">
+      <Form.Group controlId={ id }>
         <Form.Label hidden>{ label }</Form.Label>
         <InputGroup>
           <Form.Control aria-describedby="pwdAppend"
@@ -61,13 +57,11 @@ class PasswordInput extends Component {
 };
 
 PasswordInput.propTypes = {
+  id: string.isRequired,
   label: string,
-  password: shape({
-    value: string,
-    isValid: bool,
-    isClear: bool,
-  }),
-  showTooltip: bool,
+  value: string,
+  isValid: bool,
+  isClear: bool,
   withLinkTo: string,
   onChange: func.isRequired,
   onBlur: func,
@@ -77,12 +71,9 @@ PasswordInput.propTypes = {
 
 PasswordInput.defaultProps = { 
   label: "Mot de passe",
-  password: {
-    value: "",
-    isValid: undefined,
-    isClear: false,
-  },
-  showTooltip: false,
+  value: "",
+  isValid: undefined,
+  isClear: false,
   withLinkTo: undefined,
   onBlur: () => {},
   onHover: () => {},

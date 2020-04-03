@@ -35,8 +35,8 @@ class ConfirmationForm extends Component {
     const { confirmationCode, onChange, onBlur, onHover, isLoading } = this.props;
     return (
       <Form onSubmit={ this.handleOnSubmit }>
-        <ConfirmationCodeInputWithTooltip label="Code de vérification" 
-                                          confirmationCode={ confirmationCode }
+        <ConfirmationCodeInputWithTooltip id="confirmationCode" 
+                                          { ...confirmationCode }
                                           showTooltip={ confirmationCode.showTooltip }
                                           onChange={ onChange }
                                           onBlur={ onBlur }

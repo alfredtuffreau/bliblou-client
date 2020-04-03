@@ -22,9 +22,11 @@ class SignIn extends Component {
 
     return (
       <Form  onSubmit={ this.handleOnSubmit }>
-        <MailInput mail={ mail } 
+        <MailInput id="mail"
+                   { ...mail } 
                    onChange={ setValue } />
-        <PasswordInput password={ password }
+        <PasswordInput id="password"
+                       { ...password }
                        withLinkTo={ LOST_PASSWORD }
                        onChange={ setValue } 
                        onClick={ togglePasswordVisibility }/>

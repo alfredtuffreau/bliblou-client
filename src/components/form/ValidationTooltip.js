@@ -13,14 +13,14 @@ function withValidationTooltip(WrappedComponent, message, high) {
     render() {
       const { target } = this.state;
       const { showTooltip, ...rest } = this.props;
-      
       return (
         <>
           <WrappedComponent ref={ this.attachRef } { ...rest } />
-          <Overlay target={ target } show={ showTooltip } placement="left">
-            { props => (
+          <Overlay target={ target } show={ showTooltip } placement="auto">
+            { ({ show, ...props }) => (
               <Tooltip 
                 className={ high ? "up tooltip-error" : "tooltip-error" }
+                show={ show.toString() }
                 { ...props }>
                 { message }
               </Tooltip>

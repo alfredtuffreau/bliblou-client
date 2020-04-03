@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form } from "react-bootstrap";
-import { shape, string, bool, func } from "prop-types";
+import { string, bool, func } from "prop-types";
 
 class ConfirmationCodeInput extends Component {
   handleOnChange = ({ target: { id: field, value } }) => {
@@ -16,7 +16,7 @@ class ConfirmationCodeInput extends Component {
   };
   
   render() {
-    const { id, label, confirmationCode: { value, isValid } } = this.props;
+    const { id, label, value, isValid } = this.props;
 
     return (
       <Form.Group controlId={ id }>
@@ -38,19 +38,19 @@ class ConfirmationCodeInput extends Component {
 }
 
 ConfirmationCodeInput.propTypes = {
-  label: string.isRequired,
-  id: string,
-  confirmationCode: shape({ value: string, isValid: bool }),
-  showTooltip: bool,
+  id: string.isRequired, // "confirmationCode"
+  label: string,
+  value: string, 
+  isValid: bool,
   onChange: func.isRequired,
   onBlur: func.isRequired,
   onHover: func.isRequired,
 }
 
 ConfirmationCodeInput.defaultProps = {
-  id: "confirmationCode",
-  confirmationCode: { value: "", isValid: undefined },
-  showTooltip: false,
+  label: "Code de vérification",
+  value: "",
+  isValid: undefined,
 }
 
 export default ConfirmationCodeInput;

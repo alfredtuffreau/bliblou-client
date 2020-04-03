@@ -31,7 +31,8 @@ class IdentificationForm extends Component {
 
     return (
       <Form onSubmit={ this.handleOnSubmit }>
-        <MailInputWithTooltip mail={ mail } 
+        <MailInputWithTooltip id="mail"
+                              { ...mail } 
                               showTooltip={ mail.showTooltip }
 															onChange={ onChange } 
 															onBlur={ onBlur }

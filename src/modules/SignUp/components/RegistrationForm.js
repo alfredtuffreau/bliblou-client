@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import { bool, shape, string, func } from "prop-types";
 import { Button, Form } from "react-bootstrap";
 
-import NamesInput from "../../../components/form/NamesInput";
+import RowInputs from "../../../components/form/RowInputs";
+import FirstnameInput from "../../../components/form/FirstnameInput";
+import LastnameInput from "../../../components/form/LastnameInput";
 import MailInput from "../../../components/form/MailInput";
 import PasswordInput from "../../../components/form/PasswordInput";
 import GenderInput from "../../../components/form/GenderInput";
 import withValidationTooltip from "../../../components/form/ValidationTooltip";
 
-const NAME_ALERT_MESSAGE = "Saisissez votre nom complet";
+const NAMES_ALERT_MESSAGE = "Saisissez votre nom complet";
 const MAIL_ALERT_MESSAGE = "Saisissez une adresse valide";
 const SPECIAL_CHARACTERS = "^ $ * . [ ] { } ( ) ? - \" ! @ # % & / \\ , > < ' : ; | _ ~ `";
 const PASSWORD_ALERT_MESSAGE = (
@@ -24,7 +26,7 @@ const PASSWORD_ALERT_MESSAGE = (
   </>
 );
 const GENDER_ALERT_MESSAGE = "Indiquez votre genre";
-const NameInputWithTooltip = withValidationTooltip(NamesInput, NAME_ALERT_MESSAGE, true);
+const NamesInputWithTooltip = withValidationTooltip(RowInputs, NAMES_ALERT_MESSAGE, true);
 const MailInputWithTooltip = withValidationTooltip(MailInput, MAIL_ALERT_MESSAGE);
 const PasswordInputWithTooltip = withValidationTooltip(PasswordInput, PASSWORD_ALERT_MESSAGE);
 const GenderInputWithTooltip = withValidationTooltip( GenderInput , GENDER_ALERT_MESSAGE);
@@ -54,24 +56,33 @@ class RegistrationForm extends Component {
 
     return (
       <Form onSubmit={ this.handleOnSubmit }>
-				<NameInputWithTooltip firstname={ firstname } 
-															lastname={ lastname } 
-															showTooltip={ firstname.showTooltip || lastname.showTooltip }
-															onChange={ onChange } 
-															onBlur={ onBlur }
-															onHover={ onHover } />
-        <MailInputWithTooltip mail={ mail } 
+				<NamesInputWithTooltip showTooltip={ firstname.showTooltip || lastname.showTooltip }>
+          <FirstnameInput id="firstname"
+                          { ...firstname } 
+                          onChange={ onChange } 
+                          onBlur={ onBlur }
+                          onHover={ onHover } />
+          <LastnameInput id="lastname"
+                         { ...lastname } 
+                         onChange={ onChange } 
+                         onBlur={ onBlur }
+                         onHover={ onHover } />
+        </NamesInputWithTooltip>
+        <MailInputWithTooltip id="mail"
+                              { ...mail } 
 															showTooltip={ mail.showTooltip }
 															onChange={ onChange } 
 															onBlur={ onBlur }
 															onHover={ onHover } />
-				<PasswordInputWithTooltip password={ password }
+        <PasswordInputWithTooltip id="password"
+                                  { ...password }
 																	showTooltip={ password.showTooltip } 
 																	onChange={ onChange } 
 																	onBlur={ onBlur }
 																	onHover={ onHover } 
 																	onClick={ onPasswordClick } />
-        <GenderInputWithTooltip gender={ gender } 
+        <GenderInputWithTooltip id="gender"
+                                { ...gender } 
 																showTooltip={ gender.showTooltip } 
 																onClick= { onGenderClick }
 																onChange={ onChange } 

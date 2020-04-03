@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { shape, string, bool, func } from "prop-types"
+import { string, bool, func } from "prop-types"
 import { Form } from "react-bootstrap";
 
 class TextareaInput extends Component {
@@ -7,8 +7,8 @@ class TextareaInput extends Component {
     this.props.onChange(field, value);
   }
 
-  handleOnBlur = ({ target: {id: field } }) => {
-    const { content: { value } } = this.props;
+  handleOnBlur = ({ target: {id: field, value:fieldVal } }) => {
+    const { value } = this.props;
     if (value) this.props.onBlur(field, value, { json: true });
   }
 
@@ -17,12 +17,12 @@ class TextareaInput extends Component {
   }
 
   render() {
-    const { controlId, defaultValue, content: { value, isValid } } = this.props;
+    const { id, label, defaultValue, value, isValid } = this.props;
     const currentValue = value || defaultValue;
     const rows = currentValue.split(/\r\n|\r|\n/).length;
     return (
-      <Form.Group controlId={ controlId }>
-        <Form.Label hidden>Recette</Form.Label>
+      <Form.Group controlId={ id }>
+        <Form.Label hidden>{ label }</Form.Label>
         <Form.Control as="textarea" 
                       value={ currentValue } 
                       rows={ rows } 
@@ -37,11 +37,10 @@ class TextareaInput extends Component {
 };
 
 TextareaInput.propTypes = {
-  controlId: string.isRequired,
-  content: shape({
-    value: string,
-    isValid: bool,
-  }),
+  id: string.isRequired,
+  label: string.isRequired,
+  value: string,
+  isValid: bool,
   defaultValue: string.isRequired,
   onChange: func.isRequired,
   onBlur: func.isRequired,
@@ -49,10 +48,8 @@ TextareaInput.propTypes = {
 };
 
 TextareaInput.defaultProps = {
-  mail: {
-    value: undefined,
-    isValid: undefined,
-  },
+  value: undefined,
+  isValid: undefined,
 };
 
 export default TextareaInput;

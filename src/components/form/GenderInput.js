@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { shape, string, bool, func } from "prop-types";
+import { string, bool, func } from "prop-types";
 import { Form, InputGroup, Button } from "react-bootstrap";
 
 const FEMALE = "Female";
 const MALE = "Male";
-const GENDER = "gender";
 
 class GenderInput extends Component {
   getClassName = (field) => {
@@ -20,45 +19,44 @@ class GenderInput extends Component {
       : classes.join(" ");
   }
 
-  handleOnCLick = (newGender) => {
-    this.props.onClick(GENDER, newGender);
+  handleOnCLick = ({ target: { id: field } }, newGender) => {
+    this.props.onClick(field, newGender);
   }
 
-  handleOnChange = ({ target: { value } }) => {
-    this.props.onChange(GENDER, value);
+  handleOnChange = ({ target: { id: field, value } }) => {
+    this.props.onChange(field, value);
   }
 
-  handleOnBlur = ({ target: { value } }) => {
-    this.props.onBlur(GENDER, value, { required: true });
+  handleOnBlur = ({ target: { id: field, value } }) => {
+    this.props.onBlur(field, value, { required: true });
   }
 
-  handleOnHover = () => {
-    this.props.onHover(GENDER);
+  handleOnHover = ({ target: { id: field } }) => {
+    this.props.onHover(field);
   }
 
   render () {
-    const label = "Gender";
-    const { gender: { value, isValid } } = this.props;
+    const { id, label, value, isValid } = this.props;
     return (
-      <Form.Group controlId={ GENDER }>
+      <Form.Group controlId={ id }>
         <Form.Label hidden>{ label }</Form.Label>
         <InputGroup className="gender">
           <InputGroup.Prepend>
             <Button variant={ value !== MALE ? "light" : undefined }
-                    onClick={ () => this.handleOnCLick(MALE) }
+                    onClick={ () => this.handleOnCLick({ target: { id } }, MALE) }
                     onMouseDown={ (e) => e.preventDefault() }
-                    onMouseEnter={ this.handleOnHover } 
-                    onMouseLeave={ this.handleOnHover }
+                    onMouseEnter={ () => this.handleOnHover({ target: { id } }) } 
+                    onMouseLeave={ () => this.handleOnHover({ target: { id } }) }
                     className={ isValid === false ? "is-invalid" : undefined }>
               Homme
             </Button>
           </InputGroup.Prepend>
           <InputGroup.Prepend>
             <Button variant={ value !== FEMALE ? "light" : undefined }
-                    onClick={ () => this.handleOnCLick(FEMALE) }
+                    onClick={ () => this.handleOnCLick({ target: { id } }, FEMALE) }
                     onMouseDown={ (e) => e.preventDefault() }
-                    onMouseEnter={ this.handleOnHover } 
-                    onMouseLeave={ this.handleOnHover }
+                    onMouseEnter={ () => this.handleOnHover({ target: { id } }) } 
+                    onMouseLeave={ () => this.handleOnHover({ target: { id } }) }
                     className={ isValid === false ? "is-invalid" : undefined }>
               Femme
             </Button>
@@ -67,7 +65,7 @@ class GenderInput extends Component {
                         placeholder="Autre"
                         value={ value === "Male" || value === "Female" ? "" : value }
                         isInvalid = { isValid === false }
-                        onFocus={ () => this.handleOnCLick('') }
+                        onFocus={ () => this.handleOnCLick({ target: { id } }, '') }
                         onChange={ this.handleOnChange }
                         onBlur={ this.handleOnBlur }
                         onMouseEnter={ this.handleOnHover } 
@@ -79,23 +77,20 @@ class GenderInput extends Component {
 }
 
 GenderInput.propTypes = {
-  gender: shape({
-    value: string,
-    isValid: bool,
-  }),
-  showTooltip: bool,
+  id: string.isRequired,
+  label: string,
+  value: string,
+  isValid: bool,
   onClick: func.isRequired,
   onChange: func.isRequired,
   onBlur: func.isRequired,
-  onHover: func.isRequired,
+  onHover: func.isRequired
 };
 
 GenderInput.defaultProps = { 
-  gender: {
-    value: "",
-    isValid: undefined,
-  },
-  showTooltip: false,
+  label: "Genre",
+  value: "",
+  isValid: undefined
 };
 
 export default GenderInput;

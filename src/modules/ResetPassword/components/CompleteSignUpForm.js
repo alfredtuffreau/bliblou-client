@@ -35,9 +35,8 @@ class CompleteSignUpForm extends Component {
 
     return (
       <Form onSubmit={ this.handleOnSubmit }>
-        <ConfirmationCodeInputWithTooltip id="signUpCode"
-                                          label="Code de vérification" 
-                                          confirmationCode={ signUpCode }
+        <ConfirmationCodeInputWithTooltip id="signUpCode" 
+                                          { ...signUpCode }
                                           showTooltip={ signUpCode.showTooltip }
                                           onChange={ onChange }
                                           onBlur={ onBlur }

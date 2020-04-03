@@ -12,13 +12,21 @@ export const TOGGLE_HOVER = "RECIPE/TOGGLE_HOVER";
 export const SET_IS_LOADING = "RECIPE/SET_IS_LOADING";
 export const CLEAR = "RECIPE/CLEAR";
 
+
+const set = (field, value) => ({ type: SET_VALUE, payload: { field, value } });
 const setValid = (field, isValid) => ({ type: SET_VALID, payload: { field, isValid } });
 const setIsLoading = (value) => ({ type: SET_IS_LOADING, payload: value });
 
-export const setValue = (field, value) => ({ type: SET_VALUE, payload: { field, value } });
 export const setCurrentPicture = (value) => ({ type: SET_CURRENT_PICTURE, payload: value });
 export const toggleHover = (field) => ({ type: TOGGLE_HOVER, payload: { field } });
 export const clear = () => ({ type: CLEAR });
+
+export const setValue = (field, value) => {
+	return (dispatch) => {
+		dispatch(set(field, value));
+		dispatch(setValid(field, undefined));
+	};
+};
 
 export const setPicture = (url, name, type, lastModified) => ({ 
   type: SET_PICTURE, 

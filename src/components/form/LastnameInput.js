@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { string, bool, func } from "prop-types";
 import { Form } from "react-bootstrap";
 
-class MailInput extends Component {
-  handleOnChange = ({ target: { id: field, value } }) => {
+class LastnameInput extends Component {
+  handleOnChange = ({ target: {id: field, value } }) => {
     this.props.onChange(field, value);
   }
 
   handleOnBlur = ({ target: { id: field, value } }) => {
-    this.props.onBlur(field, value, { stop: true, required: true, email: true });
+    this.props.onBlur(field, value, { required: true });
   }
 
   handleOnHover = ({ target: { id: field } }) => {
@@ -20,9 +20,9 @@ class MailInput extends Component {
     return (
       <Form.Group controlId={ id }>
         <Form.Label hidden>{ label }</Form.Label>
-        <Form.Control type="mail"
-                      value={ value }
+        <Form.Control type="text"
                       placeholder={ label }
+                      value={ value }
                       isInvalid = { isValid === false }
                       onChange={ this.handleOnChange }
                       onBlur={ this.handleOnBlur }
@@ -33,22 +33,20 @@ class MailInput extends Component {
   }
 }
 
-MailInput.propTypes = {
+LastnameInput.propTypes = {
   id: string.isRequired,
   label: string,
   value: string,
   isValid: bool,
   onChange: func.isRequired,
-  onBlur: func,
-  onHover: func,
+  onBlur: func.isRequired,
+  onHover: func.isRequired,
 };
 
-MailInput.defaultProps = { 
-  label: "Adresse email",
+LastnameInput.defaultProps = { 
+  label: "Nom",
   value: "",
   isValid: undefined,
-  onBlur: () => {},
-  onHover: () => {},
 };
 
-export default MailInput;
+export default LastnameInput;
