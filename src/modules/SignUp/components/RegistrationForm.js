@@ -15,7 +15,7 @@ const MAIL_ALERT_MESSAGE = "Saisissez une adresse valide";
 const SPECIAL_CHARACTERS = "^ $ * . [ ] { } ( ) ? - \" ! @ # % & / \\ , > < ' : ; | _ ~ `";
 const PASSWORD_ALERT_MESSAGE = (
   <>
-    <p>Le mot de passe doit contenir: 8 caractères dont :
+    <p>Le mot de passe doit contenir 8 caractères dont :
       <br />au moins 1 chiffre
       <br />au moins 1 majuscule
       <br />au moins 1 minuscule

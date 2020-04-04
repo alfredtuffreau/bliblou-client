@@ -14,12 +14,9 @@ class ResetPassword extends Component {
   }
 
   render() {
-    const { 
-      needConfirmSignUp, isSent, mail, isLoading, setValue, validate, toggleHover, cancel 
-    } = this.props;
-    
     let description, img, form;
-
+    const { needConfirmSignUp, isSent, mail, isLoading, setValue, validate, toggleHover, cancel } = this.props;
+    
     if (needConfirmSignUp) {
       const { signUpCode, validateSignUp } = this.props;
       description = (<>
@@ -38,10 +35,7 @@ class ResetPassword extends Component {
                                  onSubmit={ validateSignUp }
                                  onCancel={ cancel } />;
     } else if (isSent) {
-      const { 
-        confirmationCode, password, togglePasswordVisibility, validateReset 
-      } = this.props;
- 
+      const { confirmationCode, password, togglePasswordVisibility, validateReset } = this.props;
       description = <p>Saisissez votre nouveau mot de passe et le code de vérification qui vous a été envoyé par email.</p>;
       img = <></>;
       form = <NewPasswordForm mail={ mail }
@@ -56,7 +50,6 @@ class ResetPassword extends Component {
                               onCancel={ cancel } />;
     } else {
       const { startReset } = this.props;
-
       description = <p>Nous vous enverrons les instructions de réinitialisation de votre mot de passe par email.</p>;
       img = <img src={ icon } className="icon large center" alt="Mail" />;
       form = <IdentificationForm mail={ mail }
@@ -85,13 +78,13 @@ class ResetPassword extends Component {
 }
 
 ResetPassword.propTypes = {
+  isLoading: bool,
   needConfirmSignUp: bool,
   isSent: bool,
-  mail: shape({ value: string, isValid: bool, showTooltip: bool }),
-  signUpCode: shape({ value: string, isValid: bool, showTooltip: bool }),
-  confirmationCode: shape({ value: string, isValid: bool, showTooltip: bool }),
-  password: shape({ value: string, isValid: bool, showTooltip: bool }),
-  isLoading: bool,
+  mail: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
+  signUpCode: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
+  confirmationCode: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
+  password: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
   init: func.isRequired,
   setValue: func.isRequired,
   validate: func.isRequired,
@@ -100,16 +93,13 @@ ResetPassword.propTypes = {
   startReset: func.isRequired,
   validateSignUp: func.isRequired,
   validateReset: func.isRequired,
-  cancel: func.isRequired,
+  cancel: func.isRequired
 };
 
 ResetPassword.defaultProps = {
-  needConfirmSignUp: false,
-  isSent: false,
-  mail: undefined,
-  confirmationCode: undefined,
-  password: undefined,
   isLoading: false,
+  needConfirmSignUp: false,
+  isSent: false
 };
 
 export default ResetPassword;

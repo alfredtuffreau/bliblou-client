@@ -31,9 +31,7 @@ class IdentificationForm extends Component {
 
     return (
       <Form onSubmit={ this.handleOnSubmit }>
-        <MailInputWithTooltip id="mail"
-                              { ...mail } 
-                              showTooltip={ mail.showTooltip }
+        <MailInputWithTooltip { ...mail } 
 															onChange={ onChange } 
 															onBlur={ onBlur }
 															onHover={ onHover } />
@@ -55,8 +53,8 @@ class IdentificationForm extends Component {
 }
 
 IdentificationForm.propTypes = {
-  mail: shape({ value: string, isValid: bool, showTooltip: bool }),
 	isLoading: bool,
+  mail: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
 	onChange: func.isRequired,
 	onBlur: func.isRequired,
   onHover: func.isRequired,
@@ -65,7 +63,6 @@ IdentificationForm.propTypes = {
 };
 
 IdentificationForm.defaultProps = {
-  mail: { value: "", isValid: undefined, showTooltip: false },
   isLoading : false,
 };
 

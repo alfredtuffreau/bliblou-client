@@ -74,7 +74,7 @@ RecipeEditor.propTypes = {
   id: string,
   picture: object,
   currentPicture: string,
-  content: shape({ value: string, isValid: bool }),
+  content: shape({ id: string, value: string, isValid: bool }).isRequired,
   onFilesAdded: func.isRequired,
 	isLoading: bool,
   onChange: func.isRequired,
@@ -89,7 +89,6 @@ RecipeEditor.defaultProps = {
   id: undefined,
   picture: undefined,
   currentPicture: undefined,
-  content: { value: undefined, isValid: undefined, showTooltip: false },
   isLoading : false,
 };
 

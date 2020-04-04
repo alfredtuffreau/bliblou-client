@@ -6,12 +6,7 @@ import { loadRecipe, setPicture, setValue, validate, toggleHover, save, back, cl
 
 const mapStateToProps = state => {
   const { content, picture, currentPicture, isLoading } = state.recipeEditor;
-  return ({ 
-    content: { ...content, showTooltip: content.isHover && content.isValid === false },
-    picture,
-    currentPicture,
-    isLoading
-  });
+  return ({  content, picture, currentPicture, isLoading });
 }
 
 const mapDispatchToProps = dispatch => (

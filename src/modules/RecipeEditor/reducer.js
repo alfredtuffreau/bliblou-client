@@ -2,8 +2,10 @@ import {
   SET_PICTURE, SET_CURRENT_PICTURE, SET_VALUE, SET_VALID, TOGGLE_HOVER, SET_IS_LOADING, CLEAR 
 } from "./actions";
 
+const CONTENT_ID = "content";
+
 const initialState = {
-  content: { value: undefined, isValid: undefined, isHover: false }, 
+  [ CONTENT_ID ]: { id: CONTENT_ID, value: undefined, isValid: undefined, isHover: false }, 
   picture: undefined,
   isLoading: false
 };

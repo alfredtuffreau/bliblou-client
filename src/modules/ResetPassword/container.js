@@ -18,22 +18,7 @@ const mapStateToProps = state => {
   const { 
     needConfirmSignUp, isSent, isLoading, mail, signUpCode, confirmationCode, password 
   } = state.resetPassword;
-  
-  return ({ 
-    needConfirmSignUp,
-    isSent, 
-    isLoading,
-    mail: { ...mail, showTooltip: mail.isHover && mail.isValid === false },
-    signUpCode: { 
-      ...signUpCode, 
-      showTooltip: signUpCode.isHover && signUpCode.isValid === false 
-    },
-    confirmationCode: { 
-      ...confirmationCode, 
-      showTooltip: confirmationCode.isHover && confirmationCode.isValid === false 
-    },
-    password: { ...password, showTooltip: password.isHover && password.isValid === false } 
-  });
+  return ({ needConfirmSignUp, isSent, isLoading, mail, signUpCode, confirmationCode, password });
 };
 
 const mapDispatchToProps = dispatch => (

@@ -57,9 +57,8 @@ const RecipeForm = ({
 
   return ( 
     <Form onSubmit={ handleOnSubmit }>
-      <TextareaInputWithTooltip id="content"
+      <TextareaInputWithTooltip { ...content }
                                 label="Recette" 
-                                { ...content }
                                 defaultValue={ RECIPE_TEMPLATE }
                                 showTooltip={ content.showTooltip }
                                 onChange={ onChange }
@@ -85,7 +84,7 @@ RecipeForm.propTypes = {
   id: string,
   picture: object,
   currentPicture: string,
-  content: shape({ value: string, isValid: bool }),
+  content: shape({ id: string, value: string, isValid: bool }).isRequired,
 	isLoading: bool,
   onChange: func.isRequired,
   onBlur: func.isRequired,
@@ -98,7 +97,6 @@ RecipeForm.defaultProps = {
   id: undefined,
   picture: undefined,
   currentPicture: undefined,
-  content: { value: undefined, isValid: undefined, showTooltip: false },
   isLoading : false,
 };
 

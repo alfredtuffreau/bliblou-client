@@ -9,11 +9,16 @@ import {
 	CLEAR,
 } from "./actions";
 
+const MAIL_ID = "mail",
+			SIGN_UP_CODE_ID = "signUpCode",
+			CONFIRMATION_CODE_ID = "confirmationCode",
+			PASSWORD_ID = "password";
+
 const initialState = {
-  mail: { value: "", isValid: undefined, isHover: false },
-  signUpCode: { value: "", isValid: undefined, isHover: false },
-  confirmationCode: { value: "", isValid: undefined, isHover: false },
-  password: { value: "", isValid: undefined, isHover: false },
+  [ MAIL_ID ]: { id: MAIL_ID, value: "", isValid: undefined, isHover: false },
+  [ SIGN_UP_CODE_ID ]: { id: SIGN_UP_CODE_ID, value: "", isValid: undefined, isHover: false },
+  [ CONFIRMATION_CODE_ID ]: { id: CONFIRMATION_CODE_ID, value: "", isValid: undefined, isHover: false },
+  [ PASSWORD_ID ]: { id: PASSWORD_ID, value: "", isValid: undefined, isHover: false },
 	isLoading: false,
 	needConfirmSignUp: false,
   isSent: false,

@@ -29,15 +29,10 @@ class CompleteSignUpForm extends Component {
   };
 
   render() {
-    const { 
-      signUpCode, onChange, onBlur, onHover, isLoading  
-    } = this.props;
-
+    const { signUpCode, onChange, onBlur, onHover, isLoading } = this.props;
     return (
       <Form onSubmit={ this.handleOnSubmit }>
-        <ConfirmationCodeInputWithTooltip id="signUpCode" 
-                                          { ...signUpCode }
-                                          showTooltip={ signUpCode.showTooltip }
+        <ConfirmationCodeInputWithTooltip { ...signUpCode }
                                           onChange={ onChange }
                                           onBlur={ onBlur }
                                           onHover={ onHover } />
@@ -59,9 +54,9 @@ class CompleteSignUpForm extends Component {
 }
 
 CompleteSignUpForm.propTypes = {
-  mail: shape({ value: string, isValid: bool, showTooltip: bool }),
-  signUpCode: shape({ value: string, isValid: bool, showTooltip: bool }),
 	isLoading: bool,
+  mail: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
+  signUpCode: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
 	onChange: func.isRequired,
 	onBlur: func.isRequired,
 	onHover: func.isRequired,
@@ -70,8 +65,6 @@ CompleteSignUpForm.propTypes = {
 };
 
 CompleteSignUpForm.defaultProps = {
-	mail: { value: "", isValid: undefined, showTooltip: false },
-	confirmationCode: { value: "", isValid: undefined, showTooltip: false },
   isLoading : false,
 };
 
