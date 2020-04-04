@@ -7,24 +7,15 @@ import {
 } from "./actions";
 
 const mapStateToProps = state => {
-  const { 
-    firstname, lastname, mail, password, gender, confirmationCode, newUser, isLoading 
-  } = state.signUp;
+  const { firstname, lastname, mail, password, gender, confirmationCode, newUser, isLoading } = state.signUp;
 
   return ({ 
-    signUpForm: {
-      firstname: { ...firstname, showTooltip: firstname.isHover && firstname.isValid === false }, 
-      lastname: { ...lastname, showTooltip: lastname.isHover && lastname.isValid === false },
-      mail: { ...mail, showTooltip: mail.isHover && mail.isValid === false },
-      password: { ...password, showTooltip: password.isHover && password.isValid === false },
-      gender: { ...gender, showTooltip: gender.isHover && gender.isValid === false },
-    },
-    confirmForm: { 
-      confirmationCode: { 
-        ...confirmationCode, 
-        showTooltip: confirmationCode.isHover && confirmationCode.isValid === false 
-      },
-    },
+    firstnameField: { ...firstname, id: "firstname", showTooltip: firstname.isHover && firstname.isValid === false }, 
+    lastnameField: { ...lastname, id: "lastname", showTooltip: lastname.isHover && lastname.isValid === false },
+    mailField: { ...mail, id: "mail", showTooltip: mail.isHover && mail.isValid === false },
+    passwordField: { ...password, id: "password", showTooltip: password.isHover && password.isValid === false },
+    genderField: { ...gender, id: "gender", showTooltip: gender.isHover && gender.isValid === false },
+    confirmationCodeField: { ...confirmationCode, id: "confirmationCode", showTooltip: confirmationCode.isHover && confirmationCode.isValid === false },
     newUser,
     isLoading
   });

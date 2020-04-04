@@ -17,27 +17,24 @@ class ConfirmationForm extends Component {
   };
 
   validToSubmit = () => {
-    const { confirmationCode } =  this.props;
-    return confirmationCode.isValid !== false;
+    const { confirmationCodeField } =  this.props;
+    return confirmationCodeField.isValid !== false;
   };
 
   handleOnSubmit = async (event) => {
     event.preventDefault();
-
-    const {
-      mail, password, confirmationCode, onSubmit, history
-		} = this.props;
-		
-		onSubmit(mail, password, confirmationCode, history);
+    const { mail, password, confirmationCodeField, onSubmit, history } = this.props;
+		onSubmit(mail, password, confirmationCodeField, history);
   };
 
   render () {
-    const { confirmationCode, onChange, onBlur, onHover, isLoading } = this.props;
+    const { confirmationCodeField, onChange, onBlur, onHover, isLoading } = this.props;
     return (
       <Form onSubmit={ this.handleOnSubmit }>
-        <ConfirmationCodeInputWithTooltip id="confirmationCode" 
-                                          { ...confirmationCode }
-                                          showTooltip={ confirmationCode.showTooltip }
+        <ConfirmationCodeInputWithTooltip id={ confirmationCodeField.id }
+                                          value={ confirmationCodeField.value }
+                                          isValid={ confirmationCodeField.isValid }
+                                          showTooltip={ confirmationCodeField.showTooltip }
                                           onChange={ onChange }
                                           onBlur={ onBlur }
                                           onHover={ onHover } />
@@ -53,10 +50,10 @@ class ConfirmationForm extends Component {
 }
 
 ConfirmationForm.propTypes = {
-  confirmationCode: shape({ value: string, isValid: bool, showTooltip: bool }),
-	mail: string,
-	password: string,
 	isLoading: bool,
+  confirmationCodeField: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
+	mail: string.isRequired,
+	password: string.isRequired,
 	onChange: func.isRequired,
 	onBlur: func.isRequired,
 	onHover: func.isRequired,
@@ -65,9 +62,6 @@ ConfirmationForm.propTypes = {
 };
 
 ConfirmationForm.defaultProps = {
-	confirmationCode: { value: "", isValid: undefined, showTooltip: false },
-	mail: "",
-	password: "",
   isLoading : false,
 };
 

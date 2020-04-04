@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { object, bool, func } from "prop-types";
+import { object, shape, string, bool, func } from "prop-types";
 
 import RegistrationForm  from "./RegistrationForm";
 import ConfirmationForm from "./ConfirmationForm";
@@ -9,45 +9,43 @@ class SignUp extends Component {
     const { newUser, isLoading, setValue, validate, toggleHover } = this.props;
 
 		if (newUser) {
-			const { 
-				confirmForm, signUpForm: { mail, password }, confirm, clear 
-			} = this.props;
+			const { confirmationCodeField, mailField: { value: mail }, passwordField: { value: password }, confirm, clear } = this.props;
+			return <ConfirmationForm confirmationCodeField= { confirmationCodeField }
+																mail={ mail }
+																password={ password }
+																isLoading={ isLoading }
+																onChange={ setValue } 
+																onBlur={ validate }
+																onHover={ toggleHover }
+																onSubmit={ confirm } 
+																onUnmount={ clear } />;
+		}
 
-		  return (
-				<ConfirmationForm { ...confirmForm } 
-													mail={ mail.value }
-													password={ password.value }
-													isLoading={ isLoading }
-													onChange={ setValue } 
-													onBlur={ validate }
-													onHover={ toggleHover }
-													onSubmit={ confirm } 
-													onUnmount={ clear } />
-			);
-		} 
-		
-		const { 
-			signUpForm, setValidValue, togglePasswordVisibility, signUp
-		} = this.props;
-
-		return (
-			<RegistrationForm { ...signUpForm } 
-												isLoading={ isLoading } 
-												onGenderClick={ setValidValue }
-												onChange={ setValue } 
-												onBlur={ validate }
-												onHover={ toggleHover }
-												onPasswordClick={ togglePasswordVisibility } 
-												onSubmit={ signUp } />
-		);	
+    const { firstnameField, lastnameField, mailField, passwordField, genderField, setValidValue, togglePasswordVisibility, signUp } = this.props;
+		return <RegistrationForm firstnameField={ firstnameField }
+					 									 lastnameField={ lastnameField }
+				 										 mailField={ mailField }
+														 passwordField={ passwordField }
+														 genderField={ genderField }
+														 isLoading={ isLoading } 
+														 onGenderClick={ setValidValue }
+														 onChange={ setValue } 
+														 onBlur={ validate }
+														 onHover={ toggleHover }
+														 onPasswordClick={ togglePasswordVisibility } 
+														 onSubmit={ signUp } />;	
 	}
 }
 
 SignUp.propTypes = {
 	newUser: object,
 	isLoading: bool,
-	signUpForm: object,
-	confirmForm: object,
+  firstnameField: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
+  lastnameField: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
+  mailField: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
+  passwordField: shape({ id: string, value: string, isValid: bool, isClear: bool, showTooltip: bool }).isRequired,
+  genderField: shape({ id: string, value: string, isValid: bool, showTooltip: bool	}).isRequired,
+  confirmationCodeField: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
 	setValidValue: func.isRequired,
 	setValue: func.isRequired,
 	validate: func.isRequired,
@@ -61,7 +59,6 @@ SignUp.propTypes = {
 SignUp.defaultProps = {
 	newUser: undefined,
 	isLoading: false,
-	signUpForm: undefined,
 	confirmForm: undefined,
 }
 
