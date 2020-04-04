@@ -8,17 +8,7 @@ import {
 
 const mapStateToProps = state => {
   const { firstname, lastname, mail, password, gender, confirmationCode, newUser, isLoading } = state.signUp;
-
-  return ({ 
-    firstnameField: { ...firstname, id: "firstname", showTooltip: firstname.isHover && firstname.isValid === false }, 
-    lastnameField: { ...lastname, id: "lastname", showTooltip: lastname.isHover && lastname.isValid === false },
-    mailField: { ...mail, id: "mail", showTooltip: mail.isHover && mail.isValid === false },
-    passwordField: { ...password, id: "password", showTooltip: password.isHover && password.isValid === false },
-    genderField: { ...gender, id: "gender", showTooltip: gender.isHover && gender.isValid === false },
-    confirmationCodeField: { ...confirmationCode, id: "confirmationCode", showTooltip: confirmationCode.isHover && confirmationCode.isValid === false },
-    newUser,
-    isLoading
-  });
+  return ({ firstname, lastname, mail, password, gender, confirmationCode, newUser, isLoading });
 };
 
 const mapDispatchToProps = dispatch => (

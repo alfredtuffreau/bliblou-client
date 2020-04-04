@@ -5,9 +5,11 @@ import {
 	CLEAR,
 } from "./actions";
 
+const MAIL_ID = "mail", PASSWORD_ID = "password";
+
 const initialState = {
-  mail: { value: "" },
-  password: { value: "", isClear: false },
+  [ MAIL_ID ]: { id: MAIL_ID, value: "" },
+  [ PASSWORD_ID ]: { id: PASSWORD_ID, value: "", isClear: false },
   isLoading: false,
 };
 

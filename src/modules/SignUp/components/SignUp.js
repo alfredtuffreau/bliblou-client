@@ -9,24 +9,28 @@ class SignUp extends Component {
     const { newUser, isLoading, setValue, validate, toggleHover } = this.props;
 
 		if (newUser) {
-			const { confirmationCodeField, mailField: { value: mail }, passwordField: { value: password }, confirm, clear } = this.props;
-			return <ConfirmationForm confirmationCodeField= { confirmationCodeField }
-																mail={ mail }
-																password={ password }
-																isLoading={ isLoading }
-																onChange={ setValue } 
-																onBlur={ validate }
-																onHover={ toggleHover }
-																onSubmit={ confirm } 
-																onUnmount={ clear } />;
+			const { 
+				confirmationCode, mail: { value: mail }, password: { value: password }, confirm, clear 
+			} = this.props;
+			return <ConfirmationForm confirmationCode= { confirmationCode }
+															 mail={ mail }
+															 password={ password }
+															 isLoading={ isLoading }
+															 onChange={ setValue } 
+															 onBlur={ validate }
+															 onHover={ toggleHover }
+															 onSubmit={ confirm } 
+															 onUnmount={ clear } />;
 		}
 
-    const { firstnameField, lastnameField, mailField, passwordField, genderField, setValidValue, togglePasswordVisibility, signUp } = this.props;
-		return <RegistrationForm firstnameField={ firstnameField }
-					 									 lastnameField={ lastnameField }
-				 										 mailField={ mailField }
-														 passwordField={ passwordField }
-														 genderField={ genderField }
+    const { 
+			firstname, lastname, mail, password, gender, setValidValue, togglePasswordVisibility, signUp
+		} = this.props;
+		return <RegistrationForm firstname={ firstname }
+											 			 lastname={ lastname }
+														 mail={ mail }
+														 password={ password }
+														 gender={ gender }
 														 isLoading={ isLoading } 
 														 onGenderClick={ setValidValue }
 														 onChange={ setValue } 
@@ -40,12 +44,12 @@ class SignUp extends Component {
 SignUp.propTypes = {
 	newUser: object,
 	isLoading: bool,
-  firstnameField: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
-  lastnameField: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
-  mailField: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
-  passwordField: shape({ id: string, value: string, isValid: bool, isClear: bool, showTooltip: bool }).isRequired,
-  genderField: shape({ id: string, value: string, isValid: bool, showTooltip: bool	}).isRequired,
-  confirmationCodeField: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
+  firstname: shape({ id: string, value: string, isValid: bool, isHover: bool }).isRequired,
+  lastname: shape({ id: string, value: string, isValid: bool, isHover: bool }).isRequired,
+  mail: shape({ id: string, value: string, isValid: bool, isHover: bool }).isRequired,
+  password: shape({ id: string, value: string, isValid: bool, isClear: bool, isHover: bool }).isRequired,
+  gender: shape({ id: string, value: string, isValid: bool, isHover: bool	}).isRequired,
+  confirmationCode: shape({ id: string, value: string, isValid: bool, isHover: bool }).isRequired,
 	setValidValue: func.isRequired,
 	setValue: func.isRequired,
 	validate: func.isRequired,
@@ -59,7 +63,6 @@ SignUp.propTypes = {
 SignUp.defaultProps = {
 	newUser: undefined,
 	isLoading: false,
-	confirmForm: undefined,
 }
 
 export default SignUp;

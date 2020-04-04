@@ -17,24 +17,21 @@ class ConfirmationForm extends Component {
   };
 
   validToSubmit = () => {
-    const { confirmationCodeField } =  this.props;
-    return confirmationCodeField.isValid !== false;
+    const { confirmationCode } =  this.props;
+    return confirmationCode.isValid !== false;
   };
 
   handleOnSubmit = async (event) => {
     event.preventDefault();
-    const { mail, password, confirmationCodeField, onSubmit, history } = this.props;
-		onSubmit(mail, password, confirmationCodeField, history);
+    const { mail, password, confirmationCode, onSubmit, history } = this.props;
+		onSubmit(mail, password, confirmationCode, history);
   };
 
   render () {
-    const { confirmationCodeField, onChange, onBlur, onHover, isLoading } = this.props;
+    const { confirmationCode, onChange, onBlur, onHover, isLoading } = this.props;
     return (
       <Form onSubmit={ this.handleOnSubmit }>
-        <ConfirmationCodeInputWithTooltip id={ confirmationCodeField.id }
-                                          value={ confirmationCodeField.value }
-                                          isValid={ confirmationCodeField.isValid }
-                                          showTooltip={ confirmationCodeField.showTooltip }
+        <ConfirmationCodeInputWithTooltip { ...confirmationCode }
                                           onChange={ onChange }
                                           onBlur={ onBlur }
                                           onHover={ onHover } />
@@ -51,7 +48,7 @@ class ConfirmationForm extends Component {
 
 ConfirmationForm.propTypes = {
 	isLoading: bool,
-  confirmationCodeField: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
+  confirmationCode: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
 	mail: string.isRequired,
 	password: string.isRequired,
 	onChange: func.isRequired,

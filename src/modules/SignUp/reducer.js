@@ -8,13 +8,20 @@ import {
 	CLEAR,
 } from "./actions";
 
+const FIRSTNAME_ID = "firstname",
+			LASTNAME_ID = "lastname",
+			MAIL_ID = "mail",
+			PASSWORD_ID = "password",
+			GENDER_ID = "gender",
+			CONFIRMATION_CODE_ID = "confirmationCode";
+
 const initialState = {
-  firstname: { value: "", isValid: undefined, isHover: false },
-  lastname: { value: "", isValid: undefined, isHover: false },
-  mail: { value: "", isValid: undefined, isHover: false },
-  password: { value: "", isValid: undefined, isHover: false, isClear: false },
-	gender: { value: "", isValid: undefined, isHover: false },
-	confirmationCode: { value: "", isValid: undefined, isHover: false  },
+  [ FIRSTNAME_ID ]: { id: FIRSTNAME_ID, value: "", isValid: undefined, isHover: false },
+  [ LASTNAME_ID ]: { id: LASTNAME_ID, value: "", isValid: undefined, isHover: false },
+  [ MAIL_ID ]: { id: MAIL_ID, value: "", isValid: undefined, isHover: false },
+  [ PASSWORD_ID ]: { id: PASSWORD_ID, value: "", isValid: undefined, isHover: false, isClear: false },
+	[ GENDER_ID ]: { id: GENDER_ID, value: "", isValid: undefined, isHover: false },
+	[ CONFIRMATION_CODE_ID ]: { id: CONFIRMATION_CODE_ID, value: "", isValid: undefined, isHover: false  },
   isLoading: false,
 	newUser: undefined,
 };

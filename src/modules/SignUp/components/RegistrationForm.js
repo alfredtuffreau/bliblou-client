@@ -31,60 +31,48 @@ const GenderInputWithTooltip = withValidationTooltip( GenderInput , GENDER_ALERT
 
 class RegistrationForm extends Component {
   validToSubmit = () => {
-    const { firstnameField, lastnameField, mailField, passwordField, genderField } = this.props;
-    return [ 
-      firstnameField, 
-      lastnameField, 
-      mailField, 
-      passwordField, 
-      genderField 
-    ].filter(({ isValid }) => isValid === false).length === 0;
+    const { firstname, lastname, mail, password, gender } = this.props;
+    return [ firstname, lastname, mail, password, gender ].filter(({ isValid }) => isValid === false)
+                                                          .length === 0;
   };
 
   handleOnSubmit = async (event) => {
     event.preventDefault();
-    const { firstnameField, lastnameField, mailField, passwordField, genderField, onSubmit } = this.props;
-		onSubmit(firstnameField, lastnameField, mailField, passwordField, genderField);
+    const { firstname, lastname, mail, password, gender, onSubmit } = this.props;
+		onSubmit(firstname, lastname, mail, password, gender);
   };
 
+  isHoverAndInvalid = (input) => {
+    return input.isHover && input.isValid === false;
+  }
+
   render () {
-    const { isLoading, firstnameField, lastnameField, mailField, passwordField, genderField, onChange, onBlur, onHover, onGenderClick, onPasswordClick } = this.props;
+    const { 
+      isLoading, firstname, lastname, mail, password, gender, onChange, onBlur, onHover, onGenderClick, onPasswordClick 
+    } = this.props;
     return (
       <Form onSubmit={ this.handleOnSubmit }>
-				<NamesInputWithTooltip showTooltip={ firstnameField.showTooltip || lastnameField.showTooltip }>
-          <FirstnameInput id={ firstnameField.id }
-                          value={ firstnameField.value }
-                          isValid={ firstnameField.isValid }
+        <NamesInputWithTooltip isValid={ firstname.isValid !== false && lastname.isValid !== false } 
+                               isHover={ this.isHoverAndInvalid(firstname) || this.isHoverAndInvalid(lastname) }>
+          <FirstnameInput { ...firstname }
                           onChange={ onChange }
                           onBlur={ onBlur }
                           onHover={ onHover } />
-          <LastnameInput id={ lastnameField.id }
-                         value={ lastnameField.value }
-                         isValid={ lastnameField.isValid }
+          <LastnameInput { ...lastname }
                          onChange={ onChange }
                          onBlur={ onBlur }
                          onHover={ onHover } />
         </NamesInputWithTooltip>
-        <MailInputWithTooltip id={ mailField.id }
-                              value={ mailField.value }
-                              isValid={ mailField.isValid }
-                              showTooltip={ mailField.showTooltip }
+        <MailInputWithTooltip { ...mail }
                               onChange={ onChange }
                               onBlur={ onBlur }
                               onHover={ onHover } />
-        <PasswordInputWithTooltip id={ passwordField.id }
-                                  value={ passwordField.value }
-                                  isValid={ passwordField.isValid }
-                                  isClear={ passwordField.isClear }
-                                  showTooltip={ passwordField.showTooltip }
+        <PasswordInputWithTooltip { ...password }
                                   onChange={ onChange }
                                   onBlur={ onBlur }
                                   onHover={ onHover } 
                                   onClick={ onPasswordClick } />
-        <GenderInputWithTooltip id={ genderField.id }
-                                value={ genderField.value }
-                                isValid={ genderField.isValid }
-                                showTooltip={ genderField.showTooltip }
+        <GenderInputWithTooltip { ...gender }
                                 onChange={ onChange }
                                 onBlur={ onBlur }
                                 onHover={ onHover } 
@@ -102,11 +90,11 @@ class RegistrationForm extends Component {
 
 RegistrationForm.propTypes = {
 	isLoading: bool,
-  firstnameField: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
-  lastnameField: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
-  mailField: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
-  passwordField: shape({ id: string, value: string, isValid: bool, isClear: bool, showTooltip: bool }).isRequired,
-  genderField: shape({ id: string, value: string, isValid: bool, showTooltip: bool	}).isRequired,
+  firstname: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
+  lastname: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
+  mail: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
+  password: shape({ id: string, value: string, isValid: bool, isClear: bool, showTooltip: bool }).isRequired,
+  gender: shape({ id: string, value: string, isValid: bool, showTooltip: bool	}).isRequired,
 	onGenderClick: func.isRequired,
 	onChange: func.isRequired,
 	onBlur: func.isRequired,

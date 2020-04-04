@@ -12,11 +12,11 @@ function withValidationTooltip(WrappedComponent, message, high) {
 
     render() {
       const { target } = this.state;
-      const { showTooltip, ...rest } = this.props;
+      const { isHover, isValid, ...rest } = this.props;
       return (
         <>
-          <WrappedComponent ref={ this.attachRef } { ...rest } />
-          <Overlay target={ target } show={ showTooltip } placement="auto">
+          <WrappedComponent ref={ this.attachRef } isValid={ isValid } { ...rest } />
+          <Overlay target={ target } show={ isHover && isValid === false } placement="auto">
             { ({ show, ...props }) => (
               <Tooltip 
                 className={ high ? "up tooltip-error" : "tooltip-error" }
