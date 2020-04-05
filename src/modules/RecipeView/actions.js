@@ -1,6 +1,6 @@
 import { s3Download, s3Delete, fetchRecipe, deleteRecipe } from "../../libs/awsLibs";
 
-import { HOME, EDIT_RECIPE } from "../../modules/Navigation";
+import { HOME } from "../../modules/Navigation";
 
 export const SET_IS_LOADING = "RECIPE_VIEW/SET_IS_LOADING";
 export const SET_CONTENT = "RECIPE_VIEW/SET_CONTENT";
@@ -46,11 +46,4 @@ export const removeRecipe = (id, picture, history) => {
     }
     dispatch(setIsLoading(false));
 	};
-};
-
-export const goToEdit = (id, history) => {
-	return async () => {
-    const path = EDIT_RECIPE.replace(":recipeId", id);
-    history.push(path);
-  }
 };

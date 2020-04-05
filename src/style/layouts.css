@@ -81,10 +81,6 @@ ol>li {
     margin-bottom: .25em;
   }
 
-  #recipes .card {
-    cursor: pointer;
-  }
-
   #recipes>:last-child .card {
     margin-bottom: 0;
   }

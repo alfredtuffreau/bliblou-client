@@ -8,12 +8,7 @@ import { HOME, LOGIN } from "./Routes";
 class BrandNavBar extends Component {
   handleLogout = () => {
     const { logout, history } = this.props;
-    const goToLogin = () => history.push(LOGIN);
-    logout(goToLogin);
-  }
-
-  handleClick = (e) => { 
-    e.preventDefault(); 
+    logout(history);
   }
 
   render () {
@@ -35,7 +30,7 @@ class BrandNavBar extends Component {
               : (<Nav>
                   <NavLink to={ href }>
                     <Button variant="success" 
-                            onMouseDown={ this.handleClick }>
+                            onMouseDown={ e => e.preventDefault() }>
                       { label }
                     </Button>
                   </NavLink>

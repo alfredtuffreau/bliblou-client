@@ -6,17 +6,15 @@ import CardList from "../../../components/presentation/CardList";
 import AddRecipeCard from "./AddRecipeCard";
 import RecipeCard from "./RecipeCard";
 
-const RecipesList = ({ isEditor, title, predicate, catalog, onClick }) => (
+const RecipesList = ({ isEditor, title, predicate, catalog }) => (
   <CardList title={ title }>
-    <AddRecipeCard isEditor={ isEditor }
-                   onClick={ onClick } />
+    <AddRecipeCard isEditor={ isEditor } />
     { catalog.filter(predicate)
              .map(({ recipeId, content, src }, index) => ( 
       <RecipeCard key={ `${recipeId}${index}` }
                   recipeId={ recipeId } 
                   content={ content } 
-                  src={ src } 
-                  onClick={ onClick } />
+                  src={ src } />
     )) }
   </CardList>
 ); 
@@ -25,14 +23,13 @@ RecipesList.propTypes = {
   isEditor: bool,
   title: string.isRequired,
   catalog: array,
-  predicate: func,
-  onClick: func.isRequired,
+  predicate: func
 };
 
 RecipesList.defaultProps = {
   isEditor: undefined,
   catalog: [],
-  predicate: () => true,
+  predicate: () => true
 };
 
 export default RecipesList;

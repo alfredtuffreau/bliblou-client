@@ -1,5 +1,7 @@
 import { Auth } from "aws-amplify";
 
+import { LOGIN } from "./components/Routes";
+
 export const SET_FOOTER_HEIGHT = "APP/SET_FOOTER_HEIGHT";
 export const USER_HAS_AUTHENTICATED = "APP/HAS_AUTHENTICATED";
 export const USER_IS_EDITOR = "APP/USER_IS_EDITOR";
@@ -22,13 +24,13 @@ export const loadUser = () => {
   };
 };
 
-export const logout = (onLogout) => {
+export const logout = (history) => {
 	return async (dispatch) => {
 		try {
 			await Auth.signOut();
 		  dispatch(userHasAuthenticated(false));
 		  dispatch(userIsEditor(false));
-			onLogout();
+			history.push(LOGIN)
 		} catch(err) {
 			alert(err.message);
 		}

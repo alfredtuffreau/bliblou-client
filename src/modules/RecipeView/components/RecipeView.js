@@ -3,8 +3,8 @@ import { string, object, func } from "prop-types";
 import { Container, Row, Col } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 
-
 import defaultImage from "../../../images/building.png"
+import { EDIT_RECIPE } from "../../../modules/Navigation";
 import ImagePanel from "../../../components/view/ImagePanel";
 import RecipeInformations from "../../../components/presentation/RecipeInformations";
 
@@ -14,7 +14,7 @@ import ActionButtons from "./ActionButtons";
 import Suggestions from "./Suggestions";
 
 const RecipeView = ({ 
-  id, content, picture, src, isLoading, isEditor, onLoad, onDelete, onEdit, clear, history 
+  id, content, picture, src, isLoading, isEditor, onLoad, onDelete, clear, history 
 }) => {
   useEffect(() => { 
     onLoad(id, history);
@@ -41,7 +41,7 @@ const RecipeView = ({
   };
 
   const handleOnEdit = () => {
-    onEdit(id, history);
+    return EDIT_RECIPE.replace(":recipeId", id);
   };
 
   return isLoading
@@ -61,8 +61,8 @@ const RecipeView = ({
                                         after={ after }
                                         nbOfPeople={ nbOfPeople } />
                     <ActionButtons isEditor={ isEditor }
-                                    onDelete={ handleOnDelete }
-                                    onEdit={ handleOnEdit } />
+                                   onDelete={ handleOnDelete }
+                                   onEdit={ handleOnEdit } />
                 </Col>
                 <Col lg={{ span: 6 }}>
                   <div className={ `recipe-picture${ src ? "" : " default-image" }` } 
@@ -100,7 +100,6 @@ RecipeView.propTypes = {
   src: string,
   onLoad: func.isRequired,
   onDelete: func.isRequired,
-  onEdit: func.isRequired,
   clear: func.isRequired
 };
 
