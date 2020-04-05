@@ -47,29 +47,35 @@ class RegistrationForm extends Component {
   }
 
   render () {
-    const { 
-      isLoading, 
-      firstname, 
-      lastname, 
-      mail, 
-      password, 
-      gender, 
-      onFieldChange: onChange, 
-      onFieldBlur: onBlur, 
-      onFieldHover: onHover, 
-      onGenderClick, 
-      onPasswordClick 
-    } = this.props;
+    const { isLoading, firstname, lastname, mail, password, gender, 
+            onFieldChange, onFieldBlur, onFieldHover, onGenderClick, onPasswordClick } = this.props;
     return (
       <Form onSubmit={ this.handleOnSubmit }>
         <NamesInputWithTooltip isValid={ firstname.isValid !== false && lastname.isValid !== false } 
                                isHover={ this.isHoverAndInvalid(firstname) || this.isHoverAndInvalid(lastname) }>
-          <FirstnameInput { ...firstname, onChange, onBlur, onHover } />
-          <LastnameInput { ...lastname, onChange, onBlur, onHover } />
+          <FirstnameInput { ...firstname }
+                          onChange={ onFieldChange }
+                          onBlur={ onFieldBlur }
+                          onHover={ onFieldHover } />
+          <LastnameInput { ...lastname }
+                         onChange={ onFieldChange }
+                         onBlur={ onFieldBlur }
+                         onHover={ onFieldHover } />
         </NamesInputWithTooltip>
-        <MailInputWithTooltip { ...mail, onChange, onBlur, onHover } />
-        <PasswordInputWithTooltip { ...password, onChange, onBlur, onHover } onClick={ onPasswordClick } />
-        <GenderInputWithTooltip { ...gender, onChange, onBlur, onHover } onClick={ onGenderClick } />
+        <MailInputWithTooltip { ...mail }
+                              onChange={ onFieldChange }
+                              onBlur={ onFieldBlur }
+                              onHover={ onFieldHover } />
+        <PasswordInputWithTooltip { ...password }
+                                  onChange={ onFieldChange }
+                                  onBlur={ onFieldBlur }
+                                  onHover={ onFieldHover } 
+                                  onClick={ onPasswordClick } />
+        <GenderInputWithTooltip { ...gender }
+                                onChange={ onFieldChange }
+                                onBlur={ onFieldBlur }
+                                onHover={ onFieldHover } 
+                                onClick={ onGenderClick } />
         <Button variant="success"
                 type="submit"
                 size="lg"
