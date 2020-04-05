@@ -14,10 +14,10 @@ import ActionButtons from "./ActionButtons";
 import Suggestions from "./Suggestions";
 
 const RecipeView = ({ 
-  id, content, picture, src, isLoading, isEditor, onLoad, onDelete, clear, history 
+  id, content, picture, src, isLoading, isEditor, loadRecipe, removeRecipe, clear, history 
 }) => {
   useEffect(() => { 
-    onLoad(id, history);
+    loadRecipe(id, history);
     return () => clear(); 
   }, [id]);
 
@@ -37,7 +37,7 @@ const RecipeView = ({
 
   const handleOnDelete = () => {
     if (window.confirm("La recette va être supprimée définitivement. Voulez-vous continuer ?")) 
-      onDelete(id, picture, history);
+    removeRecipe(id, picture, history);
   };
 
   const handleOnEdit = () => {
@@ -98,8 +98,8 @@ RecipeView.propTypes = {
   content: object,
   picture: string,
   src: string,
-  onLoad: func.isRequired,
-  onDelete: func.isRequired,
+  loadRecipe: func.isRequired,
+  removeRecipe: func.isRequired,
   clear: func.isRequired
 };
 

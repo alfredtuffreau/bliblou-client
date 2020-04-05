@@ -10,7 +10,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ onLoad: loadRecipe, onDelete: removeRecipe, clear }, dispatch)
+  bindActionCreators({ loadRecipe, removeRecipe, clear }, dispatch)
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeView);
