@@ -43,19 +43,21 @@ class NewPasswordForm extends Component {
   };
 
   render() {
-    const { confirmationCode, password, onChange, onBlur, onHover, onPasswordClick, isLoading } = this.props;
+    const { 
+      confirmationCode, password, onFieldChange, onFieldBlur, onFieldHover, onPasswordClick, isLoading 
+    } = this.props;
     return (
       <Form onSubmit={ this.handleOnSubmit }>
         <PasswordInputWithTooltip { ...password }
                                   label="Nouveau mot de passe"
-																	onChange={ onChange } 
-																	onBlur={ onBlur }
-																	onHover={ onHover } 
+																	onChange={ onFieldChange } 
+																	onBlur={ onFieldBlur }
+																	onHover={ onFieldHover } 
 																	onClick={ onPasswordClick } />
         <ConfirmationCodeInputWithTooltip { ...confirmationCode }
-                                          onChange={ onChange }
-                                          onBlur={ onBlur }
-                                          onHover={ onHover } />
+                                          onChange={ onFieldChange }
+                                          onBlur={ onFieldBlur }
+                                          onHover={ onFieldHover } />
         <div className="form-buttons">
           <Button variant="link"
                   onClick={ this.handleOnCancel }>
@@ -78,9 +80,9 @@ NewPasswordForm.propTypes = {
   mail: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
   confirmationCode: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
   password: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
-	onChange: func.isRequired,
-	onBlur: func.isRequired,
-	onHover: func.isRequired,
+	onFieldChange: func.isRequired,
+	onFieldBlur: func.isRequired,
+	onFieldHover: func.isRequired,
   onPasswordClick: func.isRequired,
   onSubmit: func.isRequired
 };

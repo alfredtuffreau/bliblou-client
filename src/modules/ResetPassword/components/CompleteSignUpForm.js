@@ -29,13 +29,13 @@ class CompleteSignUpForm extends Component {
   };
 
   render() {
-    const { signUpCode, onChange, onBlur, onHover, isLoading } = this.props;
+    const { signUpCode, onFieldChange, onFieldBlur, onFieldHover, isLoading } = this.props;
     return (
       <Form onSubmit={ this.handleOnSubmit }>
         <ConfirmationCodeInputWithTooltip { ...signUpCode }
-                                          onChange={ onChange }
-                                          onBlur={ onBlur }
-                                          onHover={ onHover } />
+                                          onChange={ onFieldChange }
+                                          onBlur={ onFieldBlur }
+                                          onHover={ onFieldHover } />
         <div className="form-buttons">
           <Button variant="link"
                   onClick={ this.handleOnCancel }>
@@ -57,9 +57,9 @@ CompleteSignUpForm.propTypes = {
 	isLoading: bool,
   mail: string.isRequired,
   signUpCode: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
-	onChange: func.isRequired,
-	onBlur: func.isRequired,
-	onHover: func.isRequired,
+	onFieldChange: func.isRequired,
+	onFieldBlur: func.isRequired,
+	onFieldHover: func.isRequired,
   onSubmit: func.isRequired,
   onCancel: func.isRequired,
 };

@@ -31,9 +31,9 @@ class ResetPassword extends Component {
       form = <CompleteSignUpForm mail={ mail }
                                  signUpCode={ signUpCode }
                                  isLoading={ isLoading }
-                                 onChange={ setValue } 
-                                 onBlur={ validate }
-                                 onHover={ toggleHover }
+                                 onFieldChange={ setValue } 
+                                 onFieldBlur={ validate }
+                                 onFieldHover={ toggleHover }
                                  onSubmit={ validateSignUp }
                                  onCancel={ cancel } />;
     } else if (isSent) {
@@ -46,9 +46,9 @@ class ResetPassword extends Component {
                               confirmationCode={ confirmationCode }
                               password={ password }
                               isLoading={ isLoading }
-                              onChange={ setValue } 
-                              onBlur={ validate }
-                              onHover={ toggleHover }
+                              onFieldChange={ setValue } 
+                              onFieldBlur={ validate }
+                              onFieldHover={ toggleHover }
                               onPasswordClick={ togglePasswordVisibility }
                               onSubmit={ validateReset }
                               onCancel={ cancel } />;
@@ -58,9 +58,9 @@ class ResetPassword extends Component {
       img = <img src={ icon } className="icon large center" alt="Mail" />;
       form = <IdentificationForm mail={ mail }
                                  isLoading={ isLoading } 
-                                 onChange={ setValue } 
-                                 onBlur={ validate }
-                                 onHover={ toggleHover }
+                                 onFieldChange={ setValue } 
+                                 onFieldBlur={ validate }
+                                 onFieldHover={ toggleHover }
                                  onSubmit={ startReset }
                                  onCancel={ cancel } />;
     }

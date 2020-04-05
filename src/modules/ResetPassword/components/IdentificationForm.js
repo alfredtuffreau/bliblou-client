@@ -27,14 +27,14 @@ class IdentificationForm extends Component {
   }
 
   render () {
-    const { mail, onChange, onBlur, onHover, isLoading  } = this.props;
+    const { mail, onFieldChange, onFieldBlur, onFieldHover, isLoading  } = this.props;
 console.log(mail)
     return (
       <Form onSubmit={ this.handleOnSubmit }>
         <MailInputWithTooltip { ...mail } 
-															onChange={ onChange } 
-															onBlur={ onBlur }
-															onHover={ onHover } />
+															onChange={ onFieldChange } 
+															onBlur={ onFieldBlur }
+															onHover={ onFieldHover } />
         <div className="form-buttons">
           <Button variant="link"
                   onClick={ this.handleOnCancel }>
@@ -55,9 +55,9 @@ console.log(mail)
 IdentificationForm.propTypes = {
 	isLoading: bool,
   mail: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
-	onChange: func.isRequired,
-	onBlur: func.isRequired,
-  onHover: func.isRequired,
+	onFieldChange: func.isRequired,
+	onFieldBlur: func.isRequired,
+  onFieldHover: func.isRequired,
   onSubmit: func.isRequired,
   onCancel: func.isRequired,
 };

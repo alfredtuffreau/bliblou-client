@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({ 
-    setValue, togglePasswordVisibility, onSubmit: signIn
+    setValue, togglePasswordVisibility, signIn
   }, dispatch)
 );
 

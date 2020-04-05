@@ -11,8 +11,8 @@ import { LOST_PASSWORD } from "../../../modules/Navigation";
 class SignIn extends Component {
   handleOnSubmit = (event) => {
     event.preventDefault();
-    const { mail: { value: mail }, password: { value: password }, onSubmit, history } = this.props;
-    onSubmit(mail, password, history);
+    const { mail: { value: mail }, password: { value: password }, signIn, history } = this.props;
+    signIn(mail, password, history);
   }
 
   render () {
@@ -42,7 +42,7 @@ SignIn.propTypes = {
   password: shape({ id: string, value: string, isClear: bool }).isRequired,
   setValue: func.isRequired,
   togglePasswordVisibility: func.isRequired,
-  onSubmit: func.isRequired,
+  signIn: func.isRequired,
 };
 
 SignIn.defaultProps = {
