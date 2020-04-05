@@ -16,9 +16,9 @@ class SignUp extends Component {
 															 mail={ mail }
 															 password={ password }
 															 isLoading={ isLoading }
-															 onChange={ setValue } 
-															 onBlur={ validate }
-															 onHover={ toggleHover }
+															 onFieldChange={ setValue } 
+															 onFieldBlur={ validate }
+															 onFieldHover={ toggleHover }
 															 onSubmit={ confirm } 
 															 onUnmount={ clear } />;
 		}
@@ -33,9 +33,9 @@ class SignUp extends Component {
 														 gender={ gender }
 														 isLoading={ isLoading } 
 														 onGenderClick={ setValidValue }
-														 onChange={ setValue } 
-														 onBlur={ validate }
-														 onHover={ toggleHover }
+														 onFieldChange={ setValue } 
+														 onFieldBlur={ validate }
+														 onFieldHover={ toggleHover }
 														 onPasswordClick={ togglePasswordVisibility } 
 														 onSubmit={ signUp } />;	
 	}

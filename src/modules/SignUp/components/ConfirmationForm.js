@@ -28,13 +28,13 @@ class ConfirmationForm extends Component {
   };
 
   render () {
-    const { confirmationCode, onChange, onBlur, onHover, isLoading } = this.props;
+    const { confirmationCode, onFieldChange, onFieldBlur, onFieldHover, isLoading } = this.props;
     return (
       <Form onSubmit={ this.handleOnSubmit }>
         <ConfirmationCodeInputWithTooltip { ...confirmationCode }
-                                          onChange={ onChange }
-                                          onBlur={ onBlur }
-                                          onHover={ onHover } />
+                                          onChange={ onFieldChange }
+                                          onBlur={ onFieldBlur }
+                                          onHover={ onFieldHover } />
 				<Button variant="success"
                 type="submit"
                 size="lg"
@@ -51,9 +51,9 @@ ConfirmationForm.propTypes = {
   confirmationCode: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
 	mail: string.isRequired,
 	password: string.isRequired,
-	onChange: func.isRequired,
-	onBlur: func.isRequired,
-	onHover: func.isRequired,
+	onFieldChange: func.isRequired,
+	onFieldBlur: func.isRequired,
+	onFieldHover: func.isRequired,
   onSubmit: func.isRequired,
   onUnmount: func.isRequired,
 };
