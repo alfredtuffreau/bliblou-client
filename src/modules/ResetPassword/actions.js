@@ -12,27 +12,27 @@ export const SET_IS_SENT = "RESET/SET_IS_SENT";
 export const SET_NEED_CONFIRM_SIGN_UP = "RESET/SET_NEED_CONFIRM_SIGN_UP"
 export const CLEAR = "RESET/CLEAR";
 
-const set = (field, value) => ({ type: SET_VALUE, payload: { field, value } });
-const setValid = (field, isValid) => ({ type: SET_VALID, payload: { field, isValid } });
+const set = (id, value) => ({ type: SET_VALUE, payload: { id, value } });
+const setValid = (id, isValid) => ({ type: SET_VALID, payload: { id, isValid } });
 const setIsLoading = (value) => ({ type: SET_IS_LOADING, payload: value });
 const setIsSent = (value) => ({ type: SET_IS_SENT, payload: value });
 const setNeedConfirmSignUp = (value) => ({ type: SET_NEED_CONFIRM_SIGN_UP, payload: value });
 
 export const clear = () => ({ type: CLEAR }); 
-export const toggleHover = (field) => ({ type: TOGGLE_HOVER, payload: { field } });
+export const toggleHover = (id) => ({ type: TOGGLE_HOVER, payload: { id } });
 export const togglePasswordVisibility = () => ({ type: TOGGLE_PASSWORD_VISIBILITY });
 
-export const setValue = (field, value) => {
+export const setValue = (id, value) => {
 	return (dispatch) => {
-		dispatch(set(field, value));
-		dispatch(setValid(field, undefined));
+		dispatch(set(id, value));
+		dispatch(setValid(id, undefined));
 	};
 };
 
-export const validate = (field, value, rules) => {
+export const validate = (id, value, rules) => {
 	return (dispatch) => {
 		const { approved } = approve.value(value, rules);
-		dispatch(setValid(field, approved));
+		dispatch(setValid(id, approved));
 	};
 };
 
@@ -43,52 +43,44 @@ export const cancel = (redirect) => {
 	};
 };
 
-export const startReset = (mail) => {
+export const startReset = ({ id, isValid, value: mail }) => {
 	return async (dispatch) => {
 		dispatch(setIsLoading(true));
-	
-		if (!mail.isValid) {
-			dispatch(setValid("mail", false));
-			dispatch(setIsLoading(false));
-			return;
-		}
-	
-		try {
-			await Auth.forgotPassword(mail.value);
-			dispatch(setIsSent(true));
-		} catch ({ code, message }) {
-			if (code === "InvalidParameterException") {
-				dispatch(setNeedConfirmSignUp(true));
-			} else if (code === "UserNotFoundException") {
+		if (isValid) {
+			try {
+				await Auth.forgotPassword(mail);
 				dispatch(setIsSent(true));
-			} else {
-				alert(message);
+			} catch ({ code, message }) {
+				if (code === "InvalidParameterException") {
+					dispatch(setNeedConfirmSignUp(true));
+				} else if (code === "UserNotFoundException") {
+					dispatch(setIsSent(true));
+				} else {
+					alert(message);
+				}
 			}
+		} else {
+			dispatch(setValid(id, false));
 		}
-	
 		dispatch(setIsLoading(false));
 	};
 };
 
-export const validateSignUp = (mail, signUpCode) => {
+export const validateSignUp = (mail, { id, isValid, value: code}) => {
 	return async (dispatch) => {
 		dispatch(setIsLoading(true));
-
-		if (!signUpCode.isValid) {
-			dispatch(setValid("signUpCode", false));
-			dispatch(setIsLoading(false));
-			return;
+		if (isValid) {
+			try {
+				await Auth.confirmSignUp(mail, code);
+				await dispatch(resumeReset(mail));
+				dispatch(setNeedConfirmSignUp(false));
+			} catch({ message }) {
+				alert(message);
+				dispatch(setValue(id, ""));
+			}
+		} else {
+			dispatch(setValid(id, false));
 		}
-
-		try {
-			await Auth.confirmSignUp(mail.value, signUpCode.value);
-			await dispatch(resumeReset(mail));
-			dispatch(setNeedConfirmSignUp(false));
-		} catch({ message }) {
-			alert(message);
-			dispatch(setValue("signUpCode", ""));
-		}
-		
     dispatch(setIsLoading(false));
 	};
 };
@@ -96,7 +88,7 @@ export const validateSignUp = (mail, signUpCode) => {
 const resumeReset = (mail) => {
 	return async (dispatch) => {
 		try {
-			await Auth.forgotPassword(mail.value);
+			await Auth.forgotPassword(mail);
 			dispatch(setIsSent(true));
 		} catch ({ code, message }) {
 			alert(message);
@@ -107,28 +99,20 @@ const resumeReset = (mail) => {
 export const validateReset = (mail, password, confirmationCode, history) => {
 	return async (dispatch) => {
 		dispatch(setIsLoading(true));
-	
-		const fields = [ 
-			{ name: "password", field: password}, 
-			{ name: "confirmationCode", field: confirmationCode}
-		];
-		const invalidFields = fields.filter(({ field }) => !field.isValid);
-
-		if (invalidFields.length > 0) {
-			invalidFields.forEach(({ name }) => dispatch(setValid(name, false)));
-			dispatch(setIsLoading(false));
-			return;
+		const invalidFields = [ password, confirmationCode ].filter(({ isValid }) => !isValid);
+		if (invalidFields.length === 0) {
+			try {
+				await Auth.forgotPasswordSubmit(mail, confirmationCode.value, password.value);
+				await dispatch(signIn(mail, password.value, history));
+				dispatch(clear());
+			} catch({ message }) {
+				console.log(message);
+				alert(message);
+				dispatch(setValue(confirmationCode.id, ""));
+			}
+		} else {
+			invalidFields.forEach(({ id }) => dispatch(setValid(id, false)));
 		}
-
-		try {
-			await Auth.forgotPasswordSubmit(mail.value, confirmationCode.value, password.value);
-			await dispatch(signIn(mail.value, password.value, history));
-			dispatch(clear());
-		} catch({ message }) {
-			alert(message);
-			dispatch(setValue("confirmationCode", ""));
-		}
-		
     dispatch(setIsLoading(false));
 	};
 };

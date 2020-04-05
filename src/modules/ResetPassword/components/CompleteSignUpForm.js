@@ -55,7 +55,7 @@ class CompleteSignUpForm extends Component {
 
 CompleteSignUpForm.propTypes = {
 	isLoading: bool,
-  mail: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
+  mail: string.isRequired,
   signUpCode: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
 	onChange: func.isRequired,
 	onBlur: func.isRequired,

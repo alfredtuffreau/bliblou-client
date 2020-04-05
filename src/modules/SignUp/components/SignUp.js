@@ -10,7 +10,7 @@ class SignUp extends Component {
 
 		if (newUser) {
 			const { 
-				confirmationCode, mail: { value: mail }, password: { value: password }, confirm, clear 
+				confirmationCode, newUser: { mail , password }, confirm, clear 
 			} = this.props;
 			return <ConfirmationForm confirmationCode= { confirmationCode }
 															 mail={ mail }

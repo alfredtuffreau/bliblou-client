@@ -11,97 +11,77 @@ export const SET_IS_LOADING = "SIGN_UP/SET_IS_LOADING";
 export const SET_NEW_USER = "SIGN_UP/SET_NEW_USER";
 export const CLEAR = "SIGN_UP/CLEAR";
 
-const set = (field, value) => ({ type: SET_VALUE, payload: { field, value } });
-const setValid = (field, isValid) => ({ type: SET_VALID, payload: { field, isValid } });
+const set = (id, value) => ({ type: SET_VALUE, payload: { id, value } });
+const setValid = (id, isValid) => ({ type: SET_VALID, payload: { id, isValid } });
 const setIsLoading = (value) => ({ type: SET_IS_LOADING, payload: value });
 const newUser = (newUser) => ({ type: SET_NEW_USER, payload: newUser });
 
 export const clear = () => ({ type: CLEAR });
-export const toggleHover = (field) => ({ type: TOGGLE_HOVER, payload: { field } });
+export const toggleHover = (id) => ({ type: TOGGLE_HOVER, payload: { id } });
 export const togglePasswordVisibility = () => ({ type: TOGGLE_PASSWORD_VISIBILITY });
 
-export const setValue = (field, value) => {
+export const setValue = (id, value) => {
 	return (dispatch) => {
-		dispatch(set(field, value));
-		dispatch(setValid(field, undefined));
+		dispatch(set(id, value));
+		dispatch(setValid(id, undefined));
 	};
 };
 
-export const setValidValue = (field, value) => {
+export const setValidValue = (id, value) => {
 	return (dispatch) => {
-			dispatch(setValue(field, value));
-			dispatch(setValid(field, true));
+			dispatch(setValue(id, value));
+			dispatch(setValid(id, true));
 	};
 };
 
-export const validate = (field, value, rules) => {
+export const validate = (id, value, rules) => {
 	return (dispatch) => {
 			const { approved } = approve.value(value, rules);
-			dispatch(setValid(field, approved));
+			dispatch(setValid(id, approved));
 	};
 };
 
 export const signUp = (firstname, lastname, mail, password, gender) => {
 	return async (dispatch) => {
 		dispatch(setIsLoading(true));
-	
-		const fields = [ 
-			{ name: "firstname", field: firstname }, 
-			{ name: "lastname", field: lastname}, 
-			{ name: "mail", field: mail}, 
-			{ name: "password", field: password}, 
-			{ name: "gender", field: gender} 
-		];
-		const invalidFields = fields.filter(({ field }) => !field.isValid);
-
-		if (invalidFields.length > 0) {
-			invalidFields.forEach(({ name }) => dispatch(setValid(name, false)));
-			dispatch(setIsLoading(false));
-			return;
+		const invalidFields = [ firstname, lastname, mail, password, gender ].filter(({ isValid }) => !isValid);
+		if (invalidFields.length === 0) {
+			try {
+				const attributes = { name: firstname.value, family_name: lastname.value, gender: gender.value };
+				const user = await Auth.signUp({ username: mail.value, password: password.value, attributes });
+				dispatch(newUser({ ...user, mail: mail.value, password: password.value }));
+			} catch(err) {
+				alert(err.message);
+			}
+		} else {
+			invalidFields.forEach(({ id }) => dispatch(setValid(id, false)));
 		}
-
-		try {
-			const attributes = { name: firstname.value, family_name: lastname.value, gender: gender.value };
-			const user = await Auth.signUp({ username: mail.value, password: password.value, attributes });
-			dispatch(newUser(user));
-		} catch(err) {
-			alert(err.message);
-		}
-		
     dispatch(setIsLoading(false));
 	};
 };
 
-export const confirm = (mail, password, confirmationCode, history) => {
+export const confirm = (mail, password, { id, isValid, value : code }, history) => {
 	return async (dispatch) => {
 		dispatch(setIsLoading(true));
-
-		if (!confirmationCode.isValid) {
-			dispatch(setValid("confirmationCode", false));
-			dispatch(setIsLoading(false));
-			return;
+		if (isValid) {
+			try {
+				await Auth.confirmSignUp(mail, code);
+				await dispatch(signIn(mail, password, history));
+				dispatch(clear());
+			} catch(err) {
+				alert(err.message);
+				dispatch(setValue(id, ""));
+			}
+		} else {
+			dispatch(setValid(id, false));
 		}
-
-		try {
-			await Auth.confirmSignUp(mail, confirmationCode.value);
-			await dispatch(signIn(mail, password, history));
-			dispatch(clear());
-		} catch(err) {
-			alert(err.message);
-			dispatch(setValue("confirmationCode", ""));
-		}
-		
     dispatch(setIsLoading(false));
 	};
 };
 
 export const initConfirm = (mail, password) => {
 	return (dispatch) => {
-		dispatch(setValue("mail", mail));
-		dispatch(setValue("password", password));
 		dispatch(newUser({ mail, password }));
-		dispatch(setValue("confirmationCode", ""));
-		dispatch(setValid("confirmationCode", undefined));
 	};
 };
 

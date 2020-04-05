@@ -46,8 +46,8 @@ const RecipeForm = ({
   };
 
   const validToSubmit = () => {
-    const invalidFields = [ content ].filter(({ isValid }) => isValid === false);
-    return invalidFields.length === 0;
+    return [ content ].filter(({ isValid }) => isValid === false)
+                      .length === 0;
   };
 
   const handleOnCancel = () => {

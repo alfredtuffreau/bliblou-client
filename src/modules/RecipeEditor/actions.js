@@ -13,18 +13,18 @@ export const SET_IS_LOADING = "RECIPE/SET_IS_LOADING";
 export const CLEAR = "RECIPE/CLEAR";
 
 
-const set = (field, value) => ({ type: SET_VALUE, payload: { field, value } });
-const setValid = (field, isValid) => ({ type: SET_VALID, payload: { field, isValid } });
+const set = (id, value) => ({ type: SET_VALUE, payload: { id, value } });
+const setValid = (id, isValid) => ({ type: SET_VALID, payload: { id, isValid } });
 const setIsLoading = (value) => ({ type: SET_IS_LOADING, payload: value });
 
 export const setCurrentPicture = (value) => ({ type: SET_CURRENT_PICTURE, payload: value });
-export const toggleHover = (field) => ({ type: TOGGLE_HOVER, payload: { field } });
+export const toggleHover = (id) => ({ type: TOGGLE_HOVER, payload: { id } });
 export const clear = () => ({ type: CLEAR });
 
-export const setValue = (field, value) => {
+export const setValue = (id, value) => {
 	return (dispatch) => {
-		dispatch(set(field, value));
-		dispatch(setValid(field, undefined));
+		dispatch(set(id, value));
+		dispatch(setValid(id, undefined));
 	};
 };
 
@@ -51,17 +51,16 @@ export const loadRecipe = (id, history) => {
 	};
 };
 
-export const validate = (field, value, rules) => {
+export const validate = (id, value, rules) => {
 	return (dispatch) => {
 			const { approved } = approve.value(value, rules);
-			dispatch(setValid(field, approved));
+			dispatch(setValid(id, approved));
 	};
 };
 
 const create = async (content, file) => {
   const picture = file ? await s3Upload(file) : null
   const { recipeId } = await createRecipe({ content, picture });
-
   return RECIPE.replace(":recipeId", recipeId);
 };
 
@@ -70,17 +69,16 @@ const update = async (id, content, file, currentPicture) => {
     if (currentPicture) await s3Delete(currentPicture);
     return await s3Upload(file);
   };
-
+  
   const picture = file
     ? await changePicture(currentPicture, file)
     : undefined;
 
   await updateRecipe(id, { content, picture });
-
   return RECIPE.replace(":recipeId", id);
 };
 
-export const save = (id, value, file, currentPicture, history) => {
+export const save = (id, content, file, currentPicture, history) => {
   return async (dispatch) => {
     if (file && file.size > MAX_ATTACHMENT_SIZE) {
       alert(`Choisissez un fichier plus petit que ${MAX_ATTACHMENT_SIZE / 1000000} MB.`);
@@ -90,8 +88,8 @@ export const save = (id, value, file, currentPicture, history) => {
     dispatch(setIsLoading(true));
     try {
       const path = !id
-        ? await create(value, file)
-        : await update(id, value, file, currentPicture);
+        ? await create(content, file)
+        : await update(id, content, file, currentPicture);
 
       history.push(path);
       dispatch(clear());

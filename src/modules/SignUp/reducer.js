@@ -29,27 +29,27 @@ const initialState = {
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case SET_VALUE: {
-      const { field, value } = action.payload;
+      const { id, value } = action.payload;
       return ({ 
 				...state, 
-				[ field ]: { ...state[field], value } 
+				[ id ]: { ...state[id], value } 
 			});
 		};
 			
 		case SET_VALID: {
-			const { field, isValid } = action.payload;
+			const { id, isValid } = action.payload;
 			return ({ 
 				...state, 
-				[ field ]: { ...state[field], isValid } 
+				[ id ]: { ...state[id], isValid } 
 			});
 		};
 			
 		case TOGGLE_HOVER: {
-			const { field } = action.payload;
-			const isHover = !state[field].isHover;
+			const { id } = action.payload;
+			const isHover = !state[id].isHover;
 			return ({ 
 				...state, 
-				[ field ]: { ...state[field], isHover } 
+				[ id ]: { ...state[id], isHover } 
 			});
 		};
 

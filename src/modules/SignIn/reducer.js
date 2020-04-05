@@ -16,10 +16,10 @@ const initialState = {
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case SET_VALUE: {
-      const { field, value } = action.payload;
+      const { id, value } = action.payload;
       return ({ 
 				...state, 
-				[ field ]: { ...state[field], value } 
+				[ id ]: { ...state[id], value } 
 			});
 		};
 

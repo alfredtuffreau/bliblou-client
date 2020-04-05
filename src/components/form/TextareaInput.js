@@ -3,17 +3,17 @@ import { string, bool, func } from "prop-types"
 import { Form } from "react-bootstrap";
 
 class TextareaInput extends Component {
-  handleOnChange = ({ target: {id: field, value } }) => {
-    this.props.onChange(field, value);
+  handleOnChange = ({ target: {id, value } }) => {
+    this.props.onChange(id, value);
   }
 
-  handleOnBlur = ({ target: {id: field, value:fieldVal } }) => {
+  handleOnBlur = ({ target: {id } }) => {
     const { value } = this.props;
-    if (value) this.props.onBlur(field, value, { json: true });
+    if (value) this.props.onBlur(id, value, { json: true });
   }
 
-  handleOnHover = ({ target: { id: field } }) => {
-    this.props.onHover(field);
+  handleOnHover = ({ target: { id } }) => {
+    this.props.onHover(id);
   }
 
   render() {

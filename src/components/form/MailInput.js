@@ -3,16 +3,16 @@ import { string, bool, func } from "prop-types";
 import { Form } from "react-bootstrap";
 
 class MailInput extends Component {
-  handleOnChange = ({ target: { id: field, value } }) => {
-    this.props.onChange(field, value);
+  handleOnChange = ({ target: { id, value } }) => {
+    this.props.onChange(id, value);
   }
 
-  handleOnBlur = ({ target: { id: field, value } }) => {
-    this.props.onBlur(field, value, { stop: true, required: true, email: true });
+  handleOnBlur = ({ target: { id, value } }) => {
+    this.props.onBlur(id, value, { stop: true, required: true, email: true });
   }
 
-  handleOnHover = ({ target: { id: field } }) => {
-    this.props.onHover(field);
+  handleOnHover = ({ target: { id } }) => {
+    this.props.onHover(id);
   }
 
   render () {

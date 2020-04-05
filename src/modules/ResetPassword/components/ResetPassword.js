@@ -15,10 +15,12 @@ class ResetPassword extends Component {
 
   render() {
     let description, img, form;
-    const { needConfirmSignUp, isSent, mail, isLoading, setValue, validate, toggleHover, cancel } = this.props;
+    const { 
+      needConfirmSignUp, isSent, isLoading, setValue, validate, toggleHover, cancel
+    } = this.props;
     
     if (needConfirmSignUp) {
-      const { signUpCode, validateSignUp } = this.props;
+      const { mail: { value: mail }, signUpCode, validateSignUp } = this.props;
       description = (<>
         <p>Saisissez le code de vérification qui vous a été envoyé pour confirmer votre inscription.</p>
         <p>
@@ -35,7 +37,9 @@ class ResetPassword extends Component {
                                  onSubmit={ validateSignUp }
                                  onCancel={ cancel } />;
     } else if (isSent) {
-      const { confirmationCode, password, togglePasswordVisibility, validateReset } = this.props;
+      const { 
+        mail: { value: mail }, confirmationCode, password, togglePasswordVisibility, validateReset 
+      } = this.props;
       description = <p>Saisissez votre nouveau mot de passe et le code de vérification qui vous a été envoyé par email.</p>;
       img = <></>;
       form = <NewPasswordForm mail={ mail }
@@ -49,7 +53,7 @@ class ResetPassword extends Component {
                               onSubmit={ validateReset }
                               onCancel={ cancel } />;
     } else {
-      const { startReset } = this.props;
+      const { mail, startReset } = this.props;
       description = <p>Nous vous enverrons les instructions de réinitialisation de votre mot de passe par email.</p>;
       img = <img src={ icon } className="icon large center" alt="Mail" />;
       form = <IdentificationForm mail={ mail }

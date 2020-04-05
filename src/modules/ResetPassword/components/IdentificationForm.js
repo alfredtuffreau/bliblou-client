@@ -28,7 +28,7 @@ class IdentificationForm extends Component {
 
   render () {
     const { mail, onChange, onBlur, onHover, isLoading  } = this.props;
-
+console.log(mail)
     return (
       <Form onSubmit={ this.handleOnSubmit }>
         <MailInputWithTooltip { ...mail } 

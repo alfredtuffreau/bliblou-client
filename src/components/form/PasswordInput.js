@@ -4,20 +4,20 @@ import { Form, InputGroup, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 class PasswordInput extends Component {
-  handleOnChange = ({ target: { id: field, value } }) => {
-    this.props.onChange(field, value);
+  handleOnChange = ({ target: { id, value } }) => {
+    this.props.onChange(id, value);
   }
 
-  handleOnBlur = ({ target: { id: field, value } }) => {
+  handleOnBlur = ({ target: { id, value } }) => {
     const rules = { 
       required: true, 
       format: /^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\^$*.[\]{}()?\-"!@#%&/\\,><':;|_~`]).*$/ 
     };
-    this.props.onBlur(field, value, rules);
+    this.props.onBlur(id, value, rules);
   }
 
-  handleOnHover = ({ target: { id: field } }) => {
-    this.props.onHover(field);
+  handleOnHover = ({ target: { id } }) => {
+    this.props.onHover(id);
   }
 
   handleOnCLick = () => {

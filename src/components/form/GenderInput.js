@@ -6,33 +6,33 @@ const FEMALE = "Female";
 const MALE = "Male";
 
 class GenderInput extends Component {
-  getClassName = (field) => {
+  getClassName = (id) => {
     const { value, isValid } = this.props.gender;
     const classes = [ "btn-gender" ];
     
-    if (isValid === false && field === FEMALE) classes.push("middle-button is-invalid"); 
-    if (isValid === false && field === MALE) classes.push("left-button is-invalid"); 
-    if (field !== value) classes.push("input-group-text"); 
+    if (isValid === false && id === FEMALE) classes.push("middle-button is-invalid"); 
+    if (isValid === false && id === MALE) classes.push("left-button is-invalid"); 
+    if (id !== value) classes.push("input-group-text"); 
     
     return classes.length === 0 
       ? undefined
       : classes.join(" ");
   }
 
-  handleOnCLick = ({ target: { id: field } }, newGender) => {
-    this.props.onClick(field, newGender);
+  handleOnCLick = ({ target: { id } }, newGender) => {
+    this.props.onClick(id, newGender);
   }
 
-  handleOnChange = ({ target: { id: field, value } }) => {
-    this.props.onChange(field, value);
+  handleOnChange = ({ target: { id, value } }) => {
+    this.props.onChange(id, value);
   }
 
-  handleOnBlur = ({ target: { id: field, value } }) => {
-    this.props.onBlur(field, value, { required: true });
+  handleOnBlur = ({ target: { id, value } }) => {
+    this.props.onBlur(id, value, { required: true });
   }
 
-  handleOnHover = ({ target: { id: field } }) => {
-    this.props.onHover(field);
+  handleOnHover = ({ target: { id } }) => {
+    this.props.onHover(id);
   }
 
   render () {

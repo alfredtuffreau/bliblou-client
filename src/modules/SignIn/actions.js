@@ -11,13 +11,12 @@ export const CLEAR = "SIGN_IN/CLEAR";
 const setIsLoading = (value) => ({ type: SET_IS_LOADING, payload: value });
 const clear = () => ({ type: CLEAR });
 
-export const setValue = (field, value) => ({ type: SET_VALUE, payload: { field, value } });
+export const setValue = (id, value) => ({ type: SET_VALUE, payload: { id, value } });
 export const togglePasswordVisibility = () => ({ type: TOGGLE_PASSWORD_VISIBILITY });
 
 export const signIn = (mail, password, history) => {
   return async (dispatch) => {
 		dispatch(setIsLoading(true));
-
     try { 
       const user = await Auth.signIn(mail, password);
 			const groups = user.signInUserSession.idToken.payload["cognito:groups"];
@@ -34,7 +33,6 @@ export const signIn = (mail, password, history) => {
         alert(err.message);
       }
     }
-
 		dispatch(setIsLoading(false));
   };
 };
