@@ -15,8 +15,8 @@ class RecipeEditor extends Component {
   }
 
   componentWillMount = () => {
-    const { id, onLoad, history } = this.props;
-    if (id) onLoad(id, history);
+    const { id, loadRecipe, history } = this.props;
+    if (id) loadRecipe(id, history);
   }
 
   componentWillUnmount = () => {
@@ -26,17 +26,17 @@ class RecipeEditor extends Component {
   }
 
   handleOnFilesAdded(files) {
-    const { picture, onFilesAdded } = this.props;
+    const { picture, setPicture } = this.props;
     if (picture) URL.revokeObjectURL(picture.url);
     
     const { name, type, lastModified } = files[0];
     const url = URL.createObjectURL(files[0])
-    onFilesAdded(url, name, type, lastModified);
+    setPicture(url, name, type, lastModified);
   }
 
   render = () => {
     const { 
-      id, picture, currentPicture, content, isLoading, isEditor, onChange, onBlur, onHover, onSubmit, onCancel, history 
+      id, picture, currentPicture, content, isLoading, isEditor, setValue, validate, toggleHover, save, back, history 
     } = this.props;
 
     if (isEditor === false) history.push(RECIPE.replace(":recipeId", id));
@@ -57,11 +57,11 @@ class RecipeEditor extends Component {
                           currentPicture={ currentPicture } 
                           content={ content } 
                           isLoading={ isLoading } 
-                          onChange={ onChange } 
-                          onBlur={ onBlur } 
-                          onHover={ onHover } 
-                          onSubmit={ onSubmit }
-                          onCancel={ onCancel } />
+                          onFieldChange={ setValue } 
+                          onFieldBlur={ validate } 
+                          onFieldHover={ toggleHover } 
+                          onSubmit={ save }
+                          onCancel={ back } />
             </Col>
           </Row>
         </Container>
@@ -75,13 +75,14 @@ RecipeEditor.propTypes = {
   picture: object,
   currentPicture: string,
   content: shape({ id: string, value: string, isValid: bool }).isRequired,
-  onFilesAdded: func.isRequired,
+  loadRecipe: func.isRequired,
+  setPicture: func.isRequired,
 	isLoading: bool,
-  onChange: func.isRequired,
-  onBlur: func.isRequired,
-	onHover: func.isRequired,
-  onSubmit: func.isRequired,
-  onCancel: func.isRequired,
+  setValue: func.isRequired,
+  validate: func.isRequired,
+	toggleHover: func.isRequired,
+  save: func.isRequired,
+  back: func.isRequired,
 };
 
 RecipeEditor.defaultProps = {

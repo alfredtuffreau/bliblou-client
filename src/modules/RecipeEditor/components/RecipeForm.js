@@ -28,7 +28,17 @@ const RECIPE_TEMPLATE = `{
 }`;
 
 const RecipeForm = ({ 
-  id, content, picture, currentPicture, isLoading, onChange, onBlur, onHover, onSubmit, onCancel, history 
+  id, 
+  content, 
+  picture, 
+  currentPicture, 
+  isLoading, 
+  onFieldChange, 
+  onFieldBlur, 
+  onFieldHover, 
+  onSubmit, 
+  onCancel, 
+  history 
 }) => {
   const handleOnSubmit = async (event) => {
     event.preventDefault();
@@ -60,10 +70,9 @@ const RecipeForm = ({
       <TextareaInputWithTooltip { ...content }
                                 label="Recette" 
                                 defaultValue={ RECIPE_TEMPLATE }
-                                showTooltip={ content.showTooltip }
-                                onChange={ onChange }
-                                onBlur={ onBlur }
-                                onHover={ onHover } />
+                                onChange={ onFieldChange }
+                                onBlur={ onFieldBlur }
+                                onHover={ onFieldHover } />
       <div className="form-buttons">
         <Button variant="link"
                 onClick={ handleOnCancel }>
@@ -81,23 +90,23 @@ const RecipeForm = ({
 };
 
 RecipeForm.propTypes = {
+	isLoading: bool,
   id: string,
   picture: object,
   currentPicture: string,
   content: shape({ id: string, value: string, isValid: bool }).isRequired,
-	isLoading: bool,
-  onChange: func.isRequired,
-  onBlur: func.isRequired,
-	onHover: func.isRequired,
+  onFieldChange: func.isRequired,
+  onFieldBlur: func.isRequired,
+	onFieldHover: func.isRequired,
   onSubmit: func.isRequired,
-  onCancel: func.isRequired,
+  onCancel: func.isRequired
 };
 
 RecipeForm.defaultProps = {
+  isLoading : false,
   id: undefined,
   picture: undefined,
-  currentPicture: undefined,
-  isLoading : false,
+  currentPicture: undefined
 };
 
 export default withRouter(RecipeForm);

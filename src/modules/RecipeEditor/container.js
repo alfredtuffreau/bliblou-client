@@ -11,14 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({ 
-    onLoad: loadRecipe,
-    onFilesAdded: setPicture, 
-    onChange: setValue, 
-    onBlur: validate, 
-    onHover: toggleHover, 
-    onSubmit: save,
-    onCancel: back,
-    clear
+    loadRecipe, setPicture, setValue, validate, toggleHover, save, back, clear
   }, dispatch)
 );
 
