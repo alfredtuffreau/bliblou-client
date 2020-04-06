@@ -71,6 +71,10 @@ ol>li {
   color: white;
 }
 
+  .card-img-overlay a {
+    color: white;
+  }
+
 .dropzone>.input-container {
   border-color: black;
 }

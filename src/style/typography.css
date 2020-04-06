@@ -58,6 +58,14 @@ small {
   font-size: .95rem;
 }
 
+  .card .icon {
+    font-size: 1.25rem;
+  }
+
+.card-img-overlay a:hover {
+  text-decoration: none;
+}
+
 .form-text, .tooltip-error p, .tooltip-error li, .tooltip-error ul {
   text-align: left;
 }

@@ -94,6 +94,11 @@ ol>li {
     margin-bottom: .5rem;
   }
 
+  .card .icon {
+    cursor: pointer; 
+    float: right; 
+  }
+
 .card.add {
   width: 8.5rem;
   min-width: 8.5rem;

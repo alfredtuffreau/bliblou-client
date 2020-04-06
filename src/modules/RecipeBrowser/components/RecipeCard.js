@@ -2,29 +2,26 @@ import React, { Component } from "react";
 import { string } from "prop-types";
 import { NavLink } from "react-router-dom";
 import { Card } from "react-bootstrap";
-
+import { MdInfoOutline} from "react-icons/md";
+import { FaAngleDown } from "react-icons/fa";
 
 import defaultImage from "../../../images/building.png";
 import RecipeInformations from "../../../components/presentation/RecipeInformations";
 import { RECIPE } from "../../../modules/Navigation";
 
 class RecipeCard extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = { overlay: false };
-    this.onMouseEnter = this.onMouseEnter.bind(this);
-    this.onMouseLeave = this.onMouseLeave.bind(this);
+    this.handleOnClick = this.handleOnClick.bind(this);
   }
   
-  onMouseEnter() {
-    this.setState({ overlay: true });
-  }
-  
-  onMouseLeave() {
-    this.setState({ overlay: false });
-  }
+  handleOnClick () {
+    const overlay = !this.state.overlay;
+    this.setState({ overlay });
+  };
 
-  render() {
+  render () {
     const { overlay } = this.state;
     const { recipeId, content, src } = this.props;
     const { 
@@ -39,33 +36,32 @@ class RecipeCard extends Component {
     } = JSON.parse(content);
                           
     return (
-      <Card as={ NavLink } 
-            to={ RECIPE.replace(":recipeId", recipeId) } 
-            bg="light"
-            text="dark"
-            onMouseEnter={ this.onMouseEnter }
-            onMouseLeave={ this.onMouseLeave }>
-        <Card.Img src={ src || defaultImage } 
-                  alt="Recipe image" 
-                  className={ src ? undefined : "default-image"} />
+      <Card bg="light" text="dark">
+        <NavLink to={ RECIPE.replace(":recipeId", recipeId) } >
+          <Card.Img src={ src || defaultImage } 
+                    alt="Recipe image" 
+                    className={ src ? undefined : "default-image"} />
+        </NavLink>
         <Card.Body>
-          <Card.Title>{ title }</Card.Title>
+          <MdInfoOutline className="icon" onClick={ this.handleOnClick }/>
+          <Card.Title as={ NavLink } to={ RECIPE.replace(":recipeId", recipeId) }>{ title }</Card.Title>
         </Card.Body>
         { !overlay
             ? <></> 
             : (<Card.ImgOverlay>
-                { 
-                  description 
-                    ? <Card.Text>{ description }</Card.Text>
-                    : <></> 
-                }
-                <Card.Text as="div">
-                  <RecipeInformations preparation={ preparation }
-                                      cookingAfterPreparation={ cookingAfterPreparation }
-                                      before={ before }
-                                      after={ after }
-                                      nbOfPeople={ nbOfPeople } />
-                </Card.Text>
+                <FaAngleDown className="icon" onClick={ this.handleOnClick } />
+                <NavLink to={ RECIPE.replace(":recipeId", recipeId) }>
+                  { description 
+                      ? <Card.Text>{ description }</Card.Text>
+                      : <></> }
+                  <Card.Text as="div">
+                    <RecipeInformations preparation={ preparation }
+                                        cookingAfterPreparation={ cookingAfterPreparation }
+                                        before={ before }
+                                        after={ after }
+                                        nbOfPeople={ nbOfPeople } />
+                  </Card.Text>
+                </NavLink>
               </Card.ImgOverlay>) }
       </Card>
     );
