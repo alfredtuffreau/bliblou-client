@@ -1,6 +1,4 @@
-import { 
-  SET_PICTURE, SET_CURRENT_PICTURE, SET_VALUE, SET_VALID, TOGGLE_HOVER, SET_IS_LOADING, CLEAR 
-} from "./actions";
+import { SET_PICTURE, SET_CURRENT_PICTURE, SET_VALUE, SET_VALID, SET_IS_LOADING, CLEAR } from "./actions";
 
 const CONTENT_ID = "content";
 
@@ -22,10 +20,10 @@ export default function reducer(state = initialState, action = {}) {
     case SET_VALUE: {
       const { id, value } = action.payload;
       return ({ 
-        ...state,  
+        ...state,
         [ id ]: { ...state[id], value }
       });
-    }
+    };
     
     case SET_VALID: {
       const { id, isValid } = action.payload;
@@ -33,16 +31,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state, 
         [ id ]: { ...state[id], isValid } 
       });
-    }
-			
-		case TOGGLE_HOVER: {
-			const { id } = action.payload;
-			const isHover = !state[id].isHover;
-			return ({ 
-				...state, 
-				[ id ]: { ...state[id], isHover } 
-			});
-		};
+    };
 
 		case SET_IS_LOADING:
 			const isLoading = action.payload;
@@ -50,7 +39,7 @@ export default function reducer(state = initialState, action = {}) {
 
     case CLEAR:
       return initialState;
-		
+
     default:
       return state;
   }

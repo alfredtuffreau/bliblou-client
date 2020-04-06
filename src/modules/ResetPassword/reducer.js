@@ -1,12 +1,5 @@
 import {
-	SET_VALUE,
-	SET_VALID,
-	TOGGLE_HOVER,
-	TOGGLE_PASSWORD_VISIBILITY,
-	SET_IS_LOADING,
-	SET_IS_SENT,
-	SET_NEED_CONFIRM_SIGN_UP,
-	CLEAR,
+	SET_VALUE, SET_VALID, TOGGLE_PASSWORD_VISIBILITY, SET_IS_LOADING, SET_IS_SENT, SET_NEED_CONFIRM_SIGN_UP, CLEAR
 } from "./actions";
 
 const MAIL_ID = "mail",
@@ -15,10 +8,10 @@ const MAIL_ID = "mail",
 			PASSWORD_ID = "password";
 
 const initialState = {
-  [ MAIL_ID ]: { id: MAIL_ID, value: "", isValid: undefined, isHover: false },
-  [ SIGN_UP_CODE_ID ]: { id: SIGN_UP_CODE_ID, value: "", isValid: undefined, isHover: false },
-  [ CONFIRMATION_CODE_ID ]: { id: CONFIRMATION_CODE_ID, value: "", isValid: undefined, isHover: false },
-  [ PASSWORD_ID ]: { id: PASSWORD_ID, value: "", isValid: undefined, isHover: false },
+  [ MAIL_ID ]: { id: MAIL_ID, value: "", isValid: undefined },
+  [ SIGN_UP_CODE_ID ]: { id: SIGN_UP_CODE_ID, value: "", isValid: undefined },
+  [ CONFIRMATION_CODE_ID ]: { id: CONFIRMATION_CODE_ID, value: "", isValid: undefined },
+  [ PASSWORD_ID ]: { id: PASSWORD_ID, value: "", isValid: undefined },
 	isLoading: false,
 	needConfirmSignUp: false,
   isSent: false,
@@ -29,8 +22,8 @@ export default function reducer(state = initialState, action = {}) {
     case SET_VALUE: {
       const { id, value } = action.payload;
       return ({ 
-				...state, 
-				[ id ]: { ...state[id], value } 
+				...state,
+				[ id ]: { ...state[id], value }
 			});
 		};
 			
@@ -39,16 +32,6 @@ export default function reducer(state = initialState, action = {}) {
 			return ({ 
 				...state, 
 				[ id ]: { ...state[id], isValid } 
-			});
-		};
-			
-		case TOGGLE_HOVER: {
-			const { id } = action.payload;
-			console.log(id)
-			const isHover = !state[id].isHover;
-			return ({ 
-				...state, 
-				[ id ]: { ...state[id], isHover } 
 			});
 		};
 

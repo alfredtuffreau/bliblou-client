@@ -6,7 +6,7 @@ import ConfirmationForm from "./ConfirmationForm";
 
 class SignUp extends Component {
 	render() {
-    const { newUser, isLoading, setValue, validate, toggleHover } = this.props;
+    const { newUser, isLoading, setValue, validate } = this.props;
 
 		if (newUser) {
 			const { 
@@ -16,9 +16,8 @@ class SignUp extends Component {
 															 mail={ mail }
 															 password={ password }
 															 isLoading={ isLoading }
-															 onFieldChange={ setValue } 
-															 onFieldBlur={ validate }
-															 onFieldHover={ toggleHover }
+															 onFieldChange={ setValue }
+															 validateField={ validate }
 															 onSubmit={ confirm } 
 															 onUnmount={ clear } />;
 		}
@@ -34,8 +33,7 @@ class SignUp extends Component {
 														 isLoading={ isLoading } 
 														 onGenderClick={ setValidValue }
 														 onFieldChange={ setValue } 
-														 onFieldBlur={ validate }
-														 onFieldHover={ toggleHover }
+														 validateField={ validate }
 														 onPasswordClick={ togglePasswordVisibility } 
 														 onSubmit={ signUp } />;	
 	}
@@ -44,16 +42,15 @@ class SignUp extends Component {
 SignUp.propTypes = {
 	newUser: object,
 	isLoading: bool,
-  firstname: shape({ id: string, value: string, isValid: bool, isHover: bool }).isRequired,
-  lastname: shape({ id: string, value: string, isValid: bool, isHover: bool }).isRequired,
-  mail: shape({ id: string, value: string, isValid: bool, isHover: bool }).isRequired,
-  password: shape({ id: string, value: string, isValid: bool, isClear: bool, isHover: bool }).isRequired,
-  gender: shape({ id: string, value: string, isValid: bool, isHover: bool	}).isRequired,
-  confirmationCode: shape({ id: string, value: string, isValid: bool, isHover: bool }).isRequired,
+  firstname: shape({ id: string, value: string, isValid: bool }).isRequired,
+  lastname: shape({ id: string, value: string, isValid: bool }).isRequired,
+  mail: shape({ id: string, value: string, isValid: bool }).isRequired,
+  password: shape({ id: string, value: string, isValid: bool, isClear: bool }).isRequired,
+  gender: shape({ id: string, value: string, isValid: bool }).isRequired,
+  confirmationCode: shape({ id: string, value: string, isValid: bool }).isRequired,
 	setValidValue: func.isRequired,
 	setValue: func.isRequired,
 	validate: func.isRequired,
-	toggleHover: func.isRequired,
 	togglePasswordVisibility: func.isRequired,
 	signUp: func.isRequired,
 	confirm: func.isRequired,

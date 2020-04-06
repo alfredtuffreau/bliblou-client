@@ -16,7 +16,7 @@ class ResetPassword extends Component {
   render() {
     let description, img, form;
     const { 
-      needConfirmSignUp, isSent, isLoading, setValue, validate, toggleHover, cancel
+      needConfirmSignUp, isSent, isLoading, setValue, validate, cancel
     } = this.props;
     
     if (needConfirmSignUp) {
@@ -31,9 +31,8 @@ class ResetPassword extends Component {
       form = <CompleteSignUpForm mail={ mail }
                                  signUpCode={ signUpCode }
                                  isLoading={ isLoading }
-                                 onFieldChange={ setValue } 
-                                 onFieldBlur={ validate }
-                                 onFieldHover={ toggleHover }
+                                 onFieldChange={ setValue }
+                                 validateField={ validate }
                                  onSubmit={ validateSignUp }
                                  onCancel={ cancel } />;
     } else if (isSent) {
@@ -46,9 +45,8 @@ class ResetPassword extends Component {
                               confirmationCode={ confirmationCode }
                               password={ password }
                               isLoading={ isLoading }
-                              onFieldChange={ setValue } 
-                              onFieldBlur={ validate }
-                              onFieldHover={ toggleHover }
+                              onFieldChange={ setValue }
+                              validateField={ validate }
                               onPasswordClick={ togglePasswordVisibility }
                               onSubmit={ validateReset }
                               onCancel={ cancel } />;
@@ -59,8 +57,7 @@ class ResetPassword extends Component {
       form = <IdentificationForm mail={ mail }
                                  isLoading={ isLoading } 
                                  onFieldChange={ setValue } 
-                                 onFieldBlur={ validate }
-                                 onFieldHover={ toggleHover }
+                                 validateField={ validate }
                                  onSubmit={ startReset }
                                  onCancel={ cancel } />;
     }
@@ -92,7 +89,6 @@ ResetPassword.propTypes = {
   init: func.isRequired,
   setValue: func.isRequired,
   validate: func.isRequired,
-  toggleHover: func.isRequired,
   togglePasswordVisibility: func.isRequired,
   startReset: func.isRequired,
   validateSignUp: func.isRequired,

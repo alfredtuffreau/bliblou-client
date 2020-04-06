@@ -5,7 +5,6 @@ import { userHasAuthenticated, userIsEditor, HOME, LOGIN } from "../../modules/N
 
 export const SET_VALUE = "RESET/SET_VALUE";
 export const SET_VALID = "RESET/SET_VALID"; 
-export const TOGGLE_HOVER = "RESET/TOGGLE_HOVER";
 export const TOGGLE_PASSWORD_VISIBILITY = "RESET/TOGGLE_PASSWORD_VISIBILITY";
 export const SET_IS_LOADING = "RESET/SET_IS_LOADING";
 export const SET_IS_SENT = "RESET/SET_IS_SENT";
@@ -18,8 +17,7 @@ const setIsLoading = (value) => ({ type: SET_IS_LOADING, payload: value });
 const setIsSent = (value) => ({ type: SET_IS_SENT, payload: value });
 const setNeedConfirmSignUp = (value) => ({ type: SET_NEED_CONFIRM_SIGN_UP, payload: value });
 
-export const clear = () => ({ type: CLEAR }); 
-export const toggleHover = (id) => ({ type: TOGGLE_HOVER, payload: { id } });
+export const clear = () => ({ type: CLEAR });
 export const togglePasswordVisibility = () => ({ type: TOGGLE_PASSWORD_VISIBILITY });
 
 export const setValue = (id, value) => {
@@ -48,7 +46,7 @@ export const startReset = ({ id, isValid, value: mail }) => {
 		dispatch(setIsLoading(true));
 		if (isValid) {
 			try {
-				await Auth.forgotPassword(mail);
+				await Auth.forgotPassword(mail.toLowerCase());
 				dispatch(setIsSent(true));
 			} catch ({ code, message }) {
 				if (code === "InvalidParameterException") {
@@ -71,11 +69,14 @@ export const validateSignUp = (mail, { id, isValid, value: code}) => {
 		dispatch(setIsLoading(true));
 		if (isValid) {
 			try {
-				await Auth.confirmSignUp(mail, code);
+				await Auth.confirmSignUp(mail.toLowerCase(), code);
 				await dispatch(resumeReset(mail));
 				dispatch(setNeedConfirmSignUp(false));
 			} catch({ message }) {
-				alert(message);
+				if (message.includes("Member must satisfy regular expression pattern: [\\S]+")) 
+					alert("Invalid verification code provided, please try again.");
+				else 
+					alert(message);
 				dispatch(setValue(id, ""));
 			}
 		} else {
@@ -88,7 +89,7 @@ export const validateSignUp = (mail, { id, isValid, value: code}) => {
 const resumeReset = (mail) => {
 	return async (dispatch) => {
 		try {
-			await Auth.forgotPassword(mail);
+			await Auth.forgotPassword(mail.toLowerCase());
 			dispatch(setIsSent(true));
 		} catch ({ code, message }) {
 			alert(message);
@@ -102,12 +103,14 @@ export const validateReset = (mail, password, confirmationCode, history) => {
 		const invalidFields = [ password, confirmationCode ].filter(({ isValid }) => !isValid);
 		if (invalidFields.length === 0) {
 			try {
-				await Auth.forgotPasswordSubmit(mail, confirmationCode.value, password.value);
+				await Auth.forgotPasswordSubmit(mail.toLowerCase(), confirmationCode.value, password.value);
 				await dispatch(signIn(mail, password.value, history));
 				dispatch(clear());
 			} catch({ message }) {
-				console.log(message);
-				alert(message);
+				if (message.includes("Member must satisfy regular expression pattern: [\\S]+")) 
+					alert("Invalid verification code provided, please try again.");
+				else 
+					alert(message);
 				dispatch(setValue(confirmationCode.id, ""));
 			}
 		} else {
@@ -120,7 +123,7 @@ export const validateReset = (mail, password, confirmationCode, history) => {
 const signIn = (mail, password, history) => {
 	return async (dispatch) => {
 		try {
-			const user = await Auth.signIn(mail, password);
+			const user = await Auth.signIn(mail.toLowerCase(), password);
 			const groups = user.signInUserSession.idToken.payload["cognito:groups"];
 			const isEditor = groups ? groups.includes("editors") : false; 
 			dispatch(userHasAuthenticated(true));

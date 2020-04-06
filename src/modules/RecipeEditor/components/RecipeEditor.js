@@ -26,6 +26,8 @@ class RecipeEditor extends Component {
   }
 
   handleOnFilesAdded(files) {
+    if (files.length === 0) return;
+    
     const { picture, setPicture } = this.props;
     if (picture) URL.revokeObjectURL(picture.url);
     
@@ -36,7 +38,7 @@ class RecipeEditor extends Component {
 
   render = () => {
     const { 
-      id, picture, currentPicture, content, isLoading, isEditor, setValue, validate, toggleHover, save, back, history 
+      id, picture, currentPicture, content, isLoading, isEditor, setValue, validate, save, back, history 
     } = this.props;
 
     if (isEditor === false) history.push(RECIPE.replace(":recipeId", id));
@@ -58,8 +60,7 @@ class RecipeEditor extends Component {
                           content={ content } 
                           isLoading={ isLoading } 
                           onFieldChange={ setValue } 
-                          onFieldBlur={ validate } 
-                          onFieldHover={ toggleHover } 
+                          validateField={ validate }
                           onSubmit={ save }
                           onCancel={ back } />
             </Col>
@@ -80,7 +81,6 @@ RecipeEditor.propTypes = {
 	isLoading: bool,
   setValue: func.isRequired,
   validate: func.isRequired,
-	toggleHover: func.isRequired,
   save: func.isRequired,
   back: func.isRequired,
 };

@@ -18,7 +18,7 @@ export const signIn = (mail, password, history) => {
   return async (dispatch) => {
 		dispatch(setIsLoading(true));
     try { 
-      const user = await Auth.signIn(mail, password);
+      const user = await Auth.signIn(mail.toLowerCase(), password);
 			const groups = user.signInUserSession.idToken.payload["cognito:groups"];
 			const isEditor = groups ? groups.includes("editors") : false; 
 			dispatch(userHasAuthenticated(true));
@@ -40,12 +40,12 @@ export const signIn = (mail, password, history) => {
 const restartConfirm = (mail, password, history) => {
   return async (dispatch) => {
     try {
-      await Auth.resendSignUp(mail);
+      await Auth.resendSignUp(mail.toLowerCase());
       dispatch(initConfirm(mail, password));
       dispatch(clear());
       history.push(HOME);
-    } catch (err) {
-      alert(err.message);
+    } catch ({ message }) {
+      alert(message);
     }
   };
 };

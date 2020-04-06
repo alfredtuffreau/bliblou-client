@@ -4,10 +4,6 @@ import { withRouter } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 
 import MailInput from "../../../components/form/MailInput";
-import withValidationTooltip from "../../../components/form/ValidationTooltip";
-
-const MAIL_ALERT_MESSAGE = "Saisissez une adresse valide";
-const MailInputWithTooltip = withValidationTooltip(MailInput, MAIL_ALERT_MESSAGE);
 
 class IdentificationForm extends Component {
   validToSubmit = () => {
@@ -27,14 +23,12 @@ class IdentificationForm extends Component {
   }
 
   render () {
-    const { mail, onFieldChange, onFieldBlur, onFieldHover, isLoading  } = this.props;
-console.log(mail)
+    const { mail, validateField, onFieldChange, isLoading } = this.props;
     return (
       <Form onSubmit={ this.handleOnSubmit }>
-        <MailInputWithTooltip { ...mail } 
-															onChange={ onFieldChange } 
-															onBlur={ onFieldBlur }
-															onHover={ onFieldHover } />
+        <MailInput { ...mail } 
+                   onChange={ onFieldChange }
+                   onBlur={ validateField } />
         <div className="form-buttons">
           <Button variant="link"
                   onClick={ this.handleOnCancel }>
@@ -56,8 +50,7 @@ IdentificationForm.propTypes = {
 	isLoading: bool,
   mail: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
 	onFieldChange: func.isRequired,
-	onFieldBlur: func.isRequired,
-  onFieldHover: func.isRequired,
+	validateField: func.isRequired,
   onSubmit: func.isRequired,
   onCancel: func.isRequired,
 };

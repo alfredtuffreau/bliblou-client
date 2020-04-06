@@ -2,15 +2,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import { 
-  clear,
-  setValue, 
-  validate, 
-  toggleHover, 
-  togglePasswordVisibility, 
-  startReset,
-  validateSignUp, 
-  validateReset, 
-  cancel 
+  clear, setValue, validate, togglePasswordVisibility, startReset, validateSignUp, validateReset, cancel 
 } from "./actions";
 import ResetPassword from "./components/ResetPassword";
 
@@ -23,15 +15,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({ 
-    init: clear,
-    setValue, 
-    validate, 
-    toggleHover,
-    togglePasswordVisibility, 
-    startReset, 
-    validateSignUp, 
-    validateReset, 
-    cancel
+    init: clear, setValue, validate, togglePasswordVisibility, startReset, validateSignUp, validateReset, cancel
   }, dispatch)
 );
 

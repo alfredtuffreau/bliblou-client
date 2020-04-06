@@ -8,10 +8,8 @@ export const SET_PICTURE = "RECIPE/SET_PICTURE";
 export const SET_CURRENT_PICTURE = "RECIPE/SET_CURRENT_PICTURE";
 export const SET_VALUE = "RECIPE/SET_VALUE";
 export const SET_VALID = "RECIPE/SET_VALID"; 
-export const TOGGLE_HOVER = "RECIPE/TOGGLE_HOVER";
 export const SET_IS_LOADING = "RECIPE/SET_IS_LOADING";
 export const CLEAR = "RECIPE/CLEAR";
-
 
 const set = (id, value) => ({ type: SET_VALUE, payload: { id, value } });
 const setValid = (id, isValid) => ({ type: SET_VALID, payload: { id, isValid } });
@@ -19,7 +17,6 @@ const setIsLoading = (value) => ({ type: SET_IS_LOADING, payload: value });
 const setCurrentPicture = (value) => ({ type: SET_CURRENT_PICTURE, payload: value });
 
 export const clear = () => ({ type: CLEAR });
-export const toggleHover = (id) => ({ type: TOGGLE_HOVER, payload: { id } });
 
 export const setValue = (id, value) => {
 	return (dispatch) => {

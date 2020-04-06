@@ -5,7 +5,6 @@ import { userHasAuthenticated, userIsEditor, LOGIN } from "../../modules/Navigat
 
 export const SET_VALUE = "SIGN_UP/SET_VALUE";
 export const SET_VALID = "SIGN_UP/SET_VALID"; 
-export const TOGGLE_HOVER = "SIGN_UP/TOGGLE_HOVER";
 export const TOGGLE_PASSWORD_VISIBILITY = "SIGN_UP/TOGGLE_PASSWORD_VISIBILITY";
 export const SET_IS_LOADING = "SIGN_UP/SET_IS_LOADING";
 export const SET_NEW_USER = "SIGN_UP/SET_NEW_USER";
@@ -17,7 +16,6 @@ const setIsLoading = (value) => ({ type: SET_IS_LOADING, payload: value });
 const newUser = (newUser) => ({ type: SET_NEW_USER, payload: newUser });
 
 export const clear = () => ({ type: CLEAR });
-export const toggleHover = (id) => ({ type: TOGGLE_HOVER, payload: { id } });
 export const togglePasswordVisibility = () => ({ type: TOGGLE_PASSWORD_VISIBILITY });
 
 export const setValue = (id, value) => {
@@ -47,9 +45,20 @@ export const signUp = (firstname, lastname, mail, password, gender) => {
 		const invalidFields = [ firstname, lastname, mail, password, gender ].filter(({ isValid }) => !isValid);
 		if (invalidFields.length === 0) {
 			try {
-				const attributes = { name: firstname.value, family_name: lastname.value, gender: gender.value };
-				const user = await Auth.signUp({ username: mail.value, password: password.value, attributes });
-				dispatch(newUser({ ...user, mail: mail.value, password: password.value }));
+				const attributes = { 
+					name: firstname.value.trim(), 
+					family_name: lastname.value.trim(), 
+					gender: gender.value.trim() 
+				};
+				const user = await Auth.signUp({ 
+					username: mail.value.toLowerCase(), 
+					password: password.value, attributes 
+				});
+				dispatch(newUser({ 
+					...user, 
+					mail: mail.value.toLowerCase(), 
+					password: password.value
+				}));
 			} catch(err) {
 				alert(err.message);
 			}
@@ -65,11 +74,14 @@ export const confirm = (mail, password, { id, isValid, value : code }, history) 
 		dispatch(setIsLoading(true));
 		if (isValid) {
 			try {
-				await Auth.confirmSignUp(mail, code);
+				await Auth.confirmSignUp(mail.toLowerCase(), code);
 				await dispatch(signIn(mail, password, history));
 				dispatch(clear());
-			} catch(err) {
-				alert(err.message);
+			} catch({ message }) {
+				if (message.includes("Member must satisfy regular expression pattern: [\\S]+")) 
+					alert("Invalid verification code provided, please try again.");
+				else 
+					alert(message);
 				dispatch(setValue(id, ""));
 			}
 		} else {
@@ -88,7 +100,7 @@ export const initConfirm = (mail, password) => {
 const signIn = (mail, password, history) => {
 	return async (dispatch) => {
 		try {
-			const user = await Auth.signIn(mail, password);
+			const user = await Auth.signIn(mail.toLowerCase(), password);
 			const groups = user.signInUserSession.idToken.payload["cognito:groups"];
 			const isEditor = groups ? groups.includes("editors") : false; 
 			dispatch(userHasAuthenticated(true));

@@ -1,9 +1,4 @@
-import {
-	SET_VALUE,
-	TOGGLE_PASSWORD_VISIBILITY,
-	SET_IS_LOADING,
-	CLEAR,
-} from "./actions";
+import { SET_VALUE, TOGGLE_PASSWORD_VISIBILITY, SET_IS_LOADING, CLEAR } from "./actions";
 
 const MAIL_ID = "mail", PASSWORD_ID = "password";
 

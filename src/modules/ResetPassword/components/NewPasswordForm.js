@@ -5,24 +5,6 @@ import { Form, Button } from "react-bootstrap";
 
 import ConfirmationCodeInput from "../../../components/form/ConfirmationCodeInput";
 import PasswordInput from "../../../components/form/PasswordInput";
-import withValidationTooltip from "../../../components/form/ValidationTooltip";
-
-const CONFIRMATION_CODE_ALERT_MESSAGE = "Saisissez votre code de vérification";
-const SPECIAL_CHARACTERS = "^ $ * . [ ] { } ( ) ? - \" ! @ # % & / \\ , > < ' : ; | _ ~ `";
-const PASSWORD_ALERT_MESSAGE = (
-  <>
-    <p>Le mot de passe doit contenir 8 caractères dont :
-      <br />au moins 1 chiffre
-      <br />au moins 1 majuscule
-      <br />au moins 1 minuscule
-      <br />au moins 1 caractère spécial : <strong>{ SPECIAL_CHARACTERS }</strong>
-    </p>
-  </>
-);
-const ConfirmationCodeInputWithTooltip = withValidationTooltip(
-  ConfirmationCodeInput, CONFIRMATION_CODE_ALERT_MESSAGE, true
-);
-const PasswordInputWithTooltip = withValidationTooltip(PasswordInput, PASSWORD_ALERT_MESSAGE);
 
 class NewPasswordForm extends Component {
   validToSubmit = () => {
@@ -44,20 +26,18 @@ class NewPasswordForm extends Component {
 
   render() {
     const { 
-      confirmationCode, password, onFieldChange, onFieldBlur, onFieldHover, onPasswordClick, isLoading 
+      confirmationCode, password, validateField, onFieldChange, onPasswordClick, isLoading 
     } = this.props;
     return (
       <Form onSubmit={ this.handleOnSubmit }>
-        <PasswordInputWithTooltip { ...password }
-                                  label="Nouveau mot de passe"
-																	onChange={ onFieldChange } 
-																	onBlur={ onFieldBlur }
-																	onHover={ onFieldHover } 
-																	onClick={ onPasswordClick } />
-        <ConfirmationCodeInputWithTooltip { ...confirmationCode }
-                                          onChange={ onFieldChange }
-                                          onBlur={ onFieldBlur }
-                                          onHover={ onFieldHover } />
+        <PasswordInput { ...password }
+                       label="Nouveau mot de passe"
+                       onChange={ onFieldChange }
+                       onBlur={ validateField }
+                       onClick={ onPasswordClick } />
+        <ConfirmationCodeInput { ...confirmationCode }
+                               onChange={ onFieldChange }
+                               onBlur={ validateField } />
         <div className="form-buttons">
           <Button variant="link"
                   onClick={ this.handleOnCancel }>
@@ -81,8 +61,7 @@ NewPasswordForm.propTypes = {
   confirmationCode: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
   password: shape({ id: string, value: string, isValid: bool, showTooltip: bool }).isRequired,
 	onFieldChange: func.isRequired,
-	onFieldBlur: func.isRequired,
-	onFieldHover: func.isRequired,
+	validateField: func.isRequired,
   onPasswordClick: func.isRequired,
   onSubmit: func.isRequired
 };

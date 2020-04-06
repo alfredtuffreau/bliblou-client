@@ -4,12 +4,6 @@ import { Button, Form } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 
 import ConfirmationCodeInput from "../../../components/form/ConfirmationCodeInput";
-import withValidationTooltip from "../../../components/form/ValidationTooltip";
-
-const CONFIRMATION_CODE_ALERT_MESSAGE = "Saisissez votre code de vérification";
-const ConfirmationCodeInputWithTooltip = withValidationTooltip(
-  ConfirmationCodeInput, CONFIRMATION_CODE_ALERT_MESSAGE, true
-);
 
 class ConfirmationForm extends Component {
   componentWillUnmount() {
@@ -28,13 +22,17 @@ class ConfirmationForm extends Component {
   };
 
   render () {
-    const { confirmationCode, onFieldChange, onFieldBlur, onFieldHover, isLoading } = this.props;
+    const { 
+      confirmationCode, 
+      onFieldChange,  
+      validateField, 
+      isLoading 
+    } = this.props;
     return (
       <Form onSubmit={ this.handleOnSubmit }>
-        <ConfirmationCodeInputWithTooltip { ...confirmationCode }
-                                          onChange={ onFieldChange }
-                                          onBlur={ onFieldBlur }
-                                          onHover={ onFieldHover } />
+        <ConfirmationCodeInput { ...confirmationCode }
+                               onChange={ onFieldChange }
+                               onBlur={ validateField } />
 				<Button variant="success"
                 type="submit"
                 size="lg"
@@ -52,8 +50,7 @@ ConfirmationForm.propTypes = {
 	mail: string.isRequired,
 	password: string.isRequired,
 	onFieldChange: func.isRequired,
-	onFieldBlur: func.isRequired,
-	onFieldHover: func.isRequired,
+	validateField: func.isRequired,
   onSubmit: func.isRequired,
   onUnmount: func.isRequired,
 };

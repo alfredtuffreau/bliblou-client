@@ -300,10 +300,22 @@ ol>li {
   border: 1px solid;
 }
 
-.tooltip-error.up>.tooltip-inner, .tooltip-error.up>.arrow{
-  margin-bottom: 16px;
-}
-
 .tooltip-error p, .tooltip-error li, .tooltip-error ul {
   margin: 0;
 }
+
+.form-row {
+  margin: 0 0 1rem;
+}
+
+  .form-row>.col:first-child {
+    padding-left: 0;
+  }
+
+  .form-row>.col:last-child {
+    padding-right: 0;
+  }
+
+  .form-row .form-group {
+    margin: 0;
+  }

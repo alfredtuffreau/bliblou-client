@@ -2,32 +2,10 @@ import React, { Component } from "react";
 import { bool, shape, string, func } from "prop-types";
 import { Button, Form } from "react-bootstrap";
 
-import RowInputs from "../../../components/form/RowInputs";
-import FirstnameInput from "../../../components/form/FirstnameInput";
-import LastnameInput from "../../../components/form/LastnameInput";
+import NamesInput from "../../../components/form/NamesInput";
 import MailInput from "../../../components/form/MailInput";
 import PasswordInput from "../../../components/form/PasswordInput";
 import GenderInput from "../../../components/form/GenderInput";
-import withValidationTooltip from "../../../components/form/ValidationTooltip";
-
-const NAMES_ALERT_MESSAGE = "Saisissez votre nom complet";
-const MAIL_ALERT_MESSAGE = "Saisissez une adresse valide";
-const SPECIAL_CHARACTERS = "^ $ * . [ ] { } ( ) ? - \" ! @ # % & / \\ , > < ' : ; | _ ~ `";
-const PASSWORD_ALERT_MESSAGE = (
-  <>
-    <p>Le mot de passe doit contenir 8 caractères dont :
-      <br />au moins 1 chiffre
-      <br />au moins 1 majuscule
-      <br />au moins 1 minuscule
-      <br />au moins 1 caractère spécial : <strong>{ SPECIAL_CHARACTERS }</strong>
-    </p>
-  </>
-);
-const GENDER_ALERT_MESSAGE = "Indiquez votre genre";
-const NamesInputWithTooltip = withValidationTooltip(RowInputs, NAMES_ALERT_MESSAGE, true);
-const MailInputWithTooltip = withValidationTooltip(MailInput, MAIL_ALERT_MESSAGE);
-const PasswordInputWithTooltip = withValidationTooltip(PasswordInput, PASSWORD_ALERT_MESSAGE);
-const GenderInputWithTooltip = withValidationTooltip( GenderInput , GENDER_ALERT_MESSAGE);
 
 class RegistrationForm extends Component {
   validToSubmit = () => {
@@ -42,40 +20,32 @@ class RegistrationForm extends Component {
 		onSubmit(firstname, lastname, mail, password, gender);
   };
 
-  isHoverAndInvalid = (input) => {
-    return input.isHover && input.isValid === false;
-  }
-
   render () {
-    const { isLoading, firstname, lastname, mail, password, gender, 
-            onFieldChange, onFieldBlur, onFieldHover, onGenderClick, onPasswordClick } = this.props;
+    const { 
+      isLoading, firstname, lastname, mail, password, gender, 
+      onFieldChange, validateField, onGenderClick, onPasswordClick 
+    } = this.props;
     return (
       <Form onSubmit={ this.handleOnSubmit }>
-        <NamesInputWithTooltip isValid={ firstname.isValid !== false && lastname.isValid !== false } 
-                               isHover={ this.isHoverAndInvalid(firstname) || this.isHoverAndInvalid(lastname) }>
-          <FirstnameInput { ...firstname }
-                          onChange={ onFieldChange }
-                          onBlur={ onFieldBlur }
-                          onHover={ onFieldHover } />
-          <LastnameInput { ...lastname }
-                         onChange={ onFieldChange }
-                         onBlur={ onFieldBlur }
-                         onHover={ onFieldHover } />
-        </NamesInputWithTooltip>
-        <MailInputWithTooltip { ...mail }
+        <NamesInput firstnameId={ firstname.id }
+                    firstnameValue={ firstname.value }
+                    isFirstnameValid={ firstname.isValid } 
+                    lastnameId={ lastname.id }
+                    lastnameValue={ lastname.value }
+                    isLastnameValid={ lastname.isValid }
+                    onChange={ onFieldChange }
+                    onBlur={ validateField } />
+        <MailInput { ...mail }
                               onChange={ onFieldChange }
-                              onBlur={ onFieldBlur }
-                              onHover={ onFieldHover } />
-        <PasswordInputWithTooltip { ...password }
-                                  onChange={ onFieldChange }
-                                  onBlur={ onFieldBlur }
-                                  onHover={ onFieldHover } 
-                                  onClick={ onPasswordClick } />
-        <GenderInputWithTooltip { ...gender }
-                                onChange={ onFieldChange }
-                                onBlur={ onFieldBlur }
-                                onHover={ onFieldHover } 
-                                onClick={ onGenderClick } />
+                              onBlur={ validateField } />
+        <PasswordInput { ...password }
+                       onChange={ onFieldChange }
+                       onBlur={ validateField }
+                       onClick={ onPasswordClick } />
+        <GenderInput { ...gender }
+                     onChange={ onFieldChange }
+                     onBlur={ validateField }
+                     onClick={ onGenderClick } />
         <Button variant="success"
                 type="submit"
                 size="lg"
@@ -96,8 +66,7 @@ RegistrationForm.propTypes = {
   gender: shape({ id: string, value: string, isValid: bool, showTooltip: bool	}).isRequired,
 	onGenderClick: func.isRequired,
 	onFieldChange: func.isRequired,
-	onFieldBlur: func.isRequired,
-	onFieldHover: func.isRequired,
+	validateField: func.isRequired,
 	onPasswordClick: func.isRequired,
 	onSubmit: func.isRequired,
 };
