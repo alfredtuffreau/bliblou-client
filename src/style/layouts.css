@@ -95,6 +95,7 @@ ol>li {
   }
 
   .card .icon {
+    margin: .1rem;
     cursor: pointer; 
     float: right; 
   }
@@ -127,8 +128,13 @@ ol>li {
 
   .card-list>.card-group {
     flex-flow: row;
-    overflow:scroll;
+    overflow: scroll;
+    -ms-overflow-style: none;
   }
+  
+    .card-list>.card-group::-webkit-scrollbar {
+      display: none;
+    }
 
     .card-list>.card-group>.card {
       margin-bottom: .5rem;

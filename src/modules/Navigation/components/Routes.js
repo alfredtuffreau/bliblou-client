@@ -40,9 +40,9 @@ class Routes extends Component {
     this.setFooterHeight()
     window.addEventListener("resize", this.setFooterHeight.bind(this));
   }
-
   render () {
     const { routes, footerHeight, isAuthenticated, isEditor, logout } = this.props;
+    console.log(isAuthenticated)
     return (
       <>
         <NavBar isAuthenticated={ isAuthenticated } logout={ logout } />

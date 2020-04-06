@@ -5,8 +5,8 @@ import { Button, Form } from "react-bootstrap";
 
 import TextareaInput from "../../../components/form/TextareaInput";
 
-// const CONFIRM_SUBMIT = "Si vous validez la version précédente de la reccete sera supprimée. Voulez-vous continuer ?";
-// const CONFIRM_CANCEL = "Si vous annulez les modifications vont être perdues. Voulez-vous continuer ?";
+const CONFIRM_SUBMIT = "Si vous validez la version précédente de la reccete sera supprimée. Voulez-vous continuer ?";
+const CONFIRM_CANCEL = "Si vous annulez les modifications vont être perdues. Voulez-vous continuer ?";
 const RECIPE_TEMPLATE = `{
   "title": "",
   "description": "",
@@ -40,7 +40,7 @@ const RecipeForm = ({
     event.preventDefault();
     const { url, name, type, lastModified } = picture || {};
     
-    // if (!id || window.confirm(CONFIRM_SUBMIT)) {
+    if (!id || window.confirm(CONFIRM_SUBMIT)) {
       const value = content.value || RECIPE_TEMPLATE;
       const file = picture && picture.name && picture.type
         ? await fetch(url).then(response => response.blob())
@@ -48,7 +48,7 @@ const RecipeForm = ({
         : null;
       
       onSubmit(id, value, file, currentPicture, history);
-    // }
+    }
   };
 
   const validToSubmit = () => {
@@ -57,7 +57,7 @@ const RecipeForm = ({
   };
 
   const handleOnCancel = () => {
-    // if (window.confirm(CONFIRM_CANCEL))
+    if (window.confirm(CONFIRM_CANCEL))
       onCancel(history);
   };
 

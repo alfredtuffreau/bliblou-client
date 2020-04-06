@@ -3,12 +3,15 @@ import { Route, Redirect } from "react-router-dom";
 
 import { LOGIN } from "./Routes";
 
-const AuthenticatedRoute = ({ component: C, componentProps, isAuthenticated, ...rest }) => (
-  <Route { ...rest } render={
-    props => isAuthenticated === false
-      ? <Redirect to={ `${LOGIN}?redirect=${props.location.pathname}${props.location.search}` } />
-      : <C { ...props } { ...componentProps } /> 
-  } />
-);
+const AuthenticatedRoute = ({ component: C, componentProps, isAuthenticated, ...rest }) => {
+  console.log(isAuthenticated);
+  return (
+    <Route { ...rest } render={
+      props => !isAuthenticated
+        ? <Redirect to={ `${LOGIN}?redirect=${props.location.pathname}${props.location.search}` } />
+        : <C { ...props } { ...componentProps } /> 
+    } />
+  );
+}
 
 export default AuthenticatedRoute;
