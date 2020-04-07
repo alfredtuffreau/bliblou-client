@@ -1,5 +1,5 @@
 import React from "react";
-import { object, string, bool } from "prop-types";
+import { oneOfType, object, string, bool } from "prop-types";
 import { Overlay, Tooltip } from "react-bootstrap";
 
 const ValidationTooltip = ({ message, target, isHover, isFocus, isValid }) => (
@@ -13,7 +13,7 @@ const ValidationTooltip = ({ message, target, isHover, isFocus, isValid }) => (
 );
 
 ValidationTooltip.propTypes = {
-  message: string.isRequired,
+  message: oneOfType([ string, object ]).isRequired,
   target: object.isRequired,
   isHover: bool,
   isFocus: bool,

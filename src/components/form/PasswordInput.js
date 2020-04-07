@@ -85,10 +85,10 @@ class PasswordInput extends Component {
         </InputGroup>
         { target 
           ? <ValidationTooltip message={ PASSWORD_ALERT_MESSAGE } 
-                                  target={ target } 
-                                  isHover={ isHover } 
-                                  isFocus={ isFocus } 
-                                  isValid={ isValid } />
+                               target={ target } 
+                               isHover={ isHover } 
+                               isFocus={ isFocus } 
+                               isValid={ isValid } />
           : null }
         { withLinkTo 
           ? <Link to={ withLinkTo }>Mot de passe oublié ?</Link> 

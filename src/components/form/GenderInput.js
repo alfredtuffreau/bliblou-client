@@ -97,10 +97,10 @@ class GenderInput extends Component {
         </InputGroup>
         { target 
           ? <ValidationTooltip message={ GENDER_ALERT_MESSAGE } 
-                                  target={ target } 
-                                  isHover={ isHover } 
-                                  isFocus={ isFocus } 
-                                  isValid={ isValid } />
+                               target={ target } 
+                               isHover={ isHover } 
+                               isFocus={ isFocus } 
+                               isValid={ isValid } />
           : null }
       </Form.Group>
     );

@@ -87,12 +87,12 @@ class NamesInput extends Component {
         </Form.Row>
         { target 
           ? <ValidationTooltip message={ NAMES_ALERT_MESSAGE } 
-                                  target={ target } 
-                                  isHover={ (isFirstnameValid === false && isHoverFirstname) 
-                                    || (isLastnameValid === false && isHoverLastname) } 
-                                  isFocus={ (isFirstnameValid === false && isFirstnameFocus) 
-                                    || (isLastnameValid === false && isLastnameFocus) } 
-                                  isValid={ isFirstnameValid !== false && isLastnameValid !== false } />
+                               target={ target } 
+                               isHover={ (isFirstnameValid === false && isHoverFirstname) 
+                                 || (isLastnameValid === false && isHoverLastname) } 
+                               isFocus={ (isFirstnameValid === false && isFirstnameFocus) 
+                                 || (isLastnameValid === false && isLastnameFocus) } 
+                               isValid={ isFirstnameValid !== false && isLastnameValid !== false } />
           : null }
       </>
     );

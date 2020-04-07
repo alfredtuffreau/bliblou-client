@@ -52,10 +52,10 @@ class MailInput extends Component {
                       onMouseLeave={ this.handleOnMouseLeave } />
         { target 
           ? <ValidationTooltip message={ MAIL_ALERT_MESSAGE } 
-                                  target={ target } 
-                                  isHover={ isHover } 
-                                  isFocus={ isFocus } 
-                                  isValid={ isValid } />
+                               target={ target } 
+                               isHover={ isHover } 
+                               isFocus={ isFocus } 
+                               isValid={ isValid } />
           : null }
       </Form.Group>
     );
