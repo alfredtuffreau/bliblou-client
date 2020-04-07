@@ -6,12 +6,12 @@ import { loadCatalog } from "../modules/RecipeBrowser";
 import { store } from "../store";
 
 const lists = [ 
-  { title: "Toutes les recettes" },
-  { title: "Pour 6", predicate: ({ content }) => JSON.parse(content).nbOfPeople === 6 },
-  { title: "Moins de 60 minutes", predicate: ({ content }) => {
-    const { preparation, cookingAfterPreparation, resting: { before, after } } = JSON.parse(content).durations;
-    return preparation + cookingAfterPreparation + before + after < 60;
-  }}
+  { title: "Les entrées", predicate: ({ content }) => JSON.parse(content).courses.includes("entree") },
+  { title: "Les salades", predicate: ({ content }) => JSON.parse(content).courses.includes("salad") },
+  { title: "Les plats complets", predicate: ({ content }) => JSON.parse(content).courses.includes("main_course") },
+  { title: "Les accompagnements", predicate: ({ content }) => JSON.parse(content).courses.includes("side") },
+  { title: "Les desserts", predicate: ({ content }) => JSON.parse(content).courses.includes("dessert") },
+  { title: "Toutes les recettes" }
 ]; 
 
 const view = ({ isEditor }) => {

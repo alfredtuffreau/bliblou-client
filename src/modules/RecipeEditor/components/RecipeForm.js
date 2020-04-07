@@ -19,6 +19,7 @@ const RECIPE_TEMPLATE = `{
     }
   },
   "nbOfPeople": 0,
+  "courses": [ "entree", "salad", "main_course", "side", "dessert"],
   "ingredients": [],
   "steps": [],
   "advices": []
