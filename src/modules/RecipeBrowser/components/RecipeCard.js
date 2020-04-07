@@ -52,7 +52,11 @@ class RecipeCard extends Component {
                 <FaAngleDown className="icon" onClick={ this.handleOnClick } />
                 <NavLink to={ RECIPE.replace(":recipeId", recipeId) }>
                   { description 
-                      ? <Card.Text>{ description }</Card.Text>
+                      ? <Card.Text>
+                          { description.length > 190 
+                            ? `${description.substring(0, 187)}...` 
+                            : description }
+                        </Card.Text>
                       : <></> }
                   <Card.Text as="div">
                     <RecipeInformations preparation={ preparation }
