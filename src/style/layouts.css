@@ -151,15 +151,15 @@ ol>li {
   object-fit: contain;
 }
 
-  .card:first-child:not(:last-child)>.card-img {
+  .card:first-child:not(:last-child) .card-img {
     border-top-right-radius: 0;
   }
 
-  .card:not(:first-child):not(:last-child)>.card-img {
+  .card:not(:first-child):not(:last-child) .card-img {
     border-radius: 0;
   }
 
-  .card:not(:first-child):last-child>.card-img {
+  .card:not(:first-child):last-child .card-img {
     border-top-left-radius: 0;
   }
 
