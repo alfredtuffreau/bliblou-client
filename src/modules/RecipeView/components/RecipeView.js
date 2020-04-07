@@ -41,7 +41,7 @@ const RecipeView = ({
   };
 
   const handleOnEdit = () => {
-    return EDIT_RECIPE.replace(":recipeId", id);
+    return history.push(EDIT_RECIPE.replace(":recipeId", id));
   };
 
   return isLoading

@@ -3,6 +3,7 @@ import { bool, func } from "prop-types";
 import { ButtonGroup, Button } from "react-bootstrap";
 import { IconContext } from "react-icons";
 import { FaTrash, FaPen } from 'react-icons/fa';
+import { NavLink } from "react-router-dom";
 
 const ActionButtons = ({ isEditor, onDelete, onEdit }) => !isEditor
   ? <></>
@@ -15,7 +16,7 @@ const ActionButtons = ({ isEditor, onDelete, onEdit }) => !isEditor
           Supprimer 
         </Button>
         <Button variant="success"
-                href={ onEdit() }
+                onClick={ onEdit }
                 onMouseDown={ e => e.preventDefault() }> 
           <IconContext.Provider value={{ className: "icon" }}>
             <FaPen />

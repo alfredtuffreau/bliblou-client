@@ -8,7 +8,9 @@ import RecipeCard from "./RecipeCard";
 
 const RecipesList = ({ isEditor, title, predicate, catalog }) => (
   <CardList title={ title }>
-    <AddRecipeCard isEditor={ isEditor } />
+    { isEditor 
+        ? <AddRecipeCard />
+        : <></> }
     { catalog.filter(predicate)
              .map(({ recipeId, content, src }, index) => ( 
       <RecipeCard key={ `${recipeId}${index}` }
