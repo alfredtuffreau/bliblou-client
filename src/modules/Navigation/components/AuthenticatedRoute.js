@@ -4,7 +4,6 @@ import { Route, Redirect } from "react-router-dom";
 import { LOGIN } from "./Routes";
 
 const AuthenticatedRoute = ({ component: C, componentProps, isAuthenticated, ...rest }) => {
-  console.log(isAuthenticated);
   return (
     <Route { ...rest } render={
       props => !isAuthenticated

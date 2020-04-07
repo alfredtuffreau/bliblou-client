@@ -11,7 +11,7 @@ import RecipeInformations from "../../../components/presentation/RecipeInformati
 import Ingredients from "./Ingredients";
 import Steps from "./Steps";
 import ActionButtons from "./ActionButtons";
-import Suggestions from "./Suggestions";
+import Advices from "./Advices";
 
 const RecipeView = ({ 
   id, content, picture, src, isLoading, isEditor, loadRecipe, removeRecipe, clear, history 
@@ -32,7 +32,7 @@ const RecipeView = ({
     nbOfPeople,
     ingredients,
     steps,
-    suggestions
+    advices
   } = content;
 
   const handleOnDelete = () => {
@@ -85,7 +85,7 @@ const RecipeView = ({
             <Container className="lists">
               <Row>
                 <Col>
-                  <Suggestions suggestions={ suggestions } />
+                  <Advices advices={ advices } />
                 </Col>
               </Row>
             </Container> 

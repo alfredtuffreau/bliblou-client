@@ -21,7 +21,7 @@ const RECIPE_TEMPLATE = `{
   "nbOfPeople": 0,
   "ingredients": [],
   "steps": [],
-  "suggestions": []
+  "advices": []
 }`;
 
 const RecipeForm = ({ 
