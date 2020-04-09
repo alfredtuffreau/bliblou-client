@@ -24,7 +24,7 @@ Advices.propTypes = {
 };
 
 Advices.defaultProps = {
-  advices: []
+  advices: undefined
 };
 
 export default Advices;

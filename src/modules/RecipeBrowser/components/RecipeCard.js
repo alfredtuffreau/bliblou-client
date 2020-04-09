@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { string } from "prop-types";
+import { string, object } from "prop-types";
 import { NavLink } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import { MdInfoOutline} from "react-icons/md";
@@ -74,6 +74,7 @@ class RecipeCard extends Component {
 
 RecipeCard.propTypes = {
   recipeId: string.isRequired,
+  content: object.isRequired,
   src: string
 };
 

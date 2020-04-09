@@ -68,9 +68,9 @@ class TextareaInput extends Component {
 TextareaInput.propTypes = {
   id: string.isRequired,
   label: string.isRequired,
+  defaultValue: string.isRequired,
   value: string,
   isValid: bool,
-  defaultValue: string.isRequired,
   onChange: func,
   onBlur: func
 };

@@ -6,11 +6,10 @@ import CardList from "../../../components/presentation/CardList";
 import AddRecipeCard from "./AddRecipeCard";
 import RecipeCard from "./RecipeCard";
 
-const RecipesList = ({ title, canAdd, predicate, catalog }) => {
+const RecipesList = ({ title, canAdd, catalog, predicate }) => {
   const recipes = catalog.filter(predicate);
-  return recipes.length === 0 && !canAdd 
-    ? <></>
-    : (
+  return recipes.length !== 0 || canAdd 
+    ? (
       <CardList title={ title }>
         { canAdd ? <AddRecipeCard /> : <></> }
         { recipes.map(({ recipeId, content, src }, index) => ( 
@@ -20,7 +19,8 @@ const RecipesList = ({ title, canAdd, predicate, catalog }) => {
                       src={ src } />
         )) }
       </CardList>
-    ); 
+    )
+    : <></>; 
 };
 
 RecipesList.propTypes = {

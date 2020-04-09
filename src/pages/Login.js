@@ -1,4 +1,5 @@
 import React from "react";
+import { number } from "prop-types";
 import { Container, Row, Col } from "react-bootstrap";
 
 import img from "../images/LeBliblou.jpg";
@@ -24,5 +25,15 @@ const Login = ({ navbarHeight, footerHeight }) => (
     </ImagePanel>
   </div>
 );
+
+Login.propTypes= {
+  navbarHeight: number,
+  footerHeight: number
+};
+
+Login.defaultProps= {
+  navbarHeight: 0,
+  footerHeight: 0
+};
 
 export default withScrollTop(Login);

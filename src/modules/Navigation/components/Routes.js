@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { arrayOf, shape, string, bool, func } from "prop-types";
+import { array, arrayOf, shape, string, bool, func } from "prop-types";
 import { Switch } from "react-router-dom";
 
 import NavBar from "./NavBar";
@@ -74,16 +74,19 @@ class Routes extends Component {
 
 Routes.propTypes = {
   isAuthenticated: bool,
-  loadUser: func.isRequired,
-  logout: func.isRequired,
+  groups: array,
   routes: arrayOf(shape({
     path: string,
     component: func.isRequired,
   })).isRequired,
+  setFooterHeight: func.isRequired,
+  loadUser: func.isRequired,
+  logout: func.isRequired,
 };
 
 Routes.defaultProps = {
   isAuthenticated: undefined,
+  groups: undefined
 };
 
 export default Routes;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { bool } from "prop-types";
+import { number, bool } from "prop-types";
 import { Container, Row, Col, ListGroup } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
@@ -55,10 +55,14 @@ class NotFound extends Component {
 }
 
 NotFound.propTypes = {
+  navbarHeight: number,
+  footerHeight: number,
   isAuthenticated: bool
 }
 
 NotFound.defaultProps = {
+  navbarHeight: 0,
+  footerHeight: 0,
   isAuthenticated: false
 }
 

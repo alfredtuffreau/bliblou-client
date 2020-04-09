@@ -87,11 +87,11 @@ const RecipeForm = ({
 };
 
 RecipeForm.propTypes = {
-	isLoading: bool,
   id: string,
+  content: shape({ id: string, value: string, isValid: bool }).isRequired,
   picture: object,
   currentPicture: string,
-  content: shape({ id: string, value: string, isValid: bool }).isRequired,
+	isLoading: bool,
 	onFieldChange: func.isRequired,
 	validateField: func.isRequired,
   onSubmit: func.isRequired,
@@ -99,10 +99,10 @@ RecipeForm.propTypes = {
 };
 
 RecipeForm.defaultProps = {
-  isLoading : false,
   id: undefined,
   picture: undefined,
-  currentPicture: undefined
+  currentPicture: undefined,
+  isLoading : false
 };
 
 export default withRouter(RecipeForm);

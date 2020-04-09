@@ -15,19 +15,6 @@ class GenderInput extends Component {
     this.attachRef = target => this.setState({ target });
   }
 
-  getClassName = (id) => {
-    const { value, isValid } = this.props.gender;
-    const classes = [ "btn-gender" ];
-    
-    if (isValid === false && id === FEMALE) classes.push("middle-button is-invalid"); 
-    if (isValid === false && id === MALE) classes.push("left-button is-invalid"); 
-    if (id !== value) classes.push("input-group-text"); 
-    
-    return classes.length === 0 
-      ? undefined
-      : classes.join(" ");
-  };
-
   handleOnCLick = ({ target: { id } }, newGender) => {
     this.props.onClick(id, newGender);
   };

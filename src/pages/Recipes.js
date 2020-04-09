@@ -18,13 +18,14 @@ const READY_LIST = { title: "Les recettes à valider", predicate: ({ content }) 
 const REVIEWED_LIST = { title: "Les recettes revues à corriger", predicate: ({ content }) => content.status === REVIEWED };
 const VALIDATED_LIST = { title: "Les recettes à revoir", predicate: ({ content }) => content.status === VALIDATED };
 const UNKNOWN_LIST = { title: "Statut non définie", predicate: ({ content }) => !ALL_STATUS.includes(content.status) };
+const NO_COURSES_LIST = { title: "Catégorie non définie", predicate: ({ content: { courses } }) => !courses || courses === 0 };
 const DEFAULT_LISTS = [
-  { title: "Les entrées", predicate: ({ content: { courses, status } }) => status === PUBLISHED && courses.includes("entree") }, 
-  { title: "Les salades", predicate: ({ content: { courses, status } }) => status === PUBLISHED && courses.includes("salad") }, 
-  { title: "Les plats complets", predicate: ({ content: { courses, status } }) => status === PUBLISHED && courses.includes("main_course") },
-  { title: "Les accompagnements", predicate: ({ content: { courses, status } }) => status === PUBLISHED && courses.includes("side") },
-  { title: "Les desserts", predicate: ({ content: { courses, status } }) => status === PUBLISHED && courses.includes("dessert") },
-  { title: "Toutes les recettes", predicate: ({ content: { status } }) => status === PUBLISHED }
+  { title: "Les entrées", predicate: ({ content: { courses = [], status } }) => /* status === PUBLISHED && */ courses.includes("entree") }, 
+  { title: "Les salades", predicate: ({ content: { courses = [], status } }) => /* status === PUBLISHED && */ courses.includes("salad") }, 
+  { title: "Les plats complets", predicate: ({ content: { courses = [], status } }) => /* status === PUBLISHED && */ courses.includes("main_course") },
+  { title: "Les accompagnements", predicate: ({ content: { courses = [], status } }) => /* status === PUBLISHED && */ courses.includes("side") },
+  { title: "Les desserts", predicate: ({ content: { courses = [], status } }) => /* status === PUBLISHED && */ courses.includes("dessert") },
+  { title: "Toutes les recettes", predicate: ({ content: { status } }) => /* status === PUBLISHED */true }
 ];
 
 const view = ({ groups }) => {
@@ -33,7 +34,7 @@ const view = ({ groups }) => {
   const lists = [ ...DEFAULT_LISTS ];
   if (groups) {
     if (groups.includes("publishers")) lists.unshift(VALIDATED_LIST);
-    if (groups.includes("reviewers")) lists.unshift(UNKNOWN_LIST, READY_LIST);
+    if (groups.includes("reviewers")) lists.unshift(UNKNOWN_LIST, NO_COURSES_LIST, READY_LIST);
     if (groups.includes("chefs")) lists.unshift(REVIEWED_LIST, NEW_LIST);
   }
 

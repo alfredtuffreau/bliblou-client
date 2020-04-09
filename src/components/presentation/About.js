@@ -36,8 +36,8 @@ About.propTypes = {
 };
 
 About.defaultProps = {
-  networks: undefined,
-  descriptions: undefined
+  descriptions: undefined,
+  networks: undefined
 };
 
 export default About;

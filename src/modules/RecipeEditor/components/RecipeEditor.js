@@ -82,6 +82,7 @@ RecipeEditor.propTypes = {
   validate: func.isRequired,
   save: func.isRequired,
   back: func.isRequired,
+  clear: func.isRequired
 };
 
 RecipeEditor.defaultProps = {
