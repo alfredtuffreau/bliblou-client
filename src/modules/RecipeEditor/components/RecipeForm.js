@@ -22,7 +22,8 @@ const RECIPE_TEMPLATE = `{
   "courses": [ "entree", "salad", "main_course", "side", "dessert"],
   "ingredients": [],
   "steps": [],
-  "advices": []
+  "advices": [],
+  "status": "new"
 }`;
 
 const RecipeForm = ({ 

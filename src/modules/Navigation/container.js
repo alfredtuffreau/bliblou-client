@@ -5,8 +5,8 @@ import { loadUser, logout, setFooterHeight } from "./actions";
 import Routes from "./components/Routes";
 
 const mapStateToProps = state => {
-  const { isAuthenticated, isEditor, footerHeight } = state.navigation;
-  return ({ isAuthenticated, isEditor, footerHeight });
+  const { isAuthenticated, groups, footerHeight } = state.navigation;
+  return ({ isAuthenticated, groups, footerHeight });
 };
 
 const mapDispatchToProps = dispatch => (

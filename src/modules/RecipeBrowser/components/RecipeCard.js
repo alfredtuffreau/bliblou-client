@@ -33,7 +33,7 @@ class RecipeCard extends Component {
         resting: { before = 0, after = 0 } = {}
       } = {},
       nbOfPeople = 0
-    } = JSON.parse(content);
+    } = content;
                           
     return (
       <Card bg="light" text="dark">
@@ -54,7 +54,7 @@ class RecipeCard extends Component {
                   { description 
                       ? <Card.Text>
                           { description.length > 190 
-                            ? `${description.substring(0, 187)}...` 
+                            ? `${description.substring(0, 152)}...` 
                             : description }
                         </Card.Text>
                       : <></> }

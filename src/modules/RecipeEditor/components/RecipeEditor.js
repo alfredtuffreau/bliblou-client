@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { object, shape, bool, string, func } from "prop-types"
+import { array, object, shape, bool, string, func } from "prop-types"
 import { withRouter } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 
@@ -9,7 +9,7 @@ import Dropzone from "../../../components/utils/Dropzone";
 import RecipeForm from "./RecipeForm";
 
 class RecipeEditor extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.handleOnFilesAdded = this.handleOnFilesAdded.bind(this);
   }
@@ -17,13 +17,13 @@ class RecipeEditor extends Component {
   componentWillMount = () => {
     const { id, loadRecipe, history } = this.props;
     if (id) loadRecipe(id, history);
-  }
+  };
 
   componentWillUnmount = () => {
     const { picture, clear } = this.props;
     if (picture) URL.revokeObjectURL(picture.url);
     clear();
-  }
+  };
 
   handleOnFilesAdded(files) {
     if (files.length === 0) return;
@@ -36,49 +36,48 @@ class RecipeEditor extends Component {
     setPicture(url, name, type, lastModified);
   }
 
-  render = () => {
+  render () {
     const { 
-      id, picture, currentPicture, content, isLoading, isEditor, setValue, validate, save, back, history 
+      groups, id, picture, currentPicture, content, isLoading, setValue, validate, save, back, history 
     } = this.props;
 
-    if (isEditor === false) history.push(RECIPE.replace(":recipeId", id));
+    if (!(groups && groups.some(group => [ "chefs", "reviewers", "publishers" ].includes(group)))) 
+      history.push(RECIPE.replace(":recipeId", id));
 
-    return !isEditor
-      ? <></>
-      : (
-        <Container className="panel">
-          <Row>
-            <Col md={{ span:5 }}>
-              <Dropzone label={ `${picture ? "Changer de" : "Déposer un"} fichier` }
-                        onFilesAdded={ this.handleOnFilesAdded }
-                        src={ picture ? picture.url : undefined } />
-            </Col>
-            <Col md={{ span:7 }}> 
-              <RecipeForm id={ id }
-                          picture={ picture } 
-                          currentPicture={ currentPicture } 
-                          content={ content } 
-                          isLoading={ isLoading } 
-                          onFieldChange={ setValue } 
-                          validateField={ validate }
-                          onSubmit={ save }
-                          onCancel={ back } />
-            </Col>
-          </Row>
-        </Container>
-      );
+    return (
+      <Container className="panel">
+        <Row>
+          <Col md={{ span:5 }}>
+            <Dropzone label={ `${picture ? "Changer de" : "Déposer un"} fichier` }
+                      onFilesAdded={ this.handleOnFilesAdded }
+                      src={ picture ? picture.url : undefined } />
+          </Col>
+          <Col md={{ span:7 }}> 
+            <RecipeForm id={ id }
+                        picture={ picture } 
+                        currentPicture={ currentPicture } 
+                        content={ content } 
+                        isLoading={ isLoading } 
+                        onFieldChange={ setValue } 
+                        validateField={ validate }
+                        onSubmit={ save }
+                        onCancel={ back } />
+          </Col>
+        </Row>
+      </Container>
+    );
   }
 };
 
 RecipeEditor.propTypes = {
-  isEditor: bool,
+  groups: array,
   id: string,
   picture: object,
   currentPicture: string,
   content: shape({ id: string, value: string, isValid: bool }).isRequired,
+	isLoading: bool,
   loadRecipe: func.isRequired,
   setPicture: func.isRequired,
-	isLoading: bool,
   setValue: func.isRequired,
   validate: func.isRequired,
   save: func.isRequired,
@@ -86,7 +85,7 @@ RecipeEditor.propTypes = {
 };
 
 RecipeEditor.defaultProps = {
-  isEditor: undefined,
+  groups: undefined,
   id: undefined,
   picture: undefined,
   currentPicture: undefined,

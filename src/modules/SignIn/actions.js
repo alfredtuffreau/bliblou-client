@@ -1,6 +1,6 @@
 import { Auth } from "aws-amplify";
 
-import { HOME, userHasAuthenticated, userIsEditor } from "../../modules/Navigation";
+import { HOME, loggedIn } from "../../modules/Navigation";
 import { initConfirm } from "../../modules/SignUp";
 
 export const SET_VALUE = "SIGN_IN/SET_VALUE";
@@ -19,10 +19,7 @@ export const signIn = (mail, password, history) => {
 		dispatch(setIsLoading(true));
     try { 
       const user = await Auth.signIn(mail.toLowerCase(), password);
-			const groups = user.signInUserSession.idToken.payload["cognito:groups"];
-			const isEditor = groups ? groups.includes("editors") : false; 
-			dispatch(userHasAuthenticated(true));
-			dispatch(userIsEditor(isEditor));
+			dispatch(loggedIn(user.signInUserSession.idToken.payload["cognito:groups"]));
       dispatch(clear());
     } catch (err) {
       if (err.code === "UserNotConfirmedException") {

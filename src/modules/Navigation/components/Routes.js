@@ -41,7 +41,7 @@ class Routes extends Component {
     window.addEventListener("resize", this.setFooterHeight.bind(this));
   }
   render () {
-    const { routes, footerHeight, isAuthenticated, isEditor, logout } = this.props;
+    const { routes, footerHeight, isAuthenticated, groups, logout } = this.props;
     return (
       <>
         <NavBar isAuthenticated={ isAuthenticated } logout={ logout } />
@@ -52,7 +52,7 @@ class Routes extends Component {
                 key: `route-${index}`, 
                 component,
                 isAuthenticated,
-                componentProps: { navbarHeight: 70, footerHeight, isAuthenticated, isEditor, ...rest } 
+                componentProps: { navbarHeight: 70, footerHeight, isAuthenticated, groups, ...rest } 
               };
 
               if (path) {

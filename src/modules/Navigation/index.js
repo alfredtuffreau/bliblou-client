@@ -1,5 +1,5 @@
 export { default as navigation } from "./reducer";
-export { userHasAuthenticated, userIsEditor } from "./actions";
+export { loggedIn } from "./actions";
 
 export { 
   HOME, HOME2, LOGIN, RECIPES, RECIPE, EDIT_RECIPE,

@@ -3,21 +3,18 @@ import { Auth } from "aws-amplify";
 import { LOGIN } from "./components/Routes";
 
 export const SET_FOOTER_HEIGHT = "APP/SET_FOOTER_HEIGHT";
-export const USER_HAS_AUTHENTICATED = "APP/HAS_AUTHENTICATED";
-export const USER_IS_EDITOR = "APP/USER_IS_EDITOR";
+export const LOGGED_IN = "APP/LOGGED_IN";
+export const LOGGED_OUT = "APP/LOGGED_OUT";
 
 export const setFooterHeight = (value) => ({ type: SET_FOOTER_HEIGHT, payload: value });
-export const userHasAuthenticated = (value) => ({ type: USER_HAS_AUTHENTICATED, payload: value });
-export const userIsEditor = (value) => ({ type: USER_IS_EDITOR, payload: value });
+export const loggedIn = (groups) => ({ type: LOGGED_IN, payload: groups });
+export const loggedOut = () => ({ type: LOGGED_OUT });
 
 export const loadUser = () => {
 	return async (dispatch) => {
 		try {
 			const signInUserSession = await Auth.currentSession();
-			const groups = signInUserSession.idToken.payload["cognito:groups"];
-			const isEditor = groups ? groups.includes("editors") : false; 
-			dispatch(userHasAuthenticated(true));
-			dispatch(userIsEditor(isEditor));
+			dispatch(loggedIn(signInUserSession.idToken.payload["cognito:groups"]));
 		} catch(err) { 
 			if (err !== 'No current user') alert(err.message);
 		}
@@ -28,8 +25,7 @@ export const logout = (history) => {
 	return async (dispatch) => {
 		try {
 			await Auth.signOut();
-		  dispatch(userHasAuthenticated(false));
-		  dispatch(userIsEditor(false));
+		  dispatch(loggedOut());
 			history.push(LOGIN)
 		} catch(err) {
 			alert(err.message);

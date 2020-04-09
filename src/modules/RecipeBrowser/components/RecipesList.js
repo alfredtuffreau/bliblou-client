@@ -6,30 +6,32 @@ import CardList from "../../../components/presentation/CardList";
 import AddRecipeCard from "./AddRecipeCard";
 import RecipeCard from "./RecipeCard";
 
-const RecipesList = ({ isEditor, title, predicate, catalog }) => (
-  <CardList title={ title }>
-    { isEditor 
-        ? <AddRecipeCard />
-        : <></> }
-    { catalog.filter(predicate)
-             .map(({ recipeId, content, src }, index) => ( 
-      <RecipeCard key={ `${recipeId}${index}` }
-                  recipeId={ recipeId } 
-                  content={ content } 
-                  src={ src } />
-    )) }
-  </CardList>
-); 
+const RecipesList = ({ title, canAdd, predicate, catalog }) => {
+  const recipes = catalog.filter(predicate);
+  return recipes.length === 0 && !canAdd 
+    ? <></>
+    : (
+      <CardList title={ title }>
+        { canAdd ? <AddRecipeCard /> : <></> }
+        { recipes.map(({ recipeId, content, src }, index) => ( 
+          <RecipeCard key={ `${recipeId}${index}` }
+                      recipeId={ recipeId } 
+                      content={ content } 
+                      src={ src } />
+        )) }
+      </CardList>
+    ); 
+};
 
 RecipesList.propTypes = {
-  isEditor: bool,
   title: string.isRequired,
+  canAdd: bool,
   catalog: array,
   predicate: func
 };
 
 RecipesList.defaultProps = {
-  isEditor: undefined,
+  canAdd: false,
   catalog: [],
   predicate: () => true
 };

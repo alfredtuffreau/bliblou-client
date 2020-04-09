@@ -11,10 +11,10 @@ export const loadCatalog = () => {
 	return async (dispatch) => {
     dispatch(setIsLoading(true));
     try {
-      const recipes = (await fetchRecipes()).map(async ({ picture, ...rest }) => {
-        if (!picture) return { ...rest };
-        const src = await s3Download(picture);
-        return ({ ...rest, src });
+      const recipes = (await fetchRecipes()).map(async ({ picture, content, ...rest }) => {
+        const recipe = { content: JSON.parse(content), ...rest };
+        if (picture) recipe.src = await s3Download(picture);
+        return recipe;
       });
       Promise.all(recipes).then(catalog => dispatch(setCatalog(catalog)));
     } catch (e) {

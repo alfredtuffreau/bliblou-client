@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { string, object, func } from "prop-types";
+import { array, bool, string, object, func } from "prop-types";
 import { Container, Row, Col } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 
@@ -14,7 +14,7 @@ import ActionButtons from "./ActionButtons";
 import Advices from "./Advices";
 
 const RecipeView = ({ 
-  id, content, picture, src, isLoading, isEditor, loadRecipe, removeRecipe, clear, history 
+  groups, id, content, picture, src, isLoading, loadRecipe, removeRecipe, clear, history 
 }) => {
   useEffect(() => { 
     loadRecipe(id, history);
@@ -60,7 +60,7 @@ const RecipeView = ({
                                         before={ before }
                                         after={ after }
                                         nbOfPeople={ nbOfPeople } />
-                    <ActionButtons isEditor={ isEditor }
+                    <ActionButtons groups={ groups }
                                    onDelete={ handleOnDelete }
                                    onEdit={ handleOnEdit } />
                 </Col>
@@ -94,19 +94,23 @@ const RecipeView = ({
 };
 
 RecipeView.propTypes = {
+  groups: array,
   id: string.isRequired,
   content: object,
   picture: string,
   src: string,
+	isLoading: bool,
   loadRecipe: func.isRequired,
   removeRecipe: func.isRequired,
   clear: func.isRequired
 };
 
 RecipeView.defaultProps = {
+  groups: undefined,
   content: {},
   picture: undefined,
   src: undefined,
+	isLoading: false,
 };
 
 export default withRouter(RecipeView);
