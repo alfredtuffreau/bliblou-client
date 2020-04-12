@@ -7,19 +7,21 @@ import { FaPlus } from 'react-icons/fa';
 import { RECIPE } from "../../../modules/Navigation";
 
 const AddRecipeCard= () => (
-  <Card as={ NavLink }
-        to={ RECIPE.replace(":recipeId", "new") } 
-        key="new-recipe"
+  <Card key="new-recipe"
         className="add"
-        bg="light"
-        text="dark">
-    <div className="card-img">
-      <IconContext.Provider value={{ className: "icon" }}>
+        bg="light">
+    <NavLink to={ RECIPE.replace(":recipeId", "new") }
+         className="card-img">
+      <IconContext.Provider value={{ className: "icon icon-lg" }}>
         <FaPlus />
       </IconContext.Provider>
-    </div>
+    </NavLink>
     <Card.Body>
-      <Card.Title key="new-recipe">Nouvelle recette</Card.Title>
+      <Card.Title as={ NavLink }
+                  to={ RECIPE.replace(":recipeId", "new") }
+                  key="new-recipe">
+        Nouvelle recette
+      </Card.Title>
     </Card.Body>
   </Card>
 );

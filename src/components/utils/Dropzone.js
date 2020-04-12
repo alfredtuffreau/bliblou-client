@@ -85,7 +85,7 @@ class Dropzone extends Component {
              onDragLeave={ () => this.onDragLeave() }
              onClick={ () => this.openFileDialog() }>
           <img alt="upload"
-              className="icon small"
+              className="icon"
               src="../../cloud_upload-24px.svg" />
           <input ref={ this.fileInputRef }
                 type="file"

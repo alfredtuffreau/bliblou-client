@@ -13,7 +13,8 @@ class NamesInput extends Component {
       isHoverFirstname: false, isFirstnameFocus: false,
       isHoverLastname: false, isLastnameFocus: false 
     };
-    this.attachRef = target => this.setState({ target });
+    this.attachFirstnameRef = target => this.setState({ firstname: target });
+    this.attachLastnameRef = target => this.setState({ lastname: target });
   }
 
   handleOnChange = ({ target: {id, value } }) => {
@@ -52,12 +53,14 @@ class NamesInput extends Component {
       lastnameValue, 
       isLastnameValid
     } = this.props;
-    const { target, isHoverFirstname, isHoverLastname, isFirstnameFocus, isLastnameFocus } = this.state;
+    const { 
+      firstname, lastname, isHoverFirstname, isHoverLastname, isFirstnameFocus, isLastnameFocus 
+    } = this.state;
     return (
       <>
-        <Form.Row ref={ this.attachRef }>
+        <Form.Row>
           <Col key="firstname">
-            <Form.Group controlId={ firstnameId }>
+            <Form.Group controlId={ firstnameId } ref={ this.attachFirstnameRef }>
               <Form.Label hidden>{ firstnameLabel }</Form.Label>
               <Form.Control type="text"
                             placeholder={ firstnameLabel }
@@ -68,10 +71,17 @@ class NamesInput extends Component {
                             onBlur={ this.handleOnBlur }
                             onMouseEnter={ this.handleOnMouseEnter } 
                             onMouseLeave={ this.handleOnMouseLeave } />
+              { firstname 
+                ? <ValidationTooltip message={ NAMES_ALERT_MESSAGE } 
+                                      target={ firstname } 
+                                      isHover={ isHoverFirstname } 
+                                      isFocus={ isFirstnameFocus } 
+                                      isValid={ isFirstnameValid !== false } />
+                : null }
             </Form.Group>
           </Col>
           <Col key="lastname">
-            <Form.Group controlId={ lastnameId }>
+            <Form.Group controlId={ lastnameId } ref={ this.attachLastnameRef }>
               <Form.Label hidden>{ lastnameLabel }</Form.Label>
               <Form.Control type="text"
                             placeholder={ lastnameLabel }
@@ -82,18 +92,16 @@ class NamesInput extends Component {
                             onBlur={ this.handleOnBlur }
                             onMouseEnter={ this.handleOnMouseEnter } 
                             onMouseLeave={ this.handleOnMouseLeave } />
+              { lastname 
+                ? <ValidationTooltip message={ NAMES_ALERT_MESSAGE } 
+                                      target={ lastname } 
+                                      isHover={ isHoverLastname } 
+                                      isFocus={ isLastnameFocus } 
+                                      isValid={ isLastnameValid !== false } />
+                : null }
             </Form.Group>
           </Col>
         </Form.Row>
-        { target 
-          ? <ValidationTooltip message={ NAMES_ALERT_MESSAGE } 
-                               target={ target } 
-                               isHover={ (isFirstnameValid === false && isHoverFirstname) 
-                                 || (isLastnameValid === false && isHoverLastname) } 
-                               isFocus={ (isFirstnameValid === false && isFirstnameFocus) 
-                                 || (isLastnameValid === false && isLastnameFocus) } 
-                               isValid={ isFirstnameValid !== false && isLastnameValid !== false } />
-          : null }
       </>
     );
   }

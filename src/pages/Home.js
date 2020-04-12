@@ -10,20 +10,20 @@ import withScrollTop from "../components/view/withScrollTop";
 import SignUp from "../modules/SignUp";
 
 const Home = ({ navbarHeight, footerHeight }) => (
-  <div id="home">
-    <ImagePanel src={ img } minHeight={ `calc(100vh - ${navbarHeight}px - ${footerHeight}px)` }>
-      <Container>
-        <Row>
-          <Col lg={{ span:5, offset:1 }}>
-            <Catcher />
-          </Col>
-          <Col lg={{ span:4, offset:1 }}>
-            <SignUp />
-          </Col>
-        </Row>
-      </Container>
-    </ImagePanel>
-  </div>
+  <ImagePanel src={ img } 
+              className="text-align-justify" 
+              minHeight={ `calc(100vh - ${navbarHeight}px - ${footerHeight}px)` }>
+    <Container>
+      <Row>
+        <Col lg={{ span:5, offset:1 }}>
+          <Catcher />
+        </Col>
+        <Col lg={{ span:4, offset:1 }}>
+          <SignUp />
+        </Col>
+      </Row>
+    </Container>
+  </ImagePanel>
 );
 
 Home.propTypes= {

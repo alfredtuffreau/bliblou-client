@@ -1,13 +1,14 @@
-a, a:hover {
-  color: black;
+a, a:hover,
+.btn-link, .btn-link:hover
+.card {
+  color: #212529;
 }
 
 footer {
   background-color: #252525;
-  color: gainsboro;
 }
 
-  footer a, footer a:hover {
+  footer, footer a, footer a:hover {
     color: gainsboro;
   }
 
@@ -20,21 +21,13 @@ ol>li {
 }
 
   ol>li>span {
-    color: black;
+    color: #212529;
   }
-
-.btn-group .icon {
-  color: white;
-}
-
-.btn-link, .btn-link:hover {
-  color: black;
-}
 
 .btn-primary {
   background-color: #e49aa7;
   border-color: #e49aa7;
-  color: #fff;
+  color: white;
 }
 
   .btn-primary:hover {
@@ -50,33 +43,20 @@ ol>li {
       border-color: #d8586d;
   }
 
-.card.add>.card-img {
-  background-color: white;
-}
-
-  .card.add:hover>.card-img {
-    background-color: #F8F9FA;
-  }
-
-.card.add .icon {
-  color: black;
-}
-
 .card-img {
   background-color: white;
 }
 
 .card-img-overlay {
   background-color: rgba(0, 0, 0, 0.75);
-  color: white;
 }
 
-  .card-img-overlay a {
+  .card-img-overlay, .card-img-overlay a {
     color: white;
   }
 
 .dropzone>.input-container {
-  border-color: black;
+  border-color: #212529;
 }
 
 .dropzone.highlight>.input-container {
@@ -91,8 +71,8 @@ ol>li {
   opacity: .5;
 }
 
-.icon.about {
-  border-color: gainsboro;
+.icon.green {
+  color: #4CAE51;
 }
 
 .input-group.gender>:first-child>button.is-invalid,
@@ -113,26 +93,29 @@ ol>li {
   border-bottom:1px solid #313030;
 }
 
-.list-group .icon {
-  color: #4CAE51;
-}
-
 .list-group-item {
   background-color: transparent;
   border: none;
 }
-  
-.panel-with-image a, .panel-with-image a:hover, .panel-with-image .btn-link, .panel-with-image .btn-link:hover {
+
+.panel-with-image,
+.panel-with-image a, 
+.panel-with-image a:hover, 
+.panel-with-image .btn-link, 
+.panel-with-image .btn-link:hover {
   color: white;
 }
 
-.panel-with-image>.panel-content {
-  background-color: rgba(0, 0, 0, .5);
-  color: white;
-}
+  .panel-with-image>* {
+    background-color: rgba(0, 0, 0, .5);
+  }
 
-.panel-with-image>.panel-content.deep {
-  background-color: rgba(0, 0, 0, .75);
+  .panel-with-image.deep>* {
+    background-color: rgba(0, 0, 0, .75);
+  }
+
+.picture.about {
+  border-color: gainsboro;
 }
 
 .tooltip-error>.tooltip-inner {

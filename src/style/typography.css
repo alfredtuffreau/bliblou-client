@@ -14,19 +14,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2em; 
+  font-size: 2rem; 
 }
 
 h2 {
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
 
 h3 {
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 
 h4, h5 {
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 ol>li {
@@ -41,36 +41,35 @@ small {
   font-size: 90%;
 }
 
-#contact-us .panel-with-image, #lost-password .panel-with-image, #not-found .panel-with-image {
-  text-align: center;
-}
-
-#home .panel-with-image, #login .panel-with-image, #recipe .panel-with-image p, #about-us, #contact-us .panel {
-  text-align: justify;
-}
-
-#recipes h2 {
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.card, .card p, .card .h5 {
+.card {
   font-size: .95rem;
 }
-
-  .card .icon {
-    font-size: 1.25rem;
-  }
 
 .card-img-overlay a:hover {
   text-decoration: none;
 }
 
-.form-text, .tooltip-error p, .tooltip-error li, .tooltip-error ul {
+.form-text, 
+.tooltip-error p, 
+.tooltip-error li, 
+.tooltip-error ul {
   text-align: left;
 }
 
 .navbar-brand { 
-  font-size: 1.78em;
+  font-size: 1.78rem;
   font-weight: 500;
+}
+
+.recipes h2 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-justify {
+  text-align: justify;
 }

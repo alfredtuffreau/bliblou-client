@@ -19,7 +19,7 @@ const SocialNetwork = ({ label, href, network }) => (
   <a label={ label } href={ href }>
     <img src={ logos[ network.toLowerCase() ] } 
          alt={ network } 
-         className={ `icon small${network === "LinkedIn" ? " linkedin" : ""}` } />
+         className={ `icon ${network === "LinkedIn" ? " linkedin" : ""}` } />
   </a>
 );
 

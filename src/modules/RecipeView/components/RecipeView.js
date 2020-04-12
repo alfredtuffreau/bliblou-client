@@ -46,15 +46,14 @@ const RecipeView = ({
 
   return isLoading
     ? <></>
-    : ( <>
+    : <div className="recipe-view">
           <ImagePanel src={ src || defaultImage } 
-                      panelClassName={ src ? undefined : "default-image" }
-                      contentClassName="no-margin deep">
+                      className={ `no-padding deep${src ? "" : " default-image"}` }>
             <Container>
               <Row>
                 <Col lg={{ span: 6 }}>
                     <h1>{ title }</h1>
-                    <p>{ description }</p>
+                    <p className="text-align-justify">{ description }</p>
                     <RecipeInformations preparation={ preparation }
                                         cookingAfterPreparation={ cookingAfterPreparation }
                                         before={ before }
@@ -65,7 +64,7 @@ const RecipeView = ({
                                    onEdit={ handleOnEdit } />
                 </Col>
                 <Col lg={{ span: 6 }}>
-                  <div className={ `recipe-picture${ src ? "" : " default-image" }` } 
+                  <div className={ `image-container recipe-picture${ src ? "" : " default-image" }` } 
                        style={{ backgroundImage: `url(${src || defaultImage})` }} />
                 </Col>
               </Row>
@@ -90,7 +89,7 @@ const RecipeView = ({
               </Row>
             </Container> 
           </div>
-        </> );
+      </div>;
 };
 
 RecipeView.propTypes = {

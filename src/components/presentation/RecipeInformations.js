@@ -7,13 +7,13 @@ import { FaRegClock, FaUsers } from 'react-icons/fa';
 const RecipeInformations = ({ before, preparation, cookingAfterPreparation, after, nbOfPeople }) => (
   <ListGroup className="list-group-horizontal">
     <ListGroup.Item>
-      <IconContext.Provider value={{ className: "icon" }}>
+      <IconContext.Provider value={{ className: "green icon icon-sm" }}>
         <FaRegClock />
         { ` ${before + preparation + cookingAfterPreparation + after } minutes` }
       </IconContext.Provider>
     </ListGroup.Item>
     <ListGroup.Item>
-      <IconContext.Provider value={{ className: "icon" }}>
+      <IconContext.Provider value={{ className: "green icon icon-sm" }}>
         <FaUsers />
         { ` ${nbOfPeople } pers.` }
       </IconContext.Provider>

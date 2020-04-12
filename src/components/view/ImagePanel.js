@@ -1,24 +1,22 @@
 import React from "react";
 import { string } from "prop-types";
 
-const ImagePanel = ({ src, minHeight, panelClassName, contentClassName, children }) => (
-  <div className={ `panel-with-image${panelClassName ? ` ${panelClassName}` : "" }` } 
+const ImagePanel = ({ src, minHeight, className, children }) => (
+  <div className={ `image-container panel-with-image${className ? ` ${className}` : "" }` } 
        style={{ backgroundImage: `url(${src})`, minHeight }}>
-    <div className={ `panel-content${contentClassName ? ` ${contentClassName}` : "" }` }>{ children }</div>
+    <div>{ children }</div>
   </div>
 );
 
 ImagePanel.propTypes = {
   src: string.isRequired,
   minHeight: string,
-  panelClassName: string,
-  contentClassName: string
+  className: string
 }
 
 ImagePanel.defaultProps = {
   minHeight: undefined,
-  panelClassName: undefined,
-  contentClassName: undefined
+  className: undefined
 }
 
 export default ImagePanel;

@@ -13,7 +13,7 @@ const ActionButtons = ({ groups, onDelete, onEdit }) => {
       { groups.includes("chefs")
         ? <Button variant="danger" 
                   onClick={ onDelete }>
-            <IconContext.Provider value={{ className: "icon" }}>
+            <IconContext.Provider value={{ className: "icon icon-sm" }}>
               <FaTrash />
             </IconContext.Provider>
             Supprimer 
@@ -23,7 +23,7 @@ const ActionButtons = ({ groups, onDelete, onEdit }) => {
         ? <Button variant="success"
                   onClick={ onEdit }
                   onMouseDown={ e => e.preventDefault() }> 
-            <IconContext.Provider value={{ className: "icon" }}>
+            <IconContext.Provider value={{ className: "icon icon-sm" }}>
               <FaPen />
             </IconContext.Provider>
             Modifier

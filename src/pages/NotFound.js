@@ -28,28 +28,28 @@ class NotFound extends Component {
     if (!isAuthenticated) links.push(login);
     
     return (
-      <div id="not-found">
-        <ImagePanel src={ img } minHeight={ `calc(100vh - ${navbarHeight}px - ${footerHeight}px)` }>
-          <Container>
-            <Row>
-              <Col>
-                <h2>Oups, page introuvable</h2>
-                <h3>La page que vous recherchez a peut-être été supprimée.</h3>
-                <img src={ icon } className="icon large center" alt="Not found" />
-                { links
-                    ? <ListGroup className="nav-links  list-group-horizontal-md justify-content-center">
-                        { links.map(({ to, onClick, label }, index) => (
-                          <ListGroup.Item key={ index }>
-                            <NavLink to={ to } onClick={ onClick }>{ label }</NavLink>
-                          </ListGroup.Item>
-                        )) }
-                      </ListGroup>
-                    : null }
-              </Col>
-            </Row>
-          </Container>
-        </ImagePanel>
-      </div>
+      <ImagePanel src={ img }
+                  className="text-align-center"
+                  minHeight={ `calc(100vh - ${navbarHeight}px - ${footerHeight}px)` }>
+        <Container>
+          <Row>
+            <Col>
+              <h2>Oups, page introuvable</h2>
+              <h3>La page que vous recherchez a peut-être été supprimée.</h3>
+              <img src={ icon } className="picture large" alt="Not found" />
+              { links
+                  ? <ListGroup className="nav-links  list-group-horizontal-md justify-content-center">
+                      { links.map(({ to, onClick, label }, index) => (
+                        <ListGroup.Item key={ index }>
+                          <NavLink to={ to } onClick={ onClick }>{ label }</NavLink>
+                        </ListGroup.Item>
+                      )) }
+                    </ListGroup>
+                  : null }
+            </Col>
+          </Row>
+        </Container>
+      </ImagePanel>
     );
   }
 }

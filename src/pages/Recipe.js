@@ -10,13 +10,9 @@ const view = ({ groups, match: { params: { recipeId } }, location: { search } })
   const query = new URLSearchParams(search);
   const mode = query.get('mode');
 
-  return (
-    <div id="recipe">
-      { recipeId === "new" || mode === "edit"
-          ? <RecipeEditor id={ recipeId !== "new" ? recipeId : undefined } groups={ groups } />
-          : <RecipeView id={ recipeId } groups={ groups } /> }
-    </div>
-  );
+  return recipeId === "new" || mode === "edit"
+    ? <RecipeEditor id={ recipeId !== "new" ? recipeId : undefined } groups={ groups } />
+    : <RecipeView id={ recipeId } groups={ groups } />;
 };
 
 view.propTypes = {

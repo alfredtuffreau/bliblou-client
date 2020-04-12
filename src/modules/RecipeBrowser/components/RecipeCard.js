@@ -36,20 +36,20 @@ class RecipeCard extends Component {
     } = content;
                           
     return (
-      <Card bg="light" text="dark">
+      <Card bg="light">
         <NavLink to={ RECIPE.replace(":recipeId", recipeId) } >
           <Card.Img src={ src || defaultImage } 
                     alt="Recipe image" 
                     className={ src ? undefined : "default-image"} />
         </NavLink>
         <Card.Body>
-          <MdInfoOutline className="icon" onClick={ this.handleOnClick }/>
+          <MdInfoOutline className="icon icon-sm" onClick={ this.handleOnClick }/>
           <Card.Title as={ NavLink } to={ RECIPE.replace(":recipeId", recipeId) }>{ title }</Card.Title>
         </Card.Body>
         { !overlay
             ? <></> 
             : (<Card.ImgOverlay>
-                <FaAngleDown className="icon" onClick={ this.handleOnClick } />
+                <FaAngleDown className="icon icon-sm" onClick={ this.handleOnClick } />
                 <NavLink to={ RECIPE.replace(":recipeId", recipeId) }>
                   { description 
                       ? <Card.Text>

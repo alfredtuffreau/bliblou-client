@@ -62,7 +62,7 @@ const team = [{
 }];
 
 const AboutUs = () => (
-  <div id="about-us">
+  <div className="text-align-justify">
     <ImagePanel src={ img }>
       <Container>
         <Row>

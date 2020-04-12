@@ -7,8 +7,8 @@ import ImagePanel from "../components/view/ImagePanel";
 import withScrollTop from "../components/view/withScrollTop";
 
 const ContactUs = () => (
-  <div id="contact-us">
-    <ImagePanel src={ img }>
+  <>
+    <ImagePanel src={ img } className="text-align-center">
       <Container>
         <Row>
           <Col>
@@ -18,7 +18,7 @@ const ContactUs = () => (
         </Row>
       </Container>
     </ImagePanel>
-    <Container className="panel">
+    <Container className="panel text-align-justify">
       <Row>
         <Col xs={{ span: 12 }} lg={{ span: 6}}>
           <h2>N'hésitez pas à nous écrire pour :</h2>
@@ -40,7 +40,7 @@ const ContactUs = () => (
         </Col>
       </Row>
     </Container>
-  </div>
+  </>
 );
 
 export default withScrollTop(ContactUs);
