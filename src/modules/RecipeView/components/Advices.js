@@ -7,7 +7,7 @@ import CardList from "../../../components/presentation/CardList";
 const Advices = ({ advices }) => !advices || advices.length === 0
   ? <></>
   : (
-    <CardList title="Conseils" description="Nos conseils pour aller plus loin :">
+    <CardList title="Conseils" description="Nos recommandations pour aller plus loin :">
       { advices.map((advice, index) => (
         <Card key={ `advice-${index}` }
               bg="light"
