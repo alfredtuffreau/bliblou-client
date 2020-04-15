@@ -41,10 +41,6 @@ small {
   font-size: 90%;
 }
 
-#durations-tooltip .tooltip-inner {
-  text-align: left;
-}
-
 .card {
   font-size: .95rem;
 }

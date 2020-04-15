@@ -1,6 +1,6 @@
 import React from "react";
-import { number } from "prop-types";
-import { Container, Row, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { string, number } from "prop-types";
+import { Container, Row } from "react-bootstrap";
 import { IconContext } from "react-icons";
 import { GiDoughRoller, GiCookingPot, GiChickenOven } from "react-icons/gi";
 
@@ -18,39 +18,37 @@ const formatDuration = seconds => {
                                        .join(' ');
 };
 
-const Durations = ({ preparation, cookingAfterPreparation, resting }) => {
+const Durations = ({ description, preparation, cookingAfterPreparation, resting }) => {
   if (!preparation && !cookingAfterPreparation && !resting)
     return <></>;
   
   const durations = [ 
-    { tooltip: <Tooltip>Préparation</Tooltip>, time: preparation, icon: <GiDoughRoller /> },
-    { tooltip: <Tooltip>Cuisson</Tooltip>, time: cookingAfterPreparation, icon: <GiCookingPot /> },
-    { tooltip: <Tooltip>Repos</Tooltip>, time: resting, icon: <GiChickenOven /> } 
+    { label: "Préparation", time: preparation, icon: <GiDoughRoller /> },
+    { label: "Cuisson", time: cookingAfterPreparation, icon: <GiCookingPot /> },
+    { label: "Repos", time: resting, icon: <GiChickenOven /> } 
   ];
 
   return (
-    <Container>
-      <Row>
-        { 
-          durations.filter(({ time }) => time)
-                   .map(({ tooltip, time, icon }, index) => (
-                     <div className="info-group" key={ index }>
-                       <IconContext.Provider value={{ className: "green icon icon-sm" }}> 
-                         <OverlayTrigger placement="auto"
-                                        overlay={ tooltip }>
-                           { icon }
-                         </OverlayTrigger>
-                         { ` ${formatDuration(time*60)}` }
-                       </IconContext.Provider>
-                     </div>
-                   )) 
-        }
-      </Row>
-    </Container>
+    <>
+      { description }
+      <Container>
+        <Row>
+          { durations.filter(({ time }) => time)
+                    .map(({ label, time, icon }, index) => (
+                      <div className="info" key={ index }>
+                        <IconContext.Provider value={{ className: "green icon icon-sm" }}> 
+                          { icon } { label } : { ` ${formatDuration(time*60)}` }
+                        </IconContext.Provider>
+                      </div>
+                    )) }
+        </Row>
+      </Container>
+    </>
   );
 };
 
 Durations.propTypes = {
+  decription: string.isRequired,
   preparation: number,
   cookingAfterPreparation: number,
   resting: number

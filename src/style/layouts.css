@@ -40,13 +40,17 @@ ul {
     list-style-type: none;
   }
 
-#durations-tooltip .tooltip-inner {
-  max-width: 100%;
+.recipe-info>* {
+  margin-bottom: 1rem;
 }
 
-#durations-tooltip .info-group {
-  margin-bottom: 0;
-}
+  .recipe-info .info {
+    padding-right: 1rem;
+  }
+
+  .recipe-info .icon.icon-sm {
+    margin-bottom: .2rem;
+  }
   
 .about.picture {
   float: left;
@@ -218,15 +222,6 @@ ul {
 .image-container.default-image {
   background-size: contain;
 }
-
-.info-group {
-  margin-bottom: 1rem;
-  padding-right: 1rem;
-}
-
-  .info-group .icon.icon-sm {
-    margin-bottom: .2rem;
-  }
 
 .line-separator {
   height:1px;
