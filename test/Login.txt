@@ -15,7 +15,7 @@ Prerequisite: User is logged out
 Type URL: http://localhost:3000/login
 > Navbar displays "Créer un compte" button
 > Displays empty signin form 
-  i. "Adresse email"
+  i. "Adresse e-mail"
   ii. "Mot de passe" + button "Afficher"
   iii. Link "Mot de passe oublié ?"
   iv. "Se connecter >" enabled submit button
@@ -61,22 +61,22 @@ Click: "Ok"
 ### Typing invalid value in signin form and fixing it
 
 Type URL: http://localhost:3000/login
-Type invalid "Adresse email" value
+Type invalid "Adresse e-mail" value
 Click in "Mot de passe" then elsewhere
 > "Se connecter >" signin form submit button remains enabled
 
 
 
-### Typing invalid then valid value in "Adresse email"
+### Typing invalid then valid value in "Adresse e-mail"
 
 Type URL: http://localhost:3000/login
-Type invalid "Adresse email" value
-> "Adresse email" contains the typed value
-> No change in "Adresse email" display
+Type invalid "Adresse e-mail" value
+> "Adresse e-mail" contains the typed value
+> No change in "Adresse e-mail" display
 
-Type valid "Adresse email" value
-> "Adresse email" contains the typed value
-> No change in "Adresse email" display
+Type valid "Adresse e-mail" value
+> "Adresse e-mail" contains the typed value
+> No change in "Adresse e-mail" display
 
 
 
@@ -84,11 +84,11 @@ Type valid "Adresse email" value
 
 Type URL: http://localhost:3000/login
 Click in "Mot de passe" then elsewhere
-> No change in "Adresse email" display
+> No change in "Adresse e-mail" display
 
 Type anything in "Azertyu!0p"
 > "Mot de passe" contains "**********"
-> No change in "Adresse email" display
+> No change in "Adresse e-mail" display
 
 
 
@@ -126,7 +126,7 @@ Click: "S'identifier" Navbar button
 ### Error happenning on AWS cognito signin
 
 Type URL: http://localhost:3000/login
-Fill the signin form with nonsigned up "Adresse email" and any "Mot de passe" value
+Fill the signin form with nonsigned up "Adresse e-mail" and any "Mot de passe" value
 Click: "Se connecter >" signin form submit button
 > "Se connecter >" button becomes "Connexion..." and is disabled
 > window alerts 
@@ -155,7 +155,7 @@ Prerequisites:
 ### Typing wrong password
 
 Type URL: http://localhost:3000/login
-Fill the signin form with signed up "Adresse email" and invalid "Mot de passe" value
+Fill the signin form with signed up "Adresse e-mail" and invalid "Mot de passe" value
 Click: "Se connecter >" signin form submit button
 > "Se connecter >" button becomes "Connexion..." and is disabled
 > window alerts 
@@ -172,7 +172,7 @@ Click: "Ok"
 ### Successfully signing in
 
 Type URL: http://localhost:3000/login
-Fill the signin form with signed up and confirmed "Adresse email" and valid "Mot de passe" 
+Fill the signin form with signed up and confirmed "Adresse e-mail" and valid "Mot de passe" 
 Click: "Se connecter >" signin form submit button
 > "Se connecter >" button becomes "Connexion..." and is disabled
 > Catcher and Signin form disapear
@@ -196,13 +196,13 @@ Prerequisite:
 ### Landing on signup confirm
 
 Type URL: http://localhost:3000/login 
-Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Fill the signin form with signed up but unconfirmed "Adresse e-mail" and valid "Mot de passe"
 Click: "Se connecter >" signin form submit button
 > "Se connecter >" button becomes "Connexion..." and is disabled
 > Redirected to http://localhost:3000/
 > Page displays Catcher and Confirm form
   i. "Vérification code"
-  ii. help "Consultez votre boîte mail pour le code de vérification"
+  ii. help "Consultez votre boîte e-mail pour obtenir le code de vérification"
   iii. "Vérifier >" enabled submit button
 
 
@@ -210,7 +210,7 @@ Click: "Se connecter >" signin form submit button
 ### Clicking "S'identifier" Navbar button from Confirm form
 
 Type URL: http://localhost:3000/login 
-Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Fill the signin form with signed up but unconfirmed "Adresse e-mail" and valid "Mot de passe"
 Click: "Se connecter >" signin form submit button
 Wait: Confirm form is displayed
 Click: "S'identifier" Navbar button
@@ -223,7 +223,7 @@ Click: "S'identifier" Navbar button
 ### Submitting incomplete Confirm form
 
 Type URL: http://localhost:3000/login 
-Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Fill the signin form with signed up but unconfirmed "Adresse e-mail" and valid "Mot de passe"
 Click: "Se connecter >" signin form submit button
 Wait: Confirm form is displayed
 Click: "Vérifier >" Confirm form submit button
@@ -236,7 +236,7 @@ Click: "Vérifier >" Confirm form submit button
 ### Typing invalid value in Confirm form and fixing it
 
 Type URL: http://localhost:3000/login 
-Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Fill the signin form with signed up but unconfirmed "Adresse e-mail" and valid "Mot de passe"
 Click: "Se connecter >" signin form submit button
 Wait: Confirm form is displayed
 Click in "Code de vérification" then elsewhere
@@ -250,7 +250,7 @@ Type anything in "Code de vérification"
 ### Typing invalid then valid values in "Code de vérification"
 
 Type URL: http://localhost:3000/login 
-Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Fill the signin form with signed up but unconfirmed "Adresse e-mail" and valid "Mot de passe"
 Click: "Se connecter >" signin form submit button
 Wait: Confirm form is displayed
 Click in "Code de vérification" then elsewhere
@@ -267,7 +267,7 @@ Type anything in "Code de vérification"
 ### Quitting Confirm form before submitting
 
 Type URL: http://localhost:3000/login 
-Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Fill the signin form with signed up but unconfirmed "Adresse e-mail" and valid "Mot de passe"
 Click: "Se connecter >" signin form submit button
 Wait: Confirm form is displayed
 Click: "S'identifier" Navbar button
@@ -279,7 +279,7 @@ Click: "S'identifier" Navbar button
 ### Error happenning on AWS cognito confirm
 
 Type URL: http://localhost:3000/login 
-Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Fill the signin form with signed up but unconfirmed "Adresse e-mail" and valid "Mot de passe"
 Click: "Se connecter >" signin form submit button
 Wait: Confirm form is displayed
 Type wrong "Code de vérification"
@@ -299,7 +299,7 @@ Click: "Ok"
 ### Error happenning on AWS cognito signin
 
 Type URL: http://localhost:3000/login 
-Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Fill the signin form with signed up but unconfirmed "Adresse e-mail" and valid "Mot de passe"
 Click: "Se connecter >" signin form submit button
 Wait: Confirm form is displayed
 Type correct "Code de vérification"
@@ -326,7 +326,7 @@ Click: "Créer un compte" Navbar button
 ### Successfully signing in and confirming signup
 
 Type URL: http://localhost:3000/login 
-Fill the signin form with signed up but unconfirmed "Adresse email" and valid "Mot de passe"
+Fill the signin form with signed up but unconfirmed "Adresse e-mail" and valid "Mot de passe"
 Click: "Se connecter >" signin form submit button
 Wait: Confirm form is displayed
 Type correct "Code de vérification"

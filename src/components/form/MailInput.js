@@ -72,7 +72,7 @@ MailInput.propTypes = {
 };
 
 MailInput.defaultProps = { 
-  label: "Adresse email",
+  label: "Adresse e-mail",
   value: undefined,
   isValid: undefined,
   onChange: () => {},

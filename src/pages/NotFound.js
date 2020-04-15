@@ -34,7 +34,7 @@ class NotFound extends Component {
         <Container>
           <Row>
             <Col>
-              <h2>Oups, page introuvable</h2>
+              <h2>Oups... Cette page est introuvable</h2>
               <h3>La page que vous recherchez a peut-être été supprimée.</h3>
               <img src={ icon } className="picture large" alt="Not found" />
               { links

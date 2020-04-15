@@ -22,9 +22,9 @@ class ResetPassword extends Component {
     if (needConfirmSignUp) {
       const { mail: { value: mail }, signUpCode, validateSignUp } = this.props;
       description = (<>
-        <p>Saisissez le code de vérification qui vous a été envoyé pour confirmer votre inscription.</p>
+        <p>Saisissez le code de vérification qui vous a été envoyé par e-mail pour confirmer votre inscription</p>
         <p>
-          <small>Un second code vous sera envoyé pour définir votre nouveau mot de passe</small>
+          <small>Un second code vous sera envoyé par e-mail pour définir votre nouveau mot de passe</small>
         </p>
       </>);
       img = <></>;
@@ -39,7 +39,7 @@ class ResetPassword extends Component {
       const { 
         mail: { value: mail }, confirmationCode, password, togglePasswordVisibility, validateReset 
       } = this.props;
-      description = <p>Saisissez votre nouveau mot de passe et le code de vérification qui vous a été envoyé par email.</p>;
+      description = <p>Saisissez votre nouveau mot de passe et le code de vérification qui vous a été envoyé par e-mail</p>;
       img = <></>;
       form = <NewPasswordForm mail={ mail }
                               confirmationCode={ confirmationCode }
@@ -52,7 +52,7 @@ class ResetPassword extends Component {
                               onCancel={ cancel } />;
     } else {
       const { mail, startReset } = this.props;
-      description = <p>Nous vous enverrons les instructions de réinitialisation de votre mot de passe par email.</p>;
+      description = <p>Nous vous enverrons les instructions de réinitialisation de votre mot de passe par e-mail</p>;
       img = <img src={ icon } className="picture medium small-margin-bottom" alt="Mail" />;
       form = <IdentificationForm mail={ mail }
                                  isLoading={ isLoading } 

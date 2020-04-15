@@ -51,7 +51,7 @@ class ConfirmationCodeInput extends Component {
                       onMouseEnter={ this.handleOnMouseEnter } 
                       onMouseLeave={ this.handleOnMouseLeave } />
         <Form.Text>
-          Consultez votre boîte mail pour le code de vérification
+          Consultez votre boîte e-mail pour obtenir le code de vérification
         </Form.Text>
         { target 
           ? <ValidationTooltip message={ CONFIRMATION_CODE_ALERT_MESSAGE } 

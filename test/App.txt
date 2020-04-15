@@ -53,7 +53,7 @@ type URL: https://bliblou.com/contactus
 
 type URL: https://bliblou.com
 Click: "aide-utilisateur@bliblou.com" footer link
-> Opens users new email to "aide-utilisateur@bliblou.com"
+> Opens users new e-mail to "aide-utilisateur@bliblou.com"
 
 
 
@@ -111,7 +111,7 @@ Prerequisite: User is logged in
 ######################################################################################################
 
 type URL: https://bliblou.com/login
-Type signed up and confirmed user "Adresse email" and "Mot de passe"
+Type signed up and confirmed user "Adresse e-mail" and "Mot de passe"
 Click: "Se connecter >"
 Wait user is logged in
 type URL: https://bliblou.com/lostpassword

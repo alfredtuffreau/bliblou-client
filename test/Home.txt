@@ -16,7 +16,7 @@ Type URL: http://localhost:3000/
 > Navbar displays "S'identifier" button
 > Displays empty signup form 
   i. "Prénom" "Nom"
-  ii. "Adresse email"
+  ii. "Adresse e-mail"
   iii. "Mot de passe" + button "Afficher"
   iv. "Homme" button + "Femme" button + "Autre"
   v. "Je m'inscris gratuitement >" enabled submit button
@@ -40,7 +40,7 @@ Click: "Je m'inscris gratuitement >" SignIn form submit button
 > All fields contains a red "X"
 > "Je m'inscris gratuitement >" is disabled
 > Hover "Prénom" or "Nom" dispays "Saisissez votre nom complet" tooltip
-> Hover "Adresse email" dispays "Saisissez une adresse valide" tooltip
+> Hover "Adresse e-mail" dispays "Saisissez une adresse valide" tooltip
 > Hover "Mot de passe" displays "Le mot de passe dois contenir: ..." tooltip
 > Hover "Homme" button or "Femme" button or "Autre" displays "Indiquez votre genre" tooltip
 
@@ -49,10 +49,10 @@ Click: "Je m'inscris gratuitement >" SignIn form submit button
 ### Typing invalid value in SignUp form and fixing it
 
 Type URL: http://localhost:3000/
-Type invalid "Adresse email" value
+Type invalid "Adresse e-mail" value
 > "Je m'inscris gratuitement >" SignUp form submit button is disabled
 
-Type valid "Adresse email" value
+Type valid "Adresse e-mail" value
 > "Je m'inscris gratuitement >" SignUp form submit button is enabled
 
 
@@ -86,27 +86,27 @@ Type anything in "Nom"
 
 
 
-### Typing invalid then valid values in "Adresse email"
+### Typing invalid then valid values in "Adresse e-mail"
 
 Type URL: http://localhost:3000/
-Click in "Adresse email" then elsewhere
-> Red "X" appears on "Adresse email" 
-> Hover "Adresse email" dispays "Saisissez une adresse valide" tooltip
+Click in "Adresse e-mail" then elsewhere
+> Red "X" appears on "Adresse e-mail" 
+> Hover "Adresse e-mail" dispays "Saisissez une adresse valide" tooltip
 
-Type valid email adresse in "Adresse email"
-> typed value is diplayed in "Adresse email"
-> "Adresse email" red "X" disappears
-> Hover "Adresse email" does nothing
+Type valid e-mail adresse in "Adresse e-mail"
+> typed value is diplayed in "Adresse e-mail"
+> "Adresse e-mail" red "X" disappears
+> Hover "Adresse e-mail" does nothing
 
-Type invalid email adresse in "Adresse email"
-> typed value is diplayed in "Adresse email"
-> Red "X" appears on "Adresse email" 
-> Hover "Adresse email" dispays "Saisissez une adresse valide" tooltip
+Type invalid e-mail adresse in "Adresse e-mail"
+> typed value is diplayed in "Adresse e-mail"
+> Red "X" appears on "Adresse e-mail" 
+> Hover "Adresse e-mail" dispays "Saisissez une adresse valide" tooltip
 
-Type valid email adresse in "Adresse email"
-> typed value is diplayed in "Adresse email"
-> "Adresse email" red "X" disappears
-> Hover "Adresse email" does nothing
+Type valid e-mail adresse in "Adresse e-mail"
+> typed value is diplayed in "Adresse e-mail"
+> "Adresse e-mail" red "X" disappears
+> Hover "Adresse e-mail" does nothing
 
 
 
@@ -234,12 +234,12 @@ Click: "Créer un compte" Navbar button
 ### Error happenning on AWS cognito signup
 
 Type URL: http://localhost:3000/ 
-Fill the signup form with valid values and an already used email
+Fill the signup form with valid values and an already used e-mail
 Click: "Je m'inscris gratuitement >" SignUp form submit button
 > "Je m'inscris gratuitement >" button becomes "Inscription..." and is disabled
 > window alerts 
   i. "localhost:3000 indique" (title)
-  ii. "An account with the given email already exists." (body)
+  ii. "An account with the given e-mail already exists." (body)
   iii. "Ok" button
             
 Click: "Ok"
@@ -251,12 +251,12 @@ Click: "Ok"
 ### Landing on Confirm form
 
 Type URL: http://localhost:3000/ 
-Fill the SignUp form with valid values (unused email)
+Fill the SignUp form with valid values (unused e-mail)
 Click: "Je m'inscris gratuitement >" SignUp form submit button
 > "Je m'inscris gratuitement >" button becomes "Inscription..." and is disabled
 > Page displays Catcher and Confirm form
   i. "Vérification code"
-  ii. help "Consultez votre boîte mail pour le code de vérification"
+  ii. help "Consultez votre boîte e-mail pour obtenir le code de vérification"
   iii. "Vérifier >" enabled submit button
 
 
@@ -264,7 +264,7 @@ Click: "Je m'inscris gratuitement >" SignUp form submit button
 ### Clicking "S'identifier" Navbar button from Confirm form
 
 Type URL: http://localhost:3000/ 
-Fill the SignUp form with valid values (unused email)
+Fill the SignUp form with valid values (unused e-mail)
 Click: "Je m'inscris gratuitement >" SignUp form submit button
 Wait: Confirm form is displayed
 Click: "S'identifier" Navbar button
@@ -277,7 +277,7 @@ Click: "S'identifier" Navbar button
 ### Submitting incomplete Confirm form
 
 Type URL: http://localhost:3000/
-Fill the SignUp form with valid values (unused email)
+Fill the SignUp form with valid values (unused e-mail)
 Click: "Je m'inscris gratuitement >" SignUp form submit button
 Wait: Confirm form is displayed
 Click: "Vérifier >" Confirm form submit button
@@ -290,7 +290,7 @@ Click: "Vérifier >" Confirm form submit button
 ### Typing invalid value in Confirm form and fixing it
 
 Type URL: http://localhost:3000/
-Fill the SignUp form with valid values (unused email)
+Fill the SignUp form with valid values (unused e-mail)
 Click: "Je m'inscris gratuitement >" SignUp form submit button
 Wait: Confirm form is displayed
 Click in "Code de vérification" then elsewhere
@@ -304,7 +304,7 @@ Type anything in "Code de vérification"
 ### Typing invalid then valid values in "Code de vérification"
 
 Type URL: http://localhost:3000/
-Fill the SignUp form with valid values (unused email)
+Fill the SignUp form with valid values (unused e-mail)
 Click: "Je m'inscris gratuitement >" SignUp form submit button
 Wait: Confirm form is displayed
 Click in "Code de vérification" then elsewhere
@@ -320,7 +320,7 @@ Type anything in "Code de vérification"
 
 ### Quitting Confirm form before submitting
 
-Fill the SignUp form with valid values (unused email)
+Fill the SignUp form with valid values (unused e-mail)
 Click: "Je m'inscris gratuitement >" SignUp form submit button
 Wait: Confirm form is displayed
 Click: "S'identifier" Navbar button
@@ -337,7 +337,7 @@ Click: "Créer un compte" Navbar button
 ### Error happenning on AWS cognito confirm
 
 Type URL: http://localhost:3000/ 
-Fill the SignUp form with valid values (unused email)
+Fill the SignUp form with valid values (unused e-mail)
 Click: "Je m'inscris gratuitement >" SignUp form submit button
 Wait: Confirm form is displayed
 Type wrong "Code de vérification"
@@ -357,7 +357,7 @@ Click: "Ok"
 ### Error happenning on AWS cognito signin
 
 Type URL: http://localhost:3000/ 
-Fill the SignUp form with valid values (unused email)
+Fill the SignUp form with valid values (unused e-mail)
 Click: "Je m'inscris gratuitement >" SignUp form submit button
 Wait: Confirm form is displayed
 Type correct "Code de vérification"
@@ -384,7 +384,7 @@ Click: "Créer un compte" Navbar button
 ### Completing SignUp successfully
 
 Type URL: http://localhost:3000/ 
-Fill the SignUp form with valid values (unused email)
+Fill the SignUp form with valid values (unused e-mail)
 Click: "Je m'inscris gratuitement >" SignUp form submit button
 Wait: Confirm form is displayed
 Type correct "Code de vérification"
