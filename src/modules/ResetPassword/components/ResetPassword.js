@@ -53,7 +53,7 @@ class ResetPassword extends Component {
     } else {
       const { mail, startReset } = this.props;
       description = <p>Nous vous enverrons les instructions de réinitialisation de votre mot de passe par e-mail</p>;
-      img = <img src={ icon } className="picture medium small-margin-bottom" alt="Mail" />;
+      img = <img src={ icon } className="picture medium margin-bottom-sm" alt="Mail" />;
       form = <IdentificationForm mail={ mail }
                                  isLoading={ isLoading } 
                                  onFieldChange={ setValue } 

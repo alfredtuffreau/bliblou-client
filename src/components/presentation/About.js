@@ -10,7 +10,7 @@ const About = ({ name, title, picture, descriptions, networks }) => (
     <h3>{ title }</h3>
     <Image src={ picture } className="about picture small" roundedCircle />
     { networks
-        ? <ListGroup className="social-network-links list-group-horizontal small-margin-bottom">
+        ? <ListGroup className="social-network-links list-group-horizontal margin-bottom-sm">
             { networks.map((network, index) => (
               <ListGroup.Item key={ index }>
                 <SocialNetwork { ...network } />

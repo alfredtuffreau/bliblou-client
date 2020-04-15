@@ -11,12 +11,14 @@ const RECIPE_TEMPLATE = `{
   "title": "",
   "description": "",
   "durations": {
+    "before": {
+      "preparation": 0,
+      "cookingAfterPreparation": 0,
+      "resting": 0
+    },
     "preparation": 0,
     "cookingAfterPreparation": 0,
-    "resting": {
-      "before": 0,
-      "after": 0
-    }
+    "resting": 0
   },
   "nbOfPeople": 0,
   "courses": [ "appetizer", "entree", "salad", "main_course", "side", "sauce", "dessert"],

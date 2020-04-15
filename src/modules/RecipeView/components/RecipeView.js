@@ -25,9 +25,10 @@ const RecipeView = ({
     title, 
     description, 
     durations: { 
+      before = {},
       preparation, 
-      cookingAfterPreparation, 
-      resting: { before, after } = {}
+      cookingAfterPreparation,
+      resting
     } = {},
     nbOfPeople,
     ingredients,
@@ -54,11 +55,11 @@ const RecipeView = ({
                 <Col lg={{ span: 6 }}>
                     <h1>{ title }</h1>
                     <p className="text-align-justify">{ description }</p>
-                    <RecipeInformations preparation={ preparation }
-                                        cookingAfterPreparation={ cookingAfterPreparation }
+                    <RecipeInformations nbOfPeople={ nbOfPeople }
                                         before={ before }
-                                        after={ after }
-                                        nbOfPeople={ nbOfPeople } />
+                                        preparation={ preparation }
+                                        cookingAfterPreparation={ cookingAfterPreparation }
+                                        resting={ resting } />
                     <ActionButtons groups={ groups }
                                    onDelete={ handleOnDelete }
                                    onEdit={ handleOnEdit } />

@@ -40,6 +40,14 @@ ul {
     list-style-type: none;
   }
 
+#durations-tooltip .tooltip-inner {
+  max-width: 100%;
+}
+
+#durations-tooltip .info-group {
+  margin-bottom: 0;
+}
+  
 .about.picture {
   float: left;
   margin: 16px;
@@ -211,6 +219,15 @@ ul {
   background-size: contain;
 }
 
+.info-group {
+  margin-bottom: 1rem;
+  padding-right: 1rem;
+}
+
+  .info-group .icon.icon-sm {
+    margin-bottom: .2rem;
+  }
+
 .line-separator {
   height:1px;
   margin-bottom: 8px;
@@ -218,6 +235,10 @@ ul {
 
 .list-group-item {
   padding: 0 1em 0 0;
+}
+
+.margin-bottom-sm {
+  margin-bottom: .5rem;
 }
 
 .navbar {
@@ -286,10 +307,6 @@ ul {
 
 .recipe-view .panel-with-image .col-lg-6 {
   margin: 8px 0;
-}
-
-.small-margin-bottom {
-  margin-bottom: .5rem;
 }
 
 .text-align-center .list-group-item {

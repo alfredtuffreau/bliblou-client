@@ -6,7 +6,6 @@ import { MdInfoOutline} from "react-icons/md";
 import { FaAngleDown } from "react-icons/fa";
 
 import defaultImage from "../../../images/building.png";
-import RecipeInformations from "../../../components/presentation/RecipeInformations";
 import { RECIPE } from "../../../modules/Navigation";
 
 class RecipeCard extends Component {
@@ -23,17 +22,7 @@ class RecipeCard extends Component {
 
   render () {
     const { overlay } = this.state;
-    const { recipeId, content, src } = this.props;
-    const { 
-      title = "", 
-      description = "", 
-      durations: { 
-        preparation = 0, 
-        cookingAfterPreparation = 0, 
-        resting: { before = 0, after = 0 } = {}
-      } = {},
-      nbOfPeople = 0
-    } = content;
+    const { recipeId, content: { title = "", description = "" }, src } = this.props;
                           
     return (
       <Card bg="light">
@@ -53,18 +42,11 @@ class RecipeCard extends Component {
                 <NavLink to={ RECIPE.replace(":recipeId", recipeId) }>
                   { description 
                       ? <Card.Text>
-                          { description.length > 190 
-                            ? `${description.substring(0, 152)}...` 
+                          { description.length > 230 
+                            ? `${description.substring(0, 227)}...` 
                             : description }
                         </Card.Text>
                       : <></> }
-                  <Card.Text as="div">
-                    <RecipeInformations preparation={ preparation }
-                                        cookingAfterPreparation={ cookingAfterPreparation }
-                                        before={ before }
-                                        after={ after }
-                                        nbOfPeople={ nbOfPeople } />
-                  </Card.Text>
                 </NavLink>
               </Card.ImgOverlay>) }
       </Card>
