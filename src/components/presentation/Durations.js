@@ -48,7 +48,7 @@ const Durations = ({ description, preparation, cookingAfterPreparation, resting 
 };
 
 Durations.propTypes = {
-  decription: string.isRequired,
+  description: string.isRequired,
   preparation: number,
   cookingAfterPreparation: number,
   resting: number
