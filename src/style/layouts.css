@@ -40,9 +40,13 @@ ul {
     list-style-type: none;
   }
 
-.recipe-info>*:not(:last-child) {
+.recipe-info:not(:last-child) {
   margin-bottom: 1rem;
-}
+ } 
+
+  .recipe-info>*:not(:last-child) {
+    margin-bottom: 1rem;
+  }
 
   .recipe-info .info {
     padding-right: 1rem;

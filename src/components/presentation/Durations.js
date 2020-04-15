@@ -34,13 +34,13 @@ const Durations = ({ description, preparation, cookingAfterPreparation, resting 
       <Container>
         <Row>
           { durations.filter(({ time }) => time)
-                    .map(({ label, time, icon }, index) => (
-                      <div className="info" key={ index }>
-                        <IconContext.Provider value={{ className: "green icon icon-sm" }}> 
-                          { icon } { label } : { ` ${formatDuration(time*60)}` }
-                        </IconContext.Provider>
-                      </div>
-                    )) }
+                     .map(({ label, time, icon }, index) => (
+                       <div className="info" key={ index }>
+                         <IconContext.Provider value={{ className: "green icon icon-sm" }}> 
+                           { icon } { label } : { ` ${formatDuration(time*60)}` }
+                         </IconContext.Provider>
+                       </div>
+                     )) }
         </Row>
       </Container>
     </>
