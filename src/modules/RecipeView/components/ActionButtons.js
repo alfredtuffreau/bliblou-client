@@ -12,7 +12,8 @@ const ActionButtons = ({ groups, onDelete, onEdit }) => {
     <ButtonGroup aria-label="Administration actions">
       { groups.includes("chefs")
         ? <Button variant="danger" 
-                  onClick={ onDelete }>
+                  onClick={ onDelete }
+                  onMouseDown={ e => e.preventDefault() }>
             <IconContext.Provider value={{ className: "icon icon-sm" }}>
               <FaTrash />
             </IconContext.Provider>

@@ -26,7 +26,8 @@ export const loadRecipe = (id, history) => {
       dispatch(setContent(JSON.parse(content)));
       dispatch(setPicture(picture));
       dispatch(setSrc(src));
-    } catch (e) {
+    } catch ({ message }) {
+      alert(message);
 			history.push(HOME);
     }
     dispatch(setIsLoading(false));

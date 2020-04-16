@@ -17,8 +17,8 @@ export const loadCatalog = () => {
         return recipe;
       });
       Promise.all(recipes).then(catalog => dispatch(setCatalog(catalog)));
-    } catch (e) {
-      alert(e);
+    } catch ({ message }) {
+      alert(message);
     }
     dispatch(setIsLoading(false));
 	};

@@ -41,8 +41,9 @@ export const loadRecipe = (id, history) => {
         dispatch(setPicture(src));
         dispatch(setCurrentPicture(picture));
       }
-    } catch (e) {
-			history.push(HOME);
+    } catch ({ message }) {
+      alert(message);
+      history.push(HOME);
     }
     dispatch(setIsLoading(false));
 	};

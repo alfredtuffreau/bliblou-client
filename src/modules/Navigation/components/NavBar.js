@@ -24,7 +24,9 @@ class BrandNavBar extends Component {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             { isAuthenticated
-              ? (<Button variant="success" onClick={ this.handleLogout }>
+              ? (<Button variant="success" 
+                         onClick={ this.handleLogout }
+                         onMouseDown={ e => e.preventDefault() }>
                   Se déconnecter
                 </Button>)
               : (<Nav>

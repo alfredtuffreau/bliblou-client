@@ -29,7 +29,7 @@ class Routes extends Component {
   }
 
   setFooterHeight () {
-    this.props.setFooterHeight(this.footer.current.clientHeight);
+    this.props.setFooterHeight(this.footer.current.clientHeight-1);
   }
 
   componentWillMount () {
