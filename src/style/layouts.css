@@ -117,10 +117,6 @@ ul {
   flex-wrap: wrap;
 }
 
-.card-list:not(:last-child) {
-  margin: 0 0 .5rem;
-}
-
   .card-list .card-group {
     flex-flow: row;
     overflow: scroll;
@@ -291,12 +287,21 @@ ul {
   width: 15rem;
 }
 
-.recipes {
-  margin-left: 4vw;
+
+.recipes-list:not(:last-child) {
+  margin-bottom: .5rem;
 }
 
-  .recipes h2 {
+  .recipes-list h2, .recipes-list .card-list {
+    margin-left: 4vw;
+  }
+
+  .recipes-list h2 {
     margin-bottom: .25em;
+  }
+
+  .recipes-list .panel-with-image.no-padding>* {
+    padding: 16px 0;
   }
 
 .recipe-picture {

@@ -1,10 +1,16 @@
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import RecipesList from "./components/RecipesList";
+import { onInfoClick } from "./actions";
 
 const mapStateToProps = state => {
-  const { catalog } = state.recipeBrowser;
-  return ({ catalog });
+  const { catalog, info } = state.recipeBrowser;
+  return ({ catalog, info });
 }
 
-export default connect(mapStateToProps)(RecipesList);
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({ onInfoClick }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipesList);

@@ -2,7 +2,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import RecipeView from "./components/RecipeView";
-import { loadRecipe, removeRecipe, clear } from "../RecipeView/actions";
+import { loadRecipe, removeRecipe, clear } from "./actions";
 
 const mapStateToProps = state => {
   const { content, picture, src, isLoading } = state.recipeView;

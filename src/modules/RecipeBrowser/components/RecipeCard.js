@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { string, object } from "prop-types";
+import { number, string, object, func } from "prop-types";
 import { NavLink } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import { MdInfoOutline} from "react-icons/md";
@@ -11,19 +11,16 @@ import { RECIPE } from "../../../modules/Navigation";
 class RecipeCard extends Component {
   constructor (props) {
     super(props);
-    this.state = { overlay: false };
     this.handleOnClick = this.handleOnClick.bind(this);
   }
   
   handleOnClick () {
-    const overlay = !this.state.overlay;
-    this.setState({ overlay });
+    const { index } = this.props;
+    this.props.onInfoClick(index);
   };
 
   render () {
-    const { overlay } = this.state;
-    const { recipeId, content: { title = "", description = "" }, src } = this.props;
-                          
+    const { recipeId, content: { title = ""}, src } = this.props;             
     return (
       <Card bg="light">
         <NavLink to={ RECIPE.replace(":recipeId", recipeId) } >
@@ -33,31 +30,21 @@ class RecipeCard extends Component {
         </NavLink>
         <Card.Body>
           <MdInfoOutline className="icon icon-sm" onClick={ this.handleOnClick }/>
-          <Card.Title as={ NavLink } to={ RECIPE.replace(":recipeId", recipeId) }>{ title }</Card.Title>
+          <Card.Title as={ NavLink } to={ RECIPE.replace(":recipeId", recipeId) }>
+            { title.length > 60 ? `${title.substring(0, 60)}...` : title }
+          </Card.Title>
         </Card.Body>
-        { !overlay
-            ? <></> 
-            : (<Card.ImgOverlay>
-                <FaAngleDown className="icon icon-sm" onClick={ this.handleOnClick } />
-                <NavLink to={ RECIPE.replace(":recipeId", recipeId) }>
-                  { description 
-                      ? <Card.Text>
-                          { description.length > 230 
-                            ? `${description.substring(0, 227)}...` 
-                            : description }
-                        </Card.Text>
-                      : <></> }
-                </NavLink>
-              </Card.ImgOverlay>) }
       </Card>
     );
   }
 }
 
 RecipeCard.propTypes = {
+  index: number.isRequired,
   recipeId: string.isRequired,
   content: object.isRequired,
-  src: string
+  src: string,
+  onInfoClick: func.isRequired
 };
 
 RecipeCard.defaultProps = {

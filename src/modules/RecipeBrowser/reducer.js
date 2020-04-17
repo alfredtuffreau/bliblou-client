@@ -1,6 +1,6 @@
-import { SET_CATALOG, SET_IS_LOADING } from "./actions";
+import { SET_CATALOG, SET_IS_LOADING, SET_INFO_INDEX } from "./actions";
 
-const initialState = { catalog: [] };
+const initialState = { catalog: [], infoIndex: undefined };
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
@@ -12,6 +12,15 @@ export default function reducer(state = initialState, action = {}) {
     case SET_IS_LOADING:
       const isLoading = action.payload;
       return ({ ...state, isLoading });
+
+    case SET_INFO_INDEX:
+      const { listIndex, cardIndex } = action.payload;
+      return ({ 
+        ...state, 
+        info: state.info && listIndex === state.info.listIndex && cardIndex === state.info.cardIndex
+          ? undefined
+          : { listIndex, cardIndex }
+      });
       
     default:
       return state;

@@ -39,9 +39,10 @@ const view = ({ groups }) => {
   }
 
   return (
-    <div className="panel recipes">
-      { lists.map(({ title, canAdd, predicate }) => (
-        <RecipesList key = { title.split(' ').map(s => s.toLowerCase()).join("-") } 
+    <div className="panel">
+      { lists.map(({ title, canAdd, predicate }, index) => (
+        <RecipesList key={ title.split(' ').map(s => s.toLowerCase()).join("-") }
+                     index={ index } 
                      title={ title } 
                      canAdd={ canAdd }
                      predicate={ predicate } />
