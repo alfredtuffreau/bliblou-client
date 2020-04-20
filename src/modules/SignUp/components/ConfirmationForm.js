@@ -37,7 +37,7 @@ class ConfirmationForm extends Component {
                 type="submit"
                 size="lg"
                 disabled={ !this.validToSubmit() || isLoading }>
-          { !isLoading ? "Vérifier >" : "Verification..." }
+          { !isLoading ? "Vérifier >" : "Vérification..." }
         </Button>
       </Form>
     );

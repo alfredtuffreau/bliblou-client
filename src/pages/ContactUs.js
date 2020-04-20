@@ -27,8 +27,8 @@ const ContactUs = () => (
             <p>Le Bliblou est une plateforme en construction. Nous souhaitons vous simplifier la cuisine pour vous aider à mieux manger et de manière plus éco-responsable. Si vous avez des suggestions, nous serons ravis de les consulter.</p>
           </div>
           <div>
-            <h3>Signalier un disfonctionnement</h3>
-            <p>Personne n'est parfait et des erreurs peuvent se produires. Faites nous part de quelconque anomalies, nous ferons tout notre possible pour la résoudre dans les meilleurs délais.</p>
+            <h3>Signaler un dysfonctionnement</h3>
+            <p>Personne n'est parfait et des erreurs peuvent se produire. Faites-nous part de quelconque anomalies, nous ferons tout notre possible pour les résoudre dans les meilleurs délais.</p>
           </div>
           <div>
             <h3>Proposer une collaboration</h3>
