@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { string, object } from "prop-types";
+import { string, object, arrayOf } from "prop-types";
 import { NavLink } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import { MdInfoOutline} from "react-icons/md";
@@ -13,23 +13,41 @@ class RecipeCard extends Component {
     super(props);
     this.state = { overlay: false };
     this.handleOnClick = this.handleOnClick.bind(this);
+    this.cardImgContainer = React.createRef();
+  }
+
+  async componentDidMount () { 
+    const { picture, thumbnails, loadPicture } = this.props;
+    this.setState({ 
+      src: await loadPicture(
+        thumbnails.find(thumb => thumb.replace(/\..+$/, '')
+                                      .split("_")[1]
+                                      .split("x")
+                                      .every((cur, index) => index === 0
+                                        ? cur >= this.cardImgContainer.current.clientWidth
+                                        : cur >= this.cardImgContainer.current.clientHeight))
+        || picture
+      )
+    });
   }
   
   handleOnClick () {
     const overlay = !this.state.overlay;
     this.setState({ overlay });
-  };
+  }
 
   render () {
-    const { overlay } = this.state;
-    const { recipeId, content: { title = "", description = "" }, src } = this.props;
-                          
+    const { overlay, src } = this.state;
+    const { recipeId, content: { title = "", description = "" } } = this.props;
+    
     return (
       <Card bg="light">
         <NavLink to={ RECIPE.replace(":recipeId", recipeId) } >
-          <Card.Img src={ src || defaultImage } 
-                    alt="Recipe image" 
-                    className={ src ? undefined : "default-image"} />
+          <div ref={ this.cardImgContainer }>
+            <Card.Img src={ src || defaultImage } 
+                      alt="Recipe image" 
+                      className={ src ? undefined : "default-image"} />
+          </div>
         </NavLink>
         <Card.Body>
           <MdInfoOutline className="icon icon-sm" onClick={ this.handleOnClick }/>
@@ -57,11 +75,13 @@ class RecipeCard extends Component {
 RecipeCard.propTypes = {
   recipeId: string.isRequired,
   content: object.isRequired,
-  src: string
+  picture: string,
+  loadPicture: arrayOf(string)
 };
 
 RecipeCard.defaultProps = {
-  src: undefined
+  picture: undefined,
+  loadPicture: []
 };
 
 export default RecipeCard;

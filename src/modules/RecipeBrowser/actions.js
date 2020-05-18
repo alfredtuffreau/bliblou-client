@@ -11,15 +11,24 @@ export const loadCatalog = () => {
 	return async (dispatch) => {
     dispatch(setIsLoading(true));
     try {
-      const recipes = (await fetchRecipes()).map(async ({ picture, content, ...rest }) => {
-        const recipe = { content: JSON.parse(content), ...rest };
-        if (picture) recipe.src = await s3Download(picture);
-        return recipe;
-      });
+      const recipes = (await fetchRecipes()).map(async ({ content, ...rest }) => ({ 
+        content: JSON.parse(content), 
+        ...rest 
+      }));
       Promise.all(recipes).then(catalog => dispatch(setCatalog(catalog)));
     } catch ({ message }) {
       alert(message);
     }
     dispatch(setIsLoading(false));
 	};
+};
+
+export const loadPicture = (picture) => {
+	return async () => {
+    try {
+      return s3Download(picture);
+    } catch ({ message }) {
+      alert(message);
+    }
+  };
 };
