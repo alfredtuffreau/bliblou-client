@@ -19,13 +19,29 @@ export const loadRecipe = (id, history) => {
 	return async (dispatch) => {
     dispatch(setIsLoading(true));
     try {
-      const { content, picture }  = await fetchRecipe(id);
-      const src = picture
-        ? await s3Download(picture)
-        : null;
+      const { content, picture, thumbnails = [] }  = await fetchRecipe(id);
       dispatch(setContent(JSON.parse(content)));
       dispatch(setPicture(picture));
-      dispatch(setSrc(src));
+
+      if (picture) {
+        // We use max between width and height because of rotable devices
+        const maxAvailableWidth = Math.max(
+          window.screen ? window.screen.availWidth : window.innerWidth,
+          window.screen ? window.screen.availHeight : window.innerHeight 
+        );
+        try {
+          const src = await s3Download(
+            thumbnails.find(thumbnail => Number(thumbnail.replace(/\..+$/, '')
+                                                         .split("_")[1]
+                                                         .split("x")
+                                                         .every(cur => Number(cur) >= maxAvailableWidth)))
+            || picture
+          );
+          dispatch(setSrc(src));
+        } catch (err) {
+          // Error loading picture default will be used
+        }
+      }
     } catch ({ message }) {
       alert(message);
 			history.push(HOME);

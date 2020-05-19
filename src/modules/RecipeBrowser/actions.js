@@ -26,9 +26,9 @@ export const loadCatalog = () => {
 export const loadPicture = (picture) => {
 	return async () => {
     try {
-      return s3Download(picture);
-    } catch ({ message }) {
-      alert(message);
+      return await s3Download(picture);
+    } catch (err) {
+      return undefined;
     }
   };
 };

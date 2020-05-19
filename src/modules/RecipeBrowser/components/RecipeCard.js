@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { string, object, arrayOf } from "prop-types";
+import { string, object, arrayOf, func } from "prop-types";
 import { NavLink } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import { MdInfoOutline} from "react-icons/md";
@@ -18,17 +18,19 @@ class RecipeCard extends Component {
 
   async componentDidMount () { 
     const { picture, thumbnails, loadPicture } = this.props;
-    this.setState({ 
-      src: await loadPicture(
-        thumbnails.find(thumb => thumb.replace(/\..+$/, '')
-                                      .split("_")[1]
-                                      .split("x")
-                                      .every((cur, index) => index === 0
-                                        ? cur >= this.cardImgContainer.current.clientWidth
-                                        : cur >= this.cardImgContainer.current.clientHeight))
+
+    if (picture) {
+      const src = await loadPicture(
+        thumbnails.find(thumbnail => thumbnail.replace(/\..+$/, '')
+                                              .split("_")[1]
+                                              .split("x")
+                                              .every((cur, index) => index === 0
+                                                ? Number(cur) >= this.cardImgContainer.current.clientWidth
+                                                : Number(cur) >= this.cardImgContainer.current.clientHeight))
         || picture
-      )
-    });
+      );
+      this.setState({ src });
+    }
   }
   
   handleOnClick () {
@@ -76,12 +78,13 @@ RecipeCard.propTypes = {
   recipeId: string.isRequired,
   content: object.isRequired,
   picture: string,
-  loadPicture: arrayOf(string)
+  thumbnails: arrayOf(string),
+  loadPicture: func.isRequired
 };
 
 RecipeCard.defaultProps = {
   picture: undefined,
-  loadPicture: []
+  thumbnails: []
 };
 
 export default RecipeCard;
