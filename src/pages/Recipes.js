@@ -13,13 +13,21 @@ const NEW = "new",
       PUBLISHED = "published",
       ALL_STATUS = [ NEW, READY, REVIEWED, VALIDATED, PUBLISHED ];
 
-const NEW_LIST = { title: "Les recettes récemment ajoutées", canAdd: true, predicate: ({ content }) => content.status === NEW };
+const NEW_LIST = { title: "Les recettes en cours de création", canAdd: true, predicate: ({ content }) => content.status === NEW };
 const READY_LIST = { title: "Les recettes à valider", predicate: ({ content }) => content.status === READY };
 const REVIEWED_LIST = { title: "Les recettes revues à corriger", predicate: ({ content }) => content.status === REVIEWED };
 const VALIDATED_LIST = { title: "Les recettes à revoir", predicate: ({ content }) => content.status === VALIDATED };
 const UNKNOWN_LIST = { title: "Statut non définie", predicate: ({ content }) => !ALL_STATUS.includes(content.status) };
 const NO_COURSES_LIST = { title: "Catégorie non définie", predicate: ({ content: { courses } }) => !courses || courses === 0 };
 const DEFAULT_LISTS = [
+  { title: "Les recettes récemment ajoutées", predicate: ({ createdAt, content: { status } }) => {
+    const refDate = new Date();
+    refDate.setDate(refDate.getDate() - 15);
+    console.log(refDate);
+    console.log(new Date(createdAt));
+    console.log(new Date(createdAt) > refDate);
+    return new Date(createdAt) > refDate && [ VALIDATED, PUBLISHED ].includes(status) 
+  } },
   { title: "Les entrées", predicate: ({ content: { courses = [], status } }) => [ VALIDATED, PUBLISHED ].includes(status) && courses.includes("entree") }, 
   { title: "Les salades", predicate: ({ content: { courses = [], status } }) => [ VALIDATED, PUBLISHED ].includes(status) && courses.includes("salad") }, 
   { title: "Les plats complets", predicate: ({ content: { courses = [], status } }) => [ VALIDATED, PUBLISHED ].includes(status) && courses.includes("main_course") },
