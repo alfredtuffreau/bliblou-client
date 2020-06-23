@@ -9,7 +9,7 @@ const config = {
   },
   apiGateway: {
     REGION: "eu-west-1",
-    URL: "https://d0grim5u4b.execute-api.eu-west-1.amazonaws.com/prod"
+    URL: "https://api.bliblou.com/prod"
   },
   s3: {
     REGION: "eu-west-1",

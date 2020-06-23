@@ -20,11 +20,15 @@ const VALIDATED_LIST = { title: "Les recettes à revoir", predicate: ({ content 
 const UNKNOWN_LIST = { title: "Statut non définie", predicate: ({ content }) => !ALL_STATUS.includes(content.status) };
 const NO_COURSES_LIST = { title: "Catégorie non définie", predicate: ({ content: { courses } }) => !courses || courses === 0 };
 const DEFAULT_LISTS = [
+  { title: "Pour l’appéritif", predicate: ({ content: { courses = [], status } }) => [ VALIDATED, PUBLISHED ].includes(status) && courses.includes("appetizer") }, 
   { title: "Les entrées", predicate: ({ content: { courses = [], status } }) => [ VALIDATED, PUBLISHED ].includes(status) && courses.includes("entree") }, 
   { title: "Les salades", predicate: ({ content: { courses = [], status } }) => [ VALIDATED, PUBLISHED ].includes(status) && courses.includes("salad") }, 
   { title: "Les plats complets", predicate: ({ content: { courses = [], status } }) => [ VALIDATED, PUBLISHED ].includes(status) && courses.includes("main_course") },
   { title: "Les accompagnements", predicate: ({ content: { courses = [], status } }) => [ VALIDATED, PUBLISHED ].includes(status) && courses.includes("side") },
+  { title: "Les sauces", predicate: ({ content: { courses = [], status } }) => [ VALIDATED, PUBLISHED ].includes(status) && courses.includes("sauce") },
+  { title: "Pour accompagner vos pâtes", predicate: ({ content: { courses = [], status } }) => [ VALIDATED, PUBLISHED ].includes(status) && courses.includes("pasta_sauce") },
   { title: "Les desserts", predicate: ({ content: { courses = [], status } }) => [ VALIDATED, PUBLISHED ].includes(status) && courses.includes("dessert") },
+  { title: "Vite fait", predicate: ({ content: { durations: { before: { preparation: beforePrep, cookingAfterPreparation: beforeCooking, resting: beforeResting }, preparation, cookingAfterPreparation, resting }, status } }) => [ VALIDATED, PUBLISHED ].includes(status) && beforePrep + beforeCooking + beforeResting + preparation + cookingAfterPreparation + resting <= 30 },
   { title: "Toutes les recettes", predicate: ({ content: { status } }) => [ VALIDATED, PUBLISHED ].includes(status) }
 ];
 

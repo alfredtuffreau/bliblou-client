@@ -21,7 +21,7 @@ const RECIPE_TEMPLATE = `{
     "resting": 0
   },
   "nbOfPeople": 0,
-  "courses": [ "appetizer", "entree", "salad", "main_course", "side", "sauce", "dessert"],
+  "courses": [ "appetizer", "entree", "salad", "main_course", "side", "sauce", "pasta_sauce", "dessert"],
   "ingredients": [],
   "steps": [],
   "advices": [],
