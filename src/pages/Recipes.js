@@ -20,7 +20,7 @@ const VALIDATED_LIST = { title: "Les recettes à revoir", predicate: ({ content 
 const UNKNOWN_LIST = { title: "Statut non définie", predicate: ({ content }) => !ALL_STATUS.includes(content.status) };
 const NO_COURSES_LIST = { title: "Catégorie non définie", predicate: ({ content: { courses } }) => !courses || courses === 0 };
 const DEFAULT_LISTS = [
-  { title: "Pour l’appéritif", predicate: ({ content: { courses = [], status } }) => [ VALIDATED, PUBLISHED ].includes(status) && courses.includes("appetizer") }, 
+  { title: "Pour l’apéritif", predicate: ({ content: { courses = [], status } }) => [ VALIDATED, PUBLISHED ].includes(status) && courses.includes("appetizer") }, 
   { title: "Les entrées", predicate: ({ content: { courses = [], status } }) => [ VALIDATED, PUBLISHED ].includes(status) && courses.includes("entree") }, 
   { title: "Les salades", predicate: ({ content: { courses = [], status } }) => [ VALIDATED, PUBLISHED ].includes(status) && courses.includes("salad") }, 
   { title: "Les plats complets", predicate: ({ content: { courses = [], status } }) => [ VALIDATED, PUBLISHED ].includes(status) && courses.includes("main_course") },
