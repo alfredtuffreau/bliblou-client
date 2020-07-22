@@ -17,11 +17,11 @@ import Advices from "./Advices";
 const RecipeView = ({ 
   groups, id, content, picture, src, isLoading, loadRecipe, removeRecipe, clear, history 
 }) => {
-  const noSleep = new NoSleep();
+  let noSleep;
 
   useEffect(() => { 
     loadRecipe(id, history);
-    noSleep.enable();
+    enableNoSleep();
 
     return () => {
       clear();
@@ -44,6 +44,11 @@ const RecipeView = ({
     advices
   } = content;
 
+  const enableNoSleep = () => {
+    if (!noSleep) noSleep = new NoSleep();
+    noSleep.enable();
+  }
+
   const handleOnDelete = () => {
     if (window.confirm("La recette va être supprimée définitivement. Voulez-vous continuer ?")) 
     removeRecipe(id, picture, history);
@@ -56,8 +61,8 @@ const RecipeView = ({
   return isLoading
     ? <></>
     : <div className="recipe-view"
-           onMouseEnter={ () => noSleep.enable() }
-           onTouchStart={ () => noSleep.enable() }>
+           onMouseEnter={ () => enableNoSleep() }
+           onTouchStart={ () => enableNoSleep() }>
         <ImagePanel src={ src || defaultImage } 
                     className={ `no-padding deep${src ? "" : " default-image"}` }>
           <Container>
