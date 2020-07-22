@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { array, bool, string, object, func } from "prop-types";
 import { Container, Row, Col } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
+import NoSleep from "nosleep.js";
 
 import defaultImage from "../../../images/building.png"
 import { EDIT_RECIPE } from "../../../modules/Navigation";
@@ -18,7 +19,14 @@ const RecipeView = ({
 }) => {
   useEffect(() => { 
     loadRecipe(id, history);
-    return () => clear(); 
+
+    const noSleep = new NoSleep();
+    noSleep.enable();
+
+    return () => {
+      clear();
+      noSleep.disable();
+    } 
   }, [id]);
 
   const { 
