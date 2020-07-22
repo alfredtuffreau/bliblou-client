@@ -12,7 +12,8 @@ class RecipeCard extends Component {
   constructor (props) {
     super(props);
     this.state = { overlay: false };
-    this.handleOnClick = this.handleOnClick.bind(this);
+    this.handleCardOnClick = this.handleCardOnClick.bind(this);
+    this.handleInfoOnClick = this.handleInfoOnClick.bind(this);
     this.cardImgContainer = React.createRef();
   }
 
@@ -32,8 +33,13 @@ class RecipeCard extends Component {
       this.setState({ src });
     }
   }
+
+  handleCardOnClick () {
+    const { onCardClick } = this.props;
+    onCardClick();
+  }
   
-  handleOnClick () {
+  handleInfoOnClick () {
     const overlay = !this.state.overlay;
     this.setState({ overlay });
   }
@@ -44,7 +50,8 @@ class RecipeCard extends Component {
     
     return (
       <Card bg="light">
-        <NavLink to={ RECIPE.replace(":recipeId", recipeId) } >
+        <NavLink to={ RECIPE.replace(":recipeId", recipeId) } 
+                 onClick={ this.handleCardOnClick }>
           <div ref={ this.cardImgContainer }>
             <Card.Img src={ src || defaultImage } 
                       alt="Recipe image" 
@@ -52,14 +59,19 @@ class RecipeCard extends Component {
           </div>
         </NavLink>
         <Card.Body>
-          <MdInfoOutline className="icon icon-sm" onClick={ this.handleOnClick }/>
-          <Card.Title as={ NavLink } to={ RECIPE.replace(":recipeId", recipeId) }>{ title }</Card.Title>
+          <MdInfoOutline className="icon icon-sm" onClick={ this.handleInfoOnClick }/>
+          <Card.Title as={ NavLink } 
+                      to={ RECIPE.replace(":recipeId", recipeId) }
+                      onClick={ this.handleCardOnClick }>
+            { title }
+          </Card.Title>
         </Card.Body>
         { !overlay
             ? <></> 
             : (<Card.ImgOverlay>
-                <FaAngleDown className="icon icon-sm" onClick={ this.handleOnClick } />
-                <NavLink to={ RECIPE.replace(":recipeId", recipeId) }>
+                <FaAngleDown className="icon icon-sm" onClick={ this.handleInfoOnClick } />
+                <NavLink to={ RECIPE.replace(":recipeId", recipeId) }
+                         onClick={ this.handleCardOnClick }>
                   { description 
                       ? <Card.Text>
                           { description.length > 230 
@@ -79,12 +91,14 @@ RecipeCard.propTypes = {
   content: object.isRequired,
   picture: string,
   thumbnails: arrayOf(string),
-  loadPicture: func.isRequired
+  loadPicture: func.isRequired,
+  onCardClick: func
 };
 
 RecipeCard.defaultProps = {
   picture: undefined,
-  thumbnails: []
+  thumbnails: [],
+  onCardClick: () => {}
 };
 
 export default RecipeCard;

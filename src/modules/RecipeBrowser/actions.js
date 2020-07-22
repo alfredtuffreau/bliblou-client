@@ -2,10 +2,13 @@ import { fetchRecipes, s3Download } from "../../libs/awsLibs";
 
 export const LOAD_RECIPES = "RECIPE_BROWSER/LOAD_RECIPES";
 export const SET_CATALOG = "RECIPE_BROWSER/SET_CATALOG";
+export const SET_SCROLLS_LEFT = "RECIPE_BROWSER/SET_SCROLLS_LEFT";
 export const SET_IS_LOADING = "RECIPE_BROWSER/SET_IS_LOADING";
 
 const setCatalog = (value) => ({ type: SET_CATALOG, payload: value });
 const setIsLoading = (value) => ({ type: SET_IS_LOADING, payload: value }); 
+
+export const setScrollsLeft = (value) => ({ type: SET_SCROLLS_LEFT, payload: value });
 
 export const loadCatalog = () => {
 	return async (dispatch) => {

@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { array } from "prop-types";
 
-import RecipesList from "../modules/RecipeBrowser";
+import RecipeBrowser from "../modules/RecipeBrowser";
 import withScrollTop from "../components/view/withScrollTop";
-import { loadCatalog } from "../modules/RecipeBrowser";
-import { store } from "../store";
 
 const NEW = "new", 
       READY = "ready",
@@ -32,10 +30,9 @@ const DEFAULT_LISTS = [
   { title: "Toutes les recettes", predicate: ({ content: { status } }) => [ VALIDATED, PUBLISHED ].includes(status) }
 ];
 
-const view = ({ groups }) => {
-  useEffect(() => { store.dispatch(loadCatalog()) }, []);
-  
+const recipes = ({ groups }) => {
   const lists = [ ...DEFAULT_LISTS ];
+  
   if (groups) {
     if (groups.includes("publishers")) lists.unshift(VALIDATED_LIST);
     if (groups.includes("reviewers")) lists.unshift(UNKNOWN_LIST, NO_COURSES_LIST, READY_LIST);
@@ -44,22 +41,17 @@ const view = ({ groups }) => {
 
   return (
     <div className="panel recipes">
-      { lists.map(({ title, canAdd, predicate }) => (
-        <RecipesList key = { title.split(' ').map(s => s.toLowerCase()).join("-") } 
-                     title={ title } 
-                     canAdd={ canAdd }
-                     predicate={ predicate } />
-      ))}
+      <RecipeBrowser lists={ lists } />
     </div>
   );
 };
 
-view.propTypes = {
+recipes.propTypes = {
   groups: array
 };
 
-view.defaultProps = {
+recipes.defaultProps = {
   groups: undefined
 }
 
-export default withScrollTop(view);
+export default withScrollTop(recipes);
