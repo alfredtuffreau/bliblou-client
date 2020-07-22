@@ -17,12 +17,12 @@ import Advices from "./Advices";
 const RecipeView = ({ 
   groups, id, content, picture, src, isLoading, loadRecipe, removeRecipe, clear, history 
 }) => {
+  const noSleep = new NoSleep();
+
   useEffect(() => { 
     loadRecipe(id, history);
-
-    const noSleep = new NoSleep();
     noSleep.enable();
-
+    
     return () => {
       clear();
       noSleep.disable();
