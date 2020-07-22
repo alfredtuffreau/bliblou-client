@@ -22,7 +22,7 @@ const RecipeView = ({
   useEffect(() => { 
     loadRecipe(id, history);
     noSleep.enable();
-    
+
     return () => {
       clear();
       noSleep.disable();
@@ -55,49 +55,51 @@ const RecipeView = ({
 
   return isLoading
     ? <></>
-    : <div className="recipe-view">
-          <ImagePanel src={ src || defaultImage } 
-                      className={ `no-padding deep${src ? "" : " default-image"}` }>
-            <Container>
-              <Row>
-                <Col lg={{ span: 6 }}>
-                    <h1>{ title }</h1>
-                    <p className="text-align-justify">{ description }</p>
-                    <RecipeInformations nbOfPeople={ nbOfPeople }
-                                        before={ before }
-                                        preparation={ preparation }
-                                        cookingAfterPreparation={ cookingAfterPreparation }
-                                        resting={ resting } />
-                    <ActionButtons groups={ groups }
-                                   onDelete={ handleOnDelete }
-                                   onEdit={ handleOnEdit } />
-                </Col>
-                <Col lg={{ span: 6 }}>
-                  <div className={ `image-container recipe-picture${ src ? "" : " default-image" }` } 
-                       style={{ backgroundImage: `url(${src || defaultImage})` }} />
-                </Col>
-              </Row>
-            </Container>
-          </ImagePanel>
-          <div className="panel">
-            <Container>
-              <Row>
-                <Col lg={{ span: 4 }}>
-                  <Ingredients ingredients={ ingredients } />
-                </Col>
-                <Col lg={{ span: 8 }}>
-                  <Steps steps={ steps } />
-                </Col>
-              </Row>
-            </Container>
-            <Container className="lists">
-              <Row>
-                <Col>
-                  <Advices advices={ advices } />
-                </Col>
-              </Row>
-            </Container> 
-          </div>
+    : <div className="recipe-view"
+           onMouseEnter={ () => noSleep.enable() }
+           onTouchStart={ () => noSleep.enable() }>
+        <ImagePanel src={ src || defaultImage } 
+                    className={ `no-padding deep${src ? "" : " default-image"}` }>
+          <Container>
+            <Row>
+              <Col lg={{ span: 6 }}>
+                  <h1>{ title }</h1>
+                  <p className="text-align-justify">{ description }</p>
+                  <RecipeInformations nbOfPeople={ nbOfPeople }
+                                      before={ before }
+                                      preparation={ preparation }
+                                      cookingAfterPreparation={ cookingAfterPreparation }
+                                      resting={ resting } />
+                  <ActionButtons groups={ groups }
+                                  onDelete={ handleOnDelete }
+                                  onEdit={ handleOnEdit } />
+              </Col>
+              <Col lg={{ span: 6 }}>
+                <div className={ `image-container recipe-picture${ src ? "" : " default-image" }` } 
+                      style={{ backgroundImage: `url(${src || defaultImage})` }} />
+              </Col>
+            </Row>
+          </Container>
+        </ImagePanel>
+        <div className="panel">
+          <Container>
+            <Row>
+              <Col lg={{ span: 4 }}>
+                <Ingredients ingredients={ ingredients } />
+              </Col>
+              <Col lg={{ span: 8 }}>
+                <Steps steps={ steps } />
+              </Col>
+            </Row>
+          </Container>
+          <Container className="lists">
+            <Row>
+              <Col>
+                <Advices advices={ advices } />
+              </Col>
+            </Row>
+          </Container> 
+        </div>
       </div>;
 };
 
