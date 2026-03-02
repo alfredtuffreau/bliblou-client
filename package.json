@@ -7,7 +7,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "approvejs": "^3.1.2",
-    "aws-amplify": "^1.1.22",
+    "aws-amplify": "^6.16.2",
     "bootstrap": "^4.3.1",
     "i": "^0.3.6",
     "nosleep.js": "^0.11.0",
